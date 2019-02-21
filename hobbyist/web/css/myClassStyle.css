@@ -1,0 +1,115 @@
+/* ----------------------------- 내 클래스 ------------------------------ */
+
+section#myclass {
+    width: 100%;
+    text-align: center;
+}
+
+section#myclass .myclass_content {
+    display: inline-block;
+    text-align: center;
+    width: 990px;
+    padding-top: 213px;
+}
+
+section#myclass .myclass_content table {
+	display: inline-block;
+	border-collapse: collapse;
+	font-size: 13px;
+	letter-spacing: -0.4px;
+	color: #505050;
+}
+
+section#myclass .myclass_content table .myclass_lecture {
+	display: inline-block;
+	width: 300px;
+	text-align: center;
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+section#myclass .myclass_content table a {
+	font-size: 16px;
+	color: #616a99;
+	text-decoration: none;
+}
+
+section#myclass .myclass_content table input {
+	padding-left: 10px;
+	vertical-align: top;
+	width: 250px;
+	height: 26px;
+	border: 1px solid #ccc;
+	background: none;
+	outline: none;
+	margin-right: 3px;
+}
+
+section#myclass .myclass_content th {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	border-top: 1px solid #e7e7e7;
+	font-size: 15px;
+}
+
+section#myclass .myclass_content td {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+section#myclass .myclass_content td.result {
+	text-align: center;
+	margin-top: 15px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #e7e7e7;
+	font-size: 16px;
+}
+
+section#myclass .myclass_content table button {
+	border: 1px solid #ccc;
+	outline: none;
+	background-color: #fff;
+	color: #252525;
+	font-size: 13px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	height: 36px;
+}
+
+section#myclass .myclass_content table button:hover {
+	transition: 400ms;
+	background-color: #3b4f6a;
+	color: #fff;
+}
+
+section#myclass .myclass_content table h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 46px;
+	color: #3b4f6a;
+}
+
+section#myclass .myclass_content ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+section#myclass .myclass_content ul li {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+section#myclass .myclass_content .progress {
+	width: 100%;
+	padding-top: 6px;
+	height: 28px;
+	border-radius: 3px;
+	background-color: #f1f1f1;
+	font-size: 13px;
+	text-align: center;
+}

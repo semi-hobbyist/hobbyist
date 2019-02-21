@@ -1,0 +1,239 @@
+section#award {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+section#award .award_content {
+	width: 990px;
+	padding-top: 200px; /* 기본메뉴만큼 띄우기 */
+	text-align: center;
+	display: inline-block;
+	padding-top: 200px;
+}
+
+section#award .award_content #award_left {
+	display: inline-block;
+	width: 0px;
+	height: 600px;
+	position: fixed;
+	overflow-x: hidden;
+	overflow: hidden; /* 넘치는 영역 자르기 */
+	background-color: rgba(255, 255, 255, 0.904);
+}
+
+section#award .award_content #shop_left #award_sub {
+	display: inline-block;
+	width: 100%;
+}
+
+section#award .award_content #award_left #award_sub h3 {
+	margin: 0;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-left: 15px;
+}
+
+section#award .award_content #award_left #award_sub ul {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0;
+	list-style-type: none;
+}
+
+section#award .award_content #award_left #award_sub ul li {
+	cursor: pointer;
+	width: 100%;
+	padding-top: 6px;
+	padding-left: 15px;
+	height: 27px;
+	font-size: 13px;
+}
+
+section#award .award_content #award_left #award_sub ul li:hover {
+	transition: 500ms;
+	background-color: lightgrey;
+}
+
+section#award .award_content #slideButton {
+	cursor: pointer;
+	position: fixed;
+	/* margin-left: 215px; */
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
+	width: 30px;
+	padding-top: 5px;
+	height: 115px;
+	font-size: 13px;
+	border: 1px solid rgb(199, 199, 199);
+}
+
+section#award .award_content #award_right {
+	display: inline-block;
+	margin-left: 50px;
+	width: 945px;
+	padding-top: 15px;
+	padding-bottom: 60px;
+	transition: 400ms;
+	font-size: 12px;
+	text-align: center;
+	
+}
+
+section#award .award_content #award_right .award_top {
+	width: 100%;
+	height: 50px;
+}
+
+section#award .award_content #award_right b {
+	font-size: 15px;
+	font-weight: 300;
+	margin: 0;
+	padding: 10px;
+}
+
+section#award .award_content #award_right .award_top {
+	height: 50px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #eee;
+	vertical-align: top; /* text를 위에서부터 쌓는다 */
+}
+
+section#award .award_content #award_right .award_top .sort {
+	vertical-align: top;
+	text-align: center;
+	padding-left: 15px;
+	float: left;
+	display: flex; /* 공간있을 때 자동으로 옆으로 정렬한다 */
+}
+
+section#award .award_content #award_right .award_top .searchForm {
+	float: right;
+	color: #252525;
+	font-size: 13px;
+	letter-spacing: -0.5px;
+}
+
+section#award .award_content #award_right .award_middle {
+	display: inline-block;
+	text-align: center;
+	transition: 400ms;
+	width: 100%;
+	padding display: flex;
+	flex-wrap: wrap;
+}
+
+/* section#award .award_content #award_right .award_middle .award_imgbox .award_img_hover {
+	width: 20%;
+	height: 100%;
+	margin: 100%;
+	display: inline-block;
+	cursor:pointer;
+	z-index: 10;
+	background-color: rgba(0,0,0,0.2);
+	
+} */
+section#award .award_content #award_right .award_middle .award_imgbox img:hover
+	{
+	transition: 500ms;
+	background-color: #000040;
+	opacity: 0.8;
+}
+
+/* section#award .award_content #award_right .award_middle .award_imgbox a {
+	width: 20%;
+	height: 100px;
+	display: inline-block;
+	cursor:pointer;
+
+} */
+section#award .award_content #award_right .award_middle .award_imgbox {
+	width: 20%;
+	height: 100px;
+	margin: 20px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+section#award .award_content #award_right .award_bottom {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	transition: 400ms;
+	font-size: 13px;
+	margin: 20px;
+}
+
+==========================awardView ========================
+section#award .award_content #award_right .award_top_left .award_board_no{
+	float: left;
+	vertical-align: top;
+	vertical-align:bottom;
+	text-align: center;
+	padding-left: 15px;
+	display: flex;
+}
+
+section#award .award_content #award_right .award_top_right .award_board_date{
+	float: right;
+	color: #252525;
+	font-size: 13px;
+	letter-spacing: -0.5px;
+}
+
+section#award .award_content #award_right .award_board_view {
+	
+	text-align: center;
+	border-bottom: 1px solid #eee;
+}
+
+section#award .award_board_view_content{
+	font-size:20px;
+	margin-bottom: 25px;
+	text-align: center;
+	
+}
+
+section#award .award_board_view_name{
+	border-bottom: 1px solid #eee;
+	font-size: 25px;
+	
+	}
+section#award .award_board_view_writer{
+	float:right;
+	 color: #9d9da4;
+}
+
+section#award .award_content #award_right .award_board_view .section#award .award_content #award_right .award_board_view img{
+text-align: center;
+	display: inline-block;
+	float:center;
+}
+section#award .award_content #award_right .award_top span{
+	 color: #9d9da4;
+	
+}
+
+section#award textarea{
+	margin-top:40px;
+	width:600px;
+	height:100px;
+}
+
+section#award .award_content #award_right .view_comment #btn-insert{
+	
+}
+
+
+==============좋아요 버튼===
+section#award .award_content #award_right #awardlike_btn{
+	width:90px;
+		height:90px;
+		text-align: center;
+		display: inline-block;
+}
+
+
+=======================awardForm=======================

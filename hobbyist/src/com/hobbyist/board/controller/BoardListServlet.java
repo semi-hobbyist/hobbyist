@@ -55,26 +55,21 @@ public class BoardListServlet extends HttpServlet {
 		int pageEnd = pageNo+pageBarSize-1;
 		
 		if(pageNo == 1) {
-			pageBar += "<button>이전</button>";
+			pageBar += "<span>이전</span>";
 		} else {
-			pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + (pageNo-1) + "&numPerPage" + numPerPage + "'>이전</button>";
+			pageBar += "<span>이전</span>";
 		}
 		
 		while(!(pageNo > totalPage || pageNo > pageEnd)) {
-			
 			if(cPage == pageNo) {
-				pageBar += "<button class='current'>" + pageNo + "</button>";
+				pageBar += "<span class='current'>[" + pageNo + "]</span>";
 			} else {
-				pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + pageNo + "&numPerPage=" + numPerPage + "'>" + pageNo + "</button>";
+				pageBar += "<span>" + pageNo + "</span>";
 			}
 			pageNo++;
 		}
 	
-		if(pageNo > totalPage) {
-			pageBar += "<button>다음</button>";
-		} else {
-			pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + pageNo + "&numPerPage=" + numPerPage + "/'>다음</button>";
-		}
+		
 		
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);

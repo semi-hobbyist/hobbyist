@@ -1091,4 +1091,30 @@ public class ShopDao {
 		return result;
 	}
 
+	public List<Shop> bestClass(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Shop> list = new ArrayList<Shop>();
+		
+		try {
+			String sql = prop.getProperty("bestClass");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+			Shop shop = new Shop();
+			shop.setShopNo(rs.getInt("shop_no"));
+			shop.setShopImage1(rs.getString("shop_image"));
+			shop.setReviewCount(rs.getInt("CNT"));
+			list.add(shop);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
 }

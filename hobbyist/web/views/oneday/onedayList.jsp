@@ -146,8 +146,9 @@
 						<ul>
 						<li><%= oneday.getOnedayCate() %></li>
 						<li>
+							<div id="img">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
-							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="250px"></a></li>
+							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="250px"></a></div></li>
 						<li class="title">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
 							<%= oneday.getOnedayName() %></a>
@@ -189,6 +190,23 @@
 						slidebtn.html('메<br>뉴<br>열<br>기<br>');
 					}
 			}
+			
+			//메인 헤더 숨기기
+			  $(window).scroll(function () {
+			    if ($(window).scrollTop() != 0) {
+			       $("#header-middle").css("transition", "500ms");
+			       $("#header-middle").css("height", "0px");
+			       $("#header-middle .middle").css("display", "none");
+			       $(".oneday_content").eq(0).css("padding-top","100px");
+			    } else {
+			       $("#header-middle").css("height", "100px");
+			       $(".oneday_content").eq(0).css("padding-top","200px");
+			       setTimeout(function () {
+			          $("#header-middle .middle").css("display", "inline-block");
+			       }, 500)
+			    }
+			 });
+
 		</script>
 	</div>
 </section>

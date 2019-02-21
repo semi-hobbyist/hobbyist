@@ -129,7 +129,10 @@ public class ShopListAjaxServlet extends HttpServlet {
 			}
 			html += "<div class='item wow fadeInUp' data-wow-delay='" + (cnt3+=cnt) +"s'>";
 			html += "<p>" + list.get(i).getShopCate() + "</p>";
-			html += "<a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'><img src='" + request.getContextPath() + "/upload/shop/images/" + list.get(i).getShopImage1() + "' width='100%'></a><br>";
+			html += "<div id=\"img\">";
+			html += "<a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'><img src='" + request.getContextPath() + "/upload/shop/images/" + list.get(i).getShopImage1() + "' width='100%'></a>";
+			html += "</div>";
+			html += "<br>";
 			html += "<ul>";
 			html += "<li class='title'><a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'>" + list.get(i).getShopName() + "</a></li>";
 			html += "<li><p>" + list.get(i).getShopInfo() + "</p></li>";

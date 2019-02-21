@@ -23,18 +23,15 @@
 	<br>
 		<table>
 			<tr>
-				<th colspan="2" style="text-align: left;"><h3 class="wow fadeInUp">내 클래스</h3></th>
-			</tr>
-			<tr>
-				<td style="width: 200px; "><h3 class="wow fadeInUp">클래스 PIN CODE 입력</h3></td>
-				<td style="width: 700px; text-align: left; color: #3b4f6a;" class="wow fadeInUp">클래스를 등록하시려면 클래스키트와 함께 동봉된 하비스트 클래스 PIN CODE를 입력해주세요<br>* PIN CODE 등록 시, 교환 및 환불 불가능 (키트 불량은 교환가능합니다)</td>
+				<th style="width: 200px; "><p class="wow fadeInUp" data-wow-delay="0.1">내 클래스</p></th>
+				<td style="width: 700px; text-align: left; padding-left: 20px; " class="wow fadeInUp" data-wow-delay="0.2"><h3 class="wow fadeInUp" data-wow-delay="0.3">클래스 PIN CODE 입력</h3>클래스를 등록하시려면 클래스키트와 함께 동봉된 하비스트 클래스 PIN CODE를 입력해주세요<br>* PIN CODE 등록 시, 교환 및 환불 불가능 (키트 불량은 교환가능합니다)</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: right"><input type="text" id="pin" name="class_pin" placeholder="PIN CODE (숫자)"/><button style="width: 110px; height: 30px; margin:0;" onclick="fn_pincheck()">PIN CODE 등록</button></td>
 				
 			</tr>
 			<tr>
-				<th colspan="2" style="text-align: left;"><h3 class="wow fadeInUp">등록된 클래스 목록</h3></th>
+				<th colspan="2" style="text-align: left; padding-left:30px;"><p class="wow fadeInUp">등록된 내 클래스 목록</p></th>
 			</tr>
 			<tr>
 				<td style="text-align:center;" colspan="2">

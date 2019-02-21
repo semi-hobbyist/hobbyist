@@ -221,4 +221,11 @@ public class ShopService {
 		return result;
 	}
 
+	public List<Shop> bestClass() {
+		Connection conn = getConnection();
+		List<Shop> list = new ShopDao().bestClass(conn);
+		close(conn);
+		return list;
+	}
+
 }

@@ -198,33 +198,39 @@
                         <ul id="newLatestClass">
                         </ul>
                         <h3>B E S T - C L A S S</h3>
-                        <ul>
-                            <li>· 아기 돼지 삼형제 인형 뜨개질 클래스</li>
-                            <li>· 커피&프레즐 키링 프랑스자수 클래스</li>
-                            <li>· 목화 리스 마크라메 클래스</li>
+                        <ul id="bestClass">
                         </ul>
                         <script>
+                        	// 클래스샵 최근 상품 AJAX
                             $.ajax({
                                 url: '<%= request.getContextPath() %>/shop/shopLatestClass',
                                 success: function(data) {
                                     $('#newLatestClass').html(data);
                                 }
-                            })
+                            });
+                            
+                             // 클래스샵 베스트 상품 AJAX
+                             $.ajax({
+                                url: '<%= request.getContextPath() %>/shop/shopBestClass',
+                                success: function(data) {
+                                    $('#bestClass').html(data);
+                                }
+                            });
                         </script>
                     </div>
                     <div class="sub_right">
                         <h3>S U B - M E N U</h3>
-                        <ul>
-                            <li> · 전체보기</li>
-                            <li> · 마크라메</li>
-                            <li> · 프랑스자수</li>
-                            <li> · 가죽공예</li>
-                            <li> · 수채화</li>
-                            <li> · 위빙</li>
-                            <li> · 뜨개질</li>
-                            <li> · 펀치니들</li>
-                            <li> · 기타</li>
+                        <ul id="shopMenuAjax">
                         </ul>
+                        <script>
+	                     	// 클래스샵 베스트 상품 AJAX
+	                        $.ajax({
+	                           url: '<%= request.getContextPath() %>/shop/shopMenuAjax',
+	                           success: function(data) {
+	                               $('#shopMenuAjax').html(data);
+	                           }
+	                       });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -275,7 +281,7 @@
                     <div class="sub_left">
                         <h3>C O M M U N I T Y</h3>
                         <p>커뮤니티</p>
-                        <center><img src="<%=request.getContextPath()%>/images/community.png" width="110px"></center>
+                        <center><img src="<%=request.getContextPath()%>/images/community.png" width="90px"></center>
                     </div>
                     <div class="sub_center">
                         <h3>L A T E S T - C O M M N I T Y</h3>
@@ -352,7 +358,7 @@
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
                     notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "350px" });
+                    classshop.css({"transition": "600ms", "height": "410px" });
                     oneday.css({"transition": "600ms", "height": "0px" });
                     award.css({"transition": "600ms", "height": "0px" });
                     community.css({"transition": "600ms", "height": "0px" });

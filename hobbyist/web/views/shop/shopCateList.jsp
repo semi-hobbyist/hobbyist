@@ -146,8 +146,10 @@
 					for(Shop s : list) { %>
 					<div class="item wow fadeInUp" data-wow-delay="<%=cnt2+=cnt %>s">
 						<p><%= s.getShopCate() %></p>
+						<div id="img">
 						<a href="<%= request.getContextPath() %>/shop/shopView?no=<%= s.getShopNo()%>"><img src="<%=request.getContextPath()%>/upload/shop/images/<%= s.getShopImage1() %>"
-							 width="100%"></a><br>
+							 width="100%"></a>
+							 </div>
 						<ul>
 							<li class="title"><a href="<%= request.getContextPath() %>/shop/shopView?no=<%= s.getShopNo()%>">
 									<%= s.getShopName() %></a></li>
@@ -232,6 +234,22 @@
 					slidebtn.html('메<br>뉴<br>열<br>기<br>>');
 				}
 			}
+			
+			//메인 헤더 숨기기
+			  $(window).scroll(function () {
+			    if ($(window).scrollTop() != 0) {
+			       $("#header-middle").css("transition", "500ms");
+			       $("#header-middle").css("height", "0px");
+			       $("#header-middle .middle").css("display", "none");
+			       $(".shop_content").eq(0).css("padding-top","100px");
+			    } else {
+			       $("#header-middle").css("height", "100px");
+			       $(".shop_content").eq(0).css("padding-top","200px");
+			       setTimeout(function () {
+			          $("#header-middle .middle").css("display", "inline-block");
+			       }, 500)
+			    }
+			 });
 
 		</script>
 	</div>

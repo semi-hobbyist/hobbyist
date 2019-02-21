@@ -72,7 +72,7 @@ public class MyCartOnedayListAjaxServlet extends HttpServlet {
 		html += "<tr>";
 		html += "<td colspan='3' id='priceResult' class='result'></td>";
 		html += "<td colspan='3' class='result' style='text-align: right;'>";
-		html += "<button type='button' onclick='fn_delete('oneday')'>선택삭제</button>";
+		html += "<button type=\"button\" onclick=\"fn_delete(\'oneday\')\">선택삭제</button>";
 		html += "<button type='button' onclick='fn_order()'>선택주문</button>";
 		html += "</td>";
 		html += "</tr>";

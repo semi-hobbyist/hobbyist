@@ -15,7 +15,7 @@
 </head>
 <body>
 	<script>
-		swal('<%=msg%>');
+		alert('<%=msg%>');
 		location.href="<%=request.getContextPath()%><%=loc%>";
 	</script>
 </body>

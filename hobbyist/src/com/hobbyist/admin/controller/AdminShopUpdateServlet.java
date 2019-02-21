@@ -60,6 +60,16 @@ public class AdminShopUpdateServlet extends HttpServlet {
 			shop.setShopPolicy2(mr.getParameter("class_policy2"));
 			shop.setShopPolicy3(mr.getParameter("class_policy3"));
 			
+			File f = mr.getFile("class_image1");
+			
+			if(f!=null && f.length()>0) {
+				File deleteFile = new File(filePath + "/" + mr.getParameter("old_file"));
+				boolean resul = deleteFile.delete();
+				System.out.println(resul?"제대로지워짐":"안지워졌어");
+			} else {
+				shop.setShopImage1(mr.getParameter("old_file"));
+			}
+			
 			int result = new ShopService().updateShop(shop);
 			
 			// ------------------------ 강좌 등록

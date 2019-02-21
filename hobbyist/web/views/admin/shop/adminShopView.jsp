@@ -106,7 +106,15 @@
 				</tr>
 				<tr>
 					<th>이미지1</th>
-					<td  style="text-align: left;"><input type="file" name="class_image1" value="<%= shop.getShopImage1() %>"></td>
+					<td  style="text-align: left;">
+					<% if(shop.getShopImage1()!=null) { %>
+						<input type="hidden" name="old_file" value="<%= shop.getShopImage1() %>"/>
+						<input type="file" name="up_file" value="<%= shop.getShopImage1() %>"/>
+						<span id="fname"><%= shop.getShopImage1() %></span>
+						<% } else { %>
+						<input type="file" name="class_image1"/>
+					<% } %>
+					</td>
 				</tr>
 				<tr>
 					<th>이미지2</th>

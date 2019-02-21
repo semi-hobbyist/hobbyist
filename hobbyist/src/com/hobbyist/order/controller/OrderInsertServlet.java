@@ -73,11 +73,12 @@ public class OrderInsertServlet extends HttpServlet {
 		System.out.println("---------------- 주문처리 (★★★★★) 완료 ---------------");
 		String msg = "";
 		String loc = "";
+		String data = "";
 		String view = "/views/common/msg.jsp";
 		
 		if(insertResult>0) {
-			msg = "결제완료 [ 주문번호 : " + randomCode + " ]";
-			loc = "/";
+			msg = "결제완료 [ 주문번호 : " + randomNum + " ]";
+			loc = "/myClass?member=" + member;
 		} else {
 			msg = "결제실패";
 			loc = "/myCartList?=" + member;

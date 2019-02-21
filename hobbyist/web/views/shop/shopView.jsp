@@ -51,13 +51,27 @@
 						<td class="tdclass">하비스트 전상품 무료배송</td>
 					</tr>
 					<tr>
+						<td>옵션</td>
+						<td class="tdclass">
+							<select id="cartOption">
+								<option>선택</option>
+								<option><%= shop.getShopOption1() %></option>
+								<option><%= shop.getShopOption2() %></option>
+								<option><%= shop.getShopOption3() %></option>
+								<option><%= shop.getShopOption4() %></option>
+								<option><%= shop.getShopOption5() %></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<td colspan="2">
 							<button class="addcart-btn" onclick="fn_addCart()">
 							Add My Cart | 취미바구니 담기</button>
 							<script>
 								function fn_addCart() {
 									if(<%= logginMember != null %>) {
-										location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=shop.getShopNo()%>&cartCate=classshop";
+										var cartOption = $('#cartOption').val();
+										location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=shop.getShopNo()%>&cartCate=classshop&cartOption=" + cartOption;
 									} else {
 										alert('로그인 후 취미바구니 이용이 가능합니다');
 									}

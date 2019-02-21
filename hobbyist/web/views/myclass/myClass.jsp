@@ -74,7 +74,8 @@
 							type: 'POST',
 							dataType : 'text',
 							success: function(data) {
-								swal(data);
+								alert(data);
+								location.href="<%=request.getContextPath() %>/myClass?member=<%= logginMember.getMemberEmail() %>";
 							}
 						});
 					} else {

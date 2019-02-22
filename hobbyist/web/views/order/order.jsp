@@ -8,7 +8,6 @@
 
 <%@ include file="/views/common/header.jsp" %>
 
-
 <section id="order">
 	<div class="order_content">
 		<div class="myorder_banner">
@@ -134,12 +133,12 @@
 			<tr>
 				<th>결제방법</th>
 				<td>
-					<select id="order_type" name="order_type">
-						<option>선택</option>
-						<option value="kakao">카카오페이 [점검중]</option>
-						<option value="card">카드결제</option>
-						<option value="mobile">휴대폰결제</option>
-					</select>
+					<select id="order_type" name="order_type"> 
+						<option> 결제방법 선택 </option>
+						<option value="kakao">[기본] 카카오페이</option>
+						<!-- <option value="card">카드결제</option>
+						<option value="mobile">휴대폰결제</option> -->
+					</select>&nbsp;&nbsp;네 맞습니다. 전적으로 카카오페이만 쓰셔야합니다 고객님
 				</td>
 			</tr>
 			<tr>
@@ -147,8 +146,9 @@
 					<!-- 모달창 -->
 					<!-- // 카카오페이 결제창 모달 -->
 					<div id="kakao" class="modal">
-						  <h3>카카오페이 결제 [점검중]</h3>
-						  <a href="#" rel="modal:close">Close</a>
+						  <h3>카카오페이</h3>
+						  카카오페이 결제 <br>
+						  하단에 [결제하기] 버튼을 눌러주세요
 					</div>
 					
 					<!-- // 카드결제창 모달 -->
@@ -201,12 +201,15 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="tableLine" colspan="2"  id="step05"><button type="button" onclick="fn_pay()">결제하기</button></th>
+				<th class="tableLine" colspan="2"  id="step05"><button type="button" onclick="fn_iampay()">결제하기</button></th>
 			</tr>
 		</table>
 			<input type="hidden" id="classNo" name="classNo"/>
 			<input type="hidden" id="classOption" name="classOption"/>
 		</form>
+		<% 
+			Date date = new Date();
+		%>
 	</div>
 	
 	<script>
@@ -240,6 +243,41 @@
 			$('#classNo').val(selectNo);
 			$('#classOption').val(classOption);
 			orderFrm.submit();
+		}
+		
+		function fn_iampay() {
+			
+			
+			var IMP = window.IMP; // 생략해도 괜찮습니다.
+			IMP.init("imp83236178"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다
+			
+			IMP.request_pay({ // param
+			    pg: "kakao",
+			    pay_method: "card",
+			    merchant_uid: "<%= date %>",
+			    name: "<%= orderList.get(0).getShopName() %>포함 <%= orderList.size()%> 건",
+			    amount: "<%= prices %>",
+			    buyer_email: "<%= logginMember.getMemberEmail()%>",
+			    buyer_name: "<%= logginMember.getMemberName() %>",
+			    buyer_tel: "<%= logginMember.getMemberPhone() %>",
+			    buyer_addr: "회원주소"
+			}, function (rsp) { // callback
+				if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+					var selectNo = '';
+					var classOption = '';
+					var classNos = $('[name=classNos]');
+					var classOptions = $('[name=classOptions]');
+					$.each(classOptions, function(index) {
+								selectNo += classNos[index].value +',';
+								classOption += classOptions[index].value + ',';
+					});
+					$('#classNo').val(selectNo);
+					$('#classOption').val(classOption);
+					orderFrm.submit();
+			    } else {
+			    	alert('결제실패');
+			    }
+			});
 		}
 		</script>
 </section>

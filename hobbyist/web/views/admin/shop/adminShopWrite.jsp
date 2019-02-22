@@ -34,15 +34,17 @@
 
 
 		<!-- 관리자 -> 클래스샵 - > 등록 -->
-		<div class="admin_right">
-			<div id="admin_main">
+		<div class="adminShopWrite_right">
+			<div id="adminShopWrite_main">
 			
 		<form action="<%= request.getContextPath() %>/shop/shopWriteEnd" method="POST" enctype="multipart/form-data">
-			<h2>클래스 등록</h2>
 			<table>
 				<tr>
+					<th colspan="2"><h3>클래스 등록</h3></th>
+				</tr>
+				<tr>
 					<th style="width: 180px;">카테고리</th>
-					<td id="cate"  style="width: 620px; text-align: left;">
+					<td id="cate"  style="width: 620px; text-align: left; padding-left: 10px;">
 						<select name="class_cate">
 						<%  
 							if(!list.isEmpty()) {
@@ -59,7 +61,7 @@
 					</td>
 				<tr>
 					<th>클래스명</th>
-					<td style="text-align: left;"><input type="text" name="class_name" placeholder="클래스 이름을 작성해주세요" autofocus style="width: 450px;""></td>
+					<td style="text-align: left;"><input type="text" name="class_name" placeholder="클래스 이름을 작성해주세요" autofocus style="width: 450px;"></td>
 				</tr>
 				<tr>
 					<th>기본설명</th>
@@ -108,10 +110,6 @@
 				<tr>
 					<th>적립포인트</th>
 					<td  style="text-align: left;"><input type="number" name="class_point"></td>
-				</tr>
-				<tr>
-					<th>재고수량</th>
-					<td  style="text-align: left;"><input type="number" name="class_amount"></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 1</th>
@@ -215,11 +213,15 @@
 			<table>
 				<tr>
 					<th style="width: 180px;">강좌타이틀</th>
-					<td style="width: 620px; text-align: left;" ><input type="text" name="lecture_title"/></td>
+					<td style="width: 620px; text-align: left;" ><input type="text" name="lecture_title" style="width: 450px;"/></td>
 				</tr>
 				<tr>
-					<th>간략한 강좌소개</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info"/></td>
+					<th>강좌 한줄소개</th>
+					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;"/></td>
+				</tr>
+				<tr>
+					<th>강좌 영상</th>
+					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
 				</tr>
 				<tr>
 					<th>강좌내용</th>

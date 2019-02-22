@@ -77,7 +77,7 @@ public class OrderInsertServlet extends HttpServlet {
 		String view = "/views/common/msg.jsp";
 		
 		if(insertResult>0) {
-			msg = "결제완료 [ 주문번호 : " + randomNum + " ]";
+			msg = "결제가 완료되었습니다 \n [ 핀코드(PINCODE) : " + randomNum + " ] \n 핀코드를 복사(Ctrl + C) 하세요!!";
 			loc = "/myClass?member=" + member;
 		} else {
 			msg = "결제실패";

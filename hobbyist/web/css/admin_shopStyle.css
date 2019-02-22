@@ -1,111 +1,66 @@
-section#admin {
-    width: 100%;
-    text-align: center;
-    background-color: #eaecf0;
-}
-
-section#admin .admin_content {
-    display: inline-block;
-    text-align: center;
-    width: 990px;
-    padding-top: 213px;
-}
-section#admin .admin_content .admin_top {
-    width: 970px;
-    height: 50px;
-    position: fixed;
-    color: rgb(39, 39, 39);
-    padding-left: 20px;
-    text-align: left;
-    border: 1px solid #c7cacf;
-    background-color: #fff;
-    font-size: 14px;
-    transition: 500ms;
-    overflow: hidden;
-    top: 213px;
-}
-
-section#admin .admin_content .admin_top ul {
-    margin: 0;
-    padding: 0;
-    padding-top: 13px;
-    list-style-type: none;
-}
-
-section#admin .admin_content .admin_top ul li {
-    display: inline-block;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-left: 1px solid #e7e7e7;
-    height: 100%;
-    cursor: pointer;
-}
-
-section#admin .admin_content .admin_top ul li:nth-child(1) {
-    border: none;
-} 
-
-section#admin .admin_content .admin_top ul li:hover {
-    transition: 400ms;
-}
-
-section#admin .admin_content .admin_left {
-    padding-top: 60px;
-    float: left;
-    width: 160px;
-    min-height: 62vh;
-}
-
-section#admin .admin_content .admin_left ul {
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-section#admin .admin_content .admin_left ul li {
-	cursor: pointer;
-    padding-top: 6px;
-    background-color: #3b4f6a;
-    color: #fff;
-    height: 30px;
-    font-size: 13px;
-}
-
-section#admin .admin_content .admin_left ul.sub {
-    display: none;
-}
-
-section#admin .admin_content .admin_left ul.sub li {
-    background-color: #56739a;
-}
-
-section#admin .admin_content .admin_left ul.sub li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-section#admin .admin_content .admin_left ul li:hover {
-    transition: 500ms;
-    background-color: #304056;
-}
-
-
-section#admin .admin_content .admin_right {
-    padding-top: 60px;
+section#admin .admin_content .adminShop_right {
+    padding-top: 40px;
     float: right;
-    width: 830px;
+    width: 820px;
+    text-align: center;
 }
 
-section#admin .admin_content .admin_right #admin_main {
-    width: 100%;
+section#admin .admin_content .adminShop_right #adminShop_main {
+	display: inline-block;
+    width: 810px;
+    background-color: #fff;
+    border: 1px solid #bdc9dd;
 }
 
-section#admin .admin_content .admin_right #admin_main table {
+section#admin .admin_content .adminShop_right #adminShop_main table {
     border-collapse: collapse;
 }
 
-section#admin .admin_content .admin_right #admin_main table th {
-    border-top: 2px solid #777777;
-    height: 45px;
+section#admin .admin_content .adminShop_right #adminShop_main table th {
+	font-size: 14px;
+	font-weight: normal;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
+    height: 50px;
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table a {
+	color: #252525;
+	text-decoration: none;	
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table tr {
+	height: 40px;
+	border-bottom: 1px solid #eee;
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table tr:hover {
+	transition: 500ms;
+	background-color:  #e6e9ec;
+	border-left: 3px solid #3b4f6a;
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table tr:hover a {
+	text-decoration: underline;	
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-child(1) {
+	border-left: 3px solid #e6e9ec;
+	background-color: #e6e9ec;
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table span {
+	padding-left: 7px;
+	padding-right: 7px;
+	border: 1px solid #c2cad1;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
+}
+
+section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-child(1)  a {
+	padding-left: 7px;
+	padding-right: 7px;
+	border: 1px solid #c2cad1;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
 }

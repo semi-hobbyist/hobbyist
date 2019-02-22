@@ -26,7 +26,7 @@ public class ShopBestClassServlet extends HttpServlet {
 		String html = "";
 		
 		for(int i=0; i<4;i++) {
-			html += "<li><div id=\"bestHover\"></div><a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'> <img src=\"" + request.getContextPath() + "/upload/shop/images/" +  list.get(i).getShopImage1() + "\" width=\"128px\"></a></li>";
+			html += "<li><div id=\"bestHover\"></div><a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'> <img src=\"" + request.getContextPath() + "/upload/shop/images/" +  list.get(i).getShopImage1() + "\" width=\"150px\"></a></li>";
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");

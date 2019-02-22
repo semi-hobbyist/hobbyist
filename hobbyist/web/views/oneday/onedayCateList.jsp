@@ -193,19 +193,7 @@
 					}
 			}
 			
-			//메인 헤더 숨기기
-			 $(window).scroll(function () {
-			    if ($(window).scrollTop() != 0) {
-			       $("#header-middle").css("transition", "500ms");
-			       $("#header-middle").css("height", "0px");
-			       $("#header-middle .middle").css("display", "none");
-			    } else {
-			       $("#header-middle").css("height", "100px");
-			       setTimeout(function () {
-			          $("#header-middle .middle").css("display", "inline-block");
-			       }, 500)
-			    }
-			 });
+
 
 		</script>
 	</div>

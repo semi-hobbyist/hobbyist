@@ -40,10 +40,10 @@ public class MyCartOnedayListAjaxServlet extends HttpServlet {
 			html += "<tr>";
 			html += "<th style=\"width: 80px;\">선택</th>";
 			html += "<th style=\"width: 100px;\">카테고리</th>";
-			html += "<th style=\"width: 140px;\"></th>";
-			html += "<th style=\"width: 400px;\">클래스</th>";
-			html += "<th style=\"width: 100px;\">옵션</th>";
-			html += "<th style=\"width: 120px;\">가격</th>";
+			html += "<th style=\"width: 120px;\"></th>";
+			html += "<th style=\"width: 390px;\">클래스</th>";
+			html += "<th style=\"width: 170px;\">옵션</th>";
+			html += "<th style=\"width: 100px;\">가격</th>";
 			html += "</tr>";
 			
 			for(MyCart mc : list) {

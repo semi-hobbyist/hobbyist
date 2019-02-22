@@ -25,12 +25,13 @@
 </script>
 
 <section id="admin">
+
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
-				<li>ONEDAY CLASS  | 원데이클래스</li>
-				<li>관리자페이지 > 원데이클래스 관리 > 원데이클래스 목록</li>
+				<li onclick="location.href='#'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='#'">ONEDAY CLASS  | 원데이클래스</li>
+				<li onclick="location.href='#'">관리자페이지 > 원데이클래스 관리 > 원데이클래스 목록</li>
 			</ul>
 			
 		</div><br>
@@ -39,19 +40,21 @@
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="admin_right">
-			<h3>ONEDAY CLASS</h3>
-			<div id="admin_main">
-				<div class="main-top">
+		<div class="adminOneday_right">
+			<div id="adminOneday_main">
 					<table>
 						<tr>
-							<td colspan="8" style="text-align:center;">총 ( <%= totalCount %> ) 건의 상품목록</td>
+							<td colspan="8" style="text-align:center;"><h3>원데이클래스 목록</h3></td>
+						</tr>
+						<tr>
+							<td colspan="8" style="text-align:center;">총 ( <%= totalCount %> ) 건의 원데이클래스 목록</td>
 						</tr>
 						<tr>
 							<th style="width:50px;">번호</th>
 							<th style="width:90px;">분류</th>
-							<th style="width:400px;">클래스이름</th>
+							<th style="width:380px;">클래스이름</th>
 							<th style="width:120px;">작가</th>
+							<th style="width:120px;">예약(인원)</th>
 							<th style="width:60px;">가격</th>
 							<th style="width:100px;">등록일</th>
 						</tr>
@@ -61,6 +64,7 @@
 								<td><%= s.getOnedayCate() %></td>
 								<td><a href="<%= request.getContextPath() %>/admin/adminOnedayView?no=<%= s.getOnedayNo() %>"><%= s.getOnedayName() %></a></td>
 								<td><%= s.getOnedayWriter() %></td>
+								<td><%= s.getOnedayCurrentPeople() %>/<%= s.getOnedayPeople() %></td>
 								<td><%= s.getOnedayPrice() %></td>
 								<td><%= s.getOnedayDate() %></td>
 							</tr>
@@ -69,8 +73,6 @@
 							<td colspan="8" class="pageBar"><%= pageBar %></td>
 						</tr>
 					</table>
-				</div>
-				<div class="main-bottom"></div>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,66 @@
+section#admin .admin_content .adminOneday_right {
+    padding-top: 60px;
+    float: right;
+    width: 820px;
+    text-align: center;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main {
+	display: inline-block;
+    width: 810px;
+    background-color: #fff;
+    border: 1px solid #bdc9dd;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table {
+    border-collapse: collapse;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table th {
+	font-size: 14px;
+	font-weight: normal;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
+    height: 40px;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table a {
+	color: #252525;
+	text-decoration: none;	
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table tr {
+	height: 40px;
+	border-bottom: 1px solid #eee;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table tr:hover {
+	transition: 500ms;
+	background-color:  #e6e9ec;
+	border-left: 3px solid #3b4f6a;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table tr:hover a {
+	text-decoration: underline;	
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table tr:nth-last-child(1) {
+	border-left: 3px solid #e6e9ec;
+	background-color: #e6e9ec;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table span {
+	padding-left: 7px;
+	padding-right: 7px;
+	border: 1px solid #c2cad1;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table tr:nth-last-child(1)  a {
+	padding-left: 7px;
+	padding-right: 7px;
+	border: 1px solid #c2cad1;
+	background-color: rgba(59, 79, 106, 0.8);
+	color: #fff;
+}

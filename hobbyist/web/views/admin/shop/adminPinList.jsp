@@ -29,8 +29,8 @@
 		<div class="admin_top" id="admin_top">
 			<ul>
 				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
-				<li>CLASS SHOP | 클래스샵</li>
-				<li>관리자페이지 > 클래스샵 관리 > 클래스 핀코드(PINCODE) 관리</li>
+				<li onclick="location.href='#'">CLASS SHOP | 클래스샵</li>
+				<li onclick="location.href='#'">관리자페이지 > 클래스샵 관리 > 클래스 핀코드(PINCODE) 관리</li>
 			</ul>
 			
 		</div><br>
@@ -39,11 +39,13 @@
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="admin_right">
-			<h3>클래스 핀코드 (PINCODE) 관리</h3>
-			<div id="admin_main">
+		<div class="adminShopPin_right">
+			<div id="adminShopPin_main">
 				<div class="main-top">
 					<table>
+						<tr>
+							<td colspan="5"><h3>핀코드(PIN CODE) 관리</h3></td>
+						</tr>
 						<tr>
 							<td colspan="5" style="text-align:center;">총 ( <%= totalCount %> ) 건의 핀코드 목록</td>
 						</tr>
@@ -72,7 +74,6 @@
 						</tr>
 					</table>
 				</div>
-				<div class="main-bottom"></div>
 			</div>
 		</div>
 	</div>

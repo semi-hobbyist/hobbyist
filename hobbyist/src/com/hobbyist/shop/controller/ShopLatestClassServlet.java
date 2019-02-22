@@ -25,7 +25,7 @@ public class ShopLatestClassServlet extends HttpServlet {
 		
 		String html = "";
 		
-		for(int i=0; i<4;i++) {
+		for(int i=0; i<6;i++) {
 			html += "<li><a href='" + request.getContextPath() + "/shop/shopView?no=" + list.get(i).getShopNo() + "'> &nbsp;·&nbsp; " + list.get(i).getShopName() + "</a></li>";
 		}
 		

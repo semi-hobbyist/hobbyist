@@ -97,7 +97,7 @@ public class ShopListServlet extends HttpServlet {
 
 		while(!(pageNo>totalPage || pageNo>pageEnd)) {
 			if(pageNo==cPage) {
-				pageBar += "<span style='color:#8e9181'>" + pageNo + "</span>";
+				pageBar += "<span>" + pageNo + "</span>";
 			} else {
 				pageBar += "<a href='" + request.getContextPath() + "/shop/shopList?cPage=" + pageNo + "&numPerPage=" + numPerPage + "'>" + pageNo + "</a>";
 			}

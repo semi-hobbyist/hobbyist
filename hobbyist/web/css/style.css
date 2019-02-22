@@ -102,6 +102,13 @@ header #header-top .top ul li {
     letter-spacing: -0.5px;
 }
 
+header #header-top .top ul li#admin {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #3e4b6c;
+	color: #fff;
+}
+
 header #header-top .top ul span {
     margin: 0 20px;
 }
@@ -438,29 +445,6 @@ header #header-bottom .sub#classshop .sub_content .sub_center ul li {
     border-bottom: 1px solid #eee;
 }
 
-header #header-bottom .sub#classshop .sub_content .sub_center ul#bestClass {
-    display: inline-block;
-    text-align: left;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header #header-bottom .sub#classshop .sub_content .sub_center ul#bestClass li {
-	margin:0;
-	padding:0;
-	display: inline-block;
-}
-
-header #header-bottom .sub#classshop .sub_content .sub_center ul#bestClass li img {
-	opacity: 0.4;
-}
-
-header #header-bottom .sub#classshop .sub_content .sub_center ul#bestClass li img:hover {
-	transition: 1000ms;
-	opacity: 1;
-}
-
 header #header-bottom .sub#classshop .sub_content .sub_center ul li a {
     color: #252525;
     text-decoration: none;
@@ -486,29 +470,29 @@ header #header-bottom .sub#classshop .sub_content .sub_right {
     text-align: center;
 }
 
-header #header-bottom .sub#classshop .sub_content .sub_right ul {
+header #header-bottom .sub#classshop .sub_content .sub_right ul#bestClass {
     display: inline-block;
-    width: 80%;
-    text-align: left;
+    text-align: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-header #header-bottom .sub#classshop .sub_content .sub_right ul li {
-	cursor: pointer;
-    font-size: 13px;
-    letter-spacing: -0.4px;
-    padding-top: 6px;
-    padding-left: 10px;
-    height: 24px;
-    border-bottom: 1px solid #eee;
+header #header-bottom .sub#classshop .sub_content .sub_right ul#bestClass li {
+	margin:0;
+	padding:0;
+	display: inline-block;
 }
 
-header #header-bottom .sub#classshop .sub_content .sub_right ul li:hover {
-    transition: 500ms;
-    background-color: #eee;
+header #header-bottom .sub#classshop .sub_content .sub_right ul#bestClass li img {
+	opacity: 0.4;
 }
+
+header #header-bottom .sub#classshop .sub_content .sub_right ul#bestClass li img:hover {
+	transition: 1000ms;
+	opacity: 1;
+}
+
 
 /* 원데이클래스 서브메뉴 */
 

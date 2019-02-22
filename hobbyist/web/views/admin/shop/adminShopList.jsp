@@ -28,39 +28,40 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
-				<li>CLASS SHOP | 클래스샵</li>
-				<li>관리자페이지 > 클래스샵 관리 > 클래스샵 목록</li>
+				<li onclick="location.href='#'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='#'">CLASS SHOP | 클래스샵</li>
+				<li onclick="location.href='#'">관리자페이지 > 클래스샵 관리 > 클래스샵 목록</li>
 			</ul>
 			
 		</div><br>
 		
-		<!-- 관리자메뉴는 중복되기때문에 admin_menu.jsp 파일로 인클루드 시켜 가져옴 -->
+		<!-- 관리자메뉴는 중복되기때문에 adminShop_menu.jsp 파일로 인클루드 시켜 가져옴 -->
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="admin_right">
-			<h3>CLASS SHOP</h3>
-			<div id="admin_main">
-				<div class="main-top">
+		<div class="adminShop_right">
+			<div id="adminShop_main">
 					<table>
 						<tr>
-							<td colspan="8" style="text-align:center;">총 ( <%= totalCount %> ) 건의 상품목록</td>
+							<td colspan="8"><h3>클래스샵 목록</h3></td>
+						</tr>
+						<tr>
+							<td colspan="8" style="text-align:center;">총 ( <%= totalCount %> ) 건의 클래스 목록</td>
 						</tr>
 						<tr>
 							<th style="width:50px;">번호</th>
 							<th style="width:90px;">분류</th>
-							<th style="width:300px;">클래스이름</th>
+							<th style="width:315px;">클래스이름</th>
 							<th style="width:120px;">작가</th>
 							<th style="width:60px;">가격</th>
-							<th style="width:70px;">적립<br>포인트</th>
-							<th style="width:100px;">등록일</th>
+							<th style="width:68px;">적립포인트</th>
+							<th style="width:90px;">등록일</th>
 						</tr>
 						<% for(Shop s : list) { %>
 							<tr>
 								<td><%= s.getShopNo() %></td>
 								<td><%= s.getShopCate() %></td>
-								<td><a href="<%= request.getContextPath() %>/admin/adminShopView?no=<%= s.getShopNo() %>"><%= s.getShopName() %></a></td>
+								<td style="text-align: left; padding-left: 30px;"><a href="<%= request.getContextPath() %>/admin/adminShopView?no=<%= s.getShopNo() %>"><%= s.getShopName() %></a></td>
 								<td><%= s.getShopWriter() %></td>
 								<td><%= s.getShopPrice() %></td>
 								<td><%= s.getShopPoint() %></td>
@@ -72,8 +73,6 @@
 						</tr>
 					</table>
 				</div>
-				<div class="main-bottom"></div>
-			</div>
 		</div>
 	</div>
 </section>

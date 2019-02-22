@@ -45,7 +45,6 @@ public class AdminShopUpdateServlet extends HttpServlet {
 			shop.setShopContent(mr.getParameter("class_content"));
 			shop.setShopPrice(Integer.parseInt(mr.getParameter("class_price")));
 			shop.setShopPoint(Integer.parseInt(mr.getParameter("class_point")));
-			shop.setShopAmount(Integer.parseInt(mr.getParameter("class_amount")));
 			shop.setShopOption1(mr.getParameter("class_option1"));
 			shop.setShopOption2(mr.getParameter("class_option2"));
 			shop.setShopOption3(mr.getParameter("class_option3"));

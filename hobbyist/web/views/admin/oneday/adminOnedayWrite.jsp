@@ -22,8 +22,8 @@
 		<div class="admin_top" id="admin_top">
 			<ul>
 				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
-				<li>ONEDAY CLASS | 원데이클래스</li>
-				<li>관리자페이지 > 원데이클래스 관리 > 원데이클래스 등록</li>
+				<li onclick="location.href='#'">ONEDAY CLASS | 원데이클래스</li>
+				<li onclick="location.href='#'">관리자페이지 > 원데이클래스 관리 > 원데이클래스 등록</li>
 			</ul>
 			
 		</div><br>
@@ -34,15 +34,17 @@
 
 
 		<!-- 관리자 -> 원데이클래스 - > 등록 -->
-		<div class="admin_right">
-			<div id="admin_main">
+		<div class="adminOnedayWrite_right">
+			<div id="adminOnedayWrite_main">
 			
 		<form action="<%= request.getContextPath() %>/oneday/onedayWriteEnd" method="POST" enctype="multipart/form-data">
-			<h2>원데이클래스 등록</h2>
 			<table>
 				<tr>
+							<td colspan="8" style="text-align:center;"><h3>원데이클래스 등록</h3></td>
+				</tr>
+				<tr>
 					<th style="width: 180px;">지역</th>
-					<td id="cate"  style="width: 620px; text-align: left;">
+					<td id="cate"  style="width: 620px; text-align: left; padding-left: 10px;">
 						<select name="oneday_cate">
 						<%  
 							if(!list.isEmpty()) {

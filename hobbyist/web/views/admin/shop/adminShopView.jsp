@@ -21,9 +21,9 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
-				<li>CLASS SHOP | 클래스샵</li>
-				<li>관리자페이지 > 클래스샵 관리 > 클래스샵 등록</li>
+				<li onclick="location.href='#'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='#'">CLASS SHOP | 클래스샵</li>
+				<li onclick="location.href='#'">관리자페이지 > 클래스샵 관리 > 클래스샵 등록</li>
 			</ul>
 			
 		</div><br>
@@ -34,15 +34,15 @@
 
 
 		<!-- 관리자 -> 클래스샵 - > 등록 -->
-		<div class="admin_right">
-			<div id="admin_main">
+		<div class="adminShopView_right">
+			<div id="adminShopView_main">
 			
 		<form action="<%= request.getContextPath() %>/admin/adminShopUpdate" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="class_no" value="<%= shop.getShopNo() %>"/>
 			<h2><%= shop.getShopName() %></h2>
 			<table>
 				<tr>
-					<td colspan="2"><a href="<%= request.getContextPath() %>/admin/adminShopList">목록으로</a></td>
+					<td colspan="2"><button type="button" onclick="location.href='<%= request.getContextPath() %>/admin/adminShopList'">목록으로</button></td>
 				</tr>
 				<tr>
 					<th style="width: 180px;">카테고리</th>
@@ -79,10 +79,6 @@
 				<tr>
 					<th>적립포인트</th>
 					<td  style="text-align: left;"><input type="number" name="class_point" value="<%= shop.getShopPoint() %>"></td>
-				</tr>
-				<tr>
-					<th>재고수량</th>
-					<td  style="text-align: left;"><input type="number" name="class_amount" value="<%= shop.getShopAmount() %>"></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 1</th>
@@ -193,12 +189,12 @@
 			<h3>강좌등록</h3>
 			<table>
 				<tr>
-					<th>강좌 타이틀</th>
-					<td><input type="text" name="lecture_title"/></td>
+					<th style="width: 180px;">강좌 타이틀</th>
+					<td style="text-align: left;"><input type="text" name="lecture_title" style="width: 450px;"/></td>
 				</tr>
 				<tr>
 					<th>강좌 한줄소개</th>
-					<td><input type="text" name="lecture_info"/></td>
+					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;"/></td>
 				</tr>
 				<tr>
 					<th>강좌내용</th>

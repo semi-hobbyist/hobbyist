@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <%
 	Member logginMember = (Member)session.getAttribute("logginMember");
 %>
@@ -17,8 +18,6 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/writerEnrollStyle.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/orderStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/noticeStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/awardStyle.css">
@@ -27,6 +26,16 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myClassStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/onedayStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/lectureStyle.css">
+    
+    <!-- ------------- 관리자페이지 CSS -------------- -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopViewStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopWriteStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopPinStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayWriteStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     
     <!-- ------ Wow 애니메이션 ------ -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/animate.css">
@@ -47,10 +56,14 @@
   	
   	<!-- alert 라이브러리 -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
 </head>
 
 <body>
+
+	<!-- 결제 api 추가 -->
     <!-- 서브메뉴 마우스오버시 배경 블랙으로 변경하기 위한 숨겨놓은 DIV -->
     <div class="blur"></div>
     
@@ -69,7 +82,7 @@
                                 src="<%= request.getContextPath() %>/images/profileImage15.jpg">
                             <%= logginMember.getMemberNickname() %><div id="line"></div></a> 님 환영합니다</span>
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
-                    <li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">ADMIN</li>&nbsp;&nbsp;&nbsp;
+                    <li id="admin" onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">관리자</li>&nbsp;&nbsp;&nbsp;
                     <% } %>
 					<li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'">마이페이지</li>
                     <li onclick="location.href='<%= request.getContextPath() %>/member/LogoutMember'">로그아웃</li>
@@ -192,14 +205,11 @@
                     <div class="sub_left">
                         <h3>C L A S S - S H O P</h3>
                         <p>마음에 드는 취미클래스를 찾아보세요</p>
-                        <img alt="CLASS SHOP" src="<%= request.getContextPath() %>/images/classshop.jpg" width="90%">
+                        <p><img alt="CLASS SHOP" src="<%= request.getContextPath() %>/images/classshop.png" width="40%"></p>
                     </div>
                     <div class="sub_center">
                         <h3>N E W - C L A S S</h3>
                         <ul id="newLatestClass">
-                        </ul>
-                        <h3>B E S T - C L A S S</h3>
-                        <ul id="bestClass">
                         </ul>
                         <script>
                         	// 클래스샵 최근 상품 AJAX
@@ -209,28 +219,20 @@
                                     $('#newLatestClass').html(data);
                                 }
                             });
-                            
-                             // 클래스샵 베스트 상품 AJAX
-                             $.ajax({
-                                url: '<%= request.getContextPath() %>/shop/shopBestClass',
-                                success: function(data) {
-                                    $('#bestClass').html(data);
-                                }
-                            });
                         </script>
                     </div>
                     <div class="sub_right">
-                        <h3>S U B - M E N U</h3>
-                        <ul id="shopMenuAjax">
+                        <h3>B E S T - C L A S S</h3>
+                        <ul id="bestClass">
                         </ul>
                         <script>
-	                     	// 클래스샵 베스트 상품 AJAX
-	                        $.ajax({
-	                           url: '<%= request.getContextPath() %>/shop/shopMenuAjax',
-	                           success: function(data) {
-	                               $('#shopMenuAjax').html(data);
-	                           }
-	                       });
+		                        // 클래스샵 베스트 상품 AJAX
+		                        $.ajax({
+		                           url: '<%= request.getContextPath() %>/shop/shopBestClass',
+		                           success: function(data) {
+		                               $('#bestClass').html(data);
+		                           }
+		                       });
                         </script>
                     </div>
                 </div>
@@ -359,7 +361,7 @@
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
                     notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "410px" });
+                    classshop.css({"transition": "600ms", "height": "270px" });
                     oneday.css({"transition": "600ms", "height": "0px" });
                     award.css({"transition": "600ms", "height": "0px" });
                     community.css({"transition": "600ms", "height": "0px" });
@@ -403,7 +405,7 @@
                     notice.css({"transition": "600ms", "height": "0px" });
                     classshop.css({"transition": "600ms", "height": "0px" });
                     oneday.css({"transition": "600ms", "height": "0px" });
-                    award.css({"transition": "600ms", "height": "220px" });
+                    award.css({"transition": "600ms", "height": "210px" });
                     community.css({"transition": "600ms", "height": "0px" });
                 })
 

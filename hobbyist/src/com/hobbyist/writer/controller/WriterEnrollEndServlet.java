@@ -39,7 +39,7 @@ public class WriterEnrollEndServlet extends HttpServlet {
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "잘못접근!");
-			request.setAttribute("loc", "/views/writer/writerEnroll.jsp");
+			request.setAttribute("loc", "/writer/writerEnroll");
 			request.getRequestDispatcher("views/common/msg.jsp").forward(request, response);
 			return;
 		}
@@ -115,7 +115,7 @@ public class WriterEnrollEndServlet extends HttpServlet {
 		}
 		else {
 			msg="작가신청 실패";
-			loc="/views/writer/writerEnroll.jsp";
+			loc="/writer/writerEnroll";
 		}
 		
 		request.setAttribute("msg", msg);

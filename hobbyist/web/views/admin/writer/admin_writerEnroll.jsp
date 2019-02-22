@@ -192,7 +192,7 @@
 						}
 					</script>
 
-					<div class="tableBox_top" id="adminWE-Ajax">
+					<div class="tableBox_middle" id="adminWE-Ajax">
 						<!-- <% if(list!=null) {%>
 						<% for(WriterEnroll we : list) {%>
 							<div class="tal_Content" onclick="fn_WEViewAjax(<%= we.getWriterEnrollNo() %>)">

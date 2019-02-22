@@ -141,7 +141,7 @@ public class AdminWEAjaxServlet extends HttpServlet {
 				html += "</div>";
 			}
 		}
-		html += "<div class='shop_bottom'>" + pageBar + "</div>";
+		html += "<div class='tal_bottom'>" + pageBar + "</div>";
 
 		
 		response.setContentType("text/html; charset=UTF-8");

@@ -1,6 +1,7 @@
 package com.hobbyist.notice.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Notice implements Serializable{
 
@@ -13,10 +14,12 @@ public class Notice implements Serializable{
 	private String noticeTitle;
 	private String noticeWriter;
 	private String noticeContent;
-	private String noticeDate;
+	private Date noticeDate;
 	private String noticeFilenameOriginal;
 	private String noticeFilenameRenamed;
-	private String noticeReadcount;
+	private String noticeImgnameOriginal;
+	private String noticeImgnameRenamed;
+	private int noticeReadcount;
 	private String noticeStatus;
 	
 	public Notice() {
@@ -24,8 +27,8 @@ public class Notice implements Serializable{
 	}
 
 	public Notice(int noticeNo, String noticeSort, String noticeTitle, String noticeWriter, String noticeContent,
-			String noticeDate, String noticeFilenameOriginal, String noticeFilenameRenamed, String noticeReadcount,
-			String noticeStatus) {
+			Date noticeDate, String noticeFilenameOriginal, String noticeFilenameRenamed, String noticeImgnameOriginal,
+			String noticeImgnameRenamed, int noticeReadcount, String noticeStatus) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeSort = noticeSort;
@@ -35,6 +38,8 @@ public class Notice implements Serializable{
 		this.noticeDate = noticeDate;
 		this.noticeFilenameOriginal = noticeFilenameOriginal;
 		this.noticeFilenameRenamed = noticeFilenameRenamed;
+		this.noticeImgnameOriginal = noticeImgnameOriginal;
+		this.noticeImgnameRenamed = noticeImgnameRenamed;
 		this.noticeReadcount = noticeReadcount;
 		this.noticeStatus = noticeStatus;
 	}
@@ -79,11 +84,11 @@ public class Notice implements Serializable{
 		this.noticeContent = noticeContent;
 	}
 
-	public String getNoticeDate() {
+	public Date getNoticeDate() {
 		return noticeDate;
 	}
 
-	public void setNoticeDate(String noticeDate) {
+	public void setNoticeDate(Date noticeDate) {
 		this.noticeDate = noticeDate;
 	}
 
@@ -103,11 +108,27 @@ public class Notice implements Serializable{
 		this.noticeFilenameRenamed = noticeFilenameRenamed;
 	}
 
-	public String getNoticeReadcount() {
+	public String getNoticeImgnameOriginal() {
+		return noticeImgnameOriginal;
+	}
+
+	public void setNoticeImgnameOriginal(String noticeImgnameOriginal) {
+		this.noticeImgnameOriginal = noticeImgnameOriginal;
+	}
+
+	public String getNoticeImgnameRenamed() {
+		return noticeImgnameRenamed;
+	}
+
+	public void setNoticeImgnameRenamed(String noticeImgnameRenamed) {
+		this.noticeImgnameRenamed = noticeImgnameRenamed;
+	}
+
+	public int getNoticeReadcount() {
 		return noticeReadcount;
 	}
 
-	public void setNoticeReadcount(String noticeReadcount) {
+	public void setNoticeReadcount(int noticeReadcount) {
 		this.noticeReadcount = noticeReadcount;
 	}
 
@@ -119,15 +140,19 @@ public class Notice implements Serializable{
 		this.noticeStatus = noticeStatus;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeSort=" + noticeSort + ", noticeTitle=" + noticeTitle
 				+ ", noticeWriter=" + noticeWriter + ", noticeContent=" + noticeContent + ", noticeDate=" + noticeDate
 				+ ", noticeFilenameOriginal=" + noticeFilenameOriginal + ", noticeFilenameRenamed="
-				+ noticeFilenameRenamed + ", noticeReadcount=" + noticeReadcount + ", noticeStatus=" + noticeStatus
+				+ noticeFilenameRenamed + ", noticeImgnameOriginal=" + noticeImgnameOriginal + ", noticeImgnameRenamed="
+				+ noticeImgnameRenamed + ", noticeReadcount=" + noticeReadcount + ", noticeStatus=" + noticeStatus
 				+ "]";
 	}
-	
 	
 	
 }

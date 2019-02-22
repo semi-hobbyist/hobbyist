@@ -1,170 +1,141 @@
 
-#admin_writerEnroll {
-    width: 100%;
-    height: 100%;
+#notice {
     display: flex;
     justify-content: center;
 	align-items: center;
-	flex-direction: column;
+    flex-direction: column;
+}
+
+#notice .notice_content {
+    width: 990px;
+    height: 100%;
+    padding-top: 200px;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    flex-direction: column;
 }  
 
-#admin_writerEnroll .tableBox{
-    width: 95%;
+#notice .notice_content .notice_TalBox {
+    width: 880px;
     margin: 0 10px;
 }
 
-#admin_writerEnroll .tal_Title{
+#notice .notice_content .tal_Title{
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: rgba(59, 79, 106, 0.8);
-    color: white;
-    border-bottom: 1px solid #3b4f6a;
+    background-color: #eceef2;
+    color: black;
 }
 
-#admin_writerEnroll .tal_Content {
+#notice .notice_content .tal_Content {
     display: table;
     width: 100%;
     padding: 10px 0;
     background-color: white;
-    border-bottom: 1px solid black;
+    border-left: 3px solid white;    
+    border-bottom: 1px solid #eee;
     cursor: pointer;
 }
 
-#admin_writerEnroll .tal_Content:hover {
+#notice .notice_content .tal_Content:hover {
     display: table;
     width: 100%;
     padding: 10px 0;
-	background-color: rgba(59, 79, 106, 0.1);
-    border-bottom: 1px solid black;
+    background-color: #eef1f7;
+    border-left: 3px solid #3e4b6c;    
+    border-bottom: 1px solid #eee;
 	cursor: pointer;
 	transition: 400ms;
 }
 
-#admin_writerEnroll .tal_text {
+#notice .notice_content .tal_text {
     display: table-cell;
     width: 100%;
     padding: 5px;
 }
 
 
-#admin_writerEnroll .talT_WeNo {
+#notice .notice_content .talT_noticeNo {
     display: table-cell;
-    width: 50px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_WeNo {
-    display: table-cell;
-    width: 50px;
+    width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WeQuarter {
+#notice .notice_content .talC_noticeNo {
     display: table-cell;
-    width: 70px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_WeQuarter {
-    display: table-cell;
-    width: 70px;
+    width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_NickName {
-    display: table-cell;
-    width: 80px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_NickName {
+#notice .notice_content .talT_noticeSort {
     display: table-cell;
     width: 80px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_Email {
+#notice .notice_content .talC_noticeSort {
     display: table-cell;
+    width: 80px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
-#admin_writerEnroll .talC_Email {
+#notice .notice_content .talT_noticeTitle {
     display: table-cell;
+    padding: 5px;
+}
+
+#notice .notice_content .talC_noticeTitle {
+    display: table-cell;
+    padding: 5px;
     text-align: left;
-    text-indent: 15px;
-    padding: 5px;
+    text-indent: 20px;
 }
 
-#admin_writerEnroll .talT_Name {
-    display: table-cell;
-    width: 60px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_Name {
-    display: table-cell;
-    width: 60px;
-    padding: 5px;
-}
-
-#admin_writerEnroll .talT_Birthday {
-    display: table-cell;
-    width: 100px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_Birthday {
+#notice .notice_content .talT_noticeWriter {
     display: table-cell;
     width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WeDate {
-    display: table-cell;
-    width: 100px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_WeDate {
+#notice .notice_content .talC_noticeWriter {
     display: table-cell;
     width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WePassYN {
+#notice .notice_content .talT_noticeDate {
     display: table-cell;
-    width: 60px;
+    width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talC_WePassYN {
+#notice .notice_content .talC_noticeDate {
     display: table-cell;
-    width: 60px;
+    width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talC_WePassYN_textN {
-	padding: 0;
-	margin: 0;
-	color: red;
+#notice .notice_content .talT_noticeReadcount {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
 }
 
-#admin_writerEnroll .talC_WePassYN_textY {
-	padding: 0;
-	margin: 0;
-	color: green;
+#notice .notice_content .talC_noticeReadcount {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
 }
 
 
-#admin_writerEnroll .tal_bottom {
+
+
+
+
+
+#notice .notice_content .tal_bottom {
     display: inline-block;
 	width:100%;
 	margin-top: 10px;
@@ -173,7 +144,7 @@
     font-size: 13px;
 }
 
-#admin_writerEnroll .tal_bottom a, #admin_writerEnroll .tal_bottom span {
+#notice .notice_content .tal_bottom a, #admin_writerEnroll .tal_bottom span {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -187,7 +158,7 @@
 }
 
 
-#admin_writerEnroll .tal_bottom a:hover, #admin_writerEnroll .tal_bottom span:hover {
+#notice .notice_content .tal_bottom a:hover, #admin_writerEnroll .tal_bottom span:hover {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -203,7 +174,7 @@
 
 /* 작가신청 미리보기 css */
 
-#admin_writerEnroll .pagePreviewModal {
+#notice .notice_content .pagePreviewModal {
 	position: fixed;
 	z-index: 9200;
 	left: 0;
@@ -217,7 +188,7 @@
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-#admin_writerEnroll .pagePreviewModalBox {
+#notice .notice_content .pagePreviewModalBox {
 	position: relative;
 	width: 810px;
 	height: 620px;
@@ -228,7 +199,7 @@
 	background-color: white;
 }
 
-#admin_writerEnroll .wEPreviewBody {
+#notice .notice_content .wEPreviewBody {
 	position: absolute;
 	top:0;
 	width: 100%;
@@ -237,7 +208,7 @@
 	border: 1px solid #c2c2c2;
 }
 
-#admin_writerEnroll .wEPreviewFooter {
+#notice .notice_content .wEPreviewFooter {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -248,7 +219,7 @@
 	background-color: rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .wEPreviewFooter>div {
+#notice .notice_content .wEPreviewFooter>div {
 	width: 30%;
 	height: 100%;
 	display: flex;
@@ -256,7 +227,7 @@
 	align-items: center;
 }
 
-#admin_writerEnroll .wEnrollPreAreaI {
+#notice .notice_content .wEnrollPreAreaI {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -265,13 +236,13 @@
 	flex-direction: column;
 }
 
-#admin_writerEnroll .wEnrollPreMemberImageBox img {
+#notice .notice_content .wEnrollPreMemberImageBox img {
 	width: 100px;
 	height: 100px;
 	border-radius: 50px;
 }
 
-#admin_writerEnroll .wEnrollPreAreaT {
+#notice .notice_content .wEnrollPreAreaT {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -280,7 +251,7 @@
 	flex-direction: column;
 }
 
-#admin_writerEnroll .wEnrollPreTitle {
+#notice .notice_content .wEnrollPreTitle {
 	width: 95%;
 	display: flex;
 	justify-content: center;
@@ -290,21 +261,21 @@
 	color:rgba(59, 79, 106, 0.6);
 }
 
-#admin_writerEnroll .wEnrollPreBox {
+#notice .notice_content .wEnrollPreBox {
 	width: 95%;
 	padding: 5px;
 	text-align: left;
 	border: 1px solid rgba(59, 79, 106, 0.6);
 }
 
-#admin_writerEnroll .wEnrollPreAttr {
+#notice .notice_content .wEnrollPreAttr {
 	padding: 0px 10px;
 	display: flex;
 	font-size:16px;
 	color:rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .wEnrollPreVal {
+#admin_wrinotice .notice_contentterEnroll .wEnrollPreVal {
 	min-height: 30px;
 	margin-bottom: 15px;
 	padding: 10px 20px;
@@ -313,12 +284,12 @@
 	color:black;
 }
 
-#admin_writerEnroll .wEnrollPreValueBox {
+#notice .notice_content .wEnrollPreValueBox {
 	margin: 10px;
 	border-left: 2px solid rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .button1 {
+#notice .notice_content .button1 {
 	margin: 5px;
 	width: 100px;
 	height: 30px;
@@ -333,7 +304,7 @@
 	cursor: pointer;
 }
 
-#admin_writerEnroll .button1:hover {
+#notice .notice_content .button1:hover {
     color: #fff;
 	background-color: #252525;
 	outline: none;
@@ -347,7 +318,7 @@
 
 
 
-#admin_writerEnroll .tableBox_top>form{
+#notice .notice_content .tal_top>form{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -355,7 +326,7 @@
 
 }
 
-#admin_writerEnroll .tal_top {
+#notice .notice_content .tal_top {
 	width: 100%;
 	margin-bottom: 5px;
 	display: flex;
@@ -363,7 +334,7 @@
 	align-items: flex-end;
 }
 
-#admin_writerEnroll .tableBox_top .sort .sortBtn {
+#notice .notice_content .tal_top .sort .sortBtn {
     display: inline-block;
     cursor: pointer;
     width: 100px;
@@ -376,7 +347,7 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .sort .selected {
+#notice .notice_content .tal_top .sort .selected {
     display: inline-block;
     cursor: pointer;
     width: 100px;
@@ -388,39 +359,39 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .sort .sortBtn:hover {
+#notice .notice_content .tal_top .sort .sortBtn:hover {
     transition: 500ms;
     background-color: #eee;
 }
 
-#admin_writerEnroll .tableBox_top .sort .selected:hover {
+#notice .notice_content .tal_top .sort .selected:hover {
     transition: 500ms;
     background-color: #eee;
 }
 
 
-#admin_writerEnroll .tableBox_top .sort button img {
+#notice .notice_content .tal_top .sort button img {
     padding-right: 5px;
     width: 12px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm {
+#notice .notice_content .tal_top .searchForm {
     color: #252525;
     letter-spacing: -0.5px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm input[type=search] {
+#notice .notice_content .tal_top .searchForm input[type=search] {
     border: 1px solid #dadada;
     outline: none;
     height: 30px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm input[type=search]:focus {
+#notice .notice_content .tal_top .searchForm input[type=search]:focus {
     transition: 500ms;
     border: 1px solid #252525;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm button {
+#notice .notice_content .tal_top .searchForm button {
     vertical-align: bottom;
     padding-top: 5px;
     height: 30px;
@@ -429,7 +400,7 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm #ajaxSearch {
+#notice .notice_content .tal_top .searchForm #ajaxSearch {
     letter-spacing:-0.5px; 
     padding-left: 15px;
     display: none; 
@@ -439,3 +410,5 @@
     background-color: #fff; 
     border: 1px solid #888888;
 }
+
+

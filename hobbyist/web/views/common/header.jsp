@@ -17,10 +17,12 @@
     <!-- ------- 페이지 별 CSS 추가 -------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/orderStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/noticeStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/awardStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/boardStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myCartStyle.css">
@@ -71,6 +73,7 @@
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
                     <li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">ADMIN</li>&nbsp;&nbsp;&nbsp;
                     <% } %>
+					<li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'">마이페이지</li>
                     <li onclick="location.href='<%= request.getContextPath() %>/member/LogoutMember'">로그아웃</li>
                     <% } %>
                     <li onclick="location.href='#'">고객센터</li>
@@ -145,7 +148,7 @@
                     <li>
                         <div class="menuline"></div><img src="<%=request.getContextPath()%>/images/allmenu.png" width="10px">&nbsp;&nbsp;전체보기
                     </li>
-                    <li>
+                    <li  onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">
                         <div class="menuline"></div>공지사항
                     </li>
                     <li onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">

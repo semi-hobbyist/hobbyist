@@ -66,6 +66,7 @@
 					<div class="talC_noticeWriter"><%= no.getNoticeWriter() %></div>
 					<div class="talC_noticeDate"><%= no.getNoticeDate() %></div>
 					<div class="talC_noticeReadcount"><%= no.getNoticeReadcount() %></div>
+					<button type="button" class="noticeListDel">X</button>
 				</div>
 				<% } %>
 				<% } else { %>
@@ -306,6 +307,97 @@
 			location.href="<%= request.getContextPath() %>/notice/noticeView?noticeNo="+index;
 		}
 
+		// noticeListDel 삭제 버튼 기능 구현
+		function fn_noticeListDel(index) {
+			var flag = confirm("삭제하시겠습니까?");
+			if(flag){
+								
+				$.ajax({
+					url: '<%= request.getContextPath() %>/notice/noticeDelAjax.do',
+					type: 'POST',
+					dataType: 'text',
+					data: { "noticeNo": index },
+					success: function (data) {
+						alert("삭제 완료 했습니다.");
+					}
+				})
+				
+				var text = $('.selected')[0].innerText;
+				if (text == '전체') {
+					$.ajax({
+						url: '<%= request.getContextPath() %>/notice/noticeAjax.do',
+						type: 'POST',
+						dataType: 'text',
+						data: { "sort": "sortAll", "keyword": keyword.val() },
+						success: function (data) {
+							var noticeAjax = $('#noticeAjax');
+							noticeAjax.empty();
+							noticeAjax.html(data);
+							$('#sort1').addClass('selected');
+							$('#sort2').removeClass('selected');
+							$('#sort3').removeClass('selected');
+							$('#sort4').removeClass('selected');
+						}
+					})
+				}
+				else if (text == '공지') {
+					$.ajax({
+						url: '<%= request.getContextPath() %>/notice/noticeAjax.do',
+						type: 'POST',
+						dataType: 'text',
+						data: { "sort": "sortNotice", "keyword": keyword.val() },
+						success: function (data) {
+							var noticeAjax = $('#noticeAjax');
+							noticeAjax.empty();
+							noticeAjax.html(data);
+							$('#sort1').removeClass('selected');
+							$('#sort2').addClass('selected');
+							$('#sort3').removeClass('selected');
+							$('#sort4').removeClass('selected');
+						}
+					})
+				}
+				else if (text == '이벤트') {
+					$.ajax({
+						url: '<%= request.getContextPath() %>/notice/noticeAjax.do',
+						type: 'POST',
+						dataType: 'text',
+						data: { "sort": "sortEvent", "keyword": keyword.val() },
+						success: function (data) {
+							var noticeAjax = $('#noticeAjax');
+							noticeAjax.empty();
+							noticeAjax.html(data);
+							$('#sort1').removeClass('selected');
+							$('#sort2').removeClass('selected');
+							$('#sort3').addClass('selected');
+							$('#sort4').removeClass('selected');
+						}
+					})
+				}
+				else if (text == '작가신청') {
+					$.ajax({
+						url: '<%= request.getContextPath() %>/notice/noticeAjax.do',
+						type: 'POST',
+						dataType: 'text',
+						data: { "sort": "sortWriterEnroll", "keyword": keyword.val() },
+						success: function (data) {
+							var noticeAjax = $('#noticeAjax');
+							noticeAjax.empty();
+							noticeAjax.html(data);
+							$('#sort1').removeClass('selected');
+							$('#sort2').removeClass('selected');
+							$('#sort3').removeClass('selected');
+							$('#sort4').addClass('selected');
+						}
+					})
+				}
+				
+				
+				
+			}
+			
+		}
+		
 
 	</script>
 	

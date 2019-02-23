@@ -37,7 +37,7 @@
 	<script>
 		function fn_defaultViewAjax(index) {
 			$(".defaultViewModal").css("display", "flex");
-			$(".noticeViewBody").animate({ scrollTop: 0 }, 0);
+			$(".defaultViewBody").animate({ scrollTop: 0 }, 0);
 		}
 	
 		$(function () {

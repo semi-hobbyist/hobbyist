@@ -174,6 +174,130 @@ public class NoticeDao {
 		}
 		return list;
 	}
+
+	// (삭제된)검색결과에 다른 리스트 갯수 가져오기
+	public int searchCountDel(Connection conn, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = prop.getProperty("searchCountDel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// (삭제된)리스트 최근 등록일순으로 가져오기
+	public List<Notice> selectAllDel(Connection conn, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("selectAllDel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	// (삭제된)검색결과에 다른 리스트 갯수 가져오기
+	public int searchCountSortDel(Connection conn, String sort, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = prop.getProperty("searchCountSortDel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sort);
+			pstmt.setString(2, "%" + keyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// (삭제된)리스트 최근 등록일순으로 가져오기
+	public List<Notice> selectSortDel(Connection conn, String sort, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("selectSortDel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sort);
+			pstmt.setString(2, "%" + keyword + "%");
+			pstmt.setInt(3, (cPage-1)*numPerPage+1);
+			pstmt.setInt(4, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 	public Notice selectOne(Connection conn, int noticeNo) {
 		PreparedStatement pstmt = null;
@@ -246,4 +370,51 @@ public class NoticeDao {
 		return result;
 	}
 	
+	public int delNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("delNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int reNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("reNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int del_DB(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("del_DB");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

@@ -107,13 +107,23 @@
 			<% if(logginMember!=null&&logginMember.getMemberEmail().equals("admin")) { %>
 				<div class="contentBox_bottom">
 					<button class="button1"	onclick="">수정하기</button>
-					<button class="button1"	onclick="">삭제하기</button>
+					<button class="button1"	onclick="fn_noticeListDel(<%= notice.getNoticeNo() %>)">삭제하기</button>
 				</div>
 			<% } %>
 		</div>
 
 	</div>
 	<script>
+
+		// noticeListDel 삭제 버튼 기능 구현
+		function fn_noticeListDel(index) {
+			var flag = confirm("삭제하시겠습니까?");
+			if(flag){
+				location.href="<%= request.getContextPath() %>/notice/noticeDel?noticeNo="+index;
+			}
+			
+		}
+		
 		$(window).scroll(function () {
 			var target = $('.contentBox_top');
 			var scrollTo = $(window).scrollTop();

@@ -39,7 +39,8 @@
 
 /* 테이블 분류 css */
 
-#notice .notice_content .tal_top>form{
+#notice .notice_content .talBox_top>form {
+    width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -49,7 +50,7 @@
 
 #notice .notice_content .tal_top {
 	width: 100%;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
@@ -145,6 +146,10 @@
     color: black;
 }
 
+#notice .notice_content .tal_ContentBox {
+    position: relative;
+}
+
 #notice .notice_content .tal_Content {
     display: table;
     width: 100%;
@@ -207,6 +212,7 @@
     padding: 5px 0;
     border-radius: 10px;
     color: #3b4f6a;
+    background-color: white;
 }
 
 #notice .notice_content .talC_noticeSort .nSTextEvent,
@@ -218,6 +224,7 @@
     padding: 5px 0;
     border-radius: 10px;
     color: #6a3b4d;
+    background-color: white;
 }
 
 #notice .notice_content .talC_noticeSort .nSTextWriterEnroll,
@@ -229,6 +236,7 @@
     padding: 5px 0;
     border-radius: 10px;
     color: #3b6a3b;
+    background-color: white;
 }
 
 #notice .notice_content .talT_noticeTitle {
@@ -1019,4 +1027,29 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+#notice .noticeListDel {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 15px;
+    right: -40px;
+    font-size: 16px;
+    font-weight: 700;
+	background-color: rgb(199, 136, 136);
+	border-radius: 10px;
+	color: white;
+	border: none;
+	outline: none;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#notice .noticeListDel:hover {
+    transition: 400ms;
+    color: white;
+	background-color: rgb(184, 0, 0);
 }

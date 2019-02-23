@@ -14,16 +14,16 @@ import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeAjaxServlet
+ * Servlet implementation class NoticeDelAjaxServlet
  */
-@WebServlet("/notice/noticeAjax.do")
-public class NoticeAjaxServlet extends HttpServlet {
+@WebServlet("/notice/noticeDelListAjax.do")
+public class NoticeDelListAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeAjaxServlet() {
+    public NoticeDelListAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -74,34 +74,34 @@ public class NoticeAjaxServlet extends HttpServlet {
 		if(sort.equals("sortAll")) {
 			System.out.println("SELECE ALL 진입");
 			// 기본값 등록일순 정렬
-			totalCount = new NoticeService().searchCount(keyword);
+			totalCount = new NoticeService().searchCountDel(keyword);
 			System.out.println("리스트1 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new NoticeService().selectAll(keyword, cPage, numPerPage);
+			list = new NoticeService().selectAllDel(keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈1 : " + list.size());
 		}
 		else if(sort.equals("sortNotice")) {
 			System.out.println("SELECE NOTICE 진입");
-			totalCount = new NoticeService().searchCountSort(sort, keyword);
+			totalCount = new NoticeService().searchCountSortDel(sort, keyword);
 			System.out.println("리스트2 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
+			list = new NoticeService().selectSortDel(sort, keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈2 : " + list.size());
 		}
 		else if(sort.equals("sortEvent")) {
 			System.out.println("SELECE EVENT 진입");
-			totalCount = new NoticeService().searchCount(keyword);
+			totalCount = new NoticeService().searchCountDel(keyword);
 			System.out.println("리스트3 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
+			list = new NoticeService().selectSortDel(sort, keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈3 : " + list.size());
 		}
 		else if(sort.equals("sortWriterEnroll")) {
 			System.out.println("SELECE WRITERENROLL 진입");
-			totalCount = new NoticeService().searchCount(keyword);
+			totalCount = new NoticeService().searchCountDel(keyword);
 			System.out.println("리스트4 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
+			list = new NoticeService().selectSortDel(sort, keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈4 : " + list.size());
 		}
 
@@ -138,43 +138,30 @@ public class NoticeAjaxServlet extends HttpServlet {
 		if(list.size() != 0) {
 			for(int i=0;i<list.size();i++) {
 				html += "<div class='tal_ContentBox'>";
-				html += "<div class='tal_Content' onclick='fn_noticeView("+ list.get(i).getNoticeNo() +")'>";
-				html += "<div class='talC_noticeNo'>" + list.get(i).getNoticeNo() + "</div>";
-				html += "<div class='talC_noticeSort'>";
+				html += "<div class='tal_Content'>";
+				html += "<div class='talC_noticeNo'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>" + list.get(i).getNoticeNo() + "</div>";
+				html += "<div class='talC_noticeSort'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>";
 				
 				switch(list.get(i).getNoticeSort()) {
 					case "sortNotice" : 
-						html +="<div class='nSTextNotice'>공지</div>"; break;
+						html +="<div class='nSTextNotice'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>공지</div>"; break;
 					case "sortEvent" : 
-						html +="<div class='nSTextEvent'>이벤트</div>"; break;
+						html +="<div class='nSTextEvent'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>이벤트</div>"; break;
 					case "sortWriterEnroll" : 
-						html +="<div class='nSTextWriterEnroll'>작가신청</div>"; break;
+						html +="<div class='nSTextWriterEnroll'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>작가신청</div>"; break;
 				}
 				
 				html += "</div>";
-				html += "<div class='talC_noticeTitle'>" + list.get(i).getNoticeTitle() + "</div>";
+				html += "<div class='talC_noticeTitle'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'><span style='color:red'>[삭제상태] </span>" + list.get(i).getNoticeTitle() + "</div>";
+				html += "<div class='talC_noticeDate'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>" + list.get(i).getNoticeDate() + "</div>";
+				html += "<div class='talC_noticeReadcount'onclick='fn_defaultViewAjax("+ list.get(i).getNoticeNo() +")'>" + list.get(i).getNoticeReadcount() + "</div>";
 				
-				
-				html += "<div class='talC_noticeWriter'>";
-
-				// 작성자 프로필 이미지 가져오기
-				String writer = list.get(i).getNoticeWriter();
-				String profileImg = new NoticeService().writerImg(writer);
-				
-				html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg + "'/>";
-				html += list.get(i).getNoticeWriter(); 
+				html += "<div class='talC_noticeStatus'>";
+				html += "<button type='button' class='noticeListRe' onclick='fn_noticeListRe("+ list.get(i).getNoticeNo() +")'>복구</button>";
+				html += "<button type='button' class='noticeListDel' onclick='fn_noticeDB_Del("+ list.get(i).getNoticeNo() +")'>삭제</button>";
 				html += "</div>";
 				
-				html += "<div class='talC_noticeDate'>" + list.get(i).getNoticeDate() + "</div>";
-				html += "<div class='talC_noticeReadcount'>" + list.get(i).getNoticeReadcount() + "</div>";
 				html += "</div>";
-				
-				//관리자일때만 삭제버튼 띠우기
-				Member logginMember = (Member)request.getSession().getAttribute("logginMember");
-				if(logginMember!=null&&logginMember.getMemberEmail().equals("admin")) {
-					html += "<button type='button' class='noticeListDel' onclick='fn_noticeListDel("+ list.get(i).getNoticeNo() +")'>X</button>";
-				}
-				
 				html += "</div>";
 			}
 		}
@@ -188,8 +175,6 @@ public class NoticeAjaxServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(html);
 		
-		
-
 	}
 
 	/**

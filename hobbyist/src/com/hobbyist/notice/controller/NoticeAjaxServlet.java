@@ -75,7 +75,7 @@ public class NoticeAjaxServlet extends HttpServlet {
 			System.out.println("SELECE ALL 진입");
 			// 기본값 등록일순 정렬
 			totalCount = new NoticeService().searchCount(keyword);
-			System.out.println("리스트 totalCount : " + totalCount);
+			System.out.println("리스트1 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
 			list = new NoticeService().selectAll(keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈1 : " + list.size());
@@ -83,26 +83,26 @@ public class NoticeAjaxServlet extends HttpServlet {
 		else if(sort.equals("sortNotice")) {
 			System.out.println("SELECE NOTICE 진입");
 			totalCount = new NoticeService().searchCountSort(sort, keyword);
-			System.out.println("리스트 totalCount : " + totalCount);
+			System.out.println("리스트2 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
 			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
-			System.out.println("리스트 사이즈1 : " + list.size());
+			System.out.println("리스트 사이즈2 : " + list.size());
 		}
 		else if(sort.equals("sortEvent")) {
 			System.out.println("SELECE EVENT 진입");
 			totalCount = new NoticeService().searchCount(keyword);
-			System.out.println("리스트 totalCount : " + totalCount);
+			System.out.println("리스트3 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
 			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
-			System.out.println("리스트 사이즈1 : " + list.size());
+			System.out.println("리스트 사이즈3 : " + list.size());
 		}
 		else if(sort.equals("sortWriterEnroll")) {
 			System.out.println("SELECE WRITERENROLL 진입");
 			totalCount = new NoticeService().searchCount(keyword);
-			System.out.println("리스트 totalCount : " + totalCount);
+			System.out.println("리스트4 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
 			list = new NoticeService().selectSort(sort, keyword, cPage, numPerPage);
-			System.out.println("리스트 사이즈1 : " + list.size());
+			System.out.println("리스트 사이즈4 : " + list.size());
 		}
 
 		// 페이지네이션
@@ -135,35 +135,34 @@ public class NoticeAjaxServlet extends HttpServlet {
 		
 		// 리스트 담기
 		String html = "";
-		
-		for(int i=0;i<list.size();i++) {
-			if(list.size() != 0) {
-				html += "<div class='tal_Content' onclick=''>";
-				html += "<div class='talC_noticeNo'>" + list.get(i).getNoticeNo() + "</div>";
-				html += "<div class='talC_noticeSort'>";
-				
-				switch(list.get(i).getNoticeSort()) {
-					case "sortNotice" : 
-						html +="<div class='nSTextNotice'>공지</div>"; break;
-					case "sortEvent" : 
-						html +="<div class='nSTextEvent'>이벤트</div>"; break;
-					case "sortWriterEnroll" : 
-						html +="<div class='nSTextWriterEnroll'>작가신청</div>"; break;
-				}
-				
-				html += "</div>";
-				html += "<div class='talC_noticeTitle'>" + list.get(i).getNoticeTitle() + "</div>";
-				html += "<div class='talC_noticeWriter'>" + list.get(i).getNoticeWriter() + "</div>";
-				html += "<div class='talC_noticeDate'>" + list.get(i).getNoticeDate() + "</div>";
-				html += "<div class='talC_noticeReadcount'>" + list.get(i).getNoticeReadcount() + "</div>";
-				html += "</div>";
-				html += "</div>";
+		if(list.size() != 0) {
+			for(int i=0;i<list.size();i++) {
+					html += "<div class='tal_Content' onclick=''>";
+					html += "<div class='talC_noticeNo'>" + list.get(i).getNoticeNo() + "</div>";
+					html += "<div class='talC_noticeSort'>";
+					
+					switch(list.get(i).getNoticeSort()) {
+						case "sortNotice" : 
+							html +="<div class='nSTextNotice'>공지</div>"; break;
+						case "sortEvent" : 
+							html +="<div class='nSTextEvent'>이벤트</div>"; break;
+						case "sortWriterEnroll" : 
+							html +="<div class='nSTextWriterEnroll'>작가신청</div>"; break;
+					}
+					
+					html += "</div>";
+					html += "<div class='talC_noticeTitle'>" + list.get(i).getNoticeTitle() + "</div>";
+					html += "<div class='talC_noticeWriter'>" + list.get(i).getNoticeWriter() + "</div>";
+					html += "<div class='talC_noticeDate'>" + list.get(i).getNoticeDate() + "</div>";
+					html += "<div class='talC_noticeReadcount'>" + list.get(i).getNoticeReadcount() + "</div>";
+					html += "</div>";
+					html += "</div>";
 			}
-			else {
-				html += "<div class='tal_Content'>";
-				html += "<div class='tal_text'>현재 조회된 리스트가 없습니다.</div>";
-				html += "</div>";
-			}
+		}
+		else {
+			html += "<div class='tal_Content'>";
+			html += "<div class='tal_text'>현재 조회된 리스트가 없습니다.</div>";
+			html += "</div>";
 		}
 		html += "<div class='talBox_bottom'>" + pageBar + "</div>";
 

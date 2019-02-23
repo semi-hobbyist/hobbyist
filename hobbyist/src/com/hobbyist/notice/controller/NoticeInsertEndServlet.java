@@ -22,13 +22,13 @@ import common.rename.MyFileRenamePolicy;
  * Servlet implementation class noticeInsertEndServlet
  */
 @WebServlet("/notice/NoticeInsertEnd")
-public class noticeInsertEndServlet extends HttpServlet {
+public class NoticeInsertEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeInsertEndServlet() {
+    public NoticeInsertEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

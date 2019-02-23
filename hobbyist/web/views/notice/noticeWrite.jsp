@@ -7,6 +7,17 @@
 
 <%@ include file="/views/common/header.jsp" %>
 
+
+<!-- 로그인 안된 상태로 왔을때 접근 막기 -->
+<script>
+	if (<%= logginMember != null && logginMember.getMemberEmail().equals("admin") %>) {
+
+	} else {
+		alert('관리자만 접근 가능합니다');
+		location.href = history.back(-1);
+	}
+</script>
+
 <section id="noticeWrite">
 	<div class="noticeWriteBox">
 		<form action="<%= request.getContextPath() %>/notice/NoticeInsertEnd" method="post" id="noticeInsertFrm" autocomplete="off" enctype="multipart/form-data">

@@ -22,6 +22,20 @@
     margin: 0 10px;
 }
 
+#notice .notice_content .notice_TalBox .notice_Title{
+    margin: 20px 0;
+    text-align: left;
+}
+
+#notice .notice_content .notice_TalBox .notice_Title h3 {
+    margin: 0;
+}
+
+#notice .notice_content .notice_TalBox .notice_Title p {
+    margin: 10px 0;
+}
+
+
 
 /* 테이블 분류 css */
 
@@ -181,6 +195,27 @@
     display: table-cell;
     width: 80px;
     padding: 5px;
+}
+
+#notice .notice_content .talC_noticeSort .nSTextNotice {
+    border: 1px solid #eee;
+    padding: 5px 0;
+    border-radius: 10px;
+    color: #3b4f6a;
+}
+
+#notice .notice_content .talC_noticeSort .nSTextEvent {
+    border: 1px solid #eee;
+    padding: 5px 0;
+    border-radius: 10px;
+    color: #6a3b4d;
+}
+
+#notice .notice_content .talC_noticeSort .nSTextWriterEnroll {
+    border: 1px solid #eee;
+    padding: 5px 0;
+    border-radius: 10px;
+    color: #3b6a3b;
 }
 
 #notice .notice_content .talT_noticeTitle {

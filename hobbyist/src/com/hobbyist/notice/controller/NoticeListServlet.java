@@ -32,7 +32,7 @@ public class NoticeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		
+		
 		List<Notice> list = null;
 		String sort = "";
 		int cPage = 0;
@@ -46,8 +46,9 @@ public class NoticeListServlet extends HttpServlet {
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("keyword", keyword);
 		request.getRequestDispatcher("/views/notice/notice.jsp").forward(request, response);
-*/		
 		
+		
+		/*
 		// 페이징처리
 		int cPage;
 		try {
@@ -70,7 +71,7 @@ public class NoticeListServlet extends HttpServlet {
 		// 기본값 -> 등록일순 정렬로 초기화
 		String sort = "";
 		if(request.getParameter("sort")==null) {
-			sort = "descEnroll";
+			sort = "sortAll";
 		} else {
 			sort = request.getParameter("sort");
 		}
@@ -86,13 +87,13 @@ public class NoticeListServlet extends HttpServlet {
 		// 리스트 초기화
 		List<Notice> list = null;
 		
-		if(sort.equals("descEnroll")) {
-			System.out.println("DESC ENROLL 진입");
+		if(sort.equals("sortAll")) {
+			System.out.println("SELECE ALL 진입");
 			// 기본값 등록일순 정렬
 			totalCount = new NoticeService().searchCount(keyword);
 			System.out.println("리스트 totalCount : " + totalCount);
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new NoticeService().descEnroll(keyword, cPage, numPerPage);
+			list = new NoticeService().selectAll(keyword, cPage, numPerPage);
 			System.out.println("리스트 사이즈1 : " + list.size());
 		}
 		
@@ -131,7 +132,7 @@ public class NoticeListServlet extends HttpServlet {
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("keyword", keyword);
 		request.getRequestDispatcher("/views/notice/notice.jsp").forward(request, response);
-		
+		*/
 		
 		
 	}

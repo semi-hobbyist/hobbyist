@@ -30,12 +30,28 @@ public class NoticeService {
 	}
 
 	// 리스트 최근 등록순 정렬
-	public List<Notice> descEnroll(String keyword, int cPage, int numPerPage) {
+	public List<Notice> selectAll(String keyword, int cPage, int numPerPage) {
 		Connection conn = getConnection();
-		List<Notice> list = dao.descEnroll(conn, keyword, cPage, numPerPage);
+		List<Notice> list = dao.selectAll(conn, keyword, cPage, numPerPage);
 		close(conn);
 		return list;
 	}
+	
+	// 검색결과에 따라 리스트 갯수 가져오기(분류기준)
+	public int searchCountSort(String sort, String keyword) {
+		Connection conn = getConnection();
+		int result = dao.searchCountSort(conn, sort, keyword);
+		close(conn);
+		return result;
+	}
 
+	// 리스트 분류별 정렬
+	public List<Notice> selectSort(String sort, String keyword, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Notice> list = dao.selectSort(conn, sort, keyword, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
 	
 }

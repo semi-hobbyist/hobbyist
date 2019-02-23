@@ -79,7 +79,8 @@
 					</div>
 
 					<script>
-
+						
+						/* 처음 페이지 들어올때 ajax로 목록 띠우기(최신등록순으로..) */
 						var keyword = $('#keyword');
 						$(function() {
 							$.ajax({

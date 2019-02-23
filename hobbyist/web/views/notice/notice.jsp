@@ -301,11 +301,14 @@
 			}
 		}
 
-
-
+		// noticeView창으로 이동
+		function fn_noticeView(index) {
+			location.href="<%= request.getContextPath() %>/notice/noticeView?noticeNo="+index;
+		}
 
 
 	</script>
+	
 </section>
 
 <%@ include file="/views/common/footer.jsp" %>

@@ -9,7 +9,7 @@
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
          <div class="memberSimpleProfileImgBox">
-            <img src="<%= request.getContextPath() %>/images/<%= logginMember.getMemberRenamedImage() %>">
+            <img src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>">
          </div>
          <div class="memberSimpleProfileLine1Text">
             <div>

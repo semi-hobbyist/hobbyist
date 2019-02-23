@@ -32,7 +32,6 @@ public class NoticeAjaxServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
 		// 페이징처리
 		int cPage;
 		try {
@@ -137,7 +136,7 @@ public class NoticeAjaxServlet extends HttpServlet {
 		String html = "";
 		if(list.size() != 0) {
 			for(int i=0;i<list.size();i++) {
-					html += "<div class='tal_Content' onclick=''>";
+					html += "<div class='tal_Content' onclick='fn_noticeView("+ list.get(i).getNoticeNo() +")'>";
 					html += "<div class='talC_noticeNo'>" + list.get(i).getNoticeNo() + "</div>";
 					html += "<div class='talC_noticeSort'>";
 					
@@ -152,7 +151,19 @@ public class NoticeAjaxServlet extends HttpServlet {
 					
 					html += "</div>";
 					html += "<div class='talC_noticeTitle'>" + list.get(i).getNoticeTitle() + "</div>";
-					html += "<div class='talC_noticeWriter'>" + list.get(i).getNoticeWriter() + "</div>";
+					
+					
+					html += "<div class='talC_noticeWriter'>";
+
+					// 작성자 프로필 이미지 가져오기
+					String writer = list.get(i).getNoticeWriter();
+					String profileImg = new NoticeService().writerImg(writer);
+					
+					html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg + "'/>";
+					html += list.get(i).getNoticeWriter(); 
+					html += "</div>";
+					
+					
 					html += "<div class='talC_noticeDate'>" + list.get(i).getNoticeDate() + "</div>";
 					html += "<div class='talC_noticeReadcount'>" + list.get(i).getNoticeReadcount() + "</div>";
 					html += "</div>";

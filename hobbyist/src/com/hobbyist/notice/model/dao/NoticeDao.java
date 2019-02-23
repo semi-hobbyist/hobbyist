@@ -174,6 +174,76 @@ public class NoticeDao {
 		}
 		return list;
 	}
+	
+	public Notice selectOne(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectOne");
+		Notice no = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				no = new Notice();
 
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return no;
+	}
+	
+	public int increReadCount(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("increReadCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public String writerImg(Connection conn, String writer) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String result = "";
+		String sql = prop.getProperty("writerImg");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
 	
 }

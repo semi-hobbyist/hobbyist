@@ -2,13 +2,15 @@ package com.hobbyist.notice.model.service;
 
 import static common.JdbcTemplate.close;
 import static common.JdbcTemplate.getConnection;
+import static common.JdbcTemplate.commit;
+import static common.JdbcTemplate.rollback;
+
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.hobbyist.notice.model.dao.NoticeDao;
 import com.hobbyist.notice.model.vo.Notice;
-import com.hobbyist.writer.model.vo.WriterEnroll;
 
 public class NoticeService {
 
@@ -53,5 +55,27 @@ public class NoticeService {
 		return list;
 	}
 	
+	public Notice selectOne(int noticeNo, boolean hasRead) {
+		Connection conn = getConnection();
+		Notice no = dao.selectOne(conn,noticeNo);
+		if(no!=null&&!hasRead) {
+			int result=dao.increReadCount(conn,noticeNo);
+			if(result>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		}
+		close(conn);
+		return no;
+	}
+	
+	public String writerImg(String wirter) {
+		Connection conn = getConnection();
+		String result = dao.writerImg(conn,wirter);
+		close(conn);
+		return result;
+	}
 	
 }

@@ -27,11 +27,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/onedayStyle.css">
 <<<<<<< HEAD
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/studyStyle.css">
-    
-=======
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/lectureStyle.css">
-
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
+   
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">

@@ -203,7 +203,7 @@
 								<div class="talC_Email"><%= we.getMemberEmail() %></div>
 								<div class="talC_Name"><%= we.getMemberName() %></div>
 								<div class="talC_Birthday"><%= we.getMemberBirthday() %></div>
-								<div class="talC_WeDate"><%= we.getWriterEnrolldate().substring(0, 10) %></div>
+								<div class="talC_WeDate"><%= we.getWriterEnrolldate() %></div>
 								<div class="talC_WePassYN">
 									<% if(we.getWriterPassYN().equals("N")) { %>
 									<p class="talC_WePassYN_textN">처리전</p>
@@ -375,7 +375,7 @@
 							data: { "index": index },
 							dataType: "json",
 							success: function (data) {
-								$("#EP_memberProfileImg").attr("src", "<%= request.getContextPath() %>/images/" + data["memberProfileImg"]);
+								$("#EP_memberProfileImg").attr("src", "<%= request.getContextPath() %>/upload/member/" + data["memberProfileImg"]);
 								$("#EP_memberNickname").html(data["memberNickname"]);
 								$("#EP_memberEmail").html(data["memberEmail"]);
 								$("#EP_memberName").html(data["memberName"]);

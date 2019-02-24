@@ -43,7 +43,7 @@ public class MemberDao {
 				result.setMemberPhone(rs.getString("member_phone"));
 				result.setMemberOriginalImage(rs.getString("member_original_image"));
 				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
-				result.setMemberEnrolldate(rs.getString("member_enrolldate"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));

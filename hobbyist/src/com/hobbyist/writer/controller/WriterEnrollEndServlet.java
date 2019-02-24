@@ -67,7 +67,7 @@ public class WriterEnrollEndServlet extends HttpServlet {
 		String writerWishMonth = mr.getParameter("writerWishMonth");
 		String writerClassName = mr.getParameter("writerClassName");
 		String writerClassSelectReason = mr.getParameter("writerClassSelectReason");
-		String writerClassLevel = mr.getParameter("writerClassLevel");
+		int writerClassLevel = Integer.parseInt(mr.getParameter("writerClassLevel"));
 		String writerProductTime = mr.getParameter("writerProductTime");
 		String writerClassKitWarningPoint = mr.getParameter("writerClassKitWarningPoint");
 		String writerClassKitPart = mr.getParameter("writerClassKitPart");

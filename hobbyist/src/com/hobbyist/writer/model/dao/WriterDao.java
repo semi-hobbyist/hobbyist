@@ -50,7 +50,7 @@ public class WriterDao {
 			pstmt.setString(16, we.getWriterWishMonth());
 			pstmt.setString(17, we.getWriterClassName());
 			pstmt.setString(18, we.getWriterClassSelectReason());
-			pstmt.setString(19, we.getWriterClassLevel());
+			pstmt.setInt(19, we.getWriterClassLevel());
 			pstmt.setString(20, we.getWriterProductTime());
 			pstmt.setString(21, we.getWriterClassKitWarningPoint());
 			pstmt.setString(22, we.getWriterClassKitPart());
@@ -123,7 +123,7 @@ public class WriterDao {
 				we.setWriterWishMonth(rs.getString("writer_wish_month"));
 				we.setWriterClassName(rs.getString("writer_class_name"));
 				we.setWriterClassSelectReason(rs.getString("writer_class_select_reason"));
-				we.setWriterClassLevel(rs.getString("writer_class_level"));
+				we.setWriterClassLevel(rs.getInt("writer_class_level"));
 				we.setWriterProductTime(rs.getString("writer_product_time"));
 				we.setWriterClassKitWarningPoint(rs.getString("writer_class_kit_warning_point"));
 				we.setWriterClassKitPart(rs.getString("writer_class_kit_part"));
@@ -131,7 +131,7 @@ public class WriterDao {
 				we.setClassImgfileRenamed(rs.getString("class_imgfile_renamed"));
 				we.setWriterPrepRequestYN(rs.getString("writer_prep_request_yn"));
 				we.setWriterFinalPoint(rs.getString("writer_final_point"));
-				we.setWriterEnrolldate(rs.getString("writer_enrolldate"));
+				we.setWriterEnrolldate(rs.getDate("writer_enrolldate"));
 				we.setWriterPassYN(rs.getString("writer_pass_yn"));
 				we.setWriterStatus(rs.getString("writer_status"));
 				list.add(we);
@@ -180,7 +180,7 @@ public class WriterDao {
 				we.setWriterWishMonth(rs.getString("writer_wish_month"));
 				we.setWriterClassName(rs.getString("writer_class_name"));
 				we.setWriterClassSelectReason(rs.getString("writer_class_select_reason"));
-				we.setWriterClassLevel(rs.getString("writer_class_level"));
+				we.setWriterClassLevel(rs.getInt("writer_class_level"));
 				we.setWriterProductTime(rs.getString("writer_product_time"));
 				we.setWriterClassKitWarningPoint(rs.getString("writer_class_kit_warning_point"));
 				we.setWriterClassKitPart(rs.getString("writer_class_kit_part"));
@@ -188,7 +188,7 @@ public class WriterDao {
 				we.setClassImgfileRenamed(rs.getString("class_imgfile_renamed"));
 				we.setWriterPrepRequestYN(rs.getString("writer_prep_request_yn"));
 				we.setWriterFinalPoint(rs.getString("writer_final_point"));
-				we.setWriterEnrolldate(rs.getString("writer_enrolldate"));
+				we.setWriterEnrolldate(rs.getDate("writer_enrolldate"));
 				we.setWriterPassYN(rs.getString("writer_pass_yn"));
 				we.setWriterStatus(rs.getString("writer_status"));
 				list.add(we);
@@ -231,7 +231,7 @@ public class WriterDao {
 				we.setWriterWishMonth(rs.getString("writer_wish_month"));
 				we.setWriterClassName(rs.getString("writer_class_name"));
 				we.setWriterClassSelectReason(rs.getString("writer_class_select_reason"));
-				we.setWriterClassLevel(rs.getString("writer_class_level"));
+				we.setWriterClassLevel(rs.getInt("writer_class_level"));
 				we.setWriterProductTime(rs.getString("writer_product_time"));
 				we.setWriterClassKitWarningPoint(rs.getString("writer_class_kit_warning_point"));
 				we.setWriterClassKitPart(rs.getString("writer_class_kit_part"));
@@ -239,7 +239,7 @@ public class WriterDao {
 				we.setClassImgfileRenamed(rs.getString("class_imgfile_renamed"));
 				we.setWriterPrepRequestYN(rs.getString("writer_prep_request_yn"));
 				we.setWriterFinalPoint(rs.getString("writer_final_point"));
-				we.setWriterEnrolldate(rs.getString("writer_enrolldate"));
+				we.setWriterEnrolldate(rs.getDate("writer_enrolldate"));
 				we.setWriterPassYN(rs.getString("writer_pass_yn"));
 				we.setWriterStatus(rs.getString("writer_status"));
 				list.add(we);
@@ -284,7 +284,7 @@ public class WriterDao {
 				result.setWriterWishMonth(rs.getString("writer_wish_month"));
 				result.setWriterClassName(rs.getString("writer_class_name"));
 				result.setWriterClassSelectReason(rs.getString("writer_class_select_reason"));
-				result.setWriterClassLevel(rs.getString("writer_class_level"));
+				result.setWriterClassLevel(rs.getInt("writer_class_level"));
 				result.setWriterProductTime(rs.getString("writer_product_time"));
 				result.setWriterClassKitWarningPoint(rs.getString("writer_class_kit_warning_point"));
 				result.setWriterClassKitPart(rs.getString("writer_class_kit_part"));
@@ -292,7 +292,7 @@ public class WriterDao {
 				result.setClassImgfileRenamed(rs.getString("class_imgfile_renamed"));
 				result.setWriterPrepRequestYN(rs.getString("writer_prep_request_yn"));
 				result.setWriterFinalPoint(rs.getString("writer_final_point"));
-				result.setWriterEnrolldate(rs.getString("writer_enrolldate"));
+				result.setWriterEnrolldate(rs.getDate("writer_enrolldate"));
 				result.setWriterPassYN(rs.getString("writer_pass_yn"));
 				result.setWriterStatus(rs.getString("writer_status"));
 			}

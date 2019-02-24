@@ -52,7 +52,7 @@ public class OrderInsertServlet extends HttpServlet {
 		
 		
 		// 원데이클래스 주문인지 아닌지 확인
-		if(request.getParameter("orderOneday").isEmpty()) {
+		if(request.getParameter("orderOneday").equals("class")) {
 			System.out.println("---------------- 클래스샵 주문처리 (★★) ---------------");
 			int randomNum = 0;
 			int result = 0;

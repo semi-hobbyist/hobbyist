@@ -17,7 +17,6 @@ public class Shop implements Serializable {
 	private String shopContent;
 	private int shopPrice;
 	private int shopPoint;
-	private int shopAmount;
 	private String shopOption1;
 	private String shopOption2;
 	private String shopOption3;
@@ -28,11 +27,6 @@ public class Shop implements Serializable {
 	private String shopImage3;
 	private String shopImage4;
 	private String shopImage5;
-	private String shopImage6;
-	private String shopImage7;
-	private String shopImage8;
-	private String shopImage9;
-	private String shopImage10;
 	private String shopPolicy1;
 	private String shopPolicy2;
 	private String shopPolicy3;
@@ -106,14 +100,6 @@ public class Shop implements Serializable {
 
 	public void setShopPoint(int shopPoint) {
 		this.shopPoint = shopPoint;
-	}
-
-	public int getShopAmount() {
-		return shopAmount;
-	}
-
-	public void setShopAmount(int shopAmount) {
-		this.shopAmount = shopAmount;
 	}
 
 	public String getShopOption1() {
@@ -196,45 +182,6 @@ public class Shop implements Serializable {
 		this.shopImage5 = shopImage5;
 	}
 
-	public String getShopImage6() {
-		return shopImage6;
-	}
-
-	public void setShopImage6(String shopImage6) {
-		this.shopImage6 = shopImage6;
-	}
-
-	public String getShopImage7() {
-		return shopImage7;
-	}
-
-	public void setShopImage7(String shopImage7) {
-		this.shopImage7 = shopImage7;
-	}
-
-	public String getShopImage8() {
-		return shopImage8;
-	}
-
-	public void setShopImage8(String shopImage8) {
-		this.shopImage8 = shopImage8;
-	}
-
-	public String getShopImage9() {
-		return shopImage9;
-	}
-
-	public void setShopImage9(String shopImage9) {
-		this.shopImage9 = shopImage9;
-	}
-
-	public String getShopImage10() {
-		return shopImage10;
-	}
-
-	public void setShopImage10(String shopImage10) {
-		this.shopImage10 = shopImage10;
-	}
 
 	public String getShopPolicy1() {
 		return shopPolicy1;

@@ -21,6 +21,7 @@
 		</ul>
 		<br>
 		<form name="orderFrm" action="<%= request.getContextPath() %>/order/orderInsert" method="POST">
+		<input type="hidden" name="orderOneday" value="class"/>
 		<table>
 			<tr>
 				<th class="tableLine" colspan="2" id="step01"><h3>주문클래스</h3></th>

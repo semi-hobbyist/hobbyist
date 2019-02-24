@@ -116,32 +116,32 @@ public class AdminWEAjaxServlet extends HttpServlet {
 		// 리스트 담기
 		String html = "";
 		
-		for(int i=0;i<list.size();i++) {
-			if(list.size() != 0) {
-				html += "<div class='tal_Content' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ")'>";
-				html += "<div class='talC_WeNo'>" + list.get(i).getWriterEnrollNo() + "</div>";
-				html += "<div class='talC_WeQuarter'>" + list.get(i).getWriterEnrollQuarter() + "</div>";
-				html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
-				html += "<div class='talC_Email'>" + list.get(i).getMemberEmail() + "</div>";
-				html += "<div class='talC_Name'>" + list.get(i).getMemberName() + "</div>";
-				html += "<div class='talC_Birthday'>" + list.get(i).getMemberBirthday() + "</div>";
-				html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate().substring(0, 10) + "</div>";
-				html += "<div class='talC_WePassYN'>";
-				if(list.get(i).getWriterPassYN().equals("N")) {
-					html += "<p class='talC_WePassYN_textN'>처리전</p>";
-				} else {
-					html += "<p class='talC_WePassYN_textY'>처리완료</p>";
-				}
-				html += "</div>";
-				html += "</div>";
-			}
-			else {
-				html += "<div class='tal_Content'>";
-				html += "<div class='tal_text'>현재 조회된 리스트가 없습니다.</div>";
-				html += "</div>";
+		if(list.size() != 0) {
+			for(int i=0;i<list.size();i++) {
+					html += "<div class='tal_Content' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ")'>";
+					html += "<div class='talC_WeNo'>" + list.get(i).getWriterEnrollNo() + "</div>";
+					html += "<div class='talC_WeQuarter'>" + list.get(i).getWriterEnrollQuarter() + "</div>";
+					html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
+					html += "<div class='talC_Email'>" + list.get(i).getMemberEmail() + "</div>";
+					html += "<div class='talC_Name'>" + list.get(i).getMemberName() + "</div>";
+					html += "<div class='talC_Birthday'>" + list.get(i).getMemberBirthday() + "</div>";
+					html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate().substring(0, 10) + "</div>";
+					html += "<div class='talC_WePassYN'>";
+					if(list.get(i).getWriterPassYN().equals("N")) {
+						html += "<p class='talC_WePassYN_textN'>처리전</p>";
+					} else {
+						html += "<p class='talC_WePassYN_textY'>처리완료</p>";
+					}
+					html += "</div>";
+					html += "</div>";
 			}
 		}
-		html += "<div class='shop_bottom'>" + pageBar + "</div>";
+		else {
+			html += "<div class='tal_Content'>";
+			html += "<div class='tal_text'>현재 조회된 리스트가 없습니다.</div>";
+			html += "</div>";
+		}
+		html += "<div class='tal_bottom'>" + pageBar + "</div>";
 
 		
 		response.setContentType("text/html; charset=UTF-8");

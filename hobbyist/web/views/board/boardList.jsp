@@ -88,7 +88,7 @@
 						<td><%=b.getBoardReadCount()%></td>
 						<td>
 							<% if(logginMember!=null && logginMember.getMemberEmail().equals("admin")) { %>
-							&nbsp;&nbsp;<button type="button" onclick="deleteBoard(<%=b.getBoardNo()%>)"/>X</button>&nbsp;&nbsp;
+							&nbsp;&nbsp;<button type="button" onclick="deleteBoard(<%=b.getBoardNo()%>)">X</button>&nbsp;&nbsp;
 							<% } %>
 						</td>
 					</tr>

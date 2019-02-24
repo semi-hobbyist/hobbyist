@@ -10,7 +10,10 @@
          <li onclick="location.href='#'">정식 작가 목록</li>
          <li onclick="location.href='#'">예비 작가 목록</li>
       </ul>
-      <li>공지사항 관리</li>
+      <li>공지&이벤트 관리</li>
+      <ul class="sub">
+         <li onclick="location.href='<%= request.getContextPath() %>/admin/adminNoticeDelList'">삭제 목록</li>
+      </ul>
       <li>클래스샵 관리</li>
       <ul class="sub">
          <li onclick="location.href='<%= request.getContextPath() %>/admin/adminShopList'">클래스 목록</li>

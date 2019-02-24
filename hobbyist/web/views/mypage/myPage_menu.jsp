@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 
+<%
+
+%>
+
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
          <div class="memberSimpleProfileImgBox">
-            <img src="<%= request.getContextPath() %>/images/<%= logginMember.getMemberRenamedImage() %>">
+            <img src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>">
          </div>
          <div class="memberSimpleProfileLine1Text">
             <div>
@@ -49,10 +53,10 @@
 
 <script>
    $(function () {
-	   console.log("<%=logginMember.getMemberWriterYN()%>");
+      console.log("<%=logginMember.getMemberWriterYN()%>");
       var myPageLeftSelectValue = "";
       $(".myPage_left>ul>li").click(function () {
-         if($(this).html() == myPageLeftSelectValue) {
+         if ($(this).html() == myPageLeftSelectValue) {
             myPageLeftSelectValue = $(this).html();
             $(this).next("ul").slideToggle(500);
          } else {
@@ -67,7 +71,7 @@
       var target = $('#myPage_top');
       var scrollTo = $(window).scrollTop();
       if (scrollTo != 0) {
-         $('#myPage_top').css("top", "97px");  
+         $('#myPage_top').css("top", "97px");
       } else {
          $('#myPage_top').css("top", "213px");
       }

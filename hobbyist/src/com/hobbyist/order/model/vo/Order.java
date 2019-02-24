@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Order {
 	
-	private int orderNo;
+	private String orderNo;
 	private String orderMember;
 	private int orderClass;
 	private String orderClassOption;
@@ -23,7 +23,7 @@ public class Order {
 	
 	
 
-	public Order(int orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
+	public Order(String orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
 			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg,
 			Timestamp orderDate, String orderCate) {
 		super();
@@ -43,11 +43,11 @@ public class Order {
 
 
 
-	public int getOrderNo() {
+	public String getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
 

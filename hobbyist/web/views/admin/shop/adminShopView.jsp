@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.hobbyist.shop.model.vo.Shop"%>
+    pageEncoding="UTF-8" 
+    import="java.util.*, com.hobbyist.shop.model.vo.Shop, com.hobbyist.shop.model.vo.Study"%>
     
 <% 
 	Shop shop = (Shop)request.getAttribute("Shop");
+	Study study = (Study)request.getAttribute("Study");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
@@ -46,7 +48,7 @@
 				</tr>
 				<tr>
 					<th style="width: 180px;">카테고리</th>
-					<td id="cate"  style="width: 620px; text-align: left;">
+					<td id="cate"  style="width: 620px; text-align: left;  padding-left:15px;">
 						<%= shop.getShopCate() %>
 						<input type="hidden" name="class_cate" value="<%=  shop.getShopCate() %>"/>
 					</td>
@@ -186,19 +188,24 @@
 					</td>
 				</tr>
 			</table>
-			<h3>강좌등록</h3>
+			<h3>등록된 강좌정보</h3>
 			<table>
 				<tr>
-					<th style="width: 180px;">강좌 타이틀</th>
-					<td style="text-align: left;"><input type="text" name="lecture_title" style="width: 450px;"/></td>
+					<th style="width: 180px;">강좌 작가</th>
+					<td style="text-align: left;"><input type="text" name="study_subtitle" style="width: 450px;" value="<%= shop.getShopWriter() %>"/></td>
 				</tr>
 				<tr>
 					<th>강좌 한줄소개</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;"/></td>
+					<td style="text-align: left;"><input type="text" name="study_subtitle" style="width: 450px;" value="<%= study.getStudySubTitle() %>"/></td>
+				</tr>
+				<tr>
+					<th>강좌 영상</th>
+					<td style="text-align: left;"><input type="text" name="study_video" style="width: 450px;" placeholder="영상 태그를 입력하세요  예) iframe, embed..."/><br>
+					<%= study.getStudyVideo() %></td>
 				</tr>
 				<tr>
 					<th>강좌내용</th>
-					<td><textarea name="lecture_content" id="editor6"></textarea></td>
+					<td><textarea name="study_content" id="editor6"><%= study.getStudyContent() %></textarea></td>
 					<script>
 							// Replace the <textarea id="editor1"> with a CKEditor
 							// instance, using default configuration.

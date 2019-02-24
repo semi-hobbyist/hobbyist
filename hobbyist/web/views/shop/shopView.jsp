@@ -157,7 +157,7 @@
 					<form id="reviewFrm">
 						<table>
 							<tr>
-								<td rowspan="2" style="width: 250px;"><h3>R E V I E W</h3></td>
+								<td rowspan="2" style="width: 200px;"><h3>R E V I E W</h3></td>
 								<th style="width: 100px;">별점</th>
 								<td style="width: 400px; height: 45px; text-align: left;">
 									<input type="radio" id="r1" name="review_count" value="1">
@@ -169,7 +169,7 @@
 									<input type="radio" id="r5" name="review_count" value="5"><label
 									for="r5">★★★★★</label>
 								</td>
-								<td rowspan="2" style="width: 200px;"><button type="button"
+								<td rowspan="2" style="width: 250px;"><button type="button"
 										onclick="fn_reviewSubmit()">작성</button>
 							</tr>
 							<tr>

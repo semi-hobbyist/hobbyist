@@ -16,32 +16,36 @@
 				<%= oneday.getOnedayWriter() %> | 클래스코드 :
 				<%= oneday.getOnedayNo() %>
 			</div>
-			<div class="view_top_left"><img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
-				 width="460px"></div>
+			<div class="view_top_left">
+			<b><%= oneday.getOnedayName() %></b><%= oneday.getOnedayInfo() %><br>
+			<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
+				 width="500px"></div>
 			<div class="view_top_right">
 				<table>
 					<tr>
 						<td colspan="2">
-							<h2><%= oneday.getOnedayName() %></h2>
+							<br>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><p><%= oneday.getOnedayInfo() %></p></td>
+						<td>장소/시간</td>
+						<td class="tdclass"><%= oneday.getOnedayAddress() %></td>
 					</tr>
 					<tr>
 						<td>예약</td>
 						<td class="tdclass">
+							<input type="hidden" id="reservationStatus" value="<%= oneday.getOnedayReservationStatus() %>">
 							예약현황<%= oneday.getOnedayCurrentPeople() %>/<b><%= oneday.getOnedayPeople() %></b> (명)
 							<%= oneday.getOnedayReservationStatus().equals("Y") ?  "[예약가능]" : "[예약불가]" %>
 						</td>
 					</tr>
 					<tr>
-						<td>가격</td>
+						<td>클래스 비용</td>
 						<td class="tdclass">
 							<%= oneday.getOnedayPrice() %>원</td>
 					</tr>
 					<tr>
-						<td>날짜/장소</td>
+						<td>클래스 옵션</td>
 						<td class="tdclass">
 						<select name="class_option" id="class_option">
 							<option>------------- 선택 -------------</option>
@@ -52,6 +56,9 @@
 							<%= oneday.getOnedayOption5()!=null? "<option value=" + oneday.getOnedayOption5() + ">"+ oneday.getOnedayOption5()+ "</option>" : " " %>
 						</select>
 						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="height: 50px;">옵션을 선택하지 않으시면,<br> 랜덤(색상 및 스타일)키트가 준비됩니다</td>
 					</tr>
 					<tr>
 					<td colspan="2"><button class="api" id="kakao-link-btn" onclick="javascript:;">
@@ -104,7 +111,21 @@
 							<script>
 								function fn_addCart() {
 									if(<%= logginMember != null %>) {
-										location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=" + $('#class_option').val();
+										if($('#reservationStatus').val()=='Y') {
+											var classOp = $('#class_option').val()
+											$.ajax({
+												url: '<%=request.getContextPath()%>/myCartOnedayInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : "a" %>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=' + classOp,
+												success: function (data) {
+													if(confirm(data)){
+														location.href='<%=request.getContextPath()%>/myCart?member=<%= logginMember.getMemberEmail() %>';
+													} else {
+														
+													}
+												}
+											})
+										} else {
+											alert('예약정원 초과! 예약이 불가능합니다');
+										}
 									} else {
 										alert('로그인 후 취미바구니 이용이 가능합니다');
 									}
@@ -114,7 +135,7 @@
 					</tr>
 				</table>
 			</div>
-			<br>
+			<br><br>
 			<!-- 중간 고정메뉴 -->
 			<div class="view_menu" id="view_menu">
 				<ul>
@@ -180,7 +201,7 @@
 		if (scrollTo > 400) {
 			$('#view_menu').css({
 				"z-index" : "9999",
-				"top" : "200px",
+				"top" : "120px",
 				"position" : "fixed"
 			});
 		} else {

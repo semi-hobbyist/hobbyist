@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myCartStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myClassStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/onedayStyle.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/lectureStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/studyStyle.css">
     
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopWriteStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopPinStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayViewStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayWriteStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     
@@ -175,6 +176,53 @@
                         <div class="menuline"></div>커뮤니티
                     </li>
                 </ul>
+            </div>
+        
+        <!-- ------------ 전체메뉴보기 서브메뉴 ----------- -->
+            <div class="sub" id="menuAll">
+                <div class="sub_content">
+                    <ul>
+                    <li class="all_li">
+                  		<ul>
+                        	<li></li>
+                        </ul>
+                    </li>
+                    <li  class="all_li">
+                        <ul>
+                        	<li>공지사항/이벤트</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li>전체보기</li>
+                        	<li>가죽공예</li>
+                        	<li>마크라메</li>
+                        	<li>프랑스자수</li>
+                        	<li>캔들</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                       	<ul>
+                        	<li>전체보기</li>
+                        	<li>서울지역</li>
+                        	<li>경기지역</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li>어워드</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li>자유게시판</li>
+                        	<li>리뷰/후기</li>
+                        	<li>자주묻는질문</li>
+                        	<li>1:1 문의</li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
             </div>
             <div class="sub" id="notice">
                 <div class="sub_content">
@@ -323,6 +371,8 @@
             </div>
             <script>
                 var subMenu = $('.bottom ul>li');
+                
+               var menuAll = $('#menuAll');
                 var notice = $('#notice');
                 var classshop = $('#classshop');
                 var oneday = $('#oneday');
@@ -331,109 +381,142 @@
 
                 var blur = $('.blur');
 
+                // 전체보기
+                subMenu.eq(0).mouseover(function () {
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).addClass("active");
+                    subMenu.eq(1).removeClass("active");
+                    subMenu.eq(2).removeClass("active");
+                    subMenu.eq(3).removeClass("active");
+                    subMenu.eq(4).removeClass("active");
+                    subMenu.eq(5).removeClass("active");
+                   	menuAll.css({"transition": "400ms", "height": "200px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px" });
+                })
+
+                menuAll.mouseleave(function () {
+                    subMenu.eq(1).removeClass("active");
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display","none");
+                })
+                
                 // 공지사항 서브메뉴 이벤트
                 subMenu.eq(1).mouseover(function () {
                     blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).addClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({"transition": "600ms", "height": "200px" });
-                    classshop.css({"transition": "600ms", "height": "0px"});
-                    oneday.css({"transition": "600ms", "height": "0px" });
-                    award.css({"transition": "600ms", "height": "0px" });
-                    community.css({"transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "200px" });
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
                 notice.mouseleave(function () {
-                    blur.eq(0).css("display","none");
                     subMenu.eq(1).removeClass("active");
-                    notice.css({"transition": "600ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display","none");
                 })
 
                 // 클래스샵 서브메뉴 이벤트
                 subMenu.eq(2).mouseover(function () {
                     blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).addClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "270px" });
-                    oneday.css({"transition": "600ms", "height": "0px" });
-                    award.css({"transition": "600ms", "height": "0px" });
-                    community.css({"transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "270px" });
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
                 classshop.mouseleave(function () {
-                    blur.eq(0).css("display","none");
                     subMenu.eq(2).removeClass("active");
-                    classshop.css({"transition": "600ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display","none");
                 })
 
                 // 원데이클래스 서브메뉴 이벤트
                 subMenu.eq(3).mouseover(function () {
                     blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).addClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "0px" });
-                    oneday.css({"transition": "600ms", "height": "160px" });
-                    award.css({"transition": "600ms", "height": "0px" });
-                    community.css({"transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px" });
+                    oneday.css({"transition": "400ms", "height": "160px" });
+                    award.css({"transition": "400ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
                 oneday.mouseleave(function () {
-                    blur.eq(0).css("display","none");
                     subMenu.eq(3).removeClass("active");
-                    oneday.css({"transition": "600ms", "height": "0px" });
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display","none");
                 })
 
                 // 어워드 서브메뉴 이벤트
                 subMenu.eq(4).mouseover(function () {
                     blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).addClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "0px" });
-                    oneday.css({"transition": "600ms", "height": "0px" });
-                    award.css({"transition": "600ms", "height": "210px" });
-                    community.css({"transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px" });
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "210px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
                 award.mouseleave(function () {
                     blur.eq(0).css("display","none");
                     subMenu.eq(4).removeClass("active");
-                    award.css({"transition": "600ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
                 })
 
                 // 커뮤니티 서브메뉴 이벤트
                 subMenu.eq(5).mouseover(function () {
                     blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).addClass("active");
-                    notice.css({"transition": "600ms", "height": "0px" });
-                    classshop.css({"transition": "600ms", "height": "0px" });
-                    oneday.css({"transition": "600ms", "height": "0px" });
-                    award.css({"transition": "600ms", "height": "0px" });
-                    community.css({"transition": "600ms", "height": "220px" });
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px" });
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "220px" });
                 })
 
                 community.mouseleave(function () {
                     blur.eq(0).css("display","none");
                     subMenu.eq(5).removeClass("active");
-                    community.css({"transition": "600ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
 

@@ -37,9 +37,9 @@ public class OrderService {
 	}
 
 	public int insertOrder(String randomCode, String member, String s, String c, String orderType, String orderPrice,
-			String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg) {
+			String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
 		Connection conn = getConnection();
-		int result = dao.insertOrder(conn, randomCode, member, s, c, orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg);
+		int result = dao.insertOrder(conn, randomCode, member, s, c, orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg, orderCate);
 		close(conn);
 		return result;
 	}

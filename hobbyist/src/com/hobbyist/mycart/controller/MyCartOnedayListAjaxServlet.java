@@ -56,8 +56,9 @@ public class MyCartOnedayListAjaxServlet extends HttpServlet {
 						html += "<td>" + od.getOnedayCate() + "</td>";
 						html += "<td><img src='" + request.getContextPath() + "/upload/oneday/images/" + od.getOnedayImage1() + "' width='110px'></td>";
 						html += "<td style='text-align: left;  padding-left: 15px;'>";
-						html += "<h3><a href='" + request.getContextPath() + "/shop/shopView?no=" + od.getOnedayNo() + "'>" + od.getOnedayName() + "</a></h3>" +  od.getOnedayInfo() + "</td>";
-						html += "<td>" + mc.getMyCartClassOption() + "</td>";
+						html += "<h3><a href='" + request.getContextPath() + "/oneday/onedayView?no=" + od.getOnedayNo() + "'>" + od.getOnedayName() + "</a></h3>" +  od.getOnedayInfo() + "</td>";
+						html += "<td>";
+						html += "<input type=\"hidden\" id=\"classOption\"name=\"classOption\" value=\"" + mc.getMyCartClassOption() + "\">" + mc.getMyCartClassOption() + "</td>";
 						html += "<td class='price'>" + od.getOnedayPrice() + "</td>";
 						html += "</tr>";
 					}
@@ -73,7 +74,7 @@ public class MyCartOnedayListAjaxServlet extends HttpServlet {
 		html += "<td colspan='3' id='priceResult' class='result'></td>";
 		html += "<td colspan='3' class='result' style='text-align: right;'>";
 		html += "<button type=\"button\" onclick=\"fn_delete(\'oneday\')\">선택삭제</button>";
-		html += "<button type='button' onclick='fn_order()'>선택주문</button>";
+		html += "<button type='button' onclick='fn_orderOneday()'>선택주문</button>";
 		html += "</td>";
 		html += "</tr>";
 		

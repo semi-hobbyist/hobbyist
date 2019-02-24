@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hobbyist.myclass.model.service.MyClassService;
-import com.hobbyist.myclass.model.vo.Lecture;
+import com.hobbyist.shop.model.service.ShopService;
+import com.hobbyist.shop.model.vo.Study;
 
 @WebServlet("/myClassView")
 public class MyClassViewServlet extends HttpServlet {
@@ -23,9 +23,9 @@ public class MyClassViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		List<Lecture> lecture = new MyClassService().selectLecture(no);
+		Study study = new ShopService().selectStudyOne(no);
 		
-		request.setAttribute("Lecture", lecture);
+		request.setAttribute("Study", study);
 		request.getRequestDispatcher("/views/myclass/myClassView.jsp").forward(request, response);
 	}
 

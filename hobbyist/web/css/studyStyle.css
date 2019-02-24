@@ -1,16 +1,16 @@
-section#lecture {
+section#study {
     width: 100%;
     text-align: center;
     background-color: #eaecf0;
 }
 
-section#lecture .lecture_content {
+section#study .study_content {
     display: inline-block;
     text-align: center;
     width: 990px;
     padding-top: 213px;
 }
-section#lecture .lecture_content .lecture_top {
+section#study .study_content .study_top {
     width: 970px;
     height: 50px;
     position: fixed;
@@ -24,14 +24,14 @@ section#lecture .lecture_content .lecture_top {
     overflow: hidden;
 }
 
-section#lecture .lecture_content .lecture_top ul {
+section#study .study_content .study_top ul {
     margin: 0;
     padding: 0;
     padding-top: 13px;
     list-style-type: none;
 }
 
-section#lecture .lecture_content .lecture_top ul li {
+section#study .study_content .study_top ul li {
 	vertical-align: top;
     display: inline-block;
     padding-left: 15px;
@@ -41,27 +41,35 @@ section#lecture .lecture_content .lecture_top ul li {
     height: 30px;
 }
 
-section#lecture .lecture_content .lecture_top ul li:nth-child(1) {
+section#study .study_content .study_top ul li:nth-child(1) {
     border: none;
 } 
 
-section#lecture .lecture_content .lecture_top ul li:hover {
+section#study .study_content .study_top ul li:hover {
     transition: 400ms;
 }
 
-section#lecture .lecture_content .lecture_center {
-    padding-top: 60px;
-    width: 970px;
+section#study .study_content .study_center {
+	margin-top: 50px;
+	margin-bottom: 60px;
+    padding-top: 10px;
+    width: 990px;
     text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-section#lecture .lecture_content .lecture_center table {
+section#study .study_content .study_center table {
 	display: inline-block;
     border-collapse: collapse;
     text-align: center;
 }
 
-section#lecture .lecture_content .lecture_center  table th {
-    height: 55px;
-    font-size: 17px;
+section#study .study_content .study_center table td:nth-child(1) {
+	border-right: 1px solid #dde1e6;
+}
+
+section#study .study_content .study_center table h3 {
+	margin: 0;
+	padding: 0;
 }

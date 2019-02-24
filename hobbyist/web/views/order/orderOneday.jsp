@@ -3,7 +3,7 @@
 
 <%
 	Member member = (Member)request.getAttribute("Member");
-	List<Shop> orderList = (List)request.getAttribute("OrderList");
+	List<Oneday> orderList = (List)request.getAttribute("OrderList");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
@@ -11,10 +11,10 @@
 <section id="order">
 	<div class="order_content">
 		<div class="myorder_banner">
-		<h3>주문하기</h3>
+		<h3>원데이 클래스 예약</h3>
 		</div>
 		<ul class="myorder_submenu">
-		<li onclick="location.href='#step01';">주문클래스 확인 →</li>
+		<li onclick="location.href='#step01';">예약클래스 확인 →</li>
 		<li onclick="location.href='#step02';">회원정보 입력 →</li>
 		<li onclick="location.href='#step03';">할인정보 입력 →</li>
 		<li onclick="location.href='#step04';">결제방법 선택</li>
@@ -22,8 +22,9 @@
 		<br>
 		<form name="orderFrm" action="<%= request.getContextPath() %>/order/orderInsert" method="POST">
 		<table>
+			<input type="hidden" name="orderOneday" value="oneday"/>
 			<tr>
-				<th class="tableLine" colspan="2" id="step01"><h3>주문클래스</h3></th>
+				<th class="tableLine" colspan="2" id="step01"><h3>원데이클래스 예약</h3></th>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -42,16 +43,16 @@
 									<th style="width: 120px;">가격</th>
 							</tr>
 						<% 
-								for(Shop s : orderList) {
+								for(Oneday oneday : orderList) {
 						%>
 							<tr>
-								<td><%= s.getShopCate() %></td>
-								<td><img src="<%= request.getContextPath() %>/upload/shop/images/<%= s.getShopImage1() %>" width="150px"></td>
-								<td><%= s.getShopName() %></td>
-								<td><input type="hidden" name="classOptions" value="<%= s.getShopOption1() %>"><%= s.getShopOption1() %></td>
-								<td><% price=s.getShopPrice(); prices += price; %><%= s.getShopPrice() %></td>
+								<td><%= oneday.getOnedayCate() %></td>
+								<td><img src="<%= request.getContextPath() %>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="150px"></td>
+								<td><%= oneday.getOnedayName() %></td>
+								<td><input type="hidden" name="classOptions" value="<%= oneday.getOnedayOption1() %>"><%= oneday.getOnedayOption1() %></td>
+								<td><% price=oneday.getOnedayPrice(); prices += price; %><%= oneday.getOnedayPrice() %></td>
 							</tr>
-							<input type="hidden" name="classNos" value="<%= s.getShopNo() %>"/>
+							<input type="hidden" name="classNos" value="<%= oneday.getOnedayNo() %>"/>
 						<%
 								}}
 						%>
@@ -59,9 +60,15 @@
 						</table>
 				</td>
 			</tr>
+			
+			
+			
 			<tr>
 				<th class="tableLine" colspan="2" id="step02"><h3>회원정보</h3></th>
 			</tr>
+			
+			
+			
 			<tr>
 				<input type="hidden" name="member" value="<%= member.getMemberEmail() %>"/>
 				<th style="width: 200px;">주문자 이름</th>
@@ -75,58 +82,21 @@
 				<th>주문자 전화번호</th>
 				<td><%= member.getMemberPhone() %></td>
 			</tr>
+			
+			
+			
 			<tr>
-				<th>주문자 주소</th>
-				<td>MEMBER 테이블에 주소 컬럼이 없음...</td>
+				<th class="tableLine" colspan="2"><h3>원데이클래스 참석자 정보</h3>주문자와 동일함 <input type="checkbox" name="sameInfo"/></th>
 			</tr>
 			<tr>
-				<th class="tableLine" colspan="2"><h3>수령인 정보</h3>주문자와 동일함 <input type="checkbox" name="sameInfo"/></th>
-			</tr>
-			<tr>
-				<th>수령인 이름</th>
+				<th>참석인 성함</th>
 				<td><input type="text" name="order_add_name" placeholder="이름을 작성해주세요"></td>
 			</tr>
 			<tr>
-				<th>수령인 전화번호</th>
+				<th>참석인 전화번호</th>
 				<td><input type="text" name="order_add_phone" placeholder="전화번호를 작성해주세요"></td>
 			</tr>
-			<tr>
-				<th>수령인 주소</th>
-				<td><input type="text" name="order_add_address" placeholder="주소를 작성해주세요"></td>
-			</tr>
-			<tr>
-				<th>배송 메세지</th>
-				<td><select name="order_msg">
-					<option>택배기사님에게 전달할 메세지 선택</option>
-					<option value="문 앞">문 앞</option>
-					<option value="직접 받고 부재 시 문 앞">직접 받고 부재 시 문 앞</option>
-					<option value="경비실">경비실</option>
-					<option value="택배함">택배함</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th class="tableLine" colspan="2"  id="step03"><h3>할인정보 입력</h3></th>
-			</tr>
-			<tr>
-				<th>가용포인트</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>사용할 포인트</th>
-				<td><input type="number" name="usePoint"/></td>
-			</tr>
-			<tr>
-				<th>예상적립포인트</th>
-				<td>
-					<% 
-						int resultPoint = 0;
-						for(Shop s : orderList) {
-							resultPoint += s.getShopPoint();
-						}
-					%>
-						<input type="hidden" name="addPoint" value="<%= resultPoint %>"/><%= resultPoint %>
-				</td>
-			</tr>
+			
 			<tr>
 				<th class="tableLine" colspan="2"  id="step04"><h3>결제방법 선택</h3></th>
 			</tr>
@@ -149,8 +119,6 @@
 						  <h3>카카오페이</h3>
 						  카카오페이 결제 <br>
 						  하단에 [결제하기] 버튼을 눌러주세요
-						  <br>
-						  <button type="button" onclick="fn_iampay()">결제하기</button>
 					</div>
 					
 					<!-- // 카드결제창 모달 -->
@@ -159,7 +127,7 @@
 						  <table>
 						  	<tr>
 						  		<th style="width: 150px">상품명</th>
-						  		<td style="width: 500px"><%= orderList.get(0).getShopName() %>포함 <%= orderList.size() %>건</td>
+						  		<td style="width: 500px"><%= orderList.get(0).getOnedayName() %>포함 <%= orderList.size() %>건</td>
 						  	</tr>
 						  	<tr>
 						  		<th>총 결제금액</th>
@@ -201,6 +169,9 @@
 						  <h3>휴대폰결제</h3>
 					</div>
 				</th>
+			</tr>
+			<tr>
+				<th class="tableLine" colspan="2"  id="step05"><button type="button" onclick="fn_iampay()">결제하기</button></th>
 			</tr>
 		</table>
 			<input type="hidden" id="classNo" name="classNo"/>
@@ -254,7 +225,7 @@
 			    pg: "kakao",
 			    pay_method: "card",
 			    merchant_uid: "<%= date %>",
-			    name: "<%= orderList.get(0).getShopName() %>포함 <%= orderList.size()%> 건",
+			    name: "<%= orderList.get(0).getOnedayName() %>포함 <%= orderList.size()%> 건",
 			    amount: "<%= prices %>",
 			    buyer_email: "<%= logginMember.getMemberEmail()%>",
 			    buyer_name: "<%= logginMember.getMemberName() %>",

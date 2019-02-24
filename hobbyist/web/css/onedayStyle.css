@@ -403,7 +403,16 @@ section#onedayView .onedayView_content .view_right .view_top_left {
     display: inline-block;
     vertical-align: top;
     width: 530px;
-    height: 300px;
+}
+
+section#onedayView .onedayView_content .view_right .view_top_left b {
+	font-size: 18px;
+	margin-right: 15px;
+	background-color: #d5ddea;
+}
+
+section#onedayView .onedayView_content .view_right .view_top_left img {
+	margin-top: 20px;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right {
@@ -439,7 +448,7 @@ section#onedayView .onedayView_content .view_right .view_top_right table {
 
 section#onedayView .onedayView_content .view_right .view_top_right table td {
     width: 200px;
-    height: 30px;
+    height: 36px;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right table .tdclass {

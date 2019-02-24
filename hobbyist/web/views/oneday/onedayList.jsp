@@ -152,7 +152,7 @@
 						<li class="title">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
 							<%= oneday.getOnedayName() %></a>
-							<p><%= oneday.getOnedayInfo()%></p>
+							<p>장소/시간 : <%= oneday.getOnedayAddress() %></p>
 						</li>
 						<li>
 								가격 : <%= oneday.getOnedayPrice() %>원<br><br>

@@ -14,21 +14,11 @@
             <div class="footer_top_center">
                 <h3>SITE MENU</h3>
                     <ul>
-                        <li>
-                            공지사항
-                        </li>
-                        <li onclick="location.href='<%= request.getContextPath()%>/views/shop/shopList'">
-                            클래스샵
-                        </li>
-                        <li>
-                            원데이클래스
-                        </li>
-                        <li>
-                            어워드
-                        </li>
-                        <li>
-                            커뮤니티
-                        </li>
+                        <li onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">공지사항 </li>
+                        <li onclick="location.href='<%= request.getContextPath()%>/views/shop/shopList'">클래스샵</li>
+                        <li onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">원데이클래스</li>
+                        <li onclick="location.href='<%= request.getContextPath()%>/award/awardList'">어워드</li>
+                        <li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">커뮤니티</li>
                     </ul>
             </div>
             <div class="footer_top_right">

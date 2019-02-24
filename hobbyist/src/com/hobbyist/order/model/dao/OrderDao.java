@@ -99,7 +99,7 @@ public class OrderDao {
 	}
 
 	public int insertOrder(Connection conn, String randomCode, String member, String s, String c, String orderType,
-			String orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg) {
+			String orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
@@ -115,6 +115,7 @@ public class OrderDao {
 			pstmt.setString(8, orderAddPhone);
 			pstmt.setString(9, orderAddAddress);
 			pstmt.setString(10, orderMsg);
+			pstmt.setString(11, orderCate);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

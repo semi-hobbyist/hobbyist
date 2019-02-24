@@ -200,4 +200,26 @@ public class OnedayService {
 		return list;
 	}
 
+	public int updateOrderOneday(int classNo) {
+		Connection conn = getConnection();
+		// 모집정원 먼저 조회하기
+		int maxPeople = dao.selectMaxPeople(conn, classNo);
+		// 현재예약한 인원 불러오기
+		int currentPeople = dao.selectCurrentPeople(conn, classNo);
+		
+		int result = 0;
+		if(currentPeople<maxPeople) {
+			// 현재예약인원 < 모집정원, 예약인원 증가
+			 dao.updateOrderOneday(conn, classNo);
+			 result = 1;
+		} else {
+			// 아니라면, 예약가능상태 예약불가로 바꾸기
+			dao.updateReservation(conn, classNo);
+			result = -1;
+		}
+		
+		close(conn);
+		return result;
+	}
+
 }

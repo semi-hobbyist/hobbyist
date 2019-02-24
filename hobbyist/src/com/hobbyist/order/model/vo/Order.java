@@ -15,10 +15,17 @@ public class Order {
 	private String orderAddAddress;
 	private String orderMsg;
 	private Timestamp orderDate;
+	private String orderCate;
 	
+	public Order() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
 	public Order(int orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
 			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg,
-			Timestamp orderDate) {
+			Timestamp orderDate, String orderCate) {
 		super();
 		this.orderNo = orderNo;
 		this.orderMember = orderMember;
@@ -31,7 +38,10 @@ public class Order {
 		this.orderAddAddress = orderAddAddress;
 		this.orderMsg = orderMsg;
 		this.orderDate = orderDate;
+		this.orderCate = orderCate;
 	}
+
+
 
 	public int getOrderNo() {
 		return orderNo;
@@ -120,6 +130,20 @@ public class Order {
 	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
+
+
+
+	public String getOrderCate() {
+		return orderCate;
+	}
+
+
+
+	public void setOrderCate(String orderCate) {
+		this.orderCate = orderCate;
+	}
+	
+	
 	
 	
 }

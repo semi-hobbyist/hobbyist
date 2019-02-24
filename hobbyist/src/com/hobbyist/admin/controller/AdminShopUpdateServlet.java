@@ -73,7 +73,6 @@ public class AdminShopUpdateServlet extends HttpServlet {
 			
 			// ------------------------ 강좌 등록
 			
-			
 			String msg = "";
 			String loc = "";
 			String view = "/views/common/msg.jsp";

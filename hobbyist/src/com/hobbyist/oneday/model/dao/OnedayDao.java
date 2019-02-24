@@ -813,4 +813,91 @@ public class OnedayDao {
 		return list;
 	}
 
+	
+	// 원데이클래스 주문완료 시, 모집정원보다 크지 않으면 예약인원 1증가
+	public int updateOrderOneday(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateOrderOneday");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 예약가능한 인원 수 가져오기 (모집정원)
+	public int selectMaxPeople(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("selectMaxPeople");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	// 현재 예약된 인원수 가져오기
+		public int selectCurrentPeople(Connection conn, int classNo) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int result = 0;
+			
+			try {
+				String sql = prop.getProperty("selectCurrentPeople");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, classNo);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			
+			return result;
+		}
+	
+	// 모집정원과 현재인원이 같다면 ONEDAY_STATUS = 'N' (예약불가) 로 바꾸기
+	public int updateReservation(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateReservation");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

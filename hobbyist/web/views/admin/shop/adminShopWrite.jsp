@@ -212,26 +212,34 @@
 			<h3>강좌등록</h3>
 			<table>
 				<tr>
-					<th style="width: 180px;">강좌타이틀</th>
-					<td style="width: 620px; text-align: left;" ><input type="text" name="lecture_title" style="width: 450px;"/></td>
-				</tr>
-				<tr>
 					<th>강좌 한줄소개</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;"/></td>
+					<td style="text-align: left;"><input type="text" name="study_subtitle" style="width: 450px;"/></td>
 				</tr>
 				<tr>
 					<th>강좌 영상</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
+					<td style="text-align: left;"><input type="text" name="study_video" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
 				</tr>
 				<tr>
 					<th>강좌내용</th>
-					<td><textarea name="lecture_content" id="editor6"></textarea></td>
+					<td><textarea name="study_content" id="editor6"></textarea></td>
 					<script>
 							// Replace the <textarea id="editor1"> with a CKEditor
 							// instance, using default configuration.
 							CKEDITOR.replace( 'editor6' );
 							CKEDITOR.add
 					</script>
+				</tr>
+				<tr>
+					<th>강좌 이미지 1</th>
+					<td style="text-align: left;"><input type="file" name="study_image1" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
+				</tr>
+				<tr>
+					<th>강좌 이미지 2</th>
+					<td style="text-align: left;"><input type="file" name="study_image2" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
+				</tr>
+				<tr>
+					<th>강좌 이미지 2</th>
+					<td style="text-align: left;"><input type="file" name="study_image3" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
 				</tr>
 			</table>
 			<button type="submit">클래스 등록</button>

@@ -1,6 +1,7 @@
 package com.hobbyist.member.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Member implements Serializable{
 
@@ -17,7 +18,7 @@ public class Member implements Serializable{
 	private String memberPhone;
 	private String memberOriginalImage;
 	private String memberRenamedImage;
-	private String memberEnrolldate;
+	private Date memberEnrolldate;
 	private String memberGrade;
 	private String memberWriterYN;
 	private String memberStatus;
@@ -28,7 +29,7 @@ public class Member implements Serializable{
 
 	public Member(int memberNo, String memberEmail, String memberPassword, String memberNickname, String memberName,
 			String memberBirthday, String memberPhone, String memberOriginalImage, String memberRenamedImage,
-			String memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus) {
+			Date memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus) {
 		super();
 		this.memberNo = memberNo;
 		this.memberEmail = memberEmail;
@@ -117,11 +118,11 @@ public class Member implements Serializable{
 		this.memberRenamedImage = memberRenamedImage;
 	}
 
-	public String getMemberEnrolldate() {
+	public Date getMemberEnrolldate() {
 		return memberEnrolldate;
 	}
 
-	public void setMemberEnrolldate(String memberEnrolldate) {
+	public void setMemberEnrolldate(Date memberEnrolldate) {
 		this.memberEnrolldate = memberEnrolldate;
 	}
 
@@ -162,5 +163,4 @@ public class Member implements Serializable{
 				+ ", memberGrade=" + memberGrade + ", memberWriterYN=" + memberWriterYN + ", memberStatus="
 				+ memberStatus + "]";
 	}
-	
 }

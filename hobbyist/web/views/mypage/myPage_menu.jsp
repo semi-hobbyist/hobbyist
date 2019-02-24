@@ -16,7 +16,7 @@
                <div class="memberSimpleProfileNickname"><%= logginMember.getMemberNickname() %></div>
                <div class="memberSimpleProfile">
                   가입일<br>
-                  <%= logginMember.getMemberEnrolldate().substring(0, 10) %>
+                  <%= logginMember.getMemberEnrolldate() %>
                </div>
             </div>
          </div>

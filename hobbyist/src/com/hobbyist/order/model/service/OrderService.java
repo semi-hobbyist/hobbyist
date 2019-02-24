@@ -86,6 +86,14 @@ public class OrderService {
 			close(conn);
 			return list;
 		}
+
+
+		public List<Order> inCome() {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().inCome(conn);
+			close(conn);
+			return list;
+		}
 		
 /*		// 높은가격순
 		public List<Order> descPrice(String keyword, int cPage, int numPerPage) {

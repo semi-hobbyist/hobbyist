@@ -298,5 +298,30 @@ public class OrderDao {
 		}
 		return list;
 	}
+
+	public List<Order> inCome(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+
+		try {
+			String sql = prop.getProperty("inCome");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Order order = new Order();
+				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderPrice(rs.getInt("order_price"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 }

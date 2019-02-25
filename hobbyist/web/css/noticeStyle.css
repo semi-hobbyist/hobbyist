@@ -766,7 +766,7 @@
     outline: none;
 }
 
-.fileImgDelBtn {
+#noticeWrite .fileImgDelBtn {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -784,8 +784,6 @@
     justify-content: center;
     align-items: center;
 }
-
-
 
 #noticeWrite .fileImgDelBtn:hover {
     transition: 400ms;
@@ -1275,6 +1273,10 @@
     height: 305px;
 }
 
+#noticeModify .noticeWriteFile {
+    position: relative;
+}
+
 #noticeModify .noticeWriteFile>div {
     min-height: 50px;
 }
@@ -1382,6 +1384,7 @@
 
 
 #noticeModify .inputImageBox {
+    position: relative;
     width: 600px;
     height: 250px;
 }
@@ -1551,3 +1554,56 @@
 }
 
 
+
+#noticeModify .fileImgDelBtn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0px;
+    right: 0px;
+    font-size: 16px;
+    font-weight: 700;
+	background-color: rgb(199, 136, 136);
+	border-radius: 10px;
+	color: white;
+	border: none;
+	outline: none;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noticeModify .fileImgDelBtn:hover {
+    transition: 400ms;
+    color: black;
+    border: 1px solid #475770;
+	background-color: white;
+}
+
+#noticeModify .fileDelBtn {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #475770;
+    color: black;
+    outline: none;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#noticeModify .fileDelBtn:hover {
+    transition: 400ms;
+    color: white;
+	background-color: #475770;
+}

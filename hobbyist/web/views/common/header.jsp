@@ -12,7 +12,6 @@
 <head>
     <meta charset="UTF-8">
     <title>H O B B Y I S T</title>
-
     <!-- ------- 페이지 별 CSS 추가 -------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">

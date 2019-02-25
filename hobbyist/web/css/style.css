@@ -94,10 +94,10 @@ header #header-top .top ul li {
     text-align: center;
     margin-left: 3px;
     border: 1px solid #c2c2c2;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: #252525;
     font-size: 12px;
     letter-spacing: -0.5px;
@@ -106,7 +106,7 @@ header #header-top .top ul li {
 header #header-top .top ul li#admin {
 	padding-left: 15px;
 	padding-right: 15px;
-	background-color: #3e4b6c;
+	background-color: #3b4f6a;
 	color: #fff;
 }
 
@@ -146,7 +146,7 @@ header #header-top .top ul img {
 header #header-top .top ul li:hover {
     transition: 400ms;
     color: #fff;
-    background-color: #252525;
+    background-color: #3b4f6a;
 }
 
 header #header-middle {
@@ -333,7 +333,6 @@ header #header-bottom .sub#menuAll .sub_content ul li.all_li {
     width: 160px;
     height: 270px;
     padding-bottom: 6px;
-    cursor: pointer;
     border-left: 1px solid #eee;
 }
 
@@ -352,13 +351,16 @@ header #header-bottom .sub#menuAll .sub_content ul li.all_li ul {
 header #header-bottom .sub#menuAll .sub_content ul li.all_li ul li {
 	vertical-align: top;
 	padding-top: 6px;
-	height: 30px;
+	height: 25px;
+	cursor: pointer;
 	border: none;
 }
 
 header #header-bottom .sub#menuAll .sub_content ul li.all_li ul li:hover {
 	background-color: #eee;
-	transition:200ms;
+	transition:500ms;
+	background-image: url("../images/top_sub_hover.png");
+	background-size: 100%;
 }
 
 

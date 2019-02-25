@@ -12,8 +12,8 @@ Web Develop Semi-Project, Hobbyist
 : 커뮤니티(Community) - 자유게시판, 자주묻는질문, 1:1문의게시판 및 커뮤니티 관리자페이지
 
 - 박성화
-: 클래스샵(Online-Shop), 원데이클래스(Offline-Shop), 내클래스(Online-Video Lecture)
-: 장바구니(Shopping basket), 주문(Order Product), 결제(Payment), 관리자페이지
+: 클래스샵(Online-Shop), 원데이클래스(Offline-Shop), 내클래스(Online-Video Lecture)<Br>
+장바구니(Shopping basket), 주문(Order Product), 결제(Payment), 관리자페이지
 
 - 한윤석
 : 작가관리(Writer), 공지사항 및 이벤트(Notice & Events), 관리자페이지

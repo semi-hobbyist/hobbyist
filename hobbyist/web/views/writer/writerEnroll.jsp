@@ -42,7 +42,7 @@
 					<div class="qNumber"><span>3</span></div>
 					<div class="qContent">
 						<div class="qText">
-							<div class="qTitle">하비풀 작가가 되고 싶은 이유가 무엇인가요?</div>
+							<div class="qTitle">하비스트 작가가 되고 싶은 이유가 무엇인가요?</div>
 						</div>
 						<textarea class="qTextarea" name="writerReason" placeholder="여기에 답변을 입력하십시오..."
 							rows="1"></textarea>
@@ -89,10 +89,10 @@
 					<div class="qNumber"><span>5</span></div>
 					<div class="qContent">
 						<div class="qText">
-							<div class="qTitle">하비풀 온라인 클래스 신청하기</div>
+							<div class="qTitle">하비스트 온라인 클래스 신청하기</div>
 							<div class="qEx">
 								작가님의 선호 일정에 맞추어
-								하비풀 하반기 온라인 클래스 제작 기간과 갯수를 '모두' 선택해주세요.
+								하비스트 하반기 온라인 클래스 제작 기간과 갯수를 '모두' 선택해주세요.
 								가능한 스케쥴을 모두 적어주시면 협의를 통해 확정됩니다.
 
 								기존에 작업하신 작품 또는 오프라인 클래스로 진행하시던 작품으로
@@ -107,7 +107,7 @@
 					<div class="qNumber"><span></span></div>
 					<div class="qContent">
 						<div class="qText">
-							<div class="qTitle">하비풀 작가로 선정되면, 기획안 작성(2주 기한)과 영상 촬영(1일)에 참여가 필요합니다.</div>
+							<div class="qTitle">하비스트 작가로 선정되면, 기획안 작성(2주 기한)과 영상 촬영(1일)에 참여가 필요합니다.</div>
 						</div>
 						<div class="buttonYNBox">
 							<div>
@@ -124,7 +124,7 @@
 					<div class="qContent">
 						<div class="qText">
 							<div class="qTitle">
-								하비풀 클래스를 제작하면, '디자인 라이센스' 계약에 따라 '러닝 개런티'가 지급됩니다.
+								하비스트 클래스를 제작하면, '디자인 라이센스' 계약에 따라 '러닝 개런티'가 지급됩니다.
 								각 클래스 판매금액의 3%씩 누적되어 정산되며, 판매량이 특정 구간을 달성할 때마다 인센티브를 드립니다.
 							</div>
 						</div>
@@ -154,7 +154,7 @@
 						<div class="qText">
 							<div class="qTitle">클래스 예시 만들어보기</div>
 							<div class="qEx">
-								작가님의 작품 중 하비풀과 함께 온라인 클래스로 만들어보고 싶은 제품을 선택하여 뽐내주세요.
+								작가님의 작품 중 하비스트과 함께 온라인 클래스로 만들어보고 싶은 제품을 선택하여 뽐내주세요.
 							</div>
 						</div>
 						<button type="button" id="qBoxBtn8" class="buttonYN">계속</button>
@@ -318,7 +318,7 @@
 					<div class="qNumber"><span>16</span></div>
 					<div class="qContent">
 						<div class="qText">
-							<div class="qTitle">마지막으로 하비풀에게 제안 혹은 하고싶은 말이 있다면 남겨주세요.</div>
+							<div class="qTitle">마지막으로 하비스트에게 제안 혹은 하고싶은 말이 있다면 남겨주세요.</div>
 						</div>
 						<textarea class="qTextarea" name="writerFinalPoint" placeholder="여기에 답변을 입력하십시오..."
 							rows="1"></textarea>
@@ -434,13 +434,13 @@
 							</div>
 							<div class="wEP_ScheduleYN wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">
-									하비풀 작가로 선정되면, 기획안 작성(2주 기한)과 영상 촬영(1일)에 참여가 필요합니다.
+									하비스트 작가로 선정되면, 기획안 작성(2주 기한)과 영상 촬영(1일)에 참여가 필요합니다.
 								</div>
 								<div id="EP_writerScheduleYN" class="wEnrollPreVal"></div>
 							</div>
 							<div class="wEP_ContractYN wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">
-									하비풀 클래스를 제작하면, '디자인 라이센스' 계약에 따라 '러닝 개런티'가 지급됩니다. 각 클래스 판매금액의 3%씩 누적되어 정산되며, 판매량이 특정
+									하비스트 클래스를 제작하면, '디자인 라이센스' 계약에 따라 '러닝 개런티'가 지급됩니다. 각 클래스 판매금액의 3%씩 누적되어 정산되며, 판매량이 특정
 									구간을
 									달성할 때마다 인센티브를 드립니다.
 								</div>

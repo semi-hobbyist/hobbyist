@@ -92,7 +92,6 @@
                     <li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'">마이페이지</li>
                     <li onclick="location.href='<%= request.getContextPath() %>/member/LogoutMember'">로그아웃</li>
                     <% } %>
-                    <li onclick="location.href='#'">고객센터</li>
                 </ul>
             </div>
         </div>
@@ -193,41 +192,57 @@
                     <ul>
                     <li class="all_li">
                   		<ul>
+                        	<li>로그인</li>
+                        	<li>회원가입</li>
+                        	<li>마이페이지</li>
                         	<li></li>
+                        	<li>내클래스</li>
+                        	<li>취미바구니</li>
                         </ul>
                     </li>
                     <li  class="all_li">
                         <ul>
-                        	<li>공지사항/이벤트</li>
+                        	<li onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">공지사항/이벤트</li>
                         </ul>
                     </li>
                     <li class="all_li">
                         <ul>
-                        	<li>전체보기</li>
-                        	<li>가죽공예</li>
-                        	<li>마크라메</li>
-                        	<li>프랑스자수</li>
-                        	<li>캔들</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopList'">전체보기</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=가죽공예'">가죽공예</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=위빙'">위빙</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=수채화'">수채화</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=마크라메'">마크라메</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=뜨개질'">뜨개질</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=프랑스자수'">프랑스자수</li>
                         </ul>
                     </li>
                     <li class="all_li">
                        	<ul>
-                        	<li>전체보기</li>
-                        	<li>서울지역</li>
-                        	<li>경기지역</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayCateList'">전체보기</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayCateList?cate=서울지역'">서울지역</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayCateList?cate=경기지역'">경기지역</li>
                         </ul>
                     </li>
                     <li class="all_li">
                         <ul>
-                        	<li>어워드</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/award/awardList'">어워드</li>
                         </ul>
                     </li>
                     <li class="all_li">
                         <ul>
-                        	<li>자유게시판</li>
+                        	<li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">자유게시판</li>
                         	<li>리뷰/후기</li>
-                        	<li>자주묻는질문</li>
-                        	<li>1:1 문의</li>
+                        	<li onclick="location.href='<%=request.getContextPath()%>/board/boardFAQ'">자주묻는질문</li>
+                        	<li onclick="directQuestion()" style="cursor: pointer;"> · 1:1 문의</li>
+							<script>
+								function directQuestion() {
+									<%if(logginMember != null) {%>
+									location.href='<%=request.getContextPath()%>/board/boardDirectQuestion?NickName=<%=logginMember.getMemberNickname()%>';
+									<% } else { %>
+										alert('로그인 후 이용가능합니다.');
+									<% } %>
+								}
+							</script>
                         </ul>
                     </li>
                 </ul>
@@ -402,7 +417,7 @@
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                   	menuAll.css({"transition": "400ms", "height": "200px" });
+                   	menuAll.css({"transition": "400ms", "height": "250px" });
                     notice.css({"transition": "400ms", "height": "0px" });
                     classshop.css({"transition": "400ms", "height": "0px"});
                     oneday.css({"transition": "400ms", "height": "0px" });

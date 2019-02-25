@@ -26,6 +26,7 @@
     position: fixed;
 	z-index: 9100;
 	font-size: 14px;
+	display: none;
 }
 
 #loginSection .container {

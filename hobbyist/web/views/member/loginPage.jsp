@@ -177,7 +177,8 @@
 		})
 		$("#loginSection").on("click", function () {
 			if (closeFlag) {
-				location.href = "<%= request.getContextPath()%>/member/loginPage";
+				// location.href = "<%= request.getContextPath()%>/member/loginPage";
+				$("#loginSection").css("display","none");
 			}
 		})
 	});

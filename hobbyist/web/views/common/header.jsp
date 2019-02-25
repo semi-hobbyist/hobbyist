@@ -92,7 +92,7 @@
             <div class="top">
                 <ul>
                     <% if(logginMember==null) {%>
-                    <li onclick="location.href='<%= request.getContextPath() %>/member/loginPage?loginBtn=1'">로그인/회원가입
+                    <li onclick="fn_loginPageView()">로그인/회원가입
                     </li>
                     <% } else { %>
                     <span><a href="#"><img alt="프로필 이미지"
@@ -596,8 +596,17 @@
          </script>
     </header>
 
-    <!-- 로그인 페이지 연결 -->
 
+	<%@ include file="/views/member/loginPage.jsp" %>
+	
+	<script>
+	function fn_loginPageView() {
+		$("#loginSection").css("display","flex");
+	}
+	
+	</script>
+	<%-- 
+    <!-- 로그인 페이지 연결 -->
     <%
 	// 로그인 화면창 분기 처리
 	boolean loginFlag = false;
@@ -606,5 +615,5 @@
 	}
 	%>
     <% if(loginFlag==true) { %>
-    <%@ include file="/views/member/loginPage.jsp" %>
     <% }; %>
+     --%>

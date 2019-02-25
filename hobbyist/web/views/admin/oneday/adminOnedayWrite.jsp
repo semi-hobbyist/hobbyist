@@ -73,7 +73,7 @@
 				</tr>
 				<tr>
 					<th>작가</th>
-					<td  style="text-align: left;"  id="searchWriterTd"><input type="text" id="oneday_writer" name="oneday_writer" placeholder="작가 (닉네임)" autocomplete="off"><button type="button" onclick="fn_writerSearch()">찾기</button></td>
+					<td  style="text-align: left;"  id="searchWriterTd"><input type="text" id="oneday_writer" name="oneday_writer" placeholder="작가 (닉네임)" autocomplete="off"></td>
 					<script>
 						function fn_writerSearch() {
 							var searchWriterTd = $('#searchWriterTd');

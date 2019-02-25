@@ -288,6 +288,7 @@ public class OrderDao {
 				order.setOrderMsg(rs.getString("order_msg"));
 				order.setOrderDate(rs.getTimestamp("order_date"));
 				order.setOrderCate(rs.getString("order_cate"));
+				order.setOrderRnum(rs.getInt("order_rnum"));
 				list.add(order);
 			}
 		} catch (SQLException e) {
@@ -322,6 +323,23 @@ public class OrderDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public int cancleOrder(Connection conn, int code) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("cancleOrder");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, code);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 }

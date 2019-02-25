@@ -25,9 +25,9 @@ public class AwardService {
 
 	public int selectCount() {
 		Connection conn = getConnection();
-		int totalCount = dao.selectCount(conn);
+		int result = dao.selectCount(conn);
 		close(conn);
-		return totalCount;
+		return result;
 	}
 
 	public int insertAward(Award a) {
@@ -74,7 +74,7 @@ public class AwardService {
 	public Award selectOne(int awardNo, boolean hasRead) {
 		Connection conn = getConnection();
 		Award a = dao.selectOne(conn, awardNo);
-
+System.out.println(hasRead);
 		if (a != null && !hasRead) {
 			int result = dao.increReadCount(conn, awardNo);
 			if (result > 0)
@@ -122,10 +122,8 @@ public class AwardService {
 	}
 
 	public void increLikeCountsub(int awardNo) {
-		// TODO Auto-generated method stub
 		Connection conn = getConnection();
 		int result = dao.increLikeCountsub(conn, awardNo);
-
 		if (result > 0) commit(conn);
 		else rollback(conn);
 		close(conn);
@@ -151,5 +149,21 @@ public class AwardService {
 		
 		
 	}
+	public List<Award> selectSearchList(int cPage,int numPerPage,String searchType, String searchKeyword){
+		Connection conn=getConnection();
+		List<Award> list=dao.selectSearchList(conn,cPage,numPerPage,searchType,searchKeyword);
+		close(conn);
+		return list;
+		
+	}
+
+	public int selectSearchCount(String searchType, String searchKeyword) {
+		Connection conn=getConnection();
+		int totalCount = dao.selectSearchCount(conn, searchType, searchKeyword);
+		close(conn);
+		
+		return totalCount;
+	}
+	
 
 }

@@ -9,7 +9,7 @@ section#oneday .oneday_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 170px;
+    padding-top: 150px;
 }
 
 section#oneday .oneday_content #oneday_left {
@@ -224,6 +224,12 @@ section#oneday .oneday_content #oneday_right .oneday_middle .item {
     text-align: center;
     transition: 400ms;
     border: 2px solid #fff;
+}
+
+section#oneday .oneday_content #oneday_right .oneday_middle .item #img {
+	width: 270px;
+	height: 160px;
+	overflowY: hidden;
 }
 
 section#oneday .oneday_content #oneday_right .oneday_middle .item p {

@@ -132,7 +132,7 @@ public class OnedayCateListAjaxServlet extends HttpServlet {
 			html += "<li>" + list.get(i).getOnedayCate() + "</li>";
 			html += "<li>";
 			html += "<a href='" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "'>";
-			html += "<img src='" +request.getContextPath() + "/upload/oneday/images/" + list.get(i).getOnedayImage1() + "' width='250px'></a></li>";
+			html += "<div id=\"img\"><img src='" +request.getContextPath() + "/upload/oneday/images/" + list.get(i).getOnedayImage1() + "' width='250px'></a></div></li>";
 			html += "<li class=\"title\">";
 			html += "<a href='" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "'>";
 			html +=	list.get(i).getOnedayName() + "</a>";

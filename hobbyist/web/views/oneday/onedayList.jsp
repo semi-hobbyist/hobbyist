@@ -149,7 +149,7 @@
 						<li>
 							<div id="img">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
-							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="250px"></a></div></li>
+							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="270px"></a></div></li>
 						<li class="title">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
 							<%= oneday.getOnedayName() %></a>

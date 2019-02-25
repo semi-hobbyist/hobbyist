@@ -18,9 +18,9 @@
 				<%= oneday.getOnedayNo() %>
 			</div>
 			<div class="view_top_left">
-			<b><%= oneday.getOnedayName() %></b><%= oneday.getOnedayInfo() %><br>
+			<b><%= oneday.getOnedayName() %></b><Br><%= oneday.getOnedayInfo() %><br>
 			<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
-				 width="500px"></div>
+				 width="400px"></div>
 			<div class="view_top_right">
 				<table>
 					<tr>

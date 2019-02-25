@@ -4,6 +4,7 @@ import static common.JdbcTemplate.close;
 
 import java.io.FileReader;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,6 @@ import java.util.Properties;
 
 import com.hobbyist.notice.model.vo.Notice;
 import com.hobbyist.writer.model.dao.WriterDao;
-import com.hobbyist.writer.model.vo.WriterEnroll;
 
 public class NoticeDao {
 
@@ -38,10 +38,11 @@ public class NoticeDao {
 			pstmt.setString(2, no.getNoticeTitle());
 			pstmt.setString(3, no.getNoticeWriter());
 			pstmt.setString(4, no.getNoticeContent());
-			pstmt.setString(5, no.getNoticeFilenameOriginal());
-			pstmt.setString(6, no.getNoticeFilenameRenamed());
-			pstmt.setString(7, no.getNoticeImgnameOriginal());
-			pstmt.setString(8, no.getNoticeImgnameRenamed());
+			pstmt.setDate(5, no.getNoticeDate());
+			pstmt.setString(6, no.getNoticeFilenameOriginal());
+			pstmt.setString(7, no.getNoticeFilenameRenamed());
+			pstmt.setString(8, no.getNoticeImgnameOriginal());
+			pstmt.setString(9, no.getNoticeImgnameRenamed());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -298,6 +299,130 @@ public class NoticeDao {
 		}
 		return list;
 	}
+
+	// (예약된)검색결과에 다른 리스트 갯수 가져오기
+	public int searchCountPre(Connection conn, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = prop.getProperty("searchCountPre");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// (예약된)리스트 최근 등록일순으로 가져오기
+	public List<Notice> selectAllPre(Connection conn, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("selectAllPre");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	// (예약된)검색결과에 다른 리스트 갯수 가져오기
+	public int searchCountSortPre(Connection conn, String sort, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = prop.getProperty("searchCountSortPre");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sort);
+			pstmt.setString(2, "%" + keyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// (예약된)리스트 최근 등록일순으로 가져오기
+	public List<Notice> selectSortPre(Connection conn, String sort, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("selectSortPre");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sort);
+			pstmt.setString(2, "%" + keyword + "%");
+			pstmt.setInt(3, (cPage-1)*numPerPage+1);
+			pstmt.setInt(4, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 	public Notice selectOne(Connection conn, int noticeNo) {
 		PreparedStatement pstmt = null;
@@ -416,5 +541,50 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public int updateNotice(Connection conn, Notice no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		System.out.println(no.getNoticeDate());
+		String sql = prop.getProperty("updateNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no.getNoticeTitle());
+			pstmt.setString(2, no.getNoticeContent());
+			pstmt.setDate(3, no.getNoticeDate());
+			pstmt.setString(4, no.getNoticeFilenameOriginal());
+			pstmt.setString(5, no.getNoticeFilenameRenamed());
+			pstmt.setString(6, no.getNoticeImgnameOriginal());
+			pstmt.setString(7, no.getNoticeImgnameRenamed());
+			pstmt.setInt(8, no.getNoticeNo());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int remainTime(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("remainTime");
+		int remainTime = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				remainTime = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return remainTime;
 	}
 }

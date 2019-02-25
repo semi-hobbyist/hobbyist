@@ -11,26 +11,24 @@ import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeDelListViewAjaxServlet
+ * Servlet implementation class NoticePreListViewAjaxServlet
  */
-@WebServlet("/notice/noticeDelListViewAjax.do")
-public class NoticeDelListViewAjaxServlet extends HttpServlet {
+@WebServlet("/notice/noticePreListViewAjax.do")
+public class NoticePreListViewAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public NoticePreListViewAjaxServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public NoticeDelListViewAjaxServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 
@@ -47,14 +45,7 @@ public class NoticeDelListViewAjaxServlet extends HttpServlet {
 		html += "<div class='noticeView_content'>";
 		html += "<div class='noticeView_contentBox'>";
 		html += "<div class='notice_Title'></div>";
-//		html += "<div class='contentBox_top'>";
-//		html += "<ul>";
-//		html += "<li onclick=\"location.href='" + request.getContextPath() + "/notice/noticeList'\">";
-//		html += "<img src='" + request.getContextPath() + "/images/back.png' width='18px'>";
-//		html += "</li>";
-//		html += "<li>메인 > 공지사항 > 상세보기</li>";
-//		html += "</ul>";
-//		html += "</div>";
+
 		html += "<div class='contentBox_mid'>";
 		html += "<div class='noticeViewTitleBox'>";
 
@@ -106,24 +97,18 @@ public class NoticeDelListViewAjaxServlet extends HttpServlet {
 
 		html += "</div>";
 		html += "</div>";
-//		html += "<div class='contentBox_bottom'>";
-//		html += "<button class='button1' onclick=''>수정하기</button>";
-//		html += "<button class='button1' onclick='fn_noticeListDel(" + notice.getNoticeNo() + ")'>삭제하기</button>";
-//		html += "</div>";
+
 		html += "</div>";
 		html += "</div>";
 
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(html);
-
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

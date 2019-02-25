@@ -16,8 +16,6 @@
 		<div class="defaultViewfooter">
 			<div>
 				<button type="button" class="button1" id="defaultViewfooterMo">수정하기</button>
-				<button type="button" class="button1" id="defaultViewfooterRe">복구하기</button>
-				<button type="button" class="button1" id="defaultViewfooterDel">삭제하기</button>
 			</div>
 		</div>
 	</div>
@@ -25,7 +23,7 @@
 <script>
 	function fn_defaultViewAjax(index) {
 		$.ajax({
-			url: '<%= request.getContextPath() %>/notice/noticeDelListViewAjax.do',
+			url: '<%= request.getContextPath() %>/notice/noticePreListViewAjax.do',
 			type: 'POST',
 			dataType: 'text',
 			data: { "noticeNo": index },
@@ -35,8 +33,6 @@
 				noticeDelListView.html(data);
 				
 				$("#defaultViewfooterMo").attr("onclick","fn_noticeListMo("+ index +")");
-				$("#defaultViewfooterRe").attr("onclick","fn_noticeListRe("+ index +")");
-				$("#defaultViewfooterDel").attr("onclick","fn_noticeDB_Del("+ index +")");
 			}
 		})
 		

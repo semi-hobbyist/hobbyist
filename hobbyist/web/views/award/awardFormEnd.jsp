@@ -30,11 +30,17 @@
 					<tr>
 						<th>첨부파일</th>
 						<td>
-							<%if (a.getAwardOriginalFilename() != null) {%> 
-							<a href="javascript:fn_fileDown('<%=a.getAwardOriginalFilename()%>','<%=a.getAwardRenamedFilename()%>')">
-								<img alt="첨부파일" src="<%=request.getContextPath()%>/images/file.png" width="16px"><%=a.getAwardOriginalFilename()%>
-							</a>		
-						<%}%>
+							<%
+								if (a.getAwardOriginalFilename() != null) {
+							%> <a
+							href="javascript:fn_fileDown('<%=a.getAwardOriginalFilename()%>','<%=a.getAwardRenamedFilename()%>')">
+								<img alt="첨부파일"
+								src="<%=request.getContextPath()%>/images/file.png" width="16px">
+								<%=a.getAwardOriginalFilename()%>
+						</a> <%
+ 	}
+ %>
+
 						</td>
 					</tr>
 

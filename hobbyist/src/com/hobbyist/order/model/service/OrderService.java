@@ -94,14 +94,6 @@ public class OrderService {
 			close(conn);
 			return list;
 		}
-
-
-		public int cancleOrder(int code) {
-			Connection conn = getConnection();
-			int result = new OrderDao().cancleOrder(conn, code);
-			close(conn);
-			return result;
-		}
 		
 /*		// 높은가격순
 		public List<Order> descPrice(String keyword, int cPage, int numPerPage) {

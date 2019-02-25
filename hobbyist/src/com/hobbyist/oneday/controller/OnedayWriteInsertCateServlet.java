@@ -30,10 +30,10 @@ public class OnedayWriteInsertCateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg = "카테고리 생성!";
-			loc = "/admin/adminOnedayWrite";
+			loc = "/oneday/onedayWrite";
 		} else {
 			msg = "카테고리 생성 실패";
-			loc = "/admin/adminOnedayWrite";
+			loc = "/oneday/onedayWrite";
 		}
 		
 		request.setAttribute("msg", msg);

@@ -16,10 +16,7 @@ public class Order {
 	private String orderMsg;
 	private Timestamp orderDate;
 	private String orderCate;
-	private int orderRnum;
-
-
-
+	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
@@ -148,15 +145,5 @@ public class Order {
 	
 	
 	
-	public int getOrderRnum() {
-		return orderRnum;
-	}
-
-
-
-	public void setOrderRnum(int orderRnum) {
-		this.orderRnum = orderRnum;
-	}
-
 	
 }

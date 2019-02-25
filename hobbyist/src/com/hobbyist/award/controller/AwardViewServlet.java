@@ -43,7 +43,7 @@ public class AwardViewServlet extends HttpServlet {
 		boolean hasRead = false;
 
 		// 클릭시에 아이디값남겨서 조회수 중복방지하기 위해서 쿠키
-       	if (cookies != null) {
+		if (cookies != null) {
 			output: for (Cookie c : cookies) {
 				String name = c.getName();
 				String value = c.getValue();
@@ -60,21 +60,15 @@ public class AwardViewServlet extends HttpServlet {
 
 		if (!hasRead) {
 			Cookie cookie = new Cookie("awardCookie", awardCookieVal + "|" + awardNo + "|");
-			cookie.setMaxAge(-1);
+			cookie.setMaxAge(1 * 24 * 60 * 60);
 			response.addCookie(cookie);
 		}
 
-		
-		System.out.println(hasRead);
 		Award a = new AwardService().selectOne(awardNo, hasRead);
-		
-		if(a!=null) {
 		List<AwardComment> comments=new AwardService().selectCommentAll(awardNo);
-		
+		System.out.println("코멘트 리스트 사이즈가 있니? : " + comments);
 		request.setAttribute("comments", comments);
-		}
 		request.setAttribute("award", a);// ""안에 .jsp속성이랑 맞춰야됨
-		
 		request.getRequestDispatcher("/views/award/awardView.jsp").forward(request, response);
 
 	}

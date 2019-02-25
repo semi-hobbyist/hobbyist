@@ -48,15 +48,14 @@
 							<td colspan="9" style="text-align:center;">총 ( <%= totalCount %> ) 건의 클래스 목록</td>
 						</tr>
 						<tr>
-							<th style="width:90px;">주문번호</th>
-							<th style="width:80px;">분류</th>
-							<th style="width:70px;">회원</th>
-							<th style="width:80px;">주문클래스</th>
+							<th style="width:70px;">주문번호</th>
+							<th style="width:130px;">분류</th>
+							<th style="width:80px;">회원</th>
+							<th style="width:80px;">주문 클래스</th>
 							<th style="width:100px;">주문 옵션</th>
 							<th style="width:80px;">가격</th>
 							<th style="width:90px;">결제방법</th>
 							<th style="width:90px;">주문일</th>
-							<th>환불처리</th>
 						</tr>
 						<% for(Order o : list) { %>
 							<tr>
@@ -68,27 +67,12 @@
 								<td><%= o.getOrderPrice() %></td>
 								<td><%= o.getOrderType() %></td>
 								<td><%= o.getOrderDate() %></td>
-								<td><button type="button" onclick="fn_cancle('<%= o.getOrderRnum() %>')">환불</button>
 							</tr>
 						<% } %>
 						<tr>
 							<td colspan="9" class="pageBar"><%= pageBar %></td>
 						</tr>
 					</table>
-					<script>
-						function fn_cancle(a) {
-							if(confirm('해당상품을 환불처리 하시겠습니까?')) {
-								$.ajax({
-									url : '<%= request.getContextPath() %>/admin/adminOrderCancle?code=' + a,
-									success : function (data) {
-										alert(data);
-										location.href="<%=request.getContextPath() %>/admin/adminOrderList";
-									}
-								});
-							}
-						}
-					
-					</script>
 				</div>
 		</div>
 	</div>

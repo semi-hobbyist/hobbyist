@@ -3,6 +3,8 @@ package com.hobbyist.notice.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,16 +22,16 @@ import com.oreilly.servlet.MultipartRequest;
 import common.rename.MyFileRenamePolicy;
 
 /**
- * Servlet implementation class noticeInsertEndServlet
+ * Servlet implementation class NoticeModifyEndServlet
  */
-@WebServlet("/notice/noticeInsertEnd")
-public class NoticeInsertEndServlet extends HttpServlet {
+@WebServlet("/notice/noticeModifyEnd")
+public class NoticeModifyEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertEndServlet() {
+    public NoticeModifyEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,11 +41,12 @@ public class NoticeInsertEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		Member logginMember = (Member)request.getSession(false).getAttribute("logginMember");
-
+		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "잘못접근!");
-			request.setAttribute("loc", "/notice/noticeInsert");
+			request.setAttribute("loc", "/notice/noticeList");
 			request.getRequestDispatcher("views/common/msg.jsp").forward(request, response);
 			return;
 		}
@@ -52,7 +55,7 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		String filePath = root + File.separator + "notice";
 		int maxSize = 1024*1024*10;
 		MultipartRequest mr = new MultipartRequest(request, filePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-		
+		int noticeNo = Integer.parseInt(mr.getParameter("noticeNo"));
 		String noticeSort = mr.getParameter("noticeSort");
 		String noticeTitle = mr.getParameter("noticeTitle");
 		String noticeWriter = logginMember.getMemberNickname();
@@ -72,7 +75,34 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		String noticeImgnameOriginal = mr.getOriginalFileName("noticeImgnameOriginal");
 		String noticeImgnameRenamed = mr.getFilesystemName("noticeImgnameOriginal");
 		
+		
+		//기존 파일 삭제
+		File file = mr.getFile("noticeFilenameOriginal");
+		File img = mr.getFile("noticeImgnameOriginal");
+		
+		if(file!=null&&file.length()>0) {
+			File delFile=new File(filePath+"/"+mr.getParameter("old_nFileR"));
+			boolean resul = delFile.delete();
+			System.out.println(resul?"제대로 지워짐":"안지워졌어!");
+		}
+		else {
+			noticeFilenameOriginal = mr.getParameter("old_nFileO");
+			noticeFilenameRenamed = mr.getParameter("old_nFileR");
+		}
+		
+		if(img!=null&&img.length()>0) {
+			File delFile=new File(filePath+"/"+mr.getParameter("old_nImgR"));
+			boolean resul = delFile.delete();
+			System.out.println(resul?"제대로 지워짐":"안지워졌어!");
+		}
+		else {
+			noticeImgnameOriginal = mr.getParameter("old_nImgO");
+			noticeImgnameRenamed = mr.getParameter("old_nImgR");
+		}
+		
+		
 		Notice no = new Notice();
+		no.setNoticeNo(noticeNo);
 		no.setNoticeSort(noticeSort);
 		no.setNoticeTitle(noticeTitle);
 		no.setNoticeWriter(noticeWriter);
@@ -82,19 +112,20 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		no.setNoticeFilenameRenamed(noticeFilenameRenamed);
 		no.setNoticeImgnameOriginal(noticeImgnameOriginal);
 		no.setNoticeImgnameRenamed(noticeImgnameRenamed);
-
-		int result = new NoticeService().insertNotice(no);
+		
+		int result = new NoticeService().updateNotice(no);
+		
 
 		String msg="";
 		String loc="";
 		String view="/views/common/msg.jsp";
 		if(result>0) {
-			msg="공지사항 등록 성공";
-			loc="/notice/noticeList";
+			msg="공지사항 수정 성공";
+			loc="/notice/noticeView?noticeNo="+noticeNo;
 		}
 		else {
-			msg="공지사항 등록 실패";
-			loc="/notice/noticeInsert";
+			msg="공지사항 수정 실패";
+			loc="/notice/noticeModifyEnd?noticeNo="+noticeNo;
 		}
 		
 		request.setAttribute("msg", msg);

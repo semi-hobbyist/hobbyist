@@ -1,12 +1,12 @@
 package com.hobbyist.notice.model.service;
 
 import static common.JdbcTemplate.close;
-import static common.JdbcTemplate.getConnection;
 import static common.JdbcTemplate.commit;
+import static common.JdbcTemplate.getConnection;
 import static common.JdbcTemplate.rollback;
 
-
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 import com.hobbyist.notice.model.dao.NoticeDao;
@@ -88,6 +88,38 @@ public class NoticeService {
 		return list;
 	}
 	
+	// (예약된)검색결과에 따라 리스트 갯수 가져오기
+	public int searchCountPre(String keyword) {
+		Connection conn = getConnection();
+		int result = dao.searchCountPre(conn, keyword);
+		close(conn);
+		return result;
+	}
+
+	// (예약된)리스트 최근 등록순 정렬
+	public List<Notice> selectAllPre(String keyword, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Notice> list = dao.selectAllPre(conn, keyword, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	// (예약된)검색결과에 따라 리스트 갯수 가져오기(분류기준)
+	public int searchCountSortPre(String sort, String keyword) {
+		Connection conn = getConnection();
+		int result = dao.searchCountSortPre(conn, sort, keyword);
+		close(conn);
+		return result;
+	}
+
+	// (예약된)리스트 분류별 정렬
+	public List<Notice> selectSortPre(String sort, String keyword, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Notice> list = dao.selectSortPre(conn, sort, keyword, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
 	public Notice selectOne(int noticeNo, boolean hasRead) {
 		Connection conn = getConnection();
 		Notice no = dao.selectOne(conn,noticeNo);
@@ -151,4 +183,23 @@ public class NoticeService {
 		return result;
 	}
 	
+	public int updateNotice(Notice no) {
+		Connection conn = getConnection();
+		int result = dao.updateNotice(conn,no);
+			if(result>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		close(conn);
+		return result;
+	};
+	
+	public int remainTime(int noticeNo) {
+		Connection conn = getConnection();
+		int remainTime = dao.remainTime(conn,noticeNo);
+		close(conn);
+		return remainTime;
+	}
 }

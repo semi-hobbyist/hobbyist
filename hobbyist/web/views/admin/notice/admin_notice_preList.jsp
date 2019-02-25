@@ -41,7 +41,7 @@
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
 		<div class="admin_right">
-			<div id="admin_notice">
+			<div id="admin_noticePre">
 				<div class="notice_content">
 					<div class="notice_TalBox">
 					
@@ -83,7 +83,7 @@
 									<div class="talT_noticeTitle">제목</div>
 									<div class="talT_noticeDate">작성일</div>
 									<div class="talT_noticeReadcount">조회수</div>
-									<div class="talT_noticeWriter"></div>
+									<div class="talT_noticeWriter">공지 남은기간</div>
 								</div>
 							</form>
 						</div>
@@ -93,12 +93,12 @@
 
 				</div>
 				<script>
-					var adminSelectWindowVal = "del";
+					var adminSelectWindowVal = "pre";
 					/* 처음 페이지 들어올때 ajax로 목록 띠우기(최신등록순으로..) */
 					var keyword = $('#keyword');
 					$(function () {
 						$.ajax({
-							url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+							url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 							type: 'POST',
 							dataType: 'text',
 							data: { "sort": "sortAll", "keyword": keyword.val() },
@@ -119,7 +119,7 @@
 						var text = $('.selected')[0].innerText;
 						if (text == '전체') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								data: 'sort=sortAll&cPage=' + pageNo,
 								success: function (data) {
 									var noticeAjax = $('#noticeAjax');
@@ -129,7 +129,7 @@
 							});
 						} else if (text == '공지') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								data: 'sort=sortNotice&cPage=' + pageNo,
 								success: function (data) {
 									var noticeAjax = $('#noticeAjax');
@@ -139,7 +139,7 @@
 							});
 						} else if (text == '이벤트') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								data: 'sort=sortEvent&cPage=' + pageNo,
 								success: function (data) {
 									var noticeAjax = $('#noticeAjax');
@@ -149,7 +149,7 @@
 							});
 						} else if (text == '작가신청') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								data: 'sort=sortWriterEnroll&cPage=' + pageNo,
 								success: function (data) {
 									var noticeAjax = $('#noticeAjax');
@@ -166,7 +166,7 @@
 							$('#sort').val('');
 							$('#sort').val('sortAll');
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortAll", "keyword": keyword.val() },
@@ -183,7 +183,7 @@
 						}
 						else if (e.innerText == '공지') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortNotice", "keyword": keyword.val() },
@@ -200,7 +200,7 @@
 						}
 						else if (e.innerText == '이벤트') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortEvent", "keyword": keyword.val() },
@@ -217,7 +217,7 @@
 						}
 						else if (e.innerText == '작가신청') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortWriterEnroll", "keyword": keyword.val() },
@@ -239,7 +239,7 @@
 						var text = $('.selected')[0].innerText;
 						if (text == '전체') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortAll", "keyword": keyword.val() },
@@ -256,7 +256,7 @@
 						}
 						else if (text == '공지') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortNotice", "keyword": keyword.val() },
@@ -273,7 +273,7 @@
 						}
 						else if (text == '이벤트') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortEvent", "keyword": keyword.val() },
@@ -290,7 +290,7 @@
 						}
 						else if (text == '작가신청') {
 							$.ajax({
-								url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+								url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 								type: 'POST',
 								dataType: 'text',
 								data: { "sort": "sortWriterEnroll", "keyword": keyword.val() },
@@ -326,7 +326,7 @@
 							var text = $('.selected')[0].innerText;
 							if (text == '전체') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortAll", "keyword": keyword.val() },
@@ -343,7 +343,7 @@
 							}
 							else if (text == '공지') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortNotice", "keyword": keyword.val() },
@@ -360,7 +360,7 @@
 							}
 							else if (text == '이벤트') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortEvent", "keyword": keyword.val() },
@@ -377,7 +377,7 @@
 							}
 							else if (text == '작가신청') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortWriterEnroll", "keyword": keyword.val() },
@@ -414,7 +414,7 @@
 							var text = $('.selected')[0].innerText;
 							if (text == '전체') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortAll", "keyword": keyword.val() },
@@ -431,7 +431,7 @@
 							}
 							else if (text == '공지') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortNotice", "keyword": keyword.val() },
@@ -448,7 +448,7 @@
 							}
 							else if (text == '이벤트') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortEvent", "keyword": keyword.val() },
@@ -465,7 +465,7 @@
 							}
 							else if (text == '작가신청') {
 								$.ajax({
-									url: '<%= request.getContextPath() %>/notice/noticeDelListAjax.do',
+									url: '<%= request.getContextPath() %>/notice/noticePreListAjax.do',
 									type: 'POST',
 									dataType: 'text',
 									data: { "sort": "sortWriterEnroll", "keyword": keyword.val() },
@@ -492,11 +492,10 @@
 </section>
 
 <!-- 모달창 View -->
-<%@ include file="/views/admin/notice/admin_notice_delList_view.jsp" %>
+<%@ include file="/views/admin/notice/admin_notice_preList_view.jsp" %>
 
 
 <!-- 모달창 Modify -->
 <%@ include file="/views/admin/notice/admin_notice_modify.jsp" %>
 
 
-<%@ include file="/views/common/footer.jsp" %>

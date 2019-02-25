@@ -12,7 +12,8 @@
       </ul>
       <li>공지&이벤트 관리</li>
       <ul class="sub">
-         <li onclick="location.href='<%= request.getContextPath() %>/admin/adminNoticeDelList'">삭제 목록</li>
+         <li onclick="location.href='<%= request.getContextPath() %>/admin/adminNoticePreList'">예약공지 목록</li>
+         <li onclick="location.href='<%= request.getContextPath() %>/admin/adminNoticeDelList'">삭제공지 목록</li>
       </ul>
       <li>클래스샵 관리</li>
       <ul class="sub">

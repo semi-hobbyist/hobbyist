@@ -30,6 +30,7 @@
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticepreListStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopViewStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopWriteStyle.css">

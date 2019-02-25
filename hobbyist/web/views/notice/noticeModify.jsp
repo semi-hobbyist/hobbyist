@@ -1,33 +1,101 @@
+<%@page import="com.hobbyist.notice.model.vo.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 
 <%
-
+	Notice notice = (Notice)request.getAttribute("notice");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
 
 
-<!-- 로그인 안된 상태로 왔을때 접근 막기 -->
 <script>
+	/* 로그인 안된 상태로 왔을때 접근 막기  */
 	if (<%= logginMember != null && logginMember.getMemberEmail().equals("admin") %>) {
 
 	} else {
 		alert('관리자만 접근 가능합니다');
 		location.href = history.back(-1);
 	}
+	
+	
+	// 기존 자료 넣기
+	$(function () {
+
+		// 공지 분류 체크
+		var nModifySort = "<%= notice.getNoticeSort() %>";
+		if (nModifySort == 'sortNotice') {
+
+			//공지관련된 세부내용이 없음
+			// $(".noticeWriteSortNotice>div").css({"min-height":"50px","display":"flex"});
+			$(".noticeWriteSortEvent>div").css({ "min-height": "0px", "display": "none" });
+			$(".noticeWriteSortWriterEnroll>div").css({ "min-height": "0px", "display": "none" });
+
+			$("#sortEvent").removeClass("sortBtn1");
+			$("#sortWriterEnroll").removeClass("sortBtn1");
+			$("#sortEvent").addClass("sortBtn");
+			$("#sortWriterEnroll").addClass("sortBtn");
+
+			$("#sortNotice").removeClass("sortBtn");
+			$("#sortNotice").addClass("sortBtn1");
+
+			$("#noticeSort").val("");
+			$("#noticeSort").val("sortNotice");
+
+			$("#sortEvent").css("display","none");
+			$("#sortWriterEnroll").css("display","none");
+		}
+		else if (nModifySort == 'sortEvent') {
+			$(".noticeWriteSortNotice>div").css({ "min-height": "0px", "display": "none" });
+			$(".noticeWriteSortEvent>div").css({ "min-height": "50px", "display": "flex" });
+			$(".noticeWriteSortWriterEnroll>div").css({ "min-height": "0px", "display": "none" });
+
+			$("#sortNotice").removeClass("sortBtn1");
+			$("#sortWriterEnroll").removeClass("sortBtn1");
+			$("#sortNotice").addClass("sortBtn");
+			$("#sortWriterEnroll").addClass("sortBtn");
+
+			$("#sortEvent").removeClass("sortBtn");
+			$("#sortEvent").addClass("sortBtn1");
+
+			$("#noticeSort").val("");
+			$("#noticeSort").val("sortEvent");
+
+			$("#sortNotice").css("display","none");
+			$("#sortWriterEnroll").css("display","none");
+		}
+		else if (nModifySort == 'sortWriterEnroll') {
+			$(".noticeWriteSortNotice>div").css({ "min-height": "0px", "display": "none" });
+			$(".noticeWriteSortEvent>div").css({ "min-height": "0px", "display": "none" });
+			$(".noticeWriteSortWriterEnroll>div").css({ "min-height": "50px", "display": "flex" });
+
+			$("#sortNotice").removeClass("sortBtn1");
+			$("#sortEvent").removeClass("sortBtn1");
+			$("#sortNotice").addClass("sortBtn");
+			$("#sortEvent").addClass("sortBtn");
+
+			$("#sortWriterEnroll").removeClass("sortBtn");
+			$("#sortWriterEnroll").addClass("sortBtn1");
+
+			$("#noticeSort").val("");
+			$("#noticeSort").val("sortWriterEnroll");
+
+			$("#sortNotice").css("display","none");
+			$("#sortEvent").css("display","none");
+		}
+	})
 </script>
 
-<section id="noticeWrite">
+<section id="noticeModify">
 	<div class="noticeWriteBox">
-		<form action="<%= request.getContextPath() %>/notice/noticeInsertEnd" method="post" id="noticeInsertFrm" autocomplete="off" enctype="multipart/form-data">
+		<form action="<%= request.getContextPath() %>/notice/noticeModifyEnd" method="post" id="noticeModifyFrm" autocomplete="off" enctype="multipart/form-data">
 			<div class="noticeWrite_top">
 				<ul>
 					<li onclick="location.href='<%= request.getContextPath() %>/notice/noticeList'">
 						<img src="<%= request.getContextPath() %>/images/back.png" width="18px">
 					</li>
 					<li>
-						공지사항 글쓰기
+						공지사항 수정하기
 					</li>
 				</ul>
 			</div><br>
@@ -35,10 +103,12 @@
 				<div class="noticeWriteDate noticeWriteRow">
 					<div class="noticeWriteAttr">공지 날짜</div>
 					<div class="noticeWriteVal">
-						<input type="radio" name="noticeDate" id="noticeDate2" value="noData" checked/>바로 공지
+						<input type="radio" name="noticeDate" id="noticeDate1" value="<%= notice.getNoticeDate() %>" checked/>기존날짜
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="noticeDate" id="noticeDate2" value="noData" />현재날짜
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="noticeDate" id="noticeDate3"/>
-						날짜 지정&nbsp;&nbsp;<input type="date" id="noticeDate3_1"/>
+						<input type="date" id="noticeDate3_1"/>
 					</div>
 				</div>
 				<div class="noticeWriteSort noticeWriteRow">
@@ -105,7 +175,7 @@
 				<div class="noticeWriteTitle noticeWriteRow">
 					<div class="noticeWriteAttr">제목</div>
 					<div class="noticeWriteVal">
-						<input name="noticeTitle" class="inputText" placeholder="제목을 입력하세요." />
+						<input name="noticeTitle" class="inputText" placeholder="제목을 입력하세요." value="<%= notice.getNoticeTitle() %>"/>
 					</div>
 				</div>
 				<div class="noticeWriteWriter noticeWriteRow">
@@ -118,12 +188,16 @@
 						<div class="inputImageBox">
 							<div class="inputImageback">
 								<div class="inputImage">
-									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+								<% if(notice.getNoticeImgnameRenamed()==null) { %>
+									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" width="100px" height="100px"/>
 									<div class="imageTitle"></div>
+								<% } else { %>
+									<img src="<%= request.getContextPath() %>/upload/notice/<%= notice.getNoticeImgnameRenamed() %>" width="300px" height="200px" />
+									<div class="imageTitle"><%= notice.getNoticeImgnameOriginal() %></div>
+								<% } %>
 								</div>
-								<input type="file" name="noticeImgnameOriginal" class="inputImageFile" />
+								<input type="file" name="noticeImgnameOriginal" class="inputImageFile" value="<%= notice.getNoticeImgnameRenamed() %>"/>
 							</div>
-							<button type="button" class="fileImgDelBtn" onclick="fn_fileImgDelBtn()">x</button>
 						</div>
 						<script>
 							$(function () {
@@ -134,19 +208,13 @@
 									$(".imageTitle").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 								})
 							})
-							function fn_fileImgDelBtn() {
-								$(".inputImage img").attr("src", "<%= request.getContextPath() %>/images/uploadIcon.png");
-								$(".inputImage img").css({"width":"100px","height":"100px"});
-								$("input[name='noticeImgnameOriginal']").val("");
-								$(".imageTitle").text("");
-							}
 						</script>
 					</div>
 				</div>
 				<div class="noticeWriteContent noticeWriteRow">
 					<div class="noticeWriteAttr">내용</div>
 					<div class="noticeWriteVal">
-						<textarea id="noticeContent_editor" name="noticeContent"></textarea>
+						<textarea id="noticeContent_editor" name="noticeContent"><%= notice.getNoticeContent() %></textarea>
 					</div>
 				</div>
 
@@ -158,49 +226,32 @@
 							<button type="button" title="파일찾기">
 								<span>파일찾기</span>
 							</button>
-							<input type="file" name="noticeFilenameOriginal" class="input_file" title="파일찾기">
+							<input type="file" name="noticeFilenameOriginal" class="input_file" title="파일찾기" value="<%= notice.getNoticeFilenameRenamed() %>">
 						</div>
 						<!--input box-->
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="text" class="upload_text" readonly="readonly">
-						
-						<button type="button" class="fileDelBtn" onclick="fn_fileDelBtn()">x</button>
-						<script>
-							function fn_fileDelBtn() {
-								$("input[name='noticeFilenameOriginal']").val("");
-								$(".upload_text").val("파일명");
-							}
-						</script>
+						<input type="text" class="upload_text" readonly="readonly" value="<%= notice.getNoticeFilenameOriginal()==null?"":notice.getNoticeFilenameOriginal() %>">
 
+
+						<!-- <input type="file" name="notceFilenameOriginal" class="inputText"/> -->
 					</div>
 				</div>
 			</div>
 			<div class="noticeWrite_bottom">
-				<button type="button" class="button1" onclick="fn_noticeInsert()">완료</button>
+				<button type="button" class="button1" onclick="fn_noticeModify()">수정하기</button>
 			</div>
+			
+			<!-- 서버에서 불러온 파일 저장 -->
+			<input type="hidden" name="noticeNo" value="<%= notice.getNoticeNo() %>"/>
+			<input type="hidden" name="old_nDate" value="<%= notice.getNoticeDate() %>"/>
+			<input type="hidden" name="old_nFileO" value="<%= notice.getNoticeFilenameOriginal() %>"/>
+			<input type="hidden" name="old_nFileR" value="<%= notice.getNoticeFilenameRenamed() %>"/>
+			<input type="hidden" name="old_nImgO" value="<%= notice.getNoticeImgnameOriginal() %>"/>
+			<input type="hidden" name="old_nImgR" value="<%= notice.getNoticeImgnameRenamed() %>"/>
+			
 		</form>
 	</div>
 
 	<script>
-	
-		//분류 항목 시작과 동시에 '공지'에 체크되기
-		$(function () {
-			//공지관련된 세부내용이 없음
-			// $(".noticeWriteSortNotice>div").css({"min-height":"50px","display":"flex"});
-			$(".noticeWriteSortEvent>div").css({ "min-height": "0px", "display": "none" });
-			$(".noticeWriteSortWriterEnroll>div").css({ "min-height": "0px", "display": "none" });
-
-			$("#sortEvent").removeClass("sortBtn1");
-			$("#sortWriterEnroll").removeClass("sortBtn1");
-			$("#sortEvent").addClass("sortBtn");
-			$("#sortWriterEnroll").addClass("sortBtn");
-
-			$("#sortNotice").removeClass("sortBtn");
-			$("#sortNotice").addClass("sortBtn1");
-
-			$("#noticeSort").val("");
-			$("#noticeSort").val("sortNotice");
-		})
 		
 		// 공지날짜 값 넣기
 		$(function() {
@@ -211,8 +262,9 @@
 			})
 		})
 
-		function fn_noticeInsert() {
-			$("#noticeInsertFrm").submit();
+
+		function fn_noticeModify() {
+			$("#noticeModifyFrm").submit();
 		}
 		
 		// input number 기능 구현
@@ -311,6 +363,7 @@
 				$('.noticeWrite_top').css("top", "213px");
 			}
 		});
+
 		//메인 헤더 숨기기
 		$(window).scroll(function () {
 			if ($(window).scrollTop() != 0) {
@@ -331,7 +384,6 @@
 
 		// file input 기능 구현	
 		$(function () {
-			$('.upload_text').val('파일명');
 			$('.input_file').change(function () {
 				var fileName = $(this).val();
 				$('.upload_text').val(fileName.substring(fileName.lastIndexOf('\\') + 1));

@@ -1,6 +1,7 @@
 package com.hobbyist.writer.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class WriterEnroll implements Serializable {
 	
@@ -27,7 +28,7 @@ public class WriterEnroll implements Serializable {
 	private String writerWishMonth;
 	private String writerClassName;
 	private String writerClassSelectReason;
-	private String writerClassLevel;
+	private int writerClassLevel;
 	private String writerProductTime;
 	private String writerClassKitWarningPoint;
 	private String writerClassKitPart;
@@ -35,7 +36,7 @@ public class WriterEnroll implements Serializable {
 	private String classImgfileRenamed;
 	private String writerPrepRequestYN;
 	private String writerFinalPoint;
-	private String writerEnrolldate;
+	private Date writerEnrolldate;
 	private String writerPassYN;
 	private String writerStatus;
 	
@@ -48,9 +49,9 @@ public class WriterEnroll implements Serializable {
 			String writerEnrollQuarter, String writerCategory, String writerAddress, String writerReason,
 			String writerMajorImgfileOriginal, String writerMajorImgfileRenamed, String writerScheduleYN,
 			String writerContractYN, String writerWishMonth, String writerClassName, String writerClassSelectReason,
-			String writerClassLevel, String writerProductTime, String writerClassKitWarningPoint,
+			int writerClassLevel, String writerProductTime, String writerClassKitWarningPoint,
 			String writerClassKitPart, String classImgfileOriginal, String classImgfileRenamed,
-			String writerPrepRequestYN, String writerFinalPoint, String writerEnrolldate, String writerPassYN,
+			String writerPrepRequestYN, String writerFinalPoint, Date writerEnrolldate, String writerPassYN,
 			String writerStatus) {
 		super();
 		this.writerEnrollNo = writerEnrollNo;
@@ -237,11 +238,11 @@ public class WriterEnroll implements Serializable {
 		this.writerClassSelectReason = writerClassSelectReason;
 	}
 
-	public String getWriterClassLevel() {
+	public int getWriterClassLevel() {
 		return writerClassLevel;
 	}
 
-	public void setWriterClassLevel(String writerClassLevel) {
+	public void setWriterClassLevel(int writerClassLevel) {
 		this.writerClassLevel = writerClassLevel;
 	}
 
@@ -301,11 +302,11 @@ public class WriterEnroll implements Serializable {
 		this.writerFinalPoint = writerFinalPoint;
 	}
 
-	public String getWriterEnrolldate() {
+	public Date getWriterEnrolldate() {
 		return writerEnrolldate;
 	}
 
-	public void setWriterEnrolldate(String writerEnrolldate) {
+	public void setWriterEnrolldate(Date writerEnrolldate) {
 		this.writerEnrolldate = writerEnrolldate;
 	}
 
@@ -346,4 +347,5 @@ public class WriterEnroll implements Serializable {
 				+ writerPrepRequestYN + ", writerFinalPoint=" + writerFinalPoint + ", writerEnrolldate="
 				+ writerEnrolldate + ", writerPassYN=" + writerPassYN + ", writerStatus=" + writerStatus + "]";
 	}
+	
 }

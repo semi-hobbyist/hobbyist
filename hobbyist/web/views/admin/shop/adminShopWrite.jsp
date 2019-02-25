@@ -117,19 +117,19 @@
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 2</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option2"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 3</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option3"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 4</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option4"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 5</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option5"/></td>
 				</tr>
 				<tr>
 					<th>이미지1</th>
@@ -212,20 +212,16 @@
 			<h3>강좌등록</h3>
 			<table>
 				<tr>
-					<th style="width: 180px;">강좌타이틀</th>
-					<td style="width: 620px; text-align: left;" ><input type="text" name="lecture_title" style="width: 450px;"/></td>
-				</tr>
-				<tr>
-					<th>강좌 한줄소개</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;"/></td>
+					<th style="width: 180px;">강좌 한줄소개</th>
+					<td style="text-align: left; width: 620px;"><input type="text" name="study_subtitle" style="width: 450px;"/></td>
 				</tr>
 				<tr>
 					<th>강좌 영상</th>
-					<td style="text-align: left;"><input type="text" name="lecture_info" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
+					<td style="text-align: left;"><input type="text" name="study_video" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
 				</tr>
 				<tr>
 					<th>강좌내용</th>
-					<td><textarea name="lecture_content" id="editor6"></textarea></td>
+					<td><textarea name="study_content" id="editor6"></textarea></td>
 					<script>
 							// Replace the <textarea id="editor1"> with a CKEditor
 							// instance, using default configuration.

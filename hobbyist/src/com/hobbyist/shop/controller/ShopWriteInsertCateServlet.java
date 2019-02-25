@@ -30,10 +30,10 @@ public class ShopWriteInsertCateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg = "카테고리 생성!";
-			loc = "/shop/shopWrite";
+			loc = "/admin/adminShopWrite";
 		} else {
 			msg = "카테고리 생성 실패";
-			loc = "/shop/shopWrite";
+			loc = "/admin/adminShopWrite";
 		}
 		
 		request.setAttribute("msg", msg);

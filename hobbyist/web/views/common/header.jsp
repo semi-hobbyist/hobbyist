@@ -2,17 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%
 	Member logginMember = (Member)session.getAttribute("logginMember");
 %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title>H O B B Y I S T</title>
-
     <!-- ------- 페이지 별 CSS 추가 -------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">
@@ -25,19 +24,22 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myCartStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myClassStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/onedayStyle.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/lectureStyle.css">
-
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/studyStyle.css">
+   
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticepreListStyle.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticePreListStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopViewStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopWriteStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopPinStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayViewStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_onedayWriteStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_communityStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
 
     <!-- ------ Wow 애니메이션 ------ -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/animate.css">
@@ -70,9 +72,21 @@
     <div class="blur"></div>
 
     <header>
+    <div id="header_line"></div>
+        <script>
+            $(window).scroll(function () {
+                var target = $('#header_line');
+                var scrollTo = $(window).scrollTop(),
+                    docHeight = $(document).height(),
+                    windowHeight = $(window).height();
+                scrollPercent = (scrollTo / (docHeight - windowHeight)) * 100;
+                target.css("width", scrollPercent + "%");
+            })
+        </script>
         <div id="header-top">
             <div class="left-top">
-                <a href="<%= request.getContextPath() %>/writer/writerEnroll">[작가모집] 새로운 하비스트 작가님을 모십니다</a>
+                <a href="<%= request.getContextPath() %>"><img alt="하비스트"
+                            src="<%= request.getContextPath() %>/images/logo.png"></a><a href="<%= request.getContextPath() %>/writer/writerEnroll">[작가모집] 새로운 하비스트 작가님을 모십니다</a>
                 <div id="line"></div>
             </div>
             <div class="top">
@@ -92,74 +106,7 @@
                     <li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'">마이페이지</li>
                     <li onclick="location.href='<%= request.getContextPath() %>/member/LogoutMember'">로그아웃</li>
                     <% } %>
-                    <li onclick="location.href='#'">고객센터</li>
                 </ul>
-            </div>
-        </div>
-        <div id="header-middle">
-            <div class="middle">
-                <div class="logo">
-                    <a href="<%= request.getContextPath() %>"><img alt="하비스트"
-                            src="<%= request.getContextPath() %>/images/logo.png"></a>
-                </div>
-                <div class="search">
-                    <input type="search" placeholder="Search..." /><input type="button" value="검색" />
-                </div>
-                <div class="info">
-                    <img src="<%= request.getContextPath() %>/images/myclass.png" id="icon_myclass" width="26px"
-                        onclick="fn_myclass()" style="cursor:pointer;">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="24px"
-                        onclick="fn_cart()" style="cursor:pointer;"><span id="cartCount"></span>
-                    <br>
-                    <div id="icon_sub"></div>
-                </div>
-                <script>
-                    $.ajax({
-                        url: '<%= request.getContextPath() %>/myCartCount?member=<%= logginMember!=null ? logginMember.getMemberEmail() : "" %>',
-                        success: function (data) {
-                            if (data != 0) {
-                                $('#cartCount').html(data);
-                            } else {
-                                $('#cartCount').css("display", "none");
-                            }
-                        }
-                    });
-
-                    // 내클래스, 장바구니 마우스오버 시 서브
-                    $('#icon_myclass').mouseover(function () {
-                        $('#icon_sub').html('내 클래스').css({ "display": "inline-block", "opacity": "1" });
-                    })
-                    $('#icon_myclass').mouseleave(function () {
-                        $('#icon_sub').css("display", "none");
-                    })
-
-                    $('#icon_cart').mouseover(function () {
-                        $('#icon_sub').html('취미바구니').css({ "display": "inline-block", "opacity": "1" });
-                    })
-                    $('#icon_cart').mouseleave(function () {
-                        $('#icon_sub').css("display", "none");
-                    })
-
-                    // 내클래스
-                    function fn_myclass() {
-                        if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
-                        } else {
-                            swal("[내 클래스] 로그인 후 이용해주세요");
-                            return;
-                        }
-                    }
-
-                    // 장바구니
-                    function fn_cart() {
-                        if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
-                        } else {
-                            swal("[장바구니] 로그인 후 이용해주세요");
-                            return;
-                        }
-                    }
-                </script>
             </div>
         </div>
         <div id="header-bottom">
@@ -184,7 +131,75 @@
                     <li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">
                         <div class="menuline"></div>커뮤니티
                     </li>
+                    <li><img src="<%= request.getContextPath() %>/images/myclass.png" id="icon_myclass" width="20px"
+                        onclick="fn_myclass()" style="cursor:pointer;">&nbsp;&nbsp;
+                    <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="20px"
+                        onclick="fn_cart()" style="cursor:pointer;"><span id="cartCount"></span></li>
+                    
                 </ul>
+            </div>
+        
+        <!-- ------------ 전체메뉴보기 서브메뉴 ----------- -->
+            <div class="sub" id="menuAll">
+                <div class="sub_content">
+                    <ul>
+                    <li class="all_li">
+                  		<ul>
+                        	<li>로그인</li>
+                        	<li>회원가입</li>
+                        	<li>마이페이지</li>
+                        	<li></li>
+                        	<li>내클래스</li>
+                        	<li>취미바구니</li>
+                        </ul>
+                    </li>
+                    <li  class="all_li">
+                        <ul>
+                        	<li onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">공지사항/이벤트</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopList'">전체보기</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=가죽공예'">가죽공예</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=위빙'">위빙</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=수채화'">수채화</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=마크라메'">마크라메</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=뜨개질'">뜨개질</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/shop/shopCateList?cate=프랑스자수'">프랑스자수</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                       	<ul>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayList'">전체보기</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayCateList?cate=서울'">서울지역</li>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/oneday/onedayCateList?cate=경기'">경기지역</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li onclick="location.href='<%=request.getContextPath() %>/award/awardList'">어워드</li>
+                        </ul>
+                    </li>
+                    <li class="all_li">
+                        <ul>
+                        	<li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">자유게시판</li>
+                        	<li>리뷰/후기</li>
+                        	<li onclick="location.href='<%=request.getContextPath()%>/board/boardFAQ'">자주묻는질문</li>
+                        	<li onclick="directQuestion()" style="cursor: pointer;"> · 1:1 문의</li>
+							<script>
+								function directQuestion() {
+									<%if(logginMember != null) {%>
+									location.href='<%=request.getContextPath()%>/board/boardDirectQuestion?NickName=<%=logginMember.getMemberNickname()%>';
+									<% } else { %>
+										alert('로그인 후 이용가능합니다.');
+									<% } %>
+								}
+							</script>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
             </div>
             <div class="sub" id="notice">
                 <div class="sub_content">
@@ -215,7 +230,7 @@
                     <div class="sub_left">
                         <h3>C L A S S - S H O P</h3>
                         <p>마음에 드는 취미클래스를 찾아보세요</p>
-                        <p><img alt="CLASS SHOP" src="<%= request.getContextPath() %>/images/classshop.png" width="40%">
+                        <p><img alt="CLASS SHOP" src="<%= request.getContextPath() %>/images/classshop.png" width="25%">
                         </p>
                     </div>
                     <div class="sub_center">
@@ -336,6 +351,8 @@
             </div>
             <script>
                 var subMenu = $('.bottom ul>li');
+                
+               var menuAll = $('#menuAll');
                 var notice = $('#notice');
                 var classshop = $('#classshop');
                 var oneday = $('#oneday');
@@ -344,109 +361,151 @@
 
                 var blur = $('.blur');
 
+                // 전체보기
+                subMenu.eq(0).mouseover(function () {
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).addClass("active");
+                    subMenu.eq(1).removeClass("active");
+                    subMenu.eq(2).removeClass("active");
+                    subMenu.eq(3).removeClass("active");
+                    subMenu.eq(4).removeClass("active");
+                    subMenu.eq(5).removeClass("active");
+                   	menuAll.css({"transition": "400ms", "height": "250px" });
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px"});
+                    award.css({"transition": "400ms", "height": "0px"});
+                    community.css({"transition": "400ms", "height": "0px"});
+                })
+
+                menuAll.mouseleave(function () {
+                    subMenu.eq(1).removeClass("active");
+                    menuAll.css({"transition": "400ms", "height": "0px"});
+                    blur.eq(0).css("display","none");
+                })
+                
                 // 공지사항 서브메뉴 이벤트
                 subMenu.eq(1).mouseover(function () {
-                    blur.eq(0).css("display", "block");
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
+
                     subMenu.eq(1).addClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({ "transition": "600ms", "height": "200px" });
-                    classshop.css({ "transition": "600ms", "height": "0px" });
-                    oneday.css({ "transition": "600ms", "height": "0px" });
-                    award.css({ "transition": "600ms", "height": "0px" });
-                    community.css({ "transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px"});
+                    notice.css({"transition": "400ms", "height": "200px" });
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px"});
+                    award.css({"transition": "400ms", "height": "0px"});
+                    community.css({"transition": "400ms", "height": "0px"});
                 })
 
                 notice.mouseleave(function () {
-                    blur.eq(0).css("display", "none");
                     subMenu.eq(1).removeClass("active");
-                    notice.css({ "transition": "600ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    blur.eq(0).css("display","none");
                 })
 
                 // 클래스샵 서브메뉴 이벤트
                 subMenu.eq(2).mouseover(function () {
-                    blur.eq(0).css("display", "block");
+
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).addClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({ "transition": "600ms", "height": "0px" });
-                    classshop.css({ "transition": "600ms", "height": "270px" });
-                    oneday.css({ "transition": "600ms", "height": "0px" });
-                    award.css({ "transition": "600ms", "height": "0px" });
-                    community.css({ "transition": "600ms", "height": "0px" });
+
+                    menuAll.css({"transition": "400ms", "height": "0px"});
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    classshop.css({"transition": "400ms", "height": "270px" });
+                    oneday.css({"transition": "400ms", "height": "0px"});
+                    award.css({"transition": "400ms", "height": "0px"});
+                    community.css({"transition": "400ms", "height": "0px"});
                 })
 
                 classshop.mouseleave(function () {
-                    blur.eq(0).css("display", "none");
                     subMenu.eq(2).removeClass("active");
-                    classshop.css({ "transition": "600ms", "height": "0px" });
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    blur.eq(0).css("display","none");
                 })
 
                 // 원데이클래스 서브메뉴 이벤트
                 subMenu.eq(3).mouseover(function () {
-                    blur.eq(0).css("display", "block");
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
+
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).addClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({ "transition": "600ms", "height": "0px" });
-                    classshop.css({ "transition": "600ms", "height": "0px" });
-                    oneday.css({ "transition": "600ms", "height": "160px" });
-                    award.css({ "transition": "600ms", "height": "0px" });
-                    community.css({ "transition": "600ms", "height": "0px" });
+                    menuAll.css({"transition": "400ms", "height": "0px"});
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "160px" });
+                    award.css({"transition": "400ms", "height": "0px"});
+                    community.css({"transition": "400ms", "height": "0px"});
                 })
 
                 oneday.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(3).removeClass("active");
-                    oneday.css({ "transition": "600ms", "height": "0px" });
+                    oneday.css({"transition": "400ms", "height": "0px"});
                 })
 
                 // 어워드 서브메뉴 이벤트
                 subMenu.eq(4).mouseover(function () {
-                    blur.eq(0).css("display", "block");
+
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
+
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).addClass("active");
                     subMenu.eq(5).removeClass("active");
-                    notice.css({ "transition": "600ms", "height": "0px" });
-                    classshop.css({ "transition": "600ms", "height": "0px" });
-                    oneday.css({ "transition": "600ms", "height": "0px" });
-                    award.css({ "transition": "600ms", "height": "210px" });
-                    community.css({ "transition": "600ms", "height": "0px" });
+
+                    menuAll.css({"transition": "400ms", "height": "0px"});
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px"});
+                    award.css({"transition": "400ms", "height": "210px" });
+                    community.css({"transition": "400ms", "height": "0px" });
                 })
 
                 award.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(4).removeClass("active");
-                    award.css({ "transition": "600ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px" });
                 })
 
                 // 커뮤니티 서브메뉴 이벤트
                 subMenu.eq(5).mouseover(function () {
-                    blur.eq(0).css("display", "block");
+                    blur.eq(0).css("display","block");
+                    subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).addClass("active");
-                    notice.css({ "transition": "600ms", "height": "0px" });
-                    classshop.css({ "transition": "600ms", "height": "0px" });
-                    oneday.css({ "transition": "600ms", "height": "0px" });
-                    award.css({ "transition": "600ms", "height": "0px" });
-                    community.css({ "transition": "600ms", "height": "220px" });
+
+                    menuAll.css({"transition": "400ms", "height": "0px" });
+                    notice.css({"transition": "400ms", "height": "0px"});
+                    classshop.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({"transition": "400ms", "height": "0px" });
+                    award.css({"transition": "400ms", "height": "0px"});
+                    community.css({"transition": "400ms", "height": "205px" });
+
                 })
 
                 community.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(5).removeClass("active");
-                    community.css({ "transition": "600ms", "height": "0px" });
+                    community.css({"transition": "400ms", "height": "0px"});
                 })
 
 
@@ -454,17 +513,87 @@
 
             </script>
         </div>
-        <div id="header_line"></div>
+        <%-- <div id="header-middle">
+            <div class="middle">
+                <div class="logo">
+                    
+                </div>
+                <div class="search">
+                    <input type="search" placeholder="Search..." /><input type="button" value="검색" />
+                </div>
+                <div class="info">
+                    <!-- dddd -->
+                </div>
+                <script>
+                    $.ajax({
+                        url: '<%= request.getContextPath() %>/myCartCount?member=<%= logginMember!=null ? logginMember.getMemberEmail() : "" %>',
+                        success: function (data) {
+                            if (data != 0) {
+                                $('#cartCount').html(data);
+                            } else {
+                                $('#cartCount').css("display", "none");
+                            }
+                        }
+                    });
+
+                    // 내클래스, 장바구니 마우스오버 시 서브
+                    $('#icon_myclass').mouseover(function () {
+                        $('#icon_sub').html('내 클래스').css({ "display": "inline-block", "opacity": "1" });
+                    })
+                    $('#icon_myclass').mouseleave(function () {
+                        $('#icon_sub').css("display", "none");
+                    })
+
+                    $('#icon_cart').mouseover(function () {
+                        $('#icon_sub').html('취미바구니').css({ "display": "inline-block", "opacity": "1" });
+                    })
+                    $('#icon_cart').mouseleave(function () {
+                        $('#icon_sub').css("display", "none");
+                    })
+
+                    // 내클래스
+                    function fn_myclass() {
+                        if (<%= logginMember != null %>) {
+                            location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                        } else {
+                            swal("[내 클래스] 로그인 후 이용해주세요");
+                            return;
+                        }
+                    }
+
+                    // 장바구니
+                    function fn_cart() {
+                        if (<%= logginMember != null %>) {
+                            location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                        } else {
+                            swal("[장바구니] 로그인 후 이용해주세요");
+                            return;
+                        }
+                    }
+                </script>
+            </div>
+        </div> --%>
         <script>
-            $(window).scroll(function () {
-                var target = $('#header_line');
-                var scrollTo = $(window).scrollTop(),
-                    docHeight = $(document).height(),
-                    windowHeight = $(window).height();
-                scrollPercent = (scrollTo / (docHeight - windowHeight)) * 100;
-                target.css("width", scrollPercent + "%");
-            })
-        </script>
+        // 내클래스
+                    function fn_myclass() {
+                        if (<%= logginMember != null %>) {
+                            location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                        } else {
+                            swal("[내 클래스] 로그인 후 이용해주세요");
+                            return;
+                        }
+                    }
+
+                    // 장바구니
+                    function fn_cart() {
+                        if (<%= logginMember != null %>) {
+                            location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                        } else {
+                            swal("[장바구니] 로그인 후 이용해주세요");
+                            return;
+                        }
+                    }
+         </script>
     </header>
 
     <!-- 로그인 페이지 연결 -->

@@ -114,7 +114,18 @@
 								</div>
 								<input type="file" name="noticeImgnameOriginal" class="inputImageFile" value=""/>
 							</div>
+							<button type="button" class="fileImgDelBtn" onclick="fn_fileImgDelBtn()">x</button>
+							<input type="hidden" name="imgDelFlag"/>
 						</div>
+						<script>
+							function fn_fileImgDelBtn() {
+								$("input[name='imgDelFlag']").val("true");
+								$(".inputImage img").attr("src", "<%= request.getContextPath() %>/images/uploadIcon.png");
+								$(".inputImage img").css({"width":"100px","height":"100px"});
+								$("input[name='noticeImgnameOriginal']").val("");
+								$(".imageTitle").text("");
+							}
+						</script>
 					</div>
 				</div>
 				<div class="noticeWriteContent noticeWriteRow">
@@ -138,8 +149,16 @@
 						<!--input box-->
 						<input type="text" class="upload_text" readonly="readonly" value=""/>
 
-
-						<!-- <input type="file" name="notceFilenameOriginal" class="inputText"/> -->
+						<button type="button" class="fileDelBtn" onclick="fn_fileDelBtn()">x</button>
+						<input type="hidden" name="fileDelFlag"/>
+						<script>
+							function fn_fileDelBtn() {
+								$("input[name='fileDelFlag']").val("true");
+								$("input[name='noticeFilenameOriginal']").val("");
+								$(".upload_text").val("파일명");
+							}
+						</script>
+						
 					</div>
 				</div>
 			</div>
@@ -172,6 +191,10 @@
 	function fn_noticeListMoEnd(index) {
 			$("#noticeModifyFrm").submit();	
 	}
+	
+	function fn_noticeListMoExit(index) {
+		$(".defaultViewModal").css("display", "none");
+	}
 
 	
 	// 수정하기 버튼 ajax로 불러오기
@@ -182,7 +205,6 @@
 			dataType: 'JSON',
 			data: { "noticeNo": index },
 			success: function (data) {
-				console.log(data);
 				if(data["noticeSort"]=="sortNotice") {
 					
 					$("#sortNotice").removeClass("sortBtn");

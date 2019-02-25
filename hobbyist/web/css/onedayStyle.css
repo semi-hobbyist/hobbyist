@@ -9,13 +9,13 @@ section#oneday .oneday_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 193px;
+    padding-top: 150px;
 }
 
 section#oneday .oneday_content #oneday_left {
     display: inline-block;
     width: 0px;
-    height: 600px;
+    height: 100vh;
     position: fixed;
     overflow-x: hidden;
     overflow: hidden;
@@ -226,6 +226,12 @@ section#oneday .oneday_content #oneday_right .oneday_middle .item {
     border: 2px solid #fff;
 }
 
+section#oneday .oneday_content #oneday_right .oneday_middle .item #img {
+	width: 270px;
+	height: 160px;
+	overflowY: hidden;
+}
+
 section#oneday .oneday_content #oneday_right .oneday_middle .item p {
     font-size: 12px;
     letter-spacing: -0.4px;
@@ -403,7 +409,16 @@ section#onedayView .onedayView_content .view_right .view_top_left {
     display: inline-block;
     vertical-align: top;
     width: 530px;
-    height: 300px;
+}
+
+section#onedayView .onedayView_content .view_right .view_top_left b {
+	font-size: 18px;
+	margin-right: 15px;
+	background-color: #d5ddea;
+}
+
+section#onedayView .onedayView_content .view_right .view_top_left img {
+	margin-top: 20px;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right {
@@ -439,11 +454,11 @@ section#onedayView .onedayView_content .view_right .view_top_right table {
 
 section#onedayView .onedayView_content .view_right .view_top_right table td {
     width: 200px;
-    height: 30px;
+    height: 36px;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right table .tdclass {
-    width: 250px;
+    width: 400px;
     text-align: left;
     font-size: 14px;
 }

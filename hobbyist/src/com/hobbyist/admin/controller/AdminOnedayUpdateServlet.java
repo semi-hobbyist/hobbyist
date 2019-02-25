@@ -58,6 +58,16 @@ public class AdminOnedayUpdateServlet extends HttpServlet {
 			oneday.setOnedayPeople(Integer.parseInt(mr.getParameter("oneday_people")));
 			oneday.setOnedayAddress(mr.getParameter("oneday_address"));
 
+			File f = mr.getFile("oneday_image1");
+			
+			if(f!=null && f.length()>0) {
+				File deleteFile = new File(filePath + "/" + mr.getParameter("old_file"));
+				boolean resul = deleteFile.delete();
+				System.out.println(resul?"제대로지워짐":"안지워졌어");
+			} else {
+				oneday.setOnedayImage1(mr.getParameter("old_file"));
+			}
+			
 			
 			int result = new OnedayService().updateOneday(oneday);
 

@@ -54,7 +54,7 @@ public class BoardFAQSearchServlet extends HttpServlet {
 		if(pageNo == 1) {
 			pageBar += "<span>◀</span>";
 		} else {
-			pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQ?cPage=" + (pageNo-1) + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>◀</a>";
+			pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQSearch?cPage=" + (pageNo-1) + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>◀</a>";
 		}
 		
 		while(!(pageNo > totalPage || pageNo > pageEnd)) {
@@ -62,7 +62,7 @@ public class BoardFAQSearchServlet extends HttpServlet {
 			if(cPage == pageNo) {
 				pageBar += "<span>" + pageNo + "</span>";
 			} else {
-				pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQ?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>" + pageNo + "</a>";
+				pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>" + pageNo + "</a>";
 			}
 			pageNo++;
 		}
@@ -70,7 +70,7 @@ public class BoardFAQSearchServlet extends HttpServlet {
 		if(pageNo > totalPage) {
 			pageBar += "<span>▶</span>";
 		} else {
-			pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQ?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>▶</a>";
+			pageBar += "<a href='" + request.getContextPath() + "/board/boardFAQSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>▶</a>";
 		}
 		
 		request.setAttribute("list", list);

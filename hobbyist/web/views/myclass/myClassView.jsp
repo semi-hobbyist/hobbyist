@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.hobbyist.myclass.model.vo.Lecture" %>
+    pageEncoding="UTF-8" import="java.util.*, com.hobbyist.shop.model.vo.Study" %>
 
 <%
-	List<Lecture> lecture = (List)request.getAttribute("Lecture");
+	Study study = (Study)request.getAttribute("Study");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
@@ -17,9 +17,9 @@
 	}
 </script>
 
-<section id="lecture">
-	<div class="lecture_content">
-		<div class="lecture_top" id="lecture_top">
+<section id="study">
+	<div class="study_content">
+		<div class="study_top" id="study_top">
 			<ul>
 				<li onclick="location.href='<%= request.getContextPath() %>/myClass?member=<%= logginMember != null ? logginMember.getMemberEmail() : "" %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="16px">&nbsp;&nbsp;
 				돌아가기</li>
@@ -28,42 +28,39 @@
 			</ul>
 		</div>
 		<br>
-		<div class="lecture_center">
-				<table id="lecture-Ajax">
+		<div class="study_center">
+				<table>
+					<tr>
+						<td></td>
+						<td style="height: 80px; text-align:left; padding-left: 25px;"><h3><%= study.getStudyTitle() %></h3>
+						<%= study.getStudySubTitle() %></td>
+					</tr>
+					<tr>
+						<td style="width: 200px;">
+						 <br>작가정보
+						<br><%= study.getStudyWriter() %></td>
+						<td style="width: 790px;"><%= study.getStudyVideo() %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><%= study.getStudyContent() %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
 				</table>
 		</div>
 	</div>
 	<script>
-			// Ajax 처리될 부분
-			var table = $('#lecture-Ajax');
-			// 강좌 페이지 진입 시 Ajax 로 리스트 가져오기
-			$.ajax({
-				url: '<%=request.getContextPath() %>/myClassDetailView?no=1',
-				success: function (data) {
-					table.empty();
-					table.html(data);
-				}
-			});
-			
-			// 강좌메뉴 클릭 시, Ajax
-			function fn_lecture_mainAjax(no) {
-				$.ajax({
-					url: '<%=request.getContextPath() %>/myClassDetailView?no=' + no,
-					success: function (data) {
-						table.empty();
-						table.html(data);
-					}
-				});
-			}
-			
 			// 강좌 페이지 상단 숨기기 및 보이기
             $(window).scroll(function(){
-                var target = $('#lecture_top');
+                var target = $('#study_top');
 				var scrollTo = $(window).scrollTop();
 				if(scrollTo>=70) {
-					$('#lecture_top').css("height","0px");
+					$('#study_top').css("height","0px");
 				} else {
-					$('#lecture_top').css({"height":"50px","border":"none"});
+					$('#study_top').css({"height":"50px","border":"none"});
 				}
                 });
 			

@@ -11,37 +11,42 @@
 
 <section id="onedayView">
 	<div class="onedayView_content">
+	<input type="hidden" id="hidden_member" value="<%= logginMember!=null ? logginMember.getMemberEmail() : "a" %>"/>
 		<div class="view_right">
 			<div class="view_top_info">작가명 :
 				<%= oneday.getOnedayWriter() %> | 클래스코드 :
 				<%= oneday.getOnedayNo() %>
 			</div>
-			<div class="view_top_left"><img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
-				 width="460px"></div>
+			<div class="view_top_left">
+			<b><%= oneday.getOnedayName() %></b><Br><%= oneday.getOnedayInfo() %><br>
+			<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
+				 width="400px"></div>
 			<div class="view_top_right">
 				<table>
 					<tr>
 						<td colspan="2">
-							<h2><%= oneday.getOnedayName() %></h2>
+							<br>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><p><%= oneday.getOnedayInfo() %></p></td>
+						<td>장소/시간</td>
+						<td class="tdclass"><%= oneday.getOnedayAddress() %></td>
 					</tr>
 					<tr>
 						<td>예약</td>
 						<td class="tdclass">
+							<input type="hidden" id="reservationStatus" value="<%= oneday.getOnedayReservationStatus() %>">
 							예약현황<%= oneday.getOnedayCurrentPeople() %>/<b><%= oneday.getOnedayPeople() %></b> (명)
 							<%= oneday.getOnedayReservationStatus().equals("Y") ?  "[예약가능]" : "[예약불가]" %>
 						</td>
 					</tr>
 					<tr>
-						<td>가격</td>
+						<td>클래스 비용</td>
 						<td class="tdclass">
 							<%= oneday.getOnedayPrice() %>원</td>
 					</tr>
 					<tr>
-						<td>날짜/장소</td>
+						<td>클래스 옵션</td>
 						<td class="tdclass">
 						<select name="class_option" id="class_option">
 							<option>------------- 선택 -------------</option>
@@ -54,33 +59,13 @@
 						</td>
 					</tr>
 					<tr>
-					<td colspan="2"><button class="api" id="kakao-link-btn" onclick="javascript:;">
-							</button> 
-							<button class="api" onclick="fn_shortUrl()">
-							</button>
-							<!-- ------------------ 카카오톡 공유 api ---------------- -->
-							<script type='text/javascript'>
-							  //<![CDATA[
-							    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-							    Kakao.init('90bce1ec4b05bd5a83a7026725712442');
-							    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-							    Kakao.Link.createDefaultButton({
-							      container: '#kakao-link-btn',
-							      objectType: 'feed',
-							      content: {
-							        title: '<%= oneday.getOnedayName()  %>',
-							        description: '<%= oneday.getOnedayInfo() %>',
-							        imageUrl: 'http://hobbyists.ddns.net:8080/hobbyist/upload/oneday/images/<%= oneday.getOnedayImage1() %>',
-							        link: {
-							          mobileWebUrl: 'http://hobbyists.ddns.net:8080/hobbyist/oneday/onedayView?no=<%= oneday.getOnedayNo() %>' ,
-							          webUrl: 'http://hobbyists.ddns.net:8080/hobbyist/oneday/onedayView?no=<%= oneday.getOnedayNo() %>'
-							        }
-							      }
-							    });
-							  //]]>
-							</script>
-							
-							<!-- -------------공유/짧은글주소 등 api 를 위한 스크립트	----------->
+						<td colspan="2" style="height: 50px;">옵션을 선택하지 않으시면,<br> 랜덤(색상 및 스타일)키트가 준비됩니다</td>
+					</tr>
+					<tr>
+					<td colspan="2">
+					<button class="api" id="kakao-link-btn" onclick="javascript:;"></button> 
+					<button class="api" onclick="fn_shortUrl()"></button>
+				</td>
 				<script>
 					function fn_shortUrl() {
 						// 현재 페이지 주소 변수에 담아링~
@@ -96,7 +81,22 @@
 						})
 					}
 				</script>
-				<!-- -------------공유/짧은글주소 등 api 를 위한 스크립트 끝	-----------></td>
+				<script type='text/javascript'>
+							    Kakao.init('90bce1ec4b05bd5a83a7026725712442');
+							    Kakao.Link.createDefaultButton({
+							      container: '#kakao-link-btn',
+							      objectType: 'feed',
+							      content: {
+							        title: '<%= oneday.getOnedayName() %>',
+							        description: '<%= oneday.getOnedayInfo() %>',
+							        imageUrl: '<%= request.getContextPath() %>/upload/oneday/images/<%= oneday.getOnedayImage1() %>',
+							        link: {
+							          mobileWebUrl: '<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo() %>' ,
+							          webUrl: '<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo() %>'
+							        }
+							      }
+							    });
+				</script>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -104,7 +104,21 @@
 							<script>
 								function fn_addCart() {
 									if(<%= logginMember != null %>) {
-										location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=" + $('#class_option').val();
+										if($('#reservationStatus').val()=='Y') {
+											var classOp = $('#class_option').val()
+											$.ajax({
+												url: '<%=request.getContextPath()%>/myCartOnedayInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=' + classOp,
+												success: function (data) {
+													if(confirm(data)){
+														location.href='<%=request.getContextPath()%>/myCart?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>';
+													} else {
+														
+													}
+												}
+											});
+										} else {
+											alert('예약정원 초과! 예약이 불가능합니다');
+										}
 									} else {
 										alert('로그인 후 취미바구니 이용이 가능합니다');
 									}
@@ -114,7 +128,7 @@
 					</tr>
 				</table>
 			</div>
-			<br>
+			<br><br>
 			<!-- 중간 고정메뉴 -->
 			<div class="view_menu" id="view_menu">
 				<ul>
@@ -130,35 +144,6 @@
 				<%= oneday.getOnedayContent() %>
 			</div>
 			
-				<script>
-				$.ajax({
-					url: '<%= request.getContextPath() %>/oneday/onedayReviewListAjax',
-					data: 'review_class=<%=oneday.getOnedayNo()%>',
-					success: function (data) {
-						$('#review_tbl').html(data);
-					}
-				})
-				
-						function fn_reviewSubmit() {
-							var rvContnt = $('[name=review_content]');
-							if(rvContnt.val()=='') {
-								alert('리뷰내용을 작성해주세요');
-								rvContnt.focus();
-								return false;
-							} else {
-								$.ajax({
-								url: '<%= request.getContextPath() %>/oneday/onedayReviewWrite',
-								data : $('#reviewFrm').serialize(),
-								success: function (data) {
-									$('#review_tbl').empty();
-									$('#review_tbl').html(data);
-								}
-								})
-							}
-							
-						}
-
-					</script>
 			<div id="policy">
 					<%= oneday.getOnedayPolicy() %>
 			</div>
@@ -180,7 +165,7 @@
 		if (scrollTo > 400) {
 			$('#view_menu').css({
 				"z-index" : "9999",
-				"top" : "200px",
+				"top" : "190px",
 				"position" : "fixed"
 			});
 		} else {

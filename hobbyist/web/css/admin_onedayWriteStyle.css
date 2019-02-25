@@ -3,13 +3,13 @@ section#admin .admin_content .adminOnedayWrite_right {
     float: right;
     width: 820px;
     text-align: center;
+    padding-bottom: 60px;
 }
 
 section#admin .admin_content .adminOnedayWrite_right #adminOnedayWrite_main {
 	display: inline-block;
     width: 810px;
     background-color: #fff;
-    border: 1px solid #bdc9dd;
 }
 
 section#admin .admin_content .adminOnedayWrite_right #adminOnedayWrite_main button {

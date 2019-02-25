@@ -12,7 +12,6 @@ import com.hobbyist.oneday.model.vo.Oneday;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.oneday.model.dao.OnedayDao;
 import com.hobbyist.oneday.model.vo.Cate;
-import com.hobbyist.oneday.model.vo.Review;
 
 public class OnedayService {
 	
@@ -80,23 +79,6 @@ public class OnedayService {
 		return list;
 	}
 
-	
-	// 리뷰모두가져오기
-		public List<Review> reviewListAll() {
-			Connection conn = getConnection();
-			List<Review> list = dao.reviewListAll(conn);
-			close(conn);
-			return list;
-		}
-	
-	// 리뷰가져오기
-	public List<Review> reviewList(int no,  int rPage, int rPerPage) {
-		Connection conn = getConnection();
-		List<Review> list = dao.reviewList(conn, no, rPage, rPerPage);
-		close(conn);
-		return list;
-	}
-	
 	// 카테고리 조회
 	public List<Cate> CateList() {
 		Connection conn = getConnection();
@@ -130,31 +112,6 @@ public class OnedayService {
 		Oneday result = dao.selectOne(conn, no);
 		close(conn);
 		return result;
-	}
-	
-	// 리뷰 작성 (Ajax)
-	public List<Review> reviewInsert(Review rv, int rPage, int rPerPage) {
-		Connection conn = getConnection();
-		List<Review> list = null;
-		int result = dao.reviewInsert(conn, rv);
-		
-		if(result>0) {
-			System.out.println("리뷰작성 완료");
-			commit(conn);
-			list = dao.reviewList(conn, rv.getReviewClass(), rPage, rPerPage);
-		} else {
-			rollback(conn);
-		}
-		close(conn);
-		return list;
-	}
-
-	// 리뷰개수 가져오기
-	public int reviewCount(int review_class) {
-		Connection conn = getConnection();
-		int count = dao.reviewCount(conn, review_class);
-		close(conn);
-		return count;
 	}
 
 	// 클래스 등록 -> 작가 찾기
@@ -198,6 +155,35 @@ public class OnedayService {
 		List<Oneday> list = dao.ascPriceCate(conn, cate, keyword, cPage, numPerPage);
 		close(conn);
 		return list;
+	}
+
+	public int updateOrderOneday(int classNo) {
+		Connection conn = getConnection();
+		// 모집정원 먼저 조회하기
+		int maxPeople = dao.selectMaxPeople(conn, classNo);
+		// 현재예약한 인원 불러오기
+		int currentPeople = dao.selectCurrentPeople(conn, classNo);
+		
+		int result = 0;
+		if(currentPeople<maxPeople) {
+			// 현재예약인원 < 모집정원, 예약인원 증가
+			 dao.updateOrderOneday(conn, classNo);
+			 result = 1;
+		} else {
+			// 아니라면, 예약가능상태 예약불가로 바꾸기
+			dao.updateReservation(conn, classNo);
+			result = -1;
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int deleteOneday(int no) {
+		Connection conn = getConnection();
+		int result = dao.deleteOneday(conn, no);
+		close(conn);
+		return result;
 	}
 
 }

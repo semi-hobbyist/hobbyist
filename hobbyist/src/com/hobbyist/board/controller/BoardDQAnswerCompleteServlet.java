@@ -39,7 +39,7 @@ public class BoardDQAnswerCompleteServlet extends HttpServlet {
 		
 		if(result > 0) {
 			msg = "1:1 문의 답변되었습니다.";
-			loc = "/board/boardDirectQuestion";
+			loc = "/admin/community/adminCommunityDQList";
 		} else {
 			msg = "답변중 오류 발생";
 			loc = "/board/boardDirectQuestionView?boardDQNo=" + boardDQNo;

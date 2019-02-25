@@ -75,6 +75,12 @@
 		<input type="hidden" id="classOptionVal" name="classOptionVal">
 		</form>
 		
+		<form name="orderFrm2" action="<%= request.getContextPath() %>/order/orderOneday" method="POST">
+		<input type="hidden" id="memberVal2" name="memberVal2">		
+		<input type="hidden" id="selectNoVal2" name="selectNoVal2">
+		<input type="hidden" id="classOptionVal2" name="classOptionVal2">
+		</form>
+		
 		<script>
 		
 			$('#btn1').addClass("addCartSelected");
@@ -187,6 +193,39 @@
 				$('#classOptionVal').val(classOption);
 				
 				orderFrm.submit();
+				} else {
+					swal('선택한 상품이 없습니다');
+				}
+			}
+			
+			var check_count2 = 0;
+			
+			function fn_orderOneday() {
+				var checkbox = $('[name=checkbox]');
+				$.each(checkbox, function(index) {
+					if(checkbox[index].checked==true) {
+						check_count2++;
+					} 
+				});
+				
+				if(check_count2>0) {
+				var selectNo = '';
+				var classOption = '';
+				var checkbox = $('[name=checkbox]');
+				var classNo = $('[name=classNo]');
+				var classOptions = $('[name=classOption]');
+				$.each(checkbox, function(index) {
+						if(checkbox[index].checked) {
+							selectNo += classNo[index].value +',';
+							classOption += classOptions[index].value + ',';
+						}
+				});
+				
+				$('#memberVal2').val('<%= logginMember.getMemberEmail() %>');
+				$('#selectNoVal2').val(selectNo);
+				$('#classOptionVal2').val(classOption);
+				
+				orderFrm2.submit();
 				} else {
 					swal('선택한 상품이 없습니다');
 				}

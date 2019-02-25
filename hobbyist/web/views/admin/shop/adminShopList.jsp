@@ -56,6 +56,7 @@
 							<th style="width:60px;">가격</th>
 							<th style="width:68px;">적립포인트</th>
 							<th style="width:90px;">등록일</th>
+							<th></th>
 						</tr>
 						<% for(Shop s : list) { %>
 							<tr>
@@ -66,12 +67,34 @@
 								<td><%= s.getShopPrice() %></td>
 								<td><%= s.getShopPoint() %></td>
 								<td><%= s.getShopDate() %></td>
+								<td>
+									<% 
+										if(logginMember!=null && logginMember.getMemberEmail().equals("admin")) {
+									%>
+											<button onclick="fn_delete(<%= s.getShopNo() %>)">X</button>
+									<%
+										}
+									%>
+								</td>
 							</tr>
 						<% } %>
 						<tr>
 							<td colspan="8" class="pageBar"><%= pageBar %></td>
 						</tr>
 					</table>
+					<script>
+						function fn_delete(num) {
+							if(confirm('정말 삭제하시겠습니까?')) {
+								$.ajax({
+									url : '<%= request.getContextPath() %>/admin/adminShopDelete?no=' + num,
+									success : function (data) {
+										alert(data);
+										location.href="<%= request.getContextPath() %>/admin/adminShopList";
+									}
+								});
+							}
+						}
+					</script>
 				</div>
 		</div>
 	</div>

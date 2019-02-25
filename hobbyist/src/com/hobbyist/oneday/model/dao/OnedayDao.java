@@ -16,7 +16,6 @@ import java.util.Properties;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.oneday.model.vo.Oneday;
 import com.hobbyist.oneday.model.vo.Cate;
-import com.hobbyist.oneday.model.vo.Review;
 public class OnedayDao {
 
 	static Properties prop = new Properties();
@@ -282,79 +281,7 @@ public class OnedayDao {
 		return list;
 	}
 
-	// 모든리뷰 가져오기
-	public List<Review> reviewListAll(Connection conn) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Review> list = new ArrayList<Review>();
-
-		try {
-			String sql = prop.getProperty("reviewListAll");
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-				Review r = new Review();
-				r.setReviewNo(rs.getInt("oneday_review_no"));
-				r.setReviewClass(rs.getInt("oneday_review_class"));
-				r.setReviewCate(rs.getString("oneday_review_cate"));
-				r.setReviewWriter(rs.getString("oneday_review_writer"));
-				r.setReviewTitle(rs.getString("oneday_review_title"));
-				r.setReviewContent(rs.getString("oneday_review_content"));
-				r.setReviewFilepath(rs.getString("oneday_review_filepath"));
-				r.setReviewDate(rs.getDate("oneday_review_date"));
-				r.setReviewCount(rs.getInt("oneday_review_count"));
-				list.add(r);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-
-	}
-
-	// 리뷰 가져오기
-	public List<Review> reviewList(Connection conn, int no,  int rPage, int rPerPage) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Review> list = new ArrayList<Review>();
-
-		try {
-			String sql = prop.getProperty("reviewList");
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			pstmt.setInt(2, (rPage-1)*rPerPage+1);
-			pstmt.setInt(3, rPage*rPerPage);
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-				Review r = new Review();
-				r.setReviewNo(rs.getInt("oneday_review_no"));
-				r.setReviewClass(rs.getInt("oneday_review_class"));
-				r.setReviewCate(rs.getString("oneday_review_cate"));
-				r.setReviewWriter(rs.getString("oneday_review_writer"));
-				r.setReviewTitle(rs.getString("oneday_review_title"));
-				r.setReviewContent(rs.getString("oneday_review_content"));
-				r.setReviewFilepath(rs.getString("oneday_review_filepath"));
-				r.setReviewDate(rs.getDate("oneday_review_date"));
-				r.setReviewCount(rs.getInt("oneday_review_count"));
-				list.add(r);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-
-	}
-
+	
 	// 카테고리 불러오기
 	public List<Cate> CateList(Connection conn) {
 		PreparedStatement pstmt = null;
@@ -526,57 +453,6 @@ public class OnedayDao {
 		}
 		return result;
 
-	}
-
-
-	// 리뷰작성
-	public int reviewInsert(Connection conn, Review rv) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-
-		try {
-			String sql = prop.getProperty("reviewInsert");
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rv.getReviewClass());
-			pstmt.setString(2, rv.getReviewCate());
-			pstmt.setString(3, rv.getReviewWriter());
-			pstmt.setString(4, rv.getReviewTitle());
-			pstmt.setString(5, rv.getReviewContent());
-			pstmt.setString(6, rv.getReviewFilepath());
-			pstmt.setInt(7, rv.getReviewCount());
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-
-
-	// 해당 상품 리뷰 카운트
-	public int reviewCount(Connection conn, int review_class) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = 0;
-
-		try {
-			String sql = prop.getProperty("reviewCount");
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, review_class);
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return result;
 	}
 
 	public List<Member> writerSearch(Connection conn, String classWriter) {
@@ -811,6 +687,109 @@ public class OnedayDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	
+	// 원데이클래스 주문완료 시, 모집정원보다 크지 않으면 예약인원 1증가
+	public int updateOrderOneday(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateOrderOneday");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 예약가능한 인원 수 가져오기 (모집정원)
+	public int selectMaxPeople(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("selectMaxPeople");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	// 현재 예약된 인원수 가져오기
+		public int selectCurrentPeople(Connection conn, int classNo) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int result = 0;
+			
+			try {
+				String sql = prop.getProperty("selectCurrentPeople");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, classNo);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			
+			return result;
+		}
+	
+	// 모집정원과 현재인원이 같다면 ONEDAY_STATUS = 'N' (예약불가) 로 바꾸기
+	public int updateReservation(Connection conn, int classNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateReservation");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteOneday(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = prop.getProperty("deleteOneday");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

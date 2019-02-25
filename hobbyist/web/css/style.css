@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
 
 html, body {
     padding: 0;
     margin: 0;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
     font-size: 14px;
+    letter-spacing: -0.3px;
     scroll-behavior: smooth;
     position: relative;
+    line-height: 21px;
 }
 
 ::selection {
@@ -67,7 +69,7 @@ header #header-top .left-top a #line {
 }
 
 header #header-top .left-top a:hover #line {
-   transition: 500ms;
+  	transition: 500ms;
     width: 100%;
 }
 
@@ -93,10 +95,10 @@ header #header-top .top ul li {
     text-align: center;
     margin-left: 3px;
     border: 1px solid #c2c2c2;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: #252525;
     font-size: 12px;
     letter-spacing: -0.5px;
@@ -105,7 +107,7 @@ header #header-top .top ul li {
 header #header-top .top ul li#admin {
 	padding-left: 15px;
 	padding-right: 15px;
-	background-color: #3e4b6c;
+	background-color: #3b4f6a;
 	color: #fff;
 }
 
@@ -145,14 +147,13 @@ header #header-top .top ul img {
 header #header-top .top ul li:hover {
     transition: 400ms;
     color: #fff;
-    background-color: #252525;
+    background-color: #3b4f6a;
 }
 
 header #header-middle {
     width: 100%;
     height: 100px;
     text-align: center;
-    border-bottom: 1px solid #e4e4e4;
 }
 
 header #header-middle .middle {
@@ -230,7 +231,49 @@ header #header-middle .middle .info #cartCount {
     color: #fff;
 }
 
-header #header-middle .middle .info #icon_sub {
+
+
+header #header-bottom {
+    width: 100%;
+    text-align: center;
+}
+
+header #header-bottom .bottom {
+    display: inline-block;
+    width: 990px;
+    text-align: center;
+}
+
+header #header-bottom .bottom ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-bottom .bottom ul li {
+    text-align: center;
+    display: inline-block;
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-bottom: 12px;
+    cursor: pointer;
+}
+
+header #header-bottom .bottom ul li:nth-child(1) {
+    background-color: #3b4f6a;
+    color: #fff;
+}
+
+
+header #header-bottom .bottom ul li:nth-last-child(1) {
+	padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+header #header-bottom .bottom ul #icon_sub {
+	z-index: 9999;
+	position: absoulte;
 	opacity: 0;
 	display: none;
 	width: 60px;
@@ -243,46 +286,12 @@ header #header-middle .middle .info #icon_sub {
 	border-radius: 5px;
 }
 
-header #header-bottom {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #e4e4e4;
-}
-
-header #header-bottom .bottom {
-    display: inline-block;
-    width: 990px;
-    text-align: left;
-}
-
-header #header-bottom .bottom ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-header #header-bottom .bottom ul li {
-    text-align: center;
-    display: inline-block;
-    width: 160px;
-    height: 35px;
-    padding-bottom: 6px;
-    cursor: pointer;
-}
-
-header #header-bottom .bottom ul li:nth-child(1) {
-    background-color: #3b4f6a;
-    color: #fff;
-}
-
 /* ---------------------------------------------------------  포인트 컬러 */
 
 header #header-bottom .bottom ul li .menuline {
     width: 0;
     height: 3px;
     margin-bottom: 7px;
-    background-color: #b0bbcc;
-    transition: 500ms;
 }
 
 header #header-bottom .bottom ul li:hover .menuline {
@@ -293,6 +302,75 @@ header #header-bottom .bottom ul li:hover .menuline {
 header .active {
 	border-bottom: 2px solid #444444;
 }
+
+/* 전체메뉴보기 서브메뉴 */
+
+header #header-bottom .sub#menuAll {
+    z-index: 999;
+    border-top: 1px solid #e4e4e4;
+    width: 100%;
+    height: 0px;
+    transition: 600ms;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-size: 13px;
+    letter-spacing: -0.3px;
+}
+
+header #header-bottom .sub#menuAll .sub_content {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 990px;
+    text-align: left;
+    padding-left: 7px;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul {
+	vertical-align: top;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul li.all_li {
+	vertical-align: top;
+	text-align: center;
+    display: inline-block;
+    width: 160px;
+    height: 270px;
+    padding-bottom: 6px;
+    border-left: 1px solid #eee;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul li:nth-last-child(1) {
+	border-right: 1px solid #eee;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul li.all_li ul {
+	vertical-align: top;
+	margin:0;
+	padding: 0;
+	padding-top: 15px;
+	list-style:none;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul li.all_li ul li {
+	vertical-align: top;
+	padding-top: 6px;
+	height: 25px;
+	cursor: pointer;
+	border: none;
+}
+
+header #header-bottom .sub#menuAll .sub_content ul li.all_li ul li:hover {
+	background-color: #eee;
+	transition:500ms;
+	background-image: url("../images/top_sub_hover.png");
+	background-size: 100%;
+}
+
 
 /* 공지사항 서브메뉴 */
 
@@ -780,8 +858,8 @@ header #header-bottom .sub#community .sub_content .sub_right ul li:hover {
 
 header #header_line {
     width:0;
-    height: 3px;
-    transition: 400ms;
+    height: 5px;
+    transition: 1000ms;
     background-image: linear-gradient(to right, #6a7aa5 , #919ab3);
 }
 
@@ -830,13 +908,13 @@ section#shop .shop_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 200px;
+    padding-top: 170px;
 }
 
 section#shop .shop_content #shop_left {
     display: inline-block;
     width: 0px;
-    height: 600px;
+    height: 100vh;
     position: fixed;
     overflow-x: hidden;
     overflow: hidden;
@@ -1179,6 +1257,7 @@ section#shopView .shopView_content .view_right .view_menu {
     height: 40px;
     border: 1px solid #dbdbdb;
     background-color: #fff;
+    box-shadow: #fff 50px 30px 50px;
 }
 
 section#shopView .shopView_content .view_right .view_menu ul {
@@ -1233,6 +1312,14 @@ section#shopView .shopView_content .view_right .view_top_right {
     vertical-align: top;
     width: 450px;
     color: #252525;
+}
+
+section#shopView .shopView_content .view_right .view_top_right select {
+	width: 170px;
+	height: 28px;
+	border: 1px solid #9c9c9c;
+	padding-left: 10px;
+	outline: none;
 }
 
 section#shopView .shopView_content .view_right .view_top_right h2 {
@@ -1373,9 +1460,13 @@ section#shopView .shopView_content .view_right #review .review-container {
     color: #424242;
 }
 
+section#shopView .shopView_content .view_right #review .review-container textarea {
+	outline: none;
+}
+
 section#shopView .shopView_content .view_right #review .review-container button {
     width: 150px;
-    height: 80px;
+    height: 40px;
 }
 
 section#shopView .shopView_content .view_right #review table#review_tbl {

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import com.hobbyist.member.model.vo.Member;
@@ -43,7 +44,7 @@ public class MemberDao {
 				result.setMemberPhone(rs.getString("member_phone"));
 				result.setMemberOriginalImage(rs.getString("member_original_image"));
 				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
-				result.setMemberEnrolldate(rs.getString("member_enrolldate"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));
@@ -126,5 +127,93 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public Member selectMemberName(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member result = new Member();
+		String sql = prop.getProperty("searchId");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberName());
+			pstmt.setString(2, m.getMemberPhone());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result.setMemberNo(rs.getInt("member_no"));
+				result.setMemberEmail(rs.getString("member_email"));
+				result.setMemberPassword(rs.getString("member_password"));
+				result.setMemberNickname(rs.getString("member_nickname"));
+				result.setMemberName(rs.getString("member_name"));
+				result.setMemberBirthday(rs.getString("member_birthday"));
+				result.setMemberPhone(rs.getString("member_phone"));
+				result.setMemberOriginalImage(rs.getString("member_original_image"));
+				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
+				result.setMemberGrade(rs.getString("member_grade"));
+				result.setMemberWriterYN(rs.getString("member_writer_yn"));
+				result.setMemberStatus(rs.getString("member_status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Member searchMemberPwd(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member result = null;
+		
+		System.out.println("dao 에서 확인 : " + m.getMemberEmail());
+		
+		String sql = prop.getProperty("searchPwd");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberEmail());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = new Member();
+				result.setMemberNo(rs.getInt("member_no"));
+				result.setMemberEmail(rs.getString("member_email"));
+				result.setMemberPassword(rs.getString("member_password"));
+				result.setMemberNickname(rs.getString("member_nickname"));
+				result.setMemberName(rs.getString("member_name"));
+				result.setMemberBirthday(rs.getString("member_birthday"));
+				result.setMemberPhone(rs.getString("member_phone"));
+				result.setMemberOriginalImage(rs.getString("member_original_image"));
+				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
+				result.setMemberGrade(rs.getString("member_grade"));
+				result.setMemberWriterYN(rs.getString("member_writer_yn"));
+				result.setMemberStatus(rs.getString("member_status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateTempPwd(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("updateTempPwd");
+		int resultPwd=0;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberPassword());
+			pstmt.setString(2, m.getMemberEmail());
+			resultPwd=pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return resultPwd;
 	}
 }

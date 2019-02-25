@@ -18,6 +18,7 @@ import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.shop.model.vo.Cate;
 import com.hobbyist.shop.model.vo.Review;
 import com.hobbyist.shop.model.vo.Shop;
+import com.hobbyist.shop.model.vo.Study;
 
 public class ShopDao {
 
@@ -55,7 +56,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -66,11 +66,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -133,7 +128,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -144,11 +138,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -211,7 +200,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -222,11 +210,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -287,7 +270,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -298,11 +280,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -509,21 +486,20 @@ public class ShopDao {
 				shop.setShopContent(rs.getString(6));
 				shop.setShopPrice(rs.getInt(7));
 				shop.setShopPoint(rs.getInt(8));
-				shop.setShopAmount(rs.getInt(9));
-				shop.setShopOption1(rs.getString(10));
-				shop.setShopOption2(rs.getString(11));
-				shop.setShopOption3(rs.getString(12));
-				shop.setShopOption4(rs.getString(13));
-				shop.setShopOption5(rs.getString(14));
-				shop.setShopImage1(rs.getString(15));
-				shop.setShopImage2(rs.getString(16));
-				shop.setShopImage3(rs.getString(17));
-				shop.setShopImage4(rs.getString(18));
-				shop.setShopImage5(rs.getString(19));
-				shop.setShopPolicy1(rs.getString(25));
-				shop.setShopPolicy2(rs.getString(26));
-				shop.setShopPolicy3(rs.getString(27));
-				shop.setShopDate(rs.getDate(28));
+				shop.setShopOption1(rs.getString(9));
+				shop.setShopOption2(rs.getString(10));
+				shop.setShopOption3(rs.getString(11));
+				shop.setShopOption4(rs.getString(12));
+				shop.setShopOption5(rs.getString(13));
+				shop.setShopImage1(rs.getString(14));
+				shop.setShopImage2(rs.getString(15));
+				shop.setShopImage3(rs.getString(16));
+				shop.setShopImage4(rs.getString(17));
+				shop.setShopImage5(rs.getString(18));
+				shop.setShopPolicy1(rs.getString(19));
+				shop.setShopPolicy2(rs.getString(20));
+				shop.setShopPolicy3(rs.getString(21));
+				shop.setShopDate(rs.getDate(22));
 			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -554,7 +530,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -565,11 +540,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -600,25 +570,19 @@ public class ShopDao {
 			pstmt.setString(5, 	shop.getShopContent());
 			pstmt.setInt(6, shop.getShopPrice());
 			pstmt.setInt(7, shop.getShopPoint());
-			pstmt.setInt(8, shop.getShopAmount());
-			pstmt.setString(9, shop.getShopOption1());
-			pstmt.setString(10, shop.getShopOption2());
-			pstmt.setString(11, shop.getShopOption3());
-			pstmt.setString(12, shop.getShopOption4());
-			pstmt.setString(13, shop.getShopOption5());
-			pstmt.setString(14, shop.getShopImage1());
-			pstmt.setString(15, shop.getShopImage2());
-			pstmt.setString(16, shop.getShopImage3());
-			pstmt.setString(17, shop.getShopImage4());
-			pstmt.setString(18, shop.getShopImage5());
-			pstmt.setString(19, shop.getShopImage6());
-			pstmt.setString(20, shop.getShopImage7());
-			pstmt.setString(21, shop.getShopImage8());
-			pstmt.setString(22, shop.getShopImage9());
-			pstmt.setString(23, shop.getShopImage10());
-			pstmt.setString(24, shop.getShopPolicy1());
-			pstmt.setString(25, shop.getShopPolicy2());
-			pstmt.setString(26, shop.getShopPolicy3());
+			pstmt.setString(8, shop.getShopOption1());
+			pstmt.setString(9, shop.getShopOption2());
+			pstmt.setString(10, shop.getShopOption3());
+			pstmt.setString(11, shop.getShopOption4());
+			pstmt.setString(12, shop.getShopOption5());
+			pstmt.setString(13, shop.getShopImage1());
+			pstmt.setString(14, shop.getShopImage2());
+			pstmt.setString(15, shop.getShopImage3());
+			pstmt.setString(16, shop.getShopImage4());
+			pstmt.setString(17, shop.getShopImage5());
+			pstmt.setString(18, shop.getShopPolicy1());
+			pstmt.setString(19, shop.getShopPolicy2());
+			pstmt.setString(20, shop.getShopPolicy3());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -768,7 +732,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -779,11 +742,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -849,7 +807,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -860,11 +817,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -925,7 +877,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -936,11 +887,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -1001,7 +947,6 @@ public class ShopDao {
 				shop.setShopContent(rs.getString("shop_content"));
 				shop.setShopPrice(rs.getInt("shop_price"));
 				shop.setShopPoint(rs.getInt("shop_point"));
-				shop.setShopAmount(rs.getInt("shop_amount"));
 				shop.setShopOption1(rs.getString("shop_option1"));
 				shop.setShopOption2(rs.getString("shop_option2"));
 				shop.setShopOption3(rs.getString("shop_option3"));
@@ -1012,11 +957,6 @@ public class ShopDao {
 				shop.setShopImage3(rs.getString("shop_image2"));
 				shop.setShopImage4(rs.getString("shop_image3"));
 				shop.setShopImage5(rs.getString("shop_image4"));
-				shop.setShopImage6(rs.getString("shop_image5"));
-				shop.setShopImage7(rs.getString("shop_image6"));
-				shop.setShopImage8(rs.getString("shop_image7"));
-				shop.setShopImage9(rs.getString("shop_image8"));
-				shop.setShopImage10(rs.getString("shop_image9"));
 				shop.setShopPolicy1(rs.getString("shop_policy1"));
 				shop.setShopPolicy2(rs.getString("shop_policy2"));
 				shop.setShopPolicy3(rs.getString("shop_policy3"));
@@ -1067,21 +1007,20 @@ public class ShopDao {
 			pstmt.setString(5, shop.getShopContent());
 			pstmt.setInt(6, shop.getShopPrice());
 			pstmt.setInt(7, shop.getShopPoint());
-			pstmt.setInt(8, shop.getShopAmount());
-			pstmt.setString(9, shop.getShopOption1());
-			pstmt.setString(10, shop.getShopOption2());
-			pstmt.setString(11, shop.getShopOption3());
-			pstmt.setString(12, shop.getShopOption4());
-			pstmt.setString(13, shop.getShopOption5());
-			pstmt.setString(14, shop.getShopImage1());
-			pstmt.setString(15, shop.getShopImage2());
-			pstmt.setString(16, shop.getShopImage3());
-			pstmt.setString(17, shop.getShopImage4());
-			pstmt.setString(18, shop.getShopImage5());
-			pstmt.setString(19, shop.getShopPolicy1());
-			pstmt.setString(20, shop.getShopPolicy2());
-			pstmt.setString(21, shop.getShopPolicy3());
-			pstmt.setInt(22, shop.getShopNo());
+			pstmt.setString(8, shop.getShopOption1());
+			pstmt.setString(9, shop.getShopOption2());
+			pstmt.setString(10, shop.getShopOption3());
+			pstmt.setString(11, shop.getShopOption4());
+			pstmt.setString(12, shop.getShopOption5());
+			pstmt.setString(13, shop.getShopImage1());
+			pstmt.setString(14, shop.getShopImage2());
+			pstmt.setString(15, shop.getShopImage3());
+			pstmt.setString(16, shop.getShopImage4());
+			pstmt.setString(17, shop.getShopImage5());
+			pstmt.setString(18, shop.getShopPolicy1());
+			pstmt.setString(19, shop.getShopPolicy2());
+			pstmt.setString(20, shop.getShopPolicy3());
+			pstmt.setInt(21, shop.getShopNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -1115,6 +1054,98 @@ public class ShopDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public int selectSeq(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			String sql = prop.getProperty("selectSeq");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertStudy(Connection conn, Study study) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertStudy");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, study.getStudyClass());
+			pstmt.setString(2, study.getStudyWriter());
+			pstmt.setString(3, study.getStudyTitle());
+			pstmt.setString(4, study.getStudySubTitle());
+			pstmt.setString(5, study.getStudyVideo());
+			pstmt.setString(6, study.getStudyContent());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Study selectStudyOne(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Study study = null;
+		try {
+			String sql = prop.getProperty("selectStudyOne");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				study = new Study();
+				study.setStudyNo(rs.getInt("study_no"));
+				study.setStudyClass(rs.getInt("study_class"));
+				study.setStudyWriter(rs.getString("study_writer"));
+				study.setStudyTitle(rs.getString("study_title"));
+				study.setStudySubTitle(rs.getString("study_subtitle"));
+				study.setStudyVideo(rs.getString("study_video"));
+				study.setStudyContent(rs.getString("study_content"));
+				study.setStudyStatus(rs.getString("study_status"));
+				study.setStudyDate(rs.getDate("study_date"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return study;
+	}
+
+	public int deleteShop(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteShop");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

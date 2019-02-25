@@ -13,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.hobbyist.shop.model.service.ShopService;
 import com.hobbyist.shop.model.vo.Shop;
+import com.hobbyist.shop.model.vo.Study;
 import com.oreilly.servlet.MultipartRequest;
 
 import common.rename.MyFileRenamePolicy;
@@ -44,7 +45,6 @@ public class ShopWriteEndServlet extends HttpServlet {
 			shop.setShopContent(mr.getParameter("class_content"));
 			shop.setShopPrice(Integer.parseInt(mr.getParameter("class_price")));
 			shop.setShopPoint(Integer.parseInt(mr.getParameter("class_point")));
-			shop.setShopAmount(Integer.parseInt(mr.getParameter("class_amount")));
 			shop.setShopOption1(mr.getParameter("class_option1"));
 			shop.setShopOption2(mr.getParameter("class_option2"));
 			shop.setShopOption3(mr.getParameter("class_option3"));
@@ -55,21 +55,23 @@ public class ShopWriteEndServlet extends HttpServlet {
 			shop.setShopImage3(mr.getFilesystemName("class_image3"));
 			shop.setShopImage4(mr.getFilesystemName("class_image4"));
 			shop.setShopImage5(mr.getFilesystemName("class_image5"));
-			shop.setShopImage6(mr.getFilesystemName("class_image6"));
-			shop.setShopImage7(mr.getFilesystemName("class_image7"));
-			shop.setShopImage8(mr.getFilesystemName("class_image8"));
-			shop.setShopImage9(mr.getFilesystemName("class_image9"));
-			shop.setShopImage10(mr.getFilesystemName("class_image10"));
 			shop.setShopPolicy1(mr.getParameter("class_policy1"));
 			shop.setShopPolicy2(mr.getParameter("class_policy2"));
 			shop.setShopPolicy3(mr.getParameter("class_policy3"));
 			
-			int result = new ShopService().insertShop(shop);
+			// 클래스샵 등록직후 생성된 클래스샵번호 받아오기 (시퀀스.CURRVAL 이용)
+			int shopNo = new ShopService().insertShop(shop);
 			
 			// ------------------------ 강좌 등록
+			Study study = new Study();
+			study.setStudyClass(shopNo);
+			study.setStudyWriter(mr.getParameter("class_writer"));
+			study.setStudyTitle(mr.getParameter("class_name"));
+			study.setStudySubTitle(mr.getParameter("study_subtitle"));
+			study.setStudyVideo(mr.getParameter("study_video"));
+			study.setStudyContent(mr.getParameter("study_content"));
 			
-			
-			
+			int result = new ShopService().insertStudy(study);
 			
 			String msg = "";
 			String loc = "";

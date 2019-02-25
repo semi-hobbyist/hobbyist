@@ -13,6 +13,7 @@ import com.hobbyist.shop.model.dao.ShopDao;
 import com.hobbyist.shop.model.vo.Cate;
 import com.hobbyist.shop.model.vo.Review;
 import com.hobbyist.shop.model.vo.Shop;
+import com.hobbyist.shop.model.vo.Study;
 
 public class ShopService {
 	
@@ -29,6 +30,7 @@ public class ShopService {
 		int result = new ShopDao().insertShop(conn, shop);
 		if(result>0) {
 			commit(conn);
+			result = new ShopDao().selectSeq(conn);
 		} else {
 			rollback(conn);
 		}
@@ -226,6 +228,27 @@ public class ShopService {
 		List<Shop> list = new ShopDao().bestClass(conn);
 		close(conn);
 		return list;
+	}
+
+	public int insertStudy(Study study) {
+		Connection conn = getConnection();
+		int result = new ShopDao().insertStudy(conn, study);
+		close(conn);
+		return result;
+	}
+
+	public Study selectStudyOne(int no) {
+		Connection conn = getConnection();
+		Study study = new ShopDao().selectStudyOne(conn, no);
+		close(conn);
+		return study;
+	}
+
+	public int deleteShop(int no) {
+		Connection conn = getConnection();
+		int result = new ShopDao().deleteShop(conn, no);
+		close(conn);
+		return result;
 	}
 
 }

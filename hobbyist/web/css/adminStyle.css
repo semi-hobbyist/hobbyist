@@ -1,7 +1,6 @@
 section#admin {
     width: 100%;
     text-align: center;
-    background-color: #eaecf0;
 }
 
 section#admin .admin_content {
@@ -23,6 +22,7 @@ section#admin .admin_content .admin_top {
     transition: 500ms;
     overflow: hidden;
     top: 213px;
+    z-index: 1;
 }
 
 section#admin .admin_content .admin_top ul {

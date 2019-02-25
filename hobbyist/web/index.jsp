@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 
 <%@ include file="/views/common/header.jsp" %>
 
@@ -17,7 +16,7 @@
     </section>
     
     <script>
-  //메인 헤더 숨기기
+  	//메인 헤더 숨기기
 	 $(window).scroll(function () {
 	    if ($(window).scrollTop() != 0) {
 	       $("#header-middle").css("transition", "500ms")	       $("#header-middle").css("height", "0px");

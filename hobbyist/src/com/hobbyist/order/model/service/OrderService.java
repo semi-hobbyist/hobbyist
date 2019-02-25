@@ -9,9 +9,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.hobbyist.order.model.dao.OrderDao;
-import com.hobbyist.order.model.vo.OrderData;
+import com.hobbyist.order.model.vo.Order;
 import com.hobbyist.order.model.vo.Pin;
-import com.hobbyist.shop.model.vo.Shop;
 
 public class OrderService {
 
@@ -29,17 +28,11 @@ public class OrderService {
 		return result;
 	}
 
-	public List<OrderData> selectOrderData(String member) {
-		Connection conn = getConnection();
-		List<OrderData> list = dao.selectOrderData(conn, member);
-		close(conn);
-		return list;
-	}
 
 	public int insertOrder(String randomCode, String member, String s, String c, String orderType, String orderPrice,
-			String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg) {
+			String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
 		Connection conn = getConnection();
-		int result = dao.insertOrder(conn, randomCode, member, s, c, orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg);
+		int result = dao.insertOrder(conn, randomCode, member, s, c, orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg, orderCate);
 		close(conn);
 		return result;
 	}
@@ -78,5 +71,46 @@ public class OrderService {
 		close(conn);
 		return result;
 	}
+
+	public int searchCount() {
+		Connection conn = getConnection();
+		int result = dao.searchCount(conn);
+		close(conn);
+		return result;
+	}
+	
+	// 등록순 정렬
+		public List<Order> descEnroll(String keyword, int cPage, int numPerPage) {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().descEnroll(conn, keyword, cPage, numPerPage);
+			close(conn);
+			return list;
+		}
+
+
+		public List<Order> inCome() {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().inCome(conn);
+			close(conn);
+			return list;
+		}
+		
+/*		// 높은가격순
+		public List<Order> descPrice(String keyword, int cPage, int numPerPage) {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().descPrice(conn, keyword, cPage, numPerPage);
+			close(conn);
+			return list;
+		}
+
+
+		// 낮은가격순
+		public List<Order> ascPrice(String keyword, int cPage, int numPerPage) {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().ascPrice(conn, keyword, cPage, numPerPage);
+			close(conn);
+			return list;
+		}*/
 	
 }
+

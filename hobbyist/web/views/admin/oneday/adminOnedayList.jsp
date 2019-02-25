@@ -57,6 +57,7 @@
 							<th style="width:120px;">예약(인원)</th>
 							<th style="width:60px;">가격</th>
 							<th style="width:100px;">등록일</th>
+							<th></th>
 						</tr>
 						<% for(Oneday s : list) { %>
 							<tr>
@@ -67,12 +68,34 @@
 								<td><%= s.getOnedayCurrentPeople() %>/<%= s.getOnedayPeople() %></td>
 								<td><%= s.getOnedayPrice() %></td>
 								<td><%= s.getOnedayDate() %></td>
+								<td>
+									<% 
+										if(logginMember!=null && logginMember.getMemberEmail().equals("admin")) {
+									%>
+											<button onclick="fn_delete(<%= s.getOnedayNo() %>)">X</button>
+									<%
+										}
+									%>
+								</td>
 							</tr>
 						<% } %>
 						<tr>
 							<td colspan="8" class="pageBar"><%= pageBar %></td>
 						</tr>
 					</table>
+					<script>
+						function fn_delete(num) {
+							if(confirm('정말 삭제하시겠습니까?')) {
+								$.ajax({
+									url : '<%= request.getContextPath() %>/admin/adminOnedayDelete?no=' + num,
+									success : function (data) {
+										alert(data);
+										location.href="<%= request.getContextPath() %>/admin/adminOnedayList";
+									}
+								});
+							}
+						}
+					</script>
 			</div>
 		</div>
 	</div>

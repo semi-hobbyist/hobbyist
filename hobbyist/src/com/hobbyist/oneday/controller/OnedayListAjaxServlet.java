@@ -130,16 +130,22 @@ public class OnedayListAjaxServlet extends HttpServlet {
 			html += "<li>" + list.get(i).getOnedayCate() + "</li>";
 			html += "<li>";
 			html += "<a href='" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "'>";
-			html += "<img src='" + request.getContextPath() + "/upload/oneday/images/" + list.get(i).getOnedayImage1() + "' width='250px'></a></li>";
+			html += "<div id=\"img\"><img src='" + request.getContextPath() + "/upload/oneday/images/" + list.get(i).getOnedayImage1() + "' width='250px'></a></div></li>";
 			html += "<li class='title'>";
 			html += "<a href='" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "'>";
 			html += list.get(i).getOnedayName() + "</a>";
 			html += "<p>" + list.get(i).getOnedayInfo() + "</p>";
-			html += "</li><li>";
+			html += "</li>";
+			html += "<li>";
 			html += "가격 : " + list.get(i).getOnedayPrice() + "원<br><br>";
-			html += "예약현황 0/50 (명)<br>";
-			html += "<b>[ 예약 가능 ]</b><br>";
-			html += "<button onclick='location.href='" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "''>예약하기</button></li>";
+			html += "예약현황 " + list.get(i).getOnedayCurrentPeople() + "/" + list.get(i).getOnedayPeople() + "명<br><b>";
+			if(list.get(i).getOnedayReservationStatus().equals("Y")) {
+				html += "[예약가능]";
+			} else {
+				html += "[예약불가]";
+			}
+			html += "</b><br>";
+			html += "<button onclick=\"location.href=\'" + request.getContextPath() + "/oneday/onedayView?no=" + list.get(i).getOnedayNo() + "\'\">예약하기</button></li>";
 			html += "</ul>";
 			html += "</div>";
 		}

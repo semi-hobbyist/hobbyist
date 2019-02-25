@@ -34,8 +34,8 @@
 
 
 		<!-- 관리자 -> 클래스샵 - > 등록 -->
-		<div class="admin_right">
-			<div id="admin_main">
+		<div class="adminOnedayView_right">
+			<div id="adminOnedayView_main">
 			
 		<form action="<%= request.getContextPath() %>/admin/adminOnedayUpdate" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="oneday_no" value="<%= oneday.getOnedayNo() %>"/>
@@ -107,7 +107,15 @@
 				</tr>
 				<tr>
 					<th>이미지1</th>
-					<td  style="text-align: left;"><input type="file" name="oneday_image1" value="<%= oneday.getOnedayImage1() %>"></td>
+					<td  style="text-align: left;">
+						<% if(oneday.getOnedayImage1()!=null) { %>
+							<input type="hidden" name="old_file" value="<%= oneday.getOnedayImage1() %>"/>
+							<input type="file" name="up_file" value="<%= oneday.getOnedayImage1() %>"/>
+							<span id="fname"><%= oneday.getOnedayImage1() %></span>
+							<% } else { %>
+							<input type="file" name="oneday_image1"/>
+						<% } %>
+					</td>
 				</tr>
 				<tr>
 					<th>이미지2</th>

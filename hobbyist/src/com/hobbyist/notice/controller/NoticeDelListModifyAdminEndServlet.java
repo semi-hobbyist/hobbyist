@@ -83,13 +83,15 @@ public class NoticeDelListModifyAdminEndServlet extends HttpServlet {
 		//기존 파일 삭제
 		File file = mr.getFile("noticeFilenameOriginal");
 		File img = mr.getFile("noticeImgnameOriginal");
-		
+
 		if(file!=null&&file.length()>0) {
 			File delFile=new File(filePath+"/"+mr.getParameter("old_nFileR"));
 			boolean resul = delFile.delete();
 			System.out.println(resul?"제대로 지워짐":"안지워졌어!");
-		}
-		else {
+		} else if(mr.getParameter("fileDelFlag").equals("true")){
+			noticeFilenameOriginal = "";
+			noticeFilenameRenamed = "";
+		} else {
 			noticeFilenameOriginal = mr.getParameter("old_nFileO");
 			noticeFilenameRenamed = mr.getParameter("old_nFileR");
 		}
@@ -98,12 +100,13 @@ public class NoticeDelListModifyAdminEndServlet extends HttpServlet {
 			File delFile=new File(filePath+"/"+mr.getParameter("old_nImgR"));
 			boolean resul = delFile.delete();
 			System.out.println(resul?"제대로 지워짐":"안지워졌어!");
-		}
-		else {
+		}else if(mr.getParameter("imgDelFlag").equals("true")){
+			noticeImgnameOriginal = "";
+			noticeImgnameRenamed = "";
+		} else {
 			noticeImgnameOriginal = mr.getParameter("old_nImgO");
 			noticeImgnameRenamed = mr.getParameter("old_nImgR");
 		}
-		
 		
 		Notice no = new Notice();
 		no.setNoticeNo(noticeNo);

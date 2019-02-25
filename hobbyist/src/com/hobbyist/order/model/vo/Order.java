@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Order {
 	
-	private int orderNo;
+	private String orderNo;
 	private String orderMember;
 	private int orderClass;
 	private String orderClassOption;
@@ -15,10 +15,17 @@ public class Order {
 	private String orderAddAddress;
 	private String orderMsg;
 	private Timestamp orderDate;
+	private String orderCate;
 	
-	public Order(int orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
+	public Order() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public Order(String orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
 			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg,
-			Timestamp orderDate) {
+			Timestamp orderDate, String orderCate) {
 		super();
 		this.orderNo = orderNo;
 		this.orderMember = orderMember;
@@ -31,13 +38,16 @@ public class Order {
 		this.orderAddAddress = orderAddAddress;
 		this.orderMsg = orderMsg;
 		this.orderDate = orderDate;
+		this.orderCate = orderCate;
 	}
 
-	public int getOrderNo() {
+
+
+	public String getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
 
@@ -120,6 +130,20 @@ public class Order {
 	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
+
+
+
+	public String getOrderCate() {
+		return orderCate;
+	}
+
+
+
+	public void setOrderCate(String orderCate) {
+		this.orderCate = orderCate;
+	}
+	
+	
 	
 	
 }

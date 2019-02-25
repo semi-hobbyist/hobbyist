@@ -30,6 +30,7 @@
 				</ul>
 			</div>
 		</div>
+		<Br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
@@ -148,11 +149,11 @@
 						<li>
 							<div id="img">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
-							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="250px"></a></div></li>
+							<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>" width="270px"></a></div></li>
 						<li class="title">
 							<a href="<%= request.getContextPath() %>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>">
 							<%= oneday.getOnedayName() %></a>
-							<p><%= oneday.getOnedayInfo()%></p>
+							<p>장소/시간 : <%= oneday.getOnedayAddress() %></p>
 						</li>
 						<li>
 								가격 : <%= oneday.getOnedayPrice() %>원<br><br>

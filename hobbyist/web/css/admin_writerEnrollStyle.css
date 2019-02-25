@@ -25,7 +25,6 @@
 #admin_writerEnroll .tal_Content {
     display: table;
     width: 100%;
-    height: 42px;
     padding: 10px 0;
     background-color: white;
     border-bottom: 1px solid black;
@@ -165,7 +164,7 @@
 }
 
 
-#admin_writerEnroll .tal_bottom {
+#admin_writerEnroll .shop_bottom {
     display: inline-block;
 	width:100%;
 	margin-top: 10px;
@@ -174,7 +173,7 @@
     font-size: 13px;
 }
 
-#admin_writerEnroll .tal_bottom a, #admin_writerEnroll .tal_bottom span {
+#admin_writerEnroll .shop_bottom a, #admin_writerEnroll .shop_bottom span {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -188,7 +187,7 @@
 }
 
 
-#admin_writerEnroll .tal_bottom a:hover, #admin_writerEnroll .tal_bottom span:hover {
+#admin_writerEnroll .shop_bottom a:hover, #admin_writerEnroll .shop_bottom span:hover {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;

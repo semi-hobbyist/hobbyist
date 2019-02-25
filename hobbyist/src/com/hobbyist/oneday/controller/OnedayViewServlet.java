@@ -24,10 +24,6 @@ public class OnedayViewServlet extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		Oneday oneday = new OnedayService().selectOne(no);
 		
-		// 리뷰 갯수 가져오기
-		int reviewCount = new OnedayService().reviewCount(no);
-		
-		request.setAttribute("Review", reviewCount);
 		request.setAttribute("Oneday", oneday);
 		request.getRequestDispatcher("/views/oneday/onedayView.jsp").forward(request, response);
 	}

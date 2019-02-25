@@ -122,19 +122,19 @@
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 2</th>
-					<td  style="text-align: left;"><input type="text" name="oneday_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="oneday_option2"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 3</th>
-					<td  style="text-align: left;"><input type="text" name="oneday_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="oneday_option3"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 4</th>
-					<td  style="text-align: left;"><input type="text" name="oneday_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="oneday_option4"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 5</th>
-					<td  style="text-align: left;"><input type="text" name="oneday_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="oneday_option5"/></td>
 				</tr>
 				<tr>
 					<th>이미지1</th>

@@ -1,15 +1,15 @@
 section#admin .admin_content .adminShopView_right {
-    padding-top: 40px;
+    padding-top: 60px;
     float: right;
     width: 820px;
     text-align: center;
+    padding-bottom: 60px;
 }
 
 section#admin .admin_content .adminShopView_right #adminShopView_main {
 	display: inline-block;
     width: 810px;
     background-color: #fff;
-    border: 1px solid #bdc9dd;
 }
 
 section#admin .admin_content .adminShopView_right #adminShopView_main button {

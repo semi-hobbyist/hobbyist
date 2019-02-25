@@ -27,8 +27,7 @@
       </ul>
       <li>어워드 관리</li>
       <li>커뮤니티 관리</li>
-      <li>주문관리</li>
-      <li>정산관리</li>
+      <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOrderList'">주문관리</li>
    </ul>
 </div>
 

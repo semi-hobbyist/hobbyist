@@ -117,19 +117,19 @@
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 2</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option2"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 3</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option3"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 4</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option4"/></td>
 				</tr>
 				<tr>
 					<th>클래스 선택옵션 5</th>
-					<td  style="text-align: left;"><input type="text" name="class_option1"/></td>
+					<td  style="text-align: left;"><input type="text" name="class_option5"/></td>
 				</tr>
 				<tr>
 					<th>이미지1</th>
@@ -212,8 +212,8 @@
 			<h3>강좌등록</h3>
 			<table>
 				<tr>
-					<th>강좌 한줄소개</th>
-					<td style="text-align: left;"><input type="text" name="study_subtitle" style="width: 450px;"/></td>
+					<th style="width: 180px;">강좌 한줄소개</th>
+					<td style="text-align: left; width: 620px;"><input type="text" name="study_subtitle" style="width: 450px;"/></td>
 				</tr>
 				<tr>
 					<th>강좌 영상</th>
@@ -228,18 +228,6 @@
 							CKEDITOR.replace( 'editor6' );
 							CKEDITOR.add
 					</script>
-				</tr>
-				<tr>
-					<th>강좌 이미지 1</th>
-					<td style="text-align: left;"><input type="file" name="study_image1" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
-				</tr>
-				<tr>
-					<th>강좌 이미지 2</th>
-					<td style="text-align: left;"><input type="file" name="study_image2" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
-				</tr>
-				<tr>
-					<th>강좌 이미지 2</th>
-					<td style="text-align: left;"><input type="file" name="study_image3" style="width: 450px;" placeholder="스트리밍 사이트 내 태그 예) iframe, embed..."/></td>
 				</tr>
 			</table>
 			<button type="submit">클래스 등록</button>

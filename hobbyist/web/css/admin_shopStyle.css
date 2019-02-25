@@ -1,15 +1,14 @@
 section#admin .admin_content .adminShop_right {
-    padding-top: 40px;
+    padding-top: 60px;
     float: right;
     width: 820px;
     text-align: center;
+    padding-bottom: 60px;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main {
 	display: inline-block;
     width: 810px;
-    background-color: #fff;
-    border: 1px solid #bdc9dd;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table {
@@ -19,9 +18,9 @@ section#admin .admin_content .adminShop_right #adminShop_main table {
 section#admin .admin_content .adminShop_right #adminShop_main table th {
 	font-size: 14px;
 	font-weight: normal;
-	background-color: rgba(59, 79, 106, 0.8);
-	color: #fff;
+	color: #252525;
     height: 40px;
+    border-top: 2px solid #252525;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table a {
@@ -36,8 +35,7 @@ section#admin .admin_content .adminShop_right #adminShop_main table tr {
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:hover {
 	transition: 500ms;
-	background-color:  #e6e9ec;
-	border-left: 3px solid #3b4f6a;
+	background-color:  #edeff1;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:hover a {
@@ -45,22 +43,19 @@ section#admin .admin_content .adminShop_right #adminShop_main table tr:hover a {
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-child(1) {
-	border-left: 3px solid #e6e9ec;
-	background-color: #e6e9ec;
+	height: 60px;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table span {
 	padding-left: 7px;
 	padding-right: 7px;
-	border: 1px solid #c2cad1;
-	background-color: rgba(59, 79, 106, 0.8);
-	color: #fff;
+	border: 1px solid #d4d4d4;
+	color: #252525;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-child(1)  a {
 	padding-left: 7px;
 	padding-right: 7px;
-	border: 1px solid #c2cad1;
-	background-color: rgba(59, 79, 106, 0.8);
-	color: #fff;
+	border: 1px solid #d4d4d4;
+	color: #252525;
 }

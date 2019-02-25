@@ -12,7 +12,6 @@ import com.hobbyist.oneday.model.vo.Oneday;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.oneday.model.dao.OnedayDao;
 import com.hobbyist.oneday.model.vo.Cate;
-import com.hobbyist.oneday.model.vo.Review;
 
 public class OnedayService {
 	
@@ -80,23 +79,6 @@ public class OnedayService {
 		return list;
 	}
 
-	
-	// 리뷰모두가져오기
-		public List<Review> reviewListAll() {
-			Connection conn = getConnection();
-			List<Review> list = dao.reviewListAll(conn);
-			close(conn);
-			return list;
-		}
-	
-	// 리뷰가져오기
-	public List<Review> reviewList(int no,  int rPage, int rPerPage) {
-		Connection conn = getConnection();
-		List<Review> list = dao.reviewList(conn, no, rPage, rPerPage);
-		close(conn);
-		return list;
-	}
-	
 	// 카테고리 조회
 	public List<Cate> CateList() {
 		Connection conn = getConnection();
@@ -130,31 +112,6 @@ public class OnedayService {
 		Oneday result = dao.selectOne(conn, no);
 		close(conn);
 		return result;
-	}
-	
-	// 리뷰 작성 (Ajax)
-	public List<Review> reviewInsert(Review rv, int rPage, int rPerPage) {
-		Connection conn = getConnection();
-		List<Review> list = null;
-		int result = dao.reviewInsert(conn, rv);
-		
-		if(result>0) {
-			System.out.println("리뷰작성 완료");
-			commit(conn);
-			list = dao.reviewList(conn, rv.getReviewClass(), rPage, rPerPage);
-		} else {
-			rollback(conn);
-		}
-		close(conn);
-		return list;
-	}
-
-	// 리뷰개수 가져오기
-	public int reviewCount(int review_class) {
-		Connection conn = getConnection();
-		int count = dao.reviewCount(conn, review_class);
-		close(conn);
-		return count;
 	}
 
 	// 클래스 등록 -> 작가 찾기

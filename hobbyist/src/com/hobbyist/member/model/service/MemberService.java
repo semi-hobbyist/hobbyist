@@ -47,4 +47,26 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+
+	public Member selectMemberName(Member m) {
+		Connection conn = getConnection();
+		Member result = dao.selectMemberName(conn,m);
+		close(conn);
+		return result;
+		
+	}
+
+	public Member searchMemberPwd(Member m) {
+		Connection conn = getConnection();
+		Member result = dao.searchMemberPwd(conn, m);
+		close(conn);
+		return result;
+	}
+
+	public int updateTempPwd(Member m) {
+		Connection conn = getConnection();
+		int resultPwd = dao.updateTempPwd(conn, m);
+		close(conn);
+		return resultPwd;
+	}
 }

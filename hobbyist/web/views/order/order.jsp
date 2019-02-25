@@ -21,6 +21,7 @@
 		</ul>
 		<br>
 		<form name="orderFrm" action="<%= request.getContextPath() %>/order/orderInsert" method="POST">
+		<input type="hidden" name="orderOneday" value="class"/>
 		<table>
 			<tr>
 				<th class="tableLine" colspan="2" id="step01"><h3>주문클래스</h3></th>
@@ -61,6 +62,10 @@
 			</tr>
 			<tr>
 				<th class="tableLine" colspan="2" id="step02"><h3>회원정보</h3></th>
+				<!-- 회원정보 담아놓기 -->
+				<input type="hidden" id="h_email" value="<%= member.getMemberEmail() %>"/>
+				<input type="hidden" id="h_name" value="<%= member.getMemberName() %>"/>
+				<input type="hidden" id="h_phone" value="<%= member.getMemberPhone() %>"/>
 			</tr>
 			<tr>
 				<input type="hidden" name="member" value="<%= member.getMemberEmail() %>"/>
@@ -80,20 +85,30 @@
 				<td>MEMBER 테이블에 주소 컬럼이 없음...</td>
 			</tr>
 			<tr>
-				<th class="tableLine" colspan="2"><h3>수령인 정보</h3>주문자와 동일함 <input type="checkbox" name="sameInfo"/></th>
+				<th class="tableLine" colspan="2"><h3>수령인 정보 (주문자와 동일함 <input type="checkbox" id="sameInfo"/>)</h3></th>
 			</tr>
 			<tr>
 				<th>수령인 이름</th>
-				<td><input type="text" name="order_add_name" placeholder="이름을 작성해주세요"></td>
+				<td><input type="text" id="order_add_name" name="order_add_name" placeholder="이름을 작성해주세요"></td>
 			</tr>
 			<tr>
 				<th>수령인 전화번호</th>
-				<td><input type="text" name="order_add_phone" placeholder="전화번호를 작성해주세요"></td>
+				<td><input type="text" id="order_add_phone" name="order_add_phone" placeholder="전화번호를 작성해주세요"></td>
 			</tr>
 			<tr>
 				<th>수령인 주소</th>
-				<td><input type="text" name="order_add_address" placeholder="주소를 작성해주세요"></td>
+				<td><input type="text" id="order_add_address" name="order_add_address" placeholder="주소를 작성해주세요"></td>
 			</tr>
+			<script>
+				$('#sameInfo').on('click', function() {
+					var h_name = $('#h_name').val();
+					var h_phone = $('#h_phone').val();
+					$('#order_add_name').val(h_name);
+					$('#order_add_phone').val(h_phone);
+				});
+				
+				
+			</script>
 			<tr>
 				<th>배송 메세지</th>
 				<td><select name="order_msg">
@@ -147,7 +162,7 @@
 					<!-- // 카카오페이 결제창 모달 -->
 					<div id="kakao" class="modal">
 						  <h3>카카오페이</h3>
-						  카카오페이 결제 <br>
+						  <img src="<%= request.getContextPath() %>/images/kakaopay.png" width="150px"><br>
 						  하단에 [결제하기] 버튼을 눌러주세요
 						  <br>
 						  <button type="button" onclick="fn_iampay()">결제하기</button>

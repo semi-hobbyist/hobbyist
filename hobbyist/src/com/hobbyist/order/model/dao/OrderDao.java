@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Properties;
 
 import com.hobbyist.oneday.model.dao.OnedayDao;
+import com.hobbyist.order.model.vo.Order;
 import com.hobbyist.order.model.vo.OrderData;
 import com.hobbyist.order.model.vo.Pin;
+import com.hobbyist.shop.model.vo.Shop;
 
 public class OrderDao {
 
@@ -238,6 +240,88 @@ public class OrderDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int searchCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("searchCount");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	public List<Order> descEnroll(Connection conn, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+
+		try {
+			String sql = prop.getProperty("descEnroll");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Order order = new Order();
+				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderMember(rs.getString("order_member"));
+				order.setOrderClass(rs.getInt("order_class"));
+				order.setOrderClassOption(rs.getString("order_class_option"));
+				order.setOrderType(rs.getString("order_type"));
+				order.setOrderPrice(rs.getInt("order_price"));
+				order.setOrderAddName(rs.getString("order_add_name"));
+				order.setOrderAddPhone(rs.getString("order_add_phone"));
+				order.setOrderAddAddress(rs.getString("order_add_address"));
+				order.setOrderMsg(rs.getString("order_msg"));
+				order.setOrderDate(rs.getTimestamp("order_date"));
+				order.setOrderCate(rs.getString("order_cate"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public List<Order> inCome(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+
+		try {
+			String sql = prop.getProperty("inCome");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Order order = new Order();
+				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderPrice(rs.getInt("order_price"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
 	}
 	
 }

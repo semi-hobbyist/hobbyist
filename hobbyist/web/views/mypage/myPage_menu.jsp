@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 
-<%
-
-%>
-
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
@@ -16,7 +12,7 @@
                <div class="memberSimpleProfileNickname"><%= logginMember.getMemberNickname() %></div>
                <div class="memberSimpleProfile">
                   가입일<br>
-                  <%= logginMember.getMemberEnrolldate().substring(0, 10) %>
+                  <%= logginMember.getMemberEnrolldate() %>
                </div>
             </div>
          </div>

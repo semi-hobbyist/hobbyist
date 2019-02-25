@@ -70,7 +70,6 @@ public class ShopWriteEndServlet extends HttpServlet {
 			study.setStudySubTitle(mr.getParameter("study_subtitle"));
 			study.setStudyVideo(mr.getParameter("study_video"));
 			study.setStudyContent(mr.getParameter("study_content"));
-			study.setStudyImage1(mr.getFilesystemName("class_image1"));
 			
 			int result = new ShopService().insertStudy(study);
 			

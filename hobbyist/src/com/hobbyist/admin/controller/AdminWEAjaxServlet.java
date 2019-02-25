@@ -125,7 +125,7 @@ public class AdminWEAjaxServlet extends HttpServlet {
 					html += "<div class='talC_Email'>" + list.get(i).getMemberEmail() + "</div>";
 					html += "<div class='talC_Name'>" + list.get(i).getMemberName() + "</div>";
 					html += "<div class='talC_Birthday'>" + list.get(i).getMemberBirthday() + "</div>";
-					html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate().substring(0, 10) + "</div>";
+					html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate() + "</div>";
 					html += "<div class='talC_WePassYN'>";
 					if(list.get(i).getWriterPassYN().equals("N")) {
 						html += "<p class='talC_WePassYN_textN'>처리전</p>";

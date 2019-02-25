@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%
 	Member logginMember = (Member)session.getAttribute("logginMember");
 %>
+
 <!DOCTYPE html>
 <html>
 

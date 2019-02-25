@@ -46,7 +46,7 @@
 							<li><img src="<%= request.getContextPath() %>/upload/shop/images/<%= s.getShopImage1() %>" width="100%"></li>
 							<li><%= s.getShopName() %></li>
 							<li>남은기한 : 무제한</li>
-							<li><div class="progress"><%= mc.getMyClassProgress().equals("N") ? "클래스를 시작해보세요 (수강기록없음)" : "이미 수강한 클래스 입니다" %></div></li>
+							<li><div class="progress"><%= mc.getMyClassProgress().equals("N") ? "클래스를 시작해보세요" : "이미 수강한 클래스 입니다" %></div></li>
 							<li><button onclick="location.href='<%=request.getContextPath() %>/myClassView?no=<%= s.getShopNo() %>';">강좌보기</button></li>
 					</ul>
 				</div>

@@ -37,7 +37,7 @@
 					</tr>
 					<tr>
 						<td style="width: 200px;">
-						<img src="<%= request.getContextPath() %>/upload/oneday/images/<%= study.getStudyImage1()%>"> <br>작가정보
+						 <br>작가정보
 						<br><%= study.getStudyWriter() %></td>
 						<td style="width: 790px;"><%= study.getStudyVideo() %></td>
 					</tr>

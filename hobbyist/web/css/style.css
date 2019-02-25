@@ -8,6 +8,7 @@ html, body {
     letter-spacing: -0.3px;
     scroll-behavior: smooth;
     position: relative;
+    line-height: 21px;
 }
 
 ::selection {
@@ -68,7 +69,7 @@ header #header-top .left-top a #line {
 }
 
 header #header-top .left-top a:hover #line {
-   transition: 500ms;
+  	transition: 500ms;
     width: 100%;
 }
 
@@ -153,7 +154,6 @@ header #header-middle {
     width: 100%;
     height: 100px;
     text-align: center;
-    border-bottom: 1px solid #e4e4e4;
 }
 
 header #header-middle .middle {
@@ -231,23 +231,11 @@ header #header-middle .middle .info #cartCount {
     color: #fff;
 }
 
-header #header-middle .middle .info #icon_sub {
-	opacity: 0;
-	display: none;
-	width: 60px;
-	padding-top: 2px;
-	height: 20px;
-	background-color: #252525;
-	color: #fff;
-	font-size: 11px;
-	transition: 1000ms;
-	border-radius: 5px;
-}
+
 
 header #header-bottom {
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #e4e4e4;
 }
 
 header #header-bottom .bottom {
@@ -265,9 +253,9 @@ header #header-bottom .bottom ul {
 header #header-bottom .bottom ul li {
     text-align: center;
     display: inline-block;
-    width: 160px;
-    height: 35px;
-    padding-bottom: 6px;
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-bottom: 12px;
     cursor: pointer;
 }
 
@@ -276,14 +264,34 @@ header #header-bottom .bottom ul li:nth-child(1) {
     color: #fff;
 }
 
+
+header #header-bottom .bottom ul li:nth-last-child(1) {
+	padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+header #header-bottom .bottom ul #icon_sub {
+	z-index: 9999;
+	position: absoulte;
+	opacity: 0;
+	display: none;
+	width: 60px;
+	padding-top: 2px;
+	height: 20px;
+	background-color: #252525;
+	color: #fff;
+	font-size: 11px;
+	transition: 1000ms;
+	border-radius: 5px;
+}
+
 /* ---------------------------------------------------------  포인트 컬러 */
 
 header #header-bottom .bottom ul li .menuline {
     width: 0;
     height: 3px;
     margin-bottom: 7px;
-    background-color: #b0bbcc;
-    transition: 500ms;
 }
 
 header #header-bottom .bottom ul li:hover .menuline {
@@ -900,13 +908,13 @@ section#shop .shop_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 200px;
+    padding-top: 170px;
 }
 
 section#shop .shop_content #shop_left {
     display: inline-block;
     width: 0px;
-    height: 600px;
+    height: 100vh;
     position: fixed;
     overflow-x: hidden;
     overflow: hidden;
@@ -1249,6 +1257,7 @@ section#shopView .shopView_content .view_right .view_menu {
     height: 40px;
     border: 1px solid #dbdbdb;
     background-color: #fff;
+    box-shadow: #fff 50px 30px 50px;
 }
 
 section#shopView .shopView_content .view_right .view_menu ul {

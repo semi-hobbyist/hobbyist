@@ -776,4 +776,20 @@ public class OnedayDao {
 		return result;
 	}
 
+	public int deleteOneday(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = prop.getProperty("deleteOneday");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

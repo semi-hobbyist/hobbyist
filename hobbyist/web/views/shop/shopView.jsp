@@ -278,7 +278,7 @@
 		if (scrollTo > 400) {
 			$('#view_menu').css({
 				"z-index" : "9999",
-				"top" : "120px",
+				"top" : "180px",
 				"position" : "fixed"
 			});
 		} else {

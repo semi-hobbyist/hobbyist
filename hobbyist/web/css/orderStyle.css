@@ -86,14 +86,6 @@ section#order .order_content table select {
 	padding-left: 15px;
 }
 
-section#order .order_content table select:nth-last-child(1) {
-	width:200px;
-	height: 35px;
-	border: 1px solid #d4d4d4;
-	border-radius: 3px;
-	padding-left: 15px;
-}
-
 
 section#order .order_content table {
 	display: inline-block;

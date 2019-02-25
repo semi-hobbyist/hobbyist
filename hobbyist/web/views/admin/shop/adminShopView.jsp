@@ -214,7 +214,7 @@
 					</script>
 				</tr>
 			</table>
-			<button type="submit">클래스 등록</button>
+			<button type="submit">클래스 수정하기</button>
 			</form>
 			</div>
 			

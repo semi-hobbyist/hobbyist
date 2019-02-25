@@ -42,20 +42,19 @@
 			<div id="adminShop_main">
 					<table>
 						<tr>
-							<td colspan="9"><h3>클래스샵 목록</h3></td>
+							<td colspan="9"><h3>주문관리 목록</h3></td>
 						</tr>
 						<tr>
 							<td colspan="9" style="text-align:center;">총 ( <%= totalCount %> ) 건의 클래스 목록</td>
 						</tr>
 						<tr>
-							<th style="width:60px;">주문번호</th>
-							<th style="width:60px;">분류</th>
-							<th style="width:60px;">회원</th>
+							<th style="width:70px;">주문번호</th>
+							<th style="width:130px;">분류</th>
+							<th style="width:80px;">회원</th>
 							<th style="width:80px;">주문 클래스</th>
-							<th style="width:80px;">주문 옵션</th>
-							<th style="width:60px;">가격</th>
-							<th style="width:68px;">결제방법</th>
-							<th style="width:170px;">배송메시지</th>
+							<th style="width:100px;">주문 옵션</th>
+							<th style="width:80px;">가격</th>
+							<th style="width:90px;">결제방법</th>
 							<th style="width:90px;">주문일</th>
 						</tr>
 						<% for(Order o : list) { %>
@@ -67,7 +66,6 @@
 								<td><%= o.getOrderClassOption() %></td>
 								<td><%= o.getOrderPrice() %></td>
 								<td><%= o.getOrderType() %></td>
-								<td><%= o.getOrderMsg() %></td>
 								<td><%= o.getOrderDate() %></td>
 							</tr>
 						<% } %>

@@ -27,6 +27,11 @@
       </ul>
       <li>어워드 관리</li>
       <li>커뮤니티 관리</li>
+      <ul class="sub">
+	      <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityList'">자유게시판 목록</li>
+		  <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQList'">FAQ 자주 묻는 질문 목록</li>
+		  <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityDQList'">1:1 문의 목록</li>
+	  </ul>
       <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOrderList'">주문관리</li>
    </ul>
 </div>

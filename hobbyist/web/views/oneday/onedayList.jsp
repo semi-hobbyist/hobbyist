@@ -30,6 +30,7 @@
 				</ul>
 			</div>
 		</div>
+		<Br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>

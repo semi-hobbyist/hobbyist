@@ -25,6 +25,10 @@
 			<input type="hidden" name="orderOneday" value="oneday"/>
 			<tr>
 				<th class="tableLine" colspan="2" id="step01"><h3>원데이클래스 예약</h3></th>
+								<!-- 회원정보 담아놓기 -->
+				<input type="hidden" id="h_email" value="<%= member.getMemberEmail() %>"/>
+				<input type="hidden" id="h_name" value="<%= member.getMemberName() %>"/>
+				<input type="hidden" id="h_phone" value="<%= member.getMemberPhone() %>"/>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -86,15 +90,15 @@
 			
 			
 			<tr>
-				<th class="tableLine" colspan="2"><h3>원데이클래스 참석자 정보</h3>주문자와 동일함 <input type="checkbox" name="sameInfo"/></th>
+				<th class="tableLine" colspan="2"><h3>원데이클래스 참석자 정보</h3>주문자와 동일함 <input type="checkbox" id="sameInfo"/></th>
 			</tr>
 			<tr>
 				<th>참석인 성함</th>
-				<td><input type="text" name="order_add_name" placeholder="이름을 작성해주세요"></td>
+				<td><input type="text" id="order_add_name" name="order_add_name" placeholder="이름을 작성해주세요"></td>
 			</tr>
 			<tr>
 				<th>참석인 전화번호</th>
-				<td><input type="text" name="order_add_phone" placeholder="전화번호를 작성해주세요"></td>
+				<td><input type="text" id="order_add_phone" name="order_add_phone" placeholder="전화번호를 작성해주세요"></td>
 			</tr>
 			
 			<tr>
@@ -108,17 +112,30 @@
 						<option value="kakao">[기본] 카카오페이</option>
 						<!-- <option value="card">카드결제</option>
 						<option value="mobile">휴대폰결제</option> -->
-					</select>&nbsp;&nbsp;네 맞습니다. 전적으로 카카오페이만 쓰셔야합니다 고객님
+					</select><br><br>네 맞습니다. 전적으로 카카오페이만 쓰셔야합니다 고객님
 				</td>
 			</tr>
+			<script>
+				$('#sameInfo').on('click', function() {
+					var h_name = $('#h_name').val();
+					var h_phone = $('#h_phone').val();
+					$('#order_add_name').val(h_name);
+					$('#order_add_phone').val(h_phone);
+				});
+				
+				
+			</script>
+			
 			<tr>
 				<th colspan="2">
 					<!-- 모달창 -->
 					<!-- // 카카오페이 결제창 모달 -->
 					<div id="kakao" class="modal">
 						  <h3>카카오페이</h3>
-						  카카오페이 결제 <br>
+						  <img src="<%= request.getContextPath() %>/images/kakaopay.png" width="150px"><br>
 						  하단에 [결제하기] 버튼을 눌러주세요
+						  <br>
+						  <button type="button" onclick="fn_iampay()">결제하기</button>
 					</div>
 					
 					<!-- // 카드결제창 모달 -->
@@ -169,9 +186,6 @@
 						  <h3>휴대폰결제</h3>
 					</div>
 				</th>
-			</tr>
-			<tr>
-				<th class="tableLine" colspan="2"  id="step05"><button type="button" onclick="fn_iampay()">결제하기</button></th>
 			</tr>
 		</table>
 			<input type="hidden" id="classNo" name="classNo"/>

@@ -179,4 +179,11 @@ public class OnedayService {
 		return result;
 	}
 
+	public int deleteOneday(int no) {
+		Connection conn = getConnection();
+		int result = dao.deleteOneday(conn, no);
+		close(conn);
+		return result;
+	}
+
 }

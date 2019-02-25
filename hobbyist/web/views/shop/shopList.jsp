@@ -27,12 +27,13 @@
 				</ul>
 			</div>
 		</div>
+		<br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
 			열<br>
-			기<br>
-			></div> 
+			기
+			</div> 
 			<div id="shop_right">
 				<h3>CLASS SHOP </h3>
 				<p>메인 > 클래스샵</p>
@@ -157,7 +158,9 @@
 						<button onclick="location.href='<%= request.getContextPath() %>/shop/shopView?no=<%= s.getShopNo()%>'">VIEW</button>
 					</div>
 					<% }}%>
+					
 					<div class="shop_bottom">
+					<br><br>
 						<%= pageBar %>
 					</div>
 				</div>
@@ -216,13 +219,13 @@
 					$('#shop_left').css({"z-index":"999", "transition": "500ms", "width": "210px","border-right":"1px solid #c2c2c2"});
 					//shopRight.css({ "transition": "500ms", "width": "735px", "margin-left": "260px" });
 					slidebtn.css({ "transition": "800ms", "margin-left": "215px", "background-color": "#fff", "color": "#252525" });
-					slidebtn.html('메<br>뉴<br>접<br>기<br><');
+					slidebtn.html('메<br>뉴<br>접<br>기<br>');
 				} else {
 					// 서브메뉴가 접힌상태
 					$('#shop_left').css({ "transition": "500ms", "width": "0px", "border":"none"});
 					shopRight.css({ "transition": "500ms", "width": "945px", "margin-left": "45px" });
 					slidebtn.css({ "transition": "800ms", "margin-left": "0px", "background-color": "#fff", "color": "#333" });
-					slidebtn.html('메<br>뉴<br>열<br>기<br>>');
+					slidebtn.html('메<br>뉴<br>열<br>기<br>');
 				}
 			}
 			

@@ -1000,6 +1000,8 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 	
 	
 	
+
+
 	
 	
 	
@@ -1014,6 +1016,443 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 	
 	
 	
+	
+	
+	
+	
+	
+	
+//	------------------------------------------------------------admin
+	
+	public int selectAdminCount(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectAdminCount");
+		int totalCount = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
+	
+	public List<Board> selectAdminList(Connection conn, int cPage, int numPerPage) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = prop.getProperty("selectAdminList");
+		String sql2 = prop.getProperty("selectAdminListCommentCount");
+		List<Board> list = new ArrayList<Board>();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Board b = new Board();
+				
+				b.setBoardNo(rs.getInt("BOARD_NO"));
+				b.setBoardTitle(rs.getString("BOARD_TITLE"));
+				b.setBoardWriter(rs.getString("BOARD_WRITER"));
+				b.setBoardContent(rs.getString("BOARD_CONTENT"));
+				b.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+				b.setBoardReNamedFileName(rs.getString("BOARD_RENAMED_FILENAME"));
+				b.setBoardDate(rs.getDate("BOARD_DATE"));
+				b.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				b.setStatus(rs.getString("STATUS"));
+				b.setBoardLike(rs.getInt("BOARD_LIKE"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		pstmt = null;
+		rs = null;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			for(Board b : list) {
+				rs.next();
+				b.setBoardCommentCount(rs.getInt("COMMENTCOUNT"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public int selectAdminSearchCount(Connection conn, String searchType, String searchKeyword) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			int totalCount = 0;
+			
+			if(searchType.equals("all")) sql = prop.getProperty("allCount");
+			else if(searchType.equals("delete")) sql = prop.getProperty("deleteCount");
+			else if(searchType.equals("exist")) sql = prop.getProperty("existCount");
+			
+			try {
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%" + searchKeyword + "%");
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					totalCount = rs.getInt("CNT");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			return totalCount;
+		}
+		
+	public List<Board> selectAdminSearchList(Connection conn, int cPage, int numPerPage, String searchType, String searchKeyword) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "";
+		String sql2 = "";
+		List<Board> list = new ArrayList<Board>();
+		if(searchType.equals("all")) {
+			sql1 = prop.getProperty("allList");
+			sql2 = prop.getProperty("allListAdminCommentCount");
+		}
+		else if(searchType.equals("delete")) {
+			sql1 = prop.getProperty("deleteList");
+			sql2 = prop.getProperty("deleteListAdminCommentCount");
+		}
+		else if(searchType.equals("exist")) {
+			sql1 = prop.getProperty("existList");
+			sql2 = prop.getProperty("existListAdminCommentCount");
+		}
+		try {
+			
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Board b = new Board();
+				
+				b.setBoardNo(rs.getInt("BOARD_NO"));
+				b.setBoardTitle(rs.getString("BOARD_TITLE"));
+				b.setBoardWriter(rs.getString("BOARD_WRITER"));
+				b.setBoardContent(rs.getString("BOARD_CONTENT"));
+				b.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+				b.setBoardReNamedFileName(rs.getString("BOARD_RENAMED_FILENAME"));
+				b.setBoardDate(rs.getDate("BOARD_DATE"));
+				b.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				b.setStatus(rs.getString("STATUS"));
+				b.setBoardLike(rs.getInt("BOARD_LIKE"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		pstmt = null;
+		rs = null;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+			
+			for(Board b : list) {
+				rs.next();
+				b.setBoardCommentCount(rs.getInt("COMMENTCOUNT"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public int selectAdminDQSearchCount(Connection conn, String searchType, String searchKeyword) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		int totalCount = 0;
+		
+		if(searchType.equals("all")) sql = prop.getProperty("DQallCount");
+		else if(searchType.equals("statusY")) sql = prop.getProperty("DQYCount");
+		else if(searchType.equals("statusN")) sql = prop.getProperty("DQNCount");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
+	
+	public List<BoardDQ> selectAdminDQSearchList(Connection conn, int cPage, int numPerPage, String searchType, String searchKeyword) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		List<BoardDQ> list = new ArrayList<BoardDQ>();
+		if(searchType.equals("all")) {
+			sql = prop.getProperty("allDQList");
+		}
+		else if(searchType.equals("statusY")) {
+			sql = prop.getProperty("DQYList");
+		}
+		else if(searchType.equals("statusN")) {
+			sql = prop.getProperty("DQNList");
+		}
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDQ b = new BoardDQ();
+				
+				b.setBoardDQNo(rs.getInt("BOARD_DQ_NO"));
+				b.setBoardDQTitle(rs.getString("BOARD_DQ_TITLE"));
+				b.setBoardDQWriter(rs.getString("BOARD_DQ_WRITER"));
+				b.setBoardDQContent(rs.getString("BOARD_DQ_CONTENT"));
+				b.setBoardDQOriginalFileName(rs.getString("BOARD_DQ_ORIGINAL_FILENAME"));
+				b.setBoardDQReNameFileName(rs.getString("BOARD_DQ_RENAMED_FILENAME"));
+				b.setBoardDQDate(rs.getDate("BOARD_DQ_DATE"));
+				b.setBoardDQProcess(rs.getString("BOARD_DQ_PROCESS"));
+				b.setBoardDQAnswer(rs.getString("BOARD_DQ_ANSWER"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int insertBoardFAQ(Connection conn, BoardFAQ b) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertBoardFAQ");
+		String category = b.getBoardFAQCategory();
+		
+		switch (category) {
+			case "all": category = ""; break;
+			case "changeAndCancel": category = "변경/취소"; break;
+			case "depositAndDelivery": category = "입금/배송"; break;
+			case "exchangeAndReturn": category = "교환/반품"; break;
+			case "therInquiries": category = "기타문의"; break;
+			case "saleAndBenefits": category = "할인/혜택"; break;
+			case "memberAndBenefits": category = "회원/혜택"; break;
+			case "orderAndLookup": category = "주문/조회"; break;
+			case "paymentInquiry": category = "결제문의"; break;
+			case "soldOutAndWearing": category = "품절/입고"; break;
+			case "contactUs": category = "상품문의"; break;
+		}
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, category);
+			pstmt.setString(2, b.getBoardFAQTitle());
+			pstmt.setString(3, b.getBoardFAQContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public BoardFAQ selectFAQOne(Connection conn, int boardFAQNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectFAQOne");
+		BoardFAQ b = new BoardFAQ();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardFAQNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				b.setBoardFAQNo(boardFAQNo);
+				b.setBoardFAQCategory(rs.getString("BOARD_FAQ_CATEGORY"));
+				b.setBoardFAQTitle(rs.getString("BOARD_FAQ_TITLE"));
+				b.setBoardFAQContent(rs.getString("BOARD_FAQ_CONTENT"));
+				b.setBoardFAQDate(rs.getDate("BOARD_FAQ_DATE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return b;
+	}
+	
+	public int deleteFAQBoard(Connection conn, int boardFAQNo) {
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFAQBoard");
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardFAQNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateFAQBoard(Connection conn, BoardFAQ b) {
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateFAQBoard");
+		int result = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getBoardFAQCategory());
+			pstmt.setString(2, b.getBoardFAQTitle());
+			pstmt.setString(3, b.getBoardFAQContent());
+			pstmt.setInt(4, b.getBoardFAQNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateBoardDetail(Connection conn, Board b) {
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoardDetail");
+		int result = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, b.getBoardReadCount());
+			pstmt.setString(2, b.getStatus());
+			pstmt.setInt(3, b.getBoardLike());
+			pstmt.setInt(4, b.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteBoardDetail(Connection conn, int no) {
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteBoardDetail");
+		int result = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	

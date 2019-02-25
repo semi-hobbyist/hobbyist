@@ -1131,4 +1131,21 @@ public class ShopDao {
 		return study;
 	}
 
+	public int deleteShop(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteShop");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

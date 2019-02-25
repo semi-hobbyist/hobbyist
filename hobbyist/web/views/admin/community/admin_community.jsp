@@ -1,5 +1,19 @@
+<%@page import="com.hobbyist.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
+    
+<%
+	List<Board> list = (List<Board>)request.getAttribute("list");
+	int cPage = (int)(request.getAttribute("cPage"));
+	int numPerPage = (int)request.getAttribute("numPerPage");
+	String pageBar = (String)request.getAttribute("pageBar");
+	String searchType = (String)request.getAttribute("searchType");
+	String searchKeyword = (String)request.getAttribute("searchKeyword");
+	if(searchKeyword == null) searchKeyword = "";
+	if(searchType == null) searchType = "all";
+	
+	int i = 0;
+%>
 
 <%@ include file="/views/common/header.jsp" %>
 
@@ -28,13 +42,191 @@
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="admin_right">
-			<div id="admin_main">
-				작업할부분
+		<div id="admin_right">
+			<div class="admin_main">
+				<form class='searchForm' name="searchFrm" action="<%=request.getContextPath()%>/admin/community/adminCommunitySearch" method="POST">
+					<div class="sort">
+						<input type="hidden" name="searchType" value="<%=searchType%>"/>
+						<input type="hidden" name="cPage" value="<%=cPage%>"/>
+						<input type="hidden" name="numPerPage" value="<%=numPerPage%>"/>
+						<div id="all" onclick="sortBtn(this)">전체 게시물</div>
+						<div id="delete" onclick="sortBtn(this)">삭제된 게시물</div>
+						<div id="exist" onclick="sortBtn(this)">미삭제 게시물</div>
+					</div>
+				
+					<div class="searchForm">
+						게시물&nbsp;&nbsp;&nbsp;<input type="search" placeholder="Search..." name="searchKeyword" value="<%=searchKeyword%>">
+						<button type="submit"><img src="<%= request.getContextPath() %>/images/search.png" width="70%"></button>
+					</div>
+				</form>
+			</div>
+			
+			<div class="admin_middle">
+				<table>
+					<tr>
+						<th><input id="allchecked" type="checkbox"/></th>
+						<th style="width: 60px;">번호</th>
+						<th style="width: 370px;">제목</th>
+						<th style="width: 100px;">작성자</th>
+						<th style="width: 70px;">파일</th>
+						<th style="width: 130px;">작성일</th>
+						<th style="width: 100px;">조회수</th>
+						<th style="width: 80px;">존재유무</th>
+						<th style="width: 80px;">추천수</th>
+					</tr>
+					<%for(Board b : list) { %>
+					<tr>
+						<td><input class="input_check<%=++i%>" type="checkbox"<%--  onclick="test('<%=b.getBoardNo()%>', '<%=b.getBoardReadCount()%>', '<%=b.getStatus()%>', '<%=b.getBoardLike()%>')" --%>/></td>
+						<td><%=b.getBoardNo()%></td>
+						<td style="padding-left: 25px; padding-top: 9px;"><a href="<%=request.getContextPath() %>/admin/community/adminCommunityRevise?boardNo=<%= b.getBoardNo()%>"><%=b.getBoardTitle()%><%if(b.getBoardCommentCount() != 0) {%> <span class="comment"><%="[" + b.getBoardCommentCount() + "]"%></span><% } %></a></td>
+						<td><%=b.getBoardWriter()%></td>
+						<td><%if(b.getBoardReNamedFileName()!=null) {%><img src="<%=request.getContextPath()%>/images/file.png" width="16px"/><%}%></td>
+						<td><%=b.getBoardDate()%></td>
+						<input type="hidden" name="no<%=i%>" value="<%=b.getBoardNo()%>"/>
+						<td><input type='text' name="readCount<%=i%>" value='<%=b.getBoardReadCount()%>' size='1px'/></td>
+						<td><input type='text' name="status<%=i%>" value='<%=b.getStatus()%>' size='1px'/></td>
+						<td><input type='text' name="like<%=i%>" value='<%=b.getBoardLike()%>' size='1px'/></td>
+					</tr>
+					<% } %>
+					<tr>
+						<td class="tableBottom" colspan="3" style="text-align: left; padding-left:20px;"><%=pageBar%></td>
+						<td class="tableBottom" colspan="5" style="text-align: right; padding-right:20px;">
+							<input id="btnsave" type='button' value="저장"/>
+						</td>
+						<td class="tableBottom" colspan="5" style="text-align: right; padding-right:20px;">
+							<input id="btndelete" type='button' value="삭제"/>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
 
 </section>
+
+<script>
+
+	function sortBtn(e) {
+		if(e.innerText == '전체 게시물') {
+			$('[name = searchType]').val('all');
+			$('[name = searchFrm]').submit();
+		} else if( e.innerText == '삭제된 게시물') {
+			$('[name = searchType]').val('delete');
+			$('[name = searchFrm]').submit();
+		} else if( e.innerText == '미삭제 게시물') {
+			$('[name = searchType]').val('exist');
+			$('[name = searchFrm]').submit();
+		}
+	}
+	
+	function deleteBoard(boardNo) {
+		var boardNo = boardNo;
+		if(confirm("정말 게시물을 삭제하시겠습니까?")) {
+			location.href='<%=request.getContextPath()%>/board/boardDelete?boardNo=' + boardNo;
+		} else {
+			
+		}
+	}
+	
+	$(function() {
+		$('#allchecked').click(function() {
+			var allck = $(this).is(':checked');
+			if(allck) {
+				for(var i = 1; i <= 5; i++) {
+					$('.input_check' + i).prop('checked', true);
+				}
+				
+			} else {
+				for(var i = 1; i <= 5; i++) {
+					$('.input_check' + i).prop('checked', false);
+				}
+			}
+		});
+	});
+	
+/* 	function test(bno, breadCount, bstatus, blike) {
+		var no = bno;
+		var readCount = breadCount;
+		var status = bstatus;
+		var like = blike;
+		
+		var check = $('.input_check').is(':checked');
+		var arr = new Array();
+		
+		if(check) {
+			
+		}
+		
+	} */
+	
+	$('#btnsave').click(function() {
+		var arr = [];
+		var noArr;
+		var readCountArr;
+		var statusArr;
+		var likeArr;
+		var bool = false;
+		
+		for(var i = 1; i <= 5; i++) {
+			var no = $('[name = no' + i + ']').val();
+			var readCount = $('[name = readCount' + i + ']').val();
+			var status = $('[name = status' + i + ']').val();
+			var like = $('[name = like' + i + ']').val();
+			
+			var check = $('.input_check'+ i).is(':checked');
+			if(check) {
+				/* arr.push({1:no, 2:readCount, 3:status, 4:like}); */
+				if(bool) {
+					noArr += "," + no;
+					readCountArr += "," + readCount;
+					statusArr += "," + status;
+					likeArr += "," + like;
+				} else {
+					noArr = no;
+					readCountArr = readCount;
+					statusArr = status;
+					likeArr = like;
+					bool = true;
+				}
+			}
+		}
+		if(confirm('저장하시겠습니까?')) {
+			if(noArr != null) {
+				location.href='<%=request.getContextPath()%>/admin/community/adminCommunityBoardUpdate?noArr='+ noArr + '&readCountArr=' + readCountArr + '&statusArr=' + statusArr + '&likeArr=' + likeArr;
+			}
+			
+		}
+	});
+	
+	$('#btndelete').click(function() {
+		var arr = [];
+		var noArr;
+		var bool = false;
+		
+		for(var i = 1; i <= 5; i++) {
+			var no = $('[name = no' + i + ']').val();
+			
+			var check = $('.input_check'+ i).is(':checked');
+			if(check) {
+				/* arr.push({1:no, 2:readCount, 3:status, 4:like}); */
+				if(bool) {
+					noArr += "," + no;
+				} else {
+					noArr = no;
+					bool = true;
+				}
+			}
+		}
+		if(confirm('삭제하시겠습니까?')) {
+			if(noArr != null) {
+				location.href='<%=request.getContextPath()%>/admin/community/adminCommunityBoardDelete?noArr='+ noArr;
+			}
+			
+		}
+	});
+	
+</script>
+
+
 
 <%@ include file="/views/common/footer.jsp" %>

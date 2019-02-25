@@ -244,4 +244,11 @@ public class ShopService {
 		return study;
 	}
 
+	public int deleteShop(int no) {
+		Connection conn = getConnection();
+		int result = new ShopDao().deleteShop(conn, no);
+		close(conn);
+		return result;
+	}
+
 }

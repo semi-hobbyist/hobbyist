@@ -59,3 +59,16 @@ section#admin .admin_content .adminOneday_right #adminOneday_main table tr:nth-l
 	border: 1px solid #d4d4d4;
 	color: #252525;
 }
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table button {
+	background-color: #d9dfea;
+	border: none;
+	border-radius: 3px;
+	outline: none;
+}
+
+section#admin .admin_content .adminOneday_right #adminOneday_main table button:hover {
+	background-color: #252525;
+	transition: 500ms;
+	color:#fff;
+}

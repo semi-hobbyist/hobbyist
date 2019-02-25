@@ -350,5 +350,136 @@ public class BoardService {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	-------------------------------------------------- admin
+	
+	public int selectAdminCount() {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectAdminCount(conn);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<Board> selectAdminList(int cPage, int numPerPage) {
+		
+		Connection conn = getConnection();
+		List<Board> list = dao.selectAdminList(conn, cPage, numPerPage);
+		close(conn);
+		
+		return list;
+	}
+	
+	public int selectAdminSearchCount(String searchType, String searchKeyword) {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectAdminSearchCount(conn, searchType, searchKeyword);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<Board> selectAdminSearchList(int cPage, int numPerPage, String searchType, String searchKeyword) {
+		
+		Connection conn = getConnection();
+		List<Board> list = dao.selectAdminSearchList(conn, cPage, numPerPage, searchType, searchKeyword);
+		close(conn);
+		
+		return list;
+	}
+	
+	public int selectAdminDQSearchCount(String searchType, String searchKeyword) {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectAdminDQSearchCount(conn, searchType, searchKeyword);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<BoardDQ> selectAdminDQSearchList(int cPage, int numPerPage, String searchType, String searchKeyword) {
+		
+		Connection conn = getConnection();
+		List<BoardDQ> list = dao.selectAdminDQSearchList(conn, cPage, numPerPage, searchType, searchKeyword);
+		close(conn);
+		
+		return list;
+	}
+	
+	public int insertBoardFAQ(BoardFAQ b) {
+		
+		Connection conn = getConnection();
+		int result = dao.insertBoardFAQ(conn, b);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+	
+	public BoardFAQ selectFAQOne(int boardFAQNo) {
+		
+		Connection conn = getConnection();
+		BoardFAQ b = dao.selectFAQOne(conn, boardFAQNo);
+		
+		return b;
+	}
+	
+	public int deleteFAQBoard(int boardFAQNo) {
+		
+		Connection conn = getConnection();
+		int result = dao.deleteFAQBoard(conn, boardFAQNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+	
+	public int updateFAQBoard(BoardFAQ b) {
+		
+		Connection conn = getConnection();
+		int result = dao.updateFAQBoard(conn, b);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+	
+	public int updateBoardDetail(Board b) {
+		Connection conn = getConnection();
+		int result = dao.updateBoardDetail(conn, b);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+	
+	public int deleteBoardDetail(int no) {
+		Connection conn = getConnection();
+		int result = dao.deleteBoardDetail(conn, no);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+	
+	
 
 }

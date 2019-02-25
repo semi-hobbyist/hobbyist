@@ -153,7 +153,7 @@
 						<option value="kakao">[기본] 카카오페이</option>
 						<!-- <option value="card">카드결제</option>
 						<option value="mobile">휴대폰결제</option> -->
-					</select>&nbsp;&nbsp;네 맞습니다. 전적으로 카카오페이만 쓰셔야합니다 고객님
+					</select><br><br>네 맞습니다. 전적으로 카카오페이만 쓰셔야합니다 고객님
 				</td>
 			</tr>
 			<tr>

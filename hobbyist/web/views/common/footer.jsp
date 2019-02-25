@@ -15,7 +15,7 @@
                 <h3>SITE MENU</h3>
                     <ul>
                         <li onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">공지사항 </li>
-                        <li onclick="location.href='<%= request.getContextPath()%>/views/shop/shopList'">클래스샵</li>
+                        <li onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">클래스샵</li>
                         <li onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">원데이클래스</li>
                         <li onclick="location.href='<%= request.getContextPath()%>/award/awardList'">어워드</li>
                         <li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">커뮤니티</li>
@@ -24,8 +24,13 @@
             <div class="footer_top_right">
                 <h3>하비스트 정기구독</h3>
                 <p>하비스트의 새로운 클래스와 이벤트 등 다양한 소식을 받아보세요!</p>
-                <input type="email" placeholder="Your Email..."/><input type="button" value="구독"/>
+                <input type="email"  placeholder="Your Email..."/><input id="subsc" type="button" value="구독"/>
             </div>
+            <script>
+            	$('#subsc').on('click', function() {
+            		alert('구독신청이 완료되었습니다.');
+            	});
+            </script>
         </div>
         <div class="footer_bottom">
             @ 2019 Hobbyist all rights Reserved.

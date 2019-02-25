@@ -9,13 +9,13 @@ section#oneday .oneday_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 193px;
+    padding-top: 170px;
 }
 
 section#oneday .oneday_content #oneday_left {
     display: inline-block;
     width: 0px;
-    height: 600px;
+    height: 100vh;
     position: fixed;
     overflow-x: hidden;
     overflow: hidden;
@@ -452,7 +452,7 @@ section#onedayView .onedayView_content .view_right .view_top_right table td {
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right table .tdclass {
-    width: 250px;
+    width: 400px;
     text-align: left;
     font-size: 14px;
 }

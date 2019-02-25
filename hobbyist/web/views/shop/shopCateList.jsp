@@ -26,13 +26,13 @@
 					<% } %>
 				</ul>
 			</div>
-		</div>
+		</div><br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
 			열<br>
-			기<br>
-			></div> 
+			기
+			</div> 
 			<div id="shop_right">
 				<h3>CLASS SHOP </h3>
 				<p>메인 > 클래스샵</p>

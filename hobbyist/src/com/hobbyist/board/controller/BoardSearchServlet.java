@@ -32,6 +32,7 @@ public class BoardSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String searchType = request.getParameter("searchType");
+		System.out.println(searchType);
 		if(searchType == null) searchType = "newUp";
 		
 		String searchKeyword = request.getParameter("searchKeyword");
@@ -58,7 +59,7 @@ public class BoardSearchServlet extends HttpServlet {
 		if(pageNo == 1) {
 			pageBar += "<button>이전</button>";
 		} else {
-			pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + (pageNo-1) + "&numPerPage" + numPerPage + "'>이전</button>";
+			pageBar += "<button onclick=location.href='" + request.getContextPath() + "/board/boardSearch?cPage=" + (pageNo-1) + "&numPerPage" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>이전</button>";
 		}
 		
 		while(!(pageNo > totalPage || pageNo > pageEnd)) {
@@ -66,7 +67,7 @@ public class BoardSearchServlet extends HttpServlet {
 			if(cPage == pageNo) {
 				pageBar += "<button class='current'>" + pageNo + "</button>";
 			} else {
-				pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + pageNo + "&numPerPage=" + numPerPage + "'>" + pageNo + "</button>";
+				pageBar += "<button onclick=location.href='" + request.getContextPath() + "/board/boardSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>" + pageNo + "</button>";
 			}
 			pageNo++;
 		}
@@ -74,11 +75,12 @@ public class BoardSearchServlet extends HttpServlet {
 		if(pageNo > totalPage) {
 			pageBar += "<button>다음</button>";
 		} else {
-			pageBar += "<button onclick=\"location.href=\'" + request.getContextPath() + "/board/boardList?cPage=" + pageNo + "&numPerPage=" + numPerPage + "/'>다음</button>";
+			pageBar += "<button onclick=location.href='" + request.getContextPath() + "/board/boardSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "/'>다음</button>";
 		}
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("searchKeyword", searchKeyword);
+		request.setAttribute("searchType", searchType);
 		request.setAttribute("numPerPage", numPerPage);
 		request.setAttribute("pageBar", pageBar);
 		request.getRequestDispatcher("/views/board/boardList.jsp").forward(request, response);

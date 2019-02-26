@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
+    
+<%
+	int selectMyPageBoardCount = (int)request.getAttribute("selectMyPageBoardCount");
+	int selectMyPageBoardCommentCount = (int)request.getAttribute("selectMyPageBoardCommentCount");
+%>
 
 <%@ include file="/views/common/header.jsp" %>
 

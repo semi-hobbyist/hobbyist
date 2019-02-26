@@ -69,7 +69,6 @@ public class MemberService {
 		Member result = dao.selectMemberName(conn,m);
 		close(conn);
 		return result;
-		
 	}
 
 	public Member searchMemberPwd(Member m) {
@@ -91,6 +90,34 @@ public class MemberService {
 		close(conn);
 		return resultPwd;
 	}
+	
+	//작가신청 합격으로 인한 맴버 데이터 수정
+		public int writerPassUpdate(String memberEmail) {
+			Connection conn = getConnection();
+			int result = dao.writerPassUpdate(conn,memberEmail);
+			if(result>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+			close(conn);
+			return result;
+		}
+		
+		//작가신청 불합격으로 인한 맴버 데이터 수정
+		public int writerFailUpdate(String memberEmail) {
+			Connection conn = getConnection();
+			int result = dao.writerFailUpdate(conn,memberEmail);
+			if(result>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+			close(conn);
+			return result;
+		}
 
 	public int updateMember(Member m) {
 		Connection conn = getConnection();

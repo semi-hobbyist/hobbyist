@@ -16,16 +16,17 @@ public class Order {
 	private String orderMsg;
 	private Timestamp orderDate;
 	private String orderCate;
+	private String orderStatus;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+
 
 	public Order(String orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
 			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg,
-			Timestamp orderDate, String orderCate) {
+			Timestamp orderDate, String orderCate, String orderStatus) {
 		super();
 		this.orderNo = orderNo;
 		this.orderMember = orderMember;
@@ -39,6 +40,7 @@ public class Order {
 		this.orderMsg = orderMsg;
 		this.orderDate = orderDate;
 		this.orderCate = orderCate;
+		this.orderStatus = orderStatus;
 	}
 
 
@@ -141,6 +143,18 @@ public class Order {
 
 	public void setOrderCate(String orderCate) {
 		this.orderCate = orderCate;
+	}
+
+
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 	
 	

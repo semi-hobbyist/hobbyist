@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
+<%@page import="com.hobbyist.board.model.vo.BoardComment"%>
+<%@page import="com.hobbyist.writer.model.vo.WriterEnroll"%>
+	
+<%
+	boolean weFlag = false;
+	if(request.getAttribute("weFlag")!=null) {
+		weFlag = (boolean)request.getAttribute("weFlag");
+	}
+%>
 
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
@@ -24,25 +33,30 @@
          </div>
          <div class="memberSimpleProfileTal">
             <div class="memberSimpleProfileTalTitle">내가 쓴 글 보기</div>
-            <div class="memberSimpleProfileTalContent">2개</div>
+            <div class="memberSimpleProfileTalContent"><%-- <%=selectMyPageBoardCount%> --%>개</div>
          </div>
          <div class="memberSimpleProfileTal">
             <div class="memberSimpleProfileTalTitle">내가 쓴 댓글 보기</div>
-            <div class="memberSimpleProfileTalContent">3개</div>
+            <div class="memberSimpleProfileTalContent"><%-- <%=selectMyPageBoardCommentCount%> --%>개</div>
          </div>
       </div>
    </div>
    <ul>
       <li>내 클래스</li>
       <li>내 커뮤니티</li>
+	      <%-- <ul class="sub">
+	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>&selectMyPageBoardCount=<%=selectMyPageBoardCount%>&selectMyPageBoardCommentCount=<%=selectMyPageBoardCommentCount%>'">나의 게시물</li>
+	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>&selectMyPageBoardCount=<%=selectMyPageBoardCount%>&selectMyPageBoardCommentCount=<%=selectMyPageBoardCommentCount%>'">나의 댓글</li>
+	      	</ul> --%>
       <li>내 포인트</li>
+      <li onclick="location.href='<%=request.getContextPath()%>/mypage/myOrderList?member=<%=logginMember.getMemberEmail()%>'">내 주문내역</li>
       <li>내 정보보기</li>
       <ul class="sub">
          <li onclick="fn_updateMember()">내 정보 수정</li>
          <li onclick="fn_changePwd()">비밀번호 수정</li>
       </ul>
-      <% if(logginMember.getMemberWriterYN().equals("N")) { %>
-      <li>작가신청</li>
+      <% if(weFlag) { %>
+		<li onclick="location.href='<%= request.getContextPath() %>/mypage/mypage_writerEnrollList'">작가신청</li>
       <% } %>
    </ul>
 </div>

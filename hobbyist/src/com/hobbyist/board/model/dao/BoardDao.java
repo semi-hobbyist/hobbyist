@@ -294,7 +294,7 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		return list;
 	}
 
-	public List<BoardDQ> selectDQList(Connection conn, int cPage, int numPerPage) {
+	public List<BoardDQ> selectDQList(Connection conn, int cPage, int numPerPage, String nickName) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -304,8 +304,9 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-			pstmt.setInt(2, cPage*numPerPage);
+			pstmt.setString(1, nickName);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -503,7 +504,7 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		return totalCount;
 	}
 	
-	public int selectDQCount(Connection conn) {
+	public int selectDQCount(Connection conn, String nickName) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -513,6 +514,7 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickName);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -1519,13 +1521,230 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		return list;
 	}
 	
+	public int selectDQCountAdmin(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectDQCountAdmin");
+		int totalCount = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
+	
+	public List<BoardDQ> selectDQListAdmin(Connection conn, int cPage, int numPerPage) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectDQListAdmin");
+		List<BoardDQ> list = new ArrayList();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDQ b = new BoardDQ();
+				
+				b.setBoardDQNo(rs.getInt("BOARD_DQ_NO"));
+				b.setBoardDQTitle(rs.getString("BOARD_DQ_TITLE"));
+				b.setBoardDQWriter(rs.getString("BOARD_DQ_WRITER"));
+				b.setBoardDQContent(rs.getString("BOARD_DQ_CONTENT"));
+				b.setBoardDQOriginalFileName(rs.getString("BOARD_DQ_ORIGINAL_FILENAME"));
+				b.setBoardDQReNameFileName(rs.getString("BOARD_DQ_RENAMED_FILENAME"));
+				b.setBoardDQDate(rs.getDate("BOARD_DQ_DATE"));
+				b.setBoardDQProcess(rs.getString("BOARD_DQ_PROCESS"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 	
 	
 	
 	
 	
+//	--------------------------------------- mypage
 	
+	public int selectMyPageBoardCount(Connection conn, String nickName) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectMyPageBoardCount");
+		int totalCount = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "Y");
+			pstmt.setString(2, nickName);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
 	
+	public List<Board> selectMyPageBoardList(Connection conn, int cPage, int numPerPage, String nickName) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = prop.getProperty("selectMyPageBoardList");
+		String sql2 = prop.getProperty("selectListCommentCount");
+		List<Board> list = new ArrayList<Board>();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, nickName);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Board b = new Board();
+				
+				b.setBoardNo(rs.getInt("BOARD_NO"));
+				b.setBoardTitle(rs.getString("BOARD_TITLE"));
+				b.setBoardWriter(rs.getString("BOARD_WRITER"));
+				b.setBoardContent(rs.getString("BOARD_CONTENT"));
+				b.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+				b.setBoardReNamedFileName(rs.getString("BOARD_RENAMED_FILENAME"));
+				b.setBoardDate(rs.getDate("BOARD_DATE"));
+				b.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				b.setStatus(rs.getString("STATUS"));
+				b.setBoardLike(rs.getInt("BOARD_LIKE"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		pstmt = null;
+		rs = null;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			for(Board b : list) {
+				rs.next();
+				b.setBoardCommentCount(rs.getInt("COMMENTCOUNT"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public int selectMyPageBoardCommentCount(Connection conn, String nickName) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectMyPageBoardCommentCount");
+		int totalCount = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickName);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
+	
+	public List<BoardComment> selectMyPageBoardCommentList(Connection conn, int cPage, int numPerPage, String nickName) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectMyPageBoardCommentList");
+		List<BoardComment> list = new ArrayList<BoardComment>();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickName);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardComment b = new BoardComment();
+				
+				b.setBoardCommentWriter(rs.getString("BOARD_COMMENT_WRITER"));
+				b.setBoardCommentContent(rs.getString("BOARD_COMMENT_CONTENT"));
+				b.setBoardRef(rs.getInt("BOARD_REF"));
+				b.setBoardCommentDate(rs.getDate("BOARD_COMMENT_DATE"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+
 	
 	
 	

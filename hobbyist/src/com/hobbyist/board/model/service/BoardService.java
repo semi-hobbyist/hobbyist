@@ -75,10 +75,10 @@ public class BoardService {
 		return list;
 	}
 	
-	public List<BoardDQ> selectDQList(int cPage, int numPerPage) {
+	public List<BoardDQ> selectDQList(int cPage, int numPerPage, String nickName) {
 		
 		Connection conn = getConnection();
-		List<BoardDQ> list = dao.selectDQList(conn, cPage, numPerPage);
+		List<BoardDQ> list = dao.selectDQList(conn, cPage, numPerPage, nickName);
 		close(conn);
 		
 		return list;
@@ -120,10 +120,10 @@ public class BoardService {
 		return totalCount;
 	}
 	
-	public int selectDQCount() {
+	public int selectDQCount(String nickName) {
 		
 		Connection conn = getConnection();
-		int totalCount = dao.selectDQCount(conn);
+		int totalCount = dao.selectDQCount(conn, nickName);
 		close(conn);
 		
 		return totalCount;
@@ -498,6 +498,61 @@ public class BoardService {
 		return list;
 	}
 	
+	public int selectDQCountAdmin() {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectDQCountAdmin(conn);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<BoardDQ> selectDQListAdmin(int cPage, int numPerPage) {
+		
+		Connection conn = getConnection();
+		List<BoardDQ> list = dao.selectDQListAdmin(conn, cPage, numPerPage);
+		close(conn);
+		
+		return list;
+	}
+	
+//	--------------------------------------- mypage
+	
+	public int selectMyPageBoardCount(String nickName) {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectMyPageBoardCount(conn, nickName);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<Board> selectMyPageBoardList(int cPage, int numPerPage, String nickName) {
+		
+		Connection conn = getConnection();
+		List<Board> list = dao.selectMyPageBoardList(conn, cPage, numPerPage, nickName);
+		close(conn);
+		
+		return list;
+	}
+	
+	public int selectMyPageBoardCommentCount(String nickName) {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectMyPageBoardCommentCount(conn, nickName);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<BoardComment> selectMyPageBoardCommentList(int cPage, int numPerPage, String nickName) {
+		
+		Connection conn = getConnection();
+		List<BoardComment> list = dao.selectMyPageBoardCommentList(conn, cPage, numPerPage, nickName);
+		close(conn);
+		
+		return list;
+	}
 	
 
 }

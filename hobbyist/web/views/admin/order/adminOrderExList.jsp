@@ -42,7 +42,7 @@
 			<div id="adminShop_main">
 					<table>
 						<tr>
-							<td colspan="9"><h3>주문관리 목록</h3></td>
+							<td colspan="9"><h3>환불처리 목록</h3></td>
 						</tr>
 						<tr>
 							<td colspan="9" style="text-align:center;">총 ( <%= totalCount %> ) 건의 목록</td>
@@ -68,7 +68,7 @@
 								<td><%= o.getOrderPrice() %></td>
 								<td><%= o.getOrderType() %></td>
 								<td><%= o.getOrderDate() %></td>
-								<td><button onclick="fn_delete('<%= o.getOrderNo() %>')">환불</button>
+								<td><button onclick="fn_delete('<%= o.getOrderNo() %>')">환불취소</button>
 							</tr>
 						<% } %>
 						<tr>
@@ -79,7 +79,7 @@
 						function fn_delete(num) {
 							if(confirm('해당 상품을 환불처리 하시겠습니까?')) {
 								$.ajax({
-									url:'<%=request.getContextPath() %>/admin/adminOrderDelete?no=' + num,
+									url:'<%=request.getContextPath() %>/admin/adminOrderReDelete?no=' + num,
 									success: function (data) {
 										alert(data);
 										location.href="<%=request.getContextPath() %>/admin/adminOrderList";

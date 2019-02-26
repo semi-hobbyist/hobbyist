@@ -35,9 +35,8 @@
 				<li>Administrator</li>
 				<li>오늘방문자 : 4205　　　어제방문자 : 8243　　　전체방문자 : 52483094</li>
 			</ul>
-			
-		</div><br>
-		
+		</div>
+		<br>
 		<!-- 관리자메뉴는 중복되기때문에 admin_menu.jsp 파일로 인클루드 시켜 가져옴 -->
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->

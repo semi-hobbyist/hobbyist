@@ -49,9 +49,9 @@ public class BoardDirectQuestionServlet extends HttpServlet {
 		}
 		int numPerPage = 2;
 		
-		int totalCount = new BoardService().selectDQCount();
+		int totalCount = new BoardService().selectDQCount(nickName);
 		int totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-		List<BoardDQ> list = new BoardService().selectDQList(cPage, numPerPage);
+		List<BoardDQ> list = new BoardService().selectDQList(cPage, numPerPage, nickName);
 		
 		String pageBar = "";
 		int pageBarSize = 5;

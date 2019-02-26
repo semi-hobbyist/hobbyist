@@ -94,6 +94,46 @@ public class OrderService {
 			close(conn);
 			return list;
 		}
+
+
+		public int deleteOrder(String no) {
+			Connection conn = getConnection();
+			int result = new OrderDao().deleteOrder(conn, no);
+			close(conn);
+			return result;
+		}
+
+
+		public List<Order> exList(String keyword, int cPage, int numPerPage) {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().exList(conn, keyword, cPage, numPerPage);
+			close(conn);
+			return list;
+		}
+
+
+		public int recoverOrder(String no) {
+			Connection conn = getConnection();
+			int result = new OrderDao().recoverOrder(conn, no);
+			close(conn);
+			return result;
+		}
+
+
+		public List<Order> myOrderList(int cPage, int numPerPage, String member) {
+			Connection conn = getConnection();
+			List<Order> list = new OrderDao().myOrderList(conn, cPage, numPerPage, member);
+			close(conn);
+			return list;
+		}
+
+
+		public int searchOrderCount(String member) {
+			Connection conn = getConnection();
+			int result = dao.searchOrderCount(conn, member);
+			close(conn);
+			return result;
+		}
 		
 /*		// 높은가격순
 		public List<Order> descPrice(String keyword, int cPage, int numPerPage) {

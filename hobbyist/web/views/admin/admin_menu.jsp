@@ -32,7 +32,11 @@
 		  <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQList'">FAQ 자주 묻는 질문 목록</li>
 		  <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityDQList'">1:1 문의 목록</li>
 	  </ul>
-      <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOrderList'">주문관리</li>
+      <li>주문관리</li>
+      <ul class="sub">
+	      <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOrderList'">주문관리 목록</li>
+		  <li onclick="location.href='<%=request.getContextPath()%>/admin/adminOrderExList'">환불처리 목록</li>
+	  </ul>
    </ul>
 </div>
 

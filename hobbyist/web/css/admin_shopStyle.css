@@ -39,7 +39,7 @@ section#admin .admin_content .adminShop_right #adminShop_main table tr:hover {
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:hover a {
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-child(1) {
@@ -61,6 +61,7 @@ section#admin .admin_content .adminShop_right #adminShop_main table tr:nth-last-
 }
 
 section#admin .admin_content .adminShop_right #adminShop_main table button {
+	cursor: pointer;
 	background-color: #d9dfea;
 	border: none;
 	border-radius: 3px;

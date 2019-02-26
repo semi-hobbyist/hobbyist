@@ -288,6 +288,7 @@ public class OrderDao {
 				order.setOrderMsg(rs.getString("order_msg"));
 				order.setOrderDate(rs.getTimestamp("order_date"));
 				order.setOrderCate(rs.getString("order_cate"));
+				order.setOrderStatus(rs.getString("order_status"));
 				list.add(order);
 			}
 		} catch (SQLException e) {
@@ -322,6 +323,138 @@ public class OrderDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public int deleteOrder(Connection conn, String no) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		
+		try {
+			String sql = prop.getProperty("deleteOrder");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public List<Order> exList(Connection conn, String keyword, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+
+		try {
+			String sql = prop.getProperty("exList");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Order order = new Order();
+				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderMember(rs.getString("order_member"));
+				order.setOrderClass(rs.getInt("order_class"));
+				order.setOrderClassOption(rs.getString("order_class_option"));
+				order.setOrderType(rs.getString("order_type"));
+				order.setOrderPrice(rs.getInt("order_price"));
+				order.setOrderAddName(rs.getString("order_add_name"));
+				order.setOrderAddPhone(rs.getString("order_add_phone"));
+				order.setOrderAddAddress(rs.getString("order_add_address"));
+				order.setOrderMsg(rs.getString("order_msg"));
+				order.setOrderDate(rs.getTimestamp("order_date"));
+				order.setOrderCate(rs.getString("order_cate"));
+				order.setOrderStatus(rs.getString("order_status"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int recoverOrder(Connection conn, String no) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		
+		try {
+			String sql = prop.getProperty("recoverOrder");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public List<Order> myOrderList(Connection conn, int cPage, int numPerPage, String member) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+
+		try {
+			String sql = prop.getProperty("myOrderList");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Order order = new Order();
+				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderMember(rs.getString("order_member"));
+				order.setOrderClass(rs.getInt("order_class"));
+				order.setOrderClassOption(rs.getString("order_class_option"));
+				order.setOrderType(rs.getString("order_type"));
+				order.setOrderPrice(rs.getInt("order_price"));
+				order.setOrderAddName(rs.getString("order_add_name"));
+				order.setOrderAddPhone(rs.getString("order_add_phone"));
+				order.setOrderAddAddress(rs.getString("order_add_address"));
+				order.setOrderMsg(rs.getString("order_msg"));
+				order.setOrderDate(rs.getTimestamp("order_date"));
+				order.setOrderCate(rs.getString("order_cate"));
+				order.setOrderStatus(rs.getString("order_status"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int searchOrderCount(Connection conn, String member) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("searchOrderCount");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 }

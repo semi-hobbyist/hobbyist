@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hobbyist.board.model.service.BoardService;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.writer.model.service.WriterService;
 import com.hobbyist.writer.model.vo.WriterEnroll;
@@ -38,7 +39,6 @@ public class MyPageServlet extends HttpServlet {
 		
 		Member logginMember = (Member)request.getSession().getAttribute("logginMember");
 		int memberNo = logginMember.getMemberNo();
-		
 		boolean weFlag = false;
 		for(WriterEnroll weP : we) {
 			if(logginMember.getMemberNo() == weP.getMemberNo()) {
@@ -47,6 +47,13 @@ public class MyPageServlet extends HttpServlet {
 		}
 		
 		
+		
+		int selectMyPageBoardCount = new BoardService().selectMyPageBoardCount(logginMember.getMemberNickname());
+		int selectMyPageBoardCommentCount = new BoardService().selectMyPageBoardCommentCount(logginMember.getMemberNickname());
+		
+		
+		request.setAttribute("selectMyPageBoardCount", selectMyPageBoardCount);
+		request.setAttribute("selectMyPageBoardCommentCount", selectMyPageBoardCommentCount);
 		request.setAttribute("weFlag", weFlag);
 		request.getRequestDispatcher("/views/mypage/myPage.jsp").forward(request, response);
 	}

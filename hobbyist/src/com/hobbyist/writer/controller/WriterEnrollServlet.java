@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hobbyist.notice.model.service.NoticeService;
+import com.hobbyist.notice.model.vo.WeNotice;
+
 /**
  * Servlet implementation class WriterEnrollServlet
  */
@@ -35,16 +38,32 @@ public class WriterEnrollServlet extends HttpServlet {
 		String view = "";
 		if(session.getAttribute("logginMember")==null) {
 			msg="작가신청을 하기 위해서는 로그인이 필요합니다.";
-			loc="/member/loginPage?loginBtn=1";
+			loc="/index.jsp";
 			view="/views/common/msg.jsp";
 		}
 		else {
 			view="/views/writer/writerEnroll.jsp";
 		}
+		
+		String  weQuarter = request.getParameter("weQuarter");
+		WeNotice wnList = new NoticeService().cuWeSelectOne();
+		
+		System.out.println(wnList.getWeQuarter());
+		System.out.println(weQuarter);
+
+		if(!wnList.getWeQuarter().equals(weQuarter)) {
+			msg="작가신청기간이 아닙니다.";
+			loc="/notice/noticeList";
+			view="/views/common/msg.jsp";
+		}
+		else {
+			view="/views/writer/writerEnroll.jsp";
+		}
+		
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
+		request.setAttribute("weQuarter", weQuarter);
 		request.getRequestDispatcher(view).forward(request, response);
-		
 	}
 
 	/**

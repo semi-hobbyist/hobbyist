@@ -1,7 +1,14 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.util.List"%>
+<%@page import="com.hobbyist.notice.model.vo.WeNotice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 
 <%
+	List<WeNotice> wn = (List<WeNotice>)request.getAttribute("wn");
+	String cuYear = (String)request.getAttribute("cuYear");
+	String cuQu = (String)request.getAttribute("cuQu");
+	Date minTime = (Date)request.getAttribute("minTime");
 
 %>
 
@@ -89,15 +96,22 @@
 					<div class="noticeWriteAttr">세부설정</div>
 					<div class="noticeWriteVal">
 						<div>
-							시작날짜
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="date" name="wENoticeStartdate" />
+							<div><%= cuYear %> 년도 &nbsp;&nbsp;<%= cuQu %> 차</div>
+							<input type="hidden" name="weNoticeYear" value="<%= cuYear %>"/>
+							<input type="hidden" name="weNoticeQuarter" value="<%= cuQu %>"/>
 						</div>
 						<div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							종료날짜
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="date" name="wENoticeStartdate" />
+							<div>
+								시작날짜
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="date" name="weNoticeStartdate" min="<%= minTime %>"/>
+							</div>
+							<div>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								종료날짜
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="date" name="weNoticeEnddate"/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -182,7 +196,92 @@
 	</div>
 
 	<script>
-	
+		// 시작 날짜와 종료 날짜 관련 로직
+		$(function() {
+			$("input[name='weNoticeStartdate']").change(function() {
+				console.log($("input[name='weNoticeStartdate']").val());
+				$("input[name='weNoticeEnddate']").attr("min",$("input[name='weNoticeStartdate']").val());
+			})
+		})
+
+		// submit 전 공백 관련 로직
+		function fn_noticeInsert() {
+			if($("input[name='noticeSort']").val()=="sortNotice") {
+				var ckeditor = CKEDITOR.instances['noticeContent_editor'];
+				if($("input[name='noticeTitle']").val()=="") {
+					alert("제목을 입력하세요.");
+					$('html, body').animate({ scrollTop: 0 }, 400);
+					$("input[name='noticeTitle']").focus();
+				}
+				else if(ckeditor.getData()=="") {
+					alert("내용을 입력하세요");
+					ckeditor.focus();
+					$('html, body').animate({ scrollTop: 500 }, 400);
+				}
+				else {
+					$("#noticeInsertFrm").submit();
+				}
+			}
+			else if($("input[name='noticeSort']").val()=="sortEvent") {
+				var ckeditor = CKEDITOR.instances['noticeContent_editor'];
+				if($("input[name='noticeTitle']").val()=="") {
+					alert("제목을 입력하세요.");
+					$('html, body').animate({ scrollTop: 0 }, 400);
+					$("input[name='noticeTitle']").focus();
+				}
+				else if(ckeditor.getData()=="") {
+					alert("내용을 입력하세요");
+					ckeditor.focus();
+					$('html, body').animate({ scrollTop: 500 }, 400);
+
+				}
+				else {
+					$("#noticeInsertFrm").submit();
+				}
+			}
+			else if($("input[name='noticeSort']").val()=="sortWriterEnroll") {
+				var ckeditor = CKEDITOR.instances['noticeContent_editor'];
+				if($("input[name='noticeTitle']").val()=="") {
+					alert("제목을 입력하세요.");
+					$('html, body').animate({ scrollTop: 0 }, 400);
+					$("input[name='noticeTitle']").focus();
+				}
+				else if(ckeditor.getData()=="") {
+					alert("내용을 입력하세요");
+					ckeditor.focus();
+					$('html, body').animate({ scrollTop: 500 }, 400);
+				}
+				else if($("input[name='weNoticeStartdate']").val()==""||$("input[name='weNoticeEnddate']").val()=="") {
+					alert("작가신청 기간을 설정하세요");
+					$('html, body').animate({ scrollTop: 0 }, 400);
+					if($("input[name='weNoticeStartdate']").val()=="") {
+						$("input[name='weNoticeStartdate']").focus();
+					}
+					else if($("input[name='weNoticeEnddate']").val()=="") {
+						$("input[name='weNoticeEnddate']").focus();
+					}
+				}
+				else if($("input[name='weNoticeYear']").val()==""||$("input[name='weNoticeQuarter']").val()=="") {
+					alert("작가신청 분기를 정하세요");
+					$('html, body').animate({ scrollTop: 0 }, 400);
+					if($("input[name='weNoticeYear']").val()=="") {
+						$("input[name='weNoticeYear']").focus();
+						return;
+					}
+					else if($("input[name='weNoticeQuarter']").val()=="") {
+						$("input[name='weNoticeQuarter']").focus();
+						return;
+					}
+				}
+				else {
+					$("#noticeInsertFrm").submit();
+				}
+			}
+			else {
+				alert("공지 분류항목을 선택하세요");
+			}
+		}
+		
 		//분류 항목 시작과 동시에 '공지'에 체크되기
 		$(function () {
 			//공지관련된 세부내용이 없음
@@ -206,15 +305,12 @@
 		$(function() {
 			var selectLoc = $("#noticeDate3");
 			$($("#noticeDate3_1")).change(function() {
+				console.log("??");	
 				selectLoc.val($(this).val());
 				selectLoc.attr("checked","checked");
 			})
 		})
 
-		function fn_noticeInsert() {
-			$("#noticeInsertFrm").submit();
-		}
-		
 		// input number 기능 구현
 		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
 		jQuery('.quantity').each(function () {

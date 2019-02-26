@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 
 /**
  * Servlet implementation class NoticeViewServlet
@@ -68,9 +68,18 @@ public class NoticeViewServlet extends HttpServlet {
 		String writer = notice.getNoticeWriter();
 		String profileImg = new NoticeService().writerImg(writer);
 		
+		// 작가신청 관련 자료 가져오기
+		WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
+		System.out.println(wnList.toString());
+		String[] weQuarter = wnList.getWeQuarter().split(",");
+		String weYear = weQuarter[0];
+		String weQu = weQuarter[1];
 		
 		request.setAttribute("profileImg", profileImg);
 		request.setAttribute("notice", notice);
+		request.setAttribute("wnList", wnList);
+		request.setAttribute("weYear", weYear);
+		request.setAttribute("weQu", weQu);
 		request.getRequestDispatcher("/views/notice/noticeView.jsp").forward(request, response);
 		
 	}

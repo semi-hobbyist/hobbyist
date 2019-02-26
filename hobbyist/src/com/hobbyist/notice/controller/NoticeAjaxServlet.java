@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 
 /**
  * Servlet implementation class NoticeAjaxServlet
@@ -133,8 +134,57 @@ public class NoticeAjaxServlet extends HttpServlet {
 			pageBar += "<a href='javascript:fn_ListAjax(" + pageNo + ")'>다음</a>";
 		}
 		
+		WeNotice wnList = new NoticeService().cuWeSelectOne();
+		boolean hasRead = true;
+		Notice cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead); 
+		
+		String writer = "";
+		String profileImg = "";
+		Member logginMember = null;
 		// 리스트 담기
 		String html = "";
+		if(cuNotice.getNoticeStatus().equals("Y")) {
+			html += "<div class='tal_ContentBox'>";
+			html += "<div class='weNoticeColor tal_Content' onclick='fn_noticeView("+ cuNotice.getNoticeNo() +")'>";
+			html += "<div class='talC_noticeNo'>" + cuNotice.getNoticeNo() + "</div>";
+			html += "<div class='talC_noticeSort'>";
+			
+			switch(cuNotice.getNoticeSort()) {
+				case "sortNotice" : 
+					html +="<div class='nSTextNotice'>공지</div>"; break;
+				case "sortEvent" : 
+					html +="<div class='nSTextEvent'>이벤트</div>"; break;
+				case "sortWriterEnroll" : 
+					html +="<div class='nSTextWriterEnroll'>작가신청</div>"; break;
+			}
+			
+			html += "</div>";
+			html += "<div class='talC_noticeTitle'>" + cuNotice.getNoticeTitle() + "</div>";
+			
+			
+			html += "<div class='talC_noticeWriter'>";
+
+			// 작성자 프로필 이미지 가져오기
+			writer = cuNotice.getNoticeWriter();
+			profileImg = new NoticeService().writerImg(writer);
+			
+			html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg + "'/>";
+			html += cuNotice.getNoticeWriter(); 
+			html += "</div>";
+			
+			html += "<div class='talC_noticeDate'>" + cuNotice.getNoticeDate() + "</div>";
+			html += "<div class='talC_noticeReadcount'>" + cuNotice.getNoticeReadcount() + "</div>";
+			html += "</div>";
+			
+			//관리자일때만 삭제버튼 띠우기
+			logginMember = (Member)request.getSession().getAttribute("logginMember");
+			if(logginMember!=null&&logginMember.getMemberEmail().equals("admin")) {
+				html += "<button type='button' class='noticeListDel' onclick='fn_noticeListDel("+ cuNotice.getNoticeNo() +")'>X</button>";
+			}
+			
+			html += "</div>";
+		}
+				
 		if(list.size() != 0) {
 			for(int i=0;i<list.size();i++) {
 				html += "<div class='tal_ContentBox'>";
@@ -158,8 +208,8 @@ public class NoticeAjaxServlet extends HttpServlet {
 				html += "<div class='talC_noticeWriter'>";
 
 				// 작성자 프로필 이미지 가져오기
-				String writer = list.get(i).getNoticeWriter();
-				String profileImg = new NoticeService().writerImg(writer);
+				writer = list.get(i).getNoticeWriter();
+				profileImg = new NoticeService().writerImg(writer);
 				
 				html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg + "'/>";
 				html += list.get(i).getNoticeWriter(); 
@@ -170,7 +220,7 @@ public class NoticeAjaxServlet extends HttpServlet {
 				html += "</div>";
 				
 				//관리자일때만 삭제버튼 띠우기
-				Member logginMember = (Member)request.getSession().getAttribute("logginMember");
+				logginMember = (Member)request.getSession().getAttribute("logginMember");
 				if(logginMember!=null&&logginMember.getMemberEmail().equals("admin")) {
 					html += "<button type='button' class='noticeListDel' onclick='fn_noticeListDel("+ list.get(i).getNoticeNo() +")'>X</button>";
 				}

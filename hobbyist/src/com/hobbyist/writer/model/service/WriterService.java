@@ -52,9 +52,6 @@ public class WriterService {
 		return list;
 	}
 	
-	
-	
-	
 	public List<WriterEnroll> selectAll() {
 		Connection conn = getConnection();
 		List<WriterEnroll> list = dao.selectAll(conn);
@@ -65,6 +62,32 @@ public class WriterService {
 	public WriterEnroll selectOne(WriterEnroll we) {
 		Connection conn = getConnection();
 		WriterEnroll result = dao.selectOne(conn,we);
+		close(conn);
+		return result;
+	}
+	
+	public int passWriterEnroll(int writerEnrollNo) {
+		Connection conn = getConnection();
+		int result = dao.passWriterEnroll(conn,writerEnrollNo);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int failWriterEnroll(int writerEnrollNo) {
+		Connection conn = getConnection();
+		int result = dao.failWriterEnroll(conn,writerEnrollNo);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	}

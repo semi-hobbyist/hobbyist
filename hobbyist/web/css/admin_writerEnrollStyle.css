@@ -164,7 +164,7 @@
 }
 
 
-#admin_writerEnroll .shop_bottom {
+#admin_writerEnroll .tal_bottom {
     display: inline-block;
 	width:100%;
 	margin-top: 10px;
@@ -173,7 +173,7 @@
     font-size: 13px;
 }
 
-#admin_writerEnroll .shop_bottom a, #admin_writerEnroll .shop_bottom span {
+#admin_writerEnroll .tal_bottom a, #admin_writerEnroll .tal_bottom span {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -187,7 +187,7 @@
 }
 
 
-#admin_writerEnroll .shop_bottom a:hover, #admin_writerEnroll .shop_bottom span:hover {
+#admin_writerEnroll .tal_bottom a:hover, #admin_writerEnroll .tal_bottom span:hover {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -281,7 +281,8 @@
 }
 
 #admin_writerEnroll .wEnrollPreTitle {
-	width: 95%;
+    width: 95%;
+    height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -336,6 +337,50 @@
 #admin_writerEnroll .button1:hover {
     color: #fff;
 	background-color: #252525;
+	outline: none;
+	transition: 500ms;
+}
+
+#admin_writerEnroll .buttonY {
+	margin: 5px;
+	width: 100px;
+	height: 30px;
+	font-size: 16px;
+	letter-spacing: 0.15em;
+	border: 1px solid #c2c2c2;
+	color: #252525;
+	background-color: white;
+	outline: none;
+	opacity: 1;
+	transition: 500ms;
+	cursor: pointer;
+}
+
+#admin_writerEnroll .buttonY:hover {
+    color: #fff;
+	background-color: #428146;
+	outline: none;
+	transition: 500ms;
+}
+
+#admin_writerEnroll .buttonN {
+	margin: 5px;
+	width: 100px;
+	height: 30px;
+	font-size: 16px;
+	letter-spacing: 0.15em;
+	border: 1px solid #c2c2c2;
+	color: #252525;
+	background-color: white;
+	outline: none;
+	opacity: 1;
+	transition: 500ms;
+	cursor: pointer;
+}
+
+#admin_writerEnroll .buttonN:hover {
+    color: #fff;
+	background-color: #864343;
 	outline: none;
 	transition: 500ms;
 }

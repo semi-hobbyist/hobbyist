@@ -304,6 +304,37 @@ public class WriterDao {
 			close(pstmt);
 		}
 		return result;
-		
+	}
+	
+	public int passWriterEnroll(Connection conn, int writerEnrollNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("passWriterEnroll");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, writerEnrollNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int failWriterEnroll(Connection conn, int writerEnrollNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("failWriterEnroll");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, writerEnrollNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

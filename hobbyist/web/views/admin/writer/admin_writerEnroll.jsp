@@ -358,7 +358,8 @@
 						</div>
 						<div class="wEPreviewFooter">
 							<div>
-								<button type="button" class="button1">통과</button>
+								<button type="button" id="writerEnrollPass" class="buttonY">합격</button>
+								<button type="button" id="writerEnrollFail" class="buttonN">불합격</button>
 								<button type="button" class="pagePreviewClose button1">닫기</button>
 							</div>
 						</div>
@@ -366,6 +367,97 @@
 				</div>
 
 				<script>
+				
+					function fn_wEpass(index,email) {
+						$.ajax({
+							url: "<%= request.getContextPath() %>/admin/adminWEPassAjax.do",
+							type: "post",
+							data: { "index" : index, "passFlag" : "pass", "memberEmail" : email},
+							dataType: "text",
+							success: function (data) {
+								alert("합격 처리완료");
+							}
+						})
+						$(".pagePreviewModal").css("display", "none");
+						
+						var text = $('.selected')[0].innerText;
+						if(text=='최근등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/admin/adminWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: {"sort":"descEnroll","keyword":keyword.val()},
+								success: function(data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort1').addClass('selected');
+									$('#sort2').removeClass('selected');
+								}
+							})
+						}
+						else if(text=='이전등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/admin/adminWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: {"sort":"ascEnroll","keyword":keyword.val()},
+								success: function(data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort2').addClass('selected');
+									$('#sort1').removeClass('selected');
+								}
+							})
+						}
+					}
+					
+					function fn_wEfail(index,email) {
+						$.ajax({
+							url: "<%= request.getContextPath() %>/admin/adminWEPassAjax.do",
+							type: "post",
+							data: { "index" : index, "passFlag" : "fail", "memberEmail" : email},
+							dataType: "text",
+							success: function (data) {
+								alert("불합격 처리완료");
+							}
+						})
+						$(".pagePreviewModal").css("display", "none");
+						
+						var text = $('.selected')[0].innerText;
+						if(text=='최근등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/admin/adminWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: {"sort":"descEnroll","keyword":keyword.val()},
+								success: function(data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort1').addClass('selected');
+									$('#sort2').removeClass('selected');
+								}
+							})
+						}
+						else if(text=='이전등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/admin/adminWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: {"sort":"ascEnroll","keyword":keyword.val()},
+								success: function(data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort2').addClass('selected');
+									$('#sort1').removeClass('selected');
+								}
+							})
+						}
+					}
+					
 					function fn_WEViewAjax(index) {
 						$(".pagePreviewModal").css("display", "flex");
 						$(".wEPreviewBody").animate({ scrollTop: 0 }, 0);
@@ -397,6 +489,9 @@
 								$("#EP_classImgfileOriginal").html(data["classImgfileOriginal"]);
 								$("#EP_writerPrepRequestYN").html(data["writerPrepRequestYN"]);
 								$("#EP_writerFinalPoint").html(data["writerFinalPoint"]);
+								
+								$("#writerEnrollPass").attr("onclick", "fn_wEpass("+ index +",'"+ data["memberEmail"] +"')");
+								$("#writerEnrollFail").attr("onclick", "fn_wEfail("+ index +",'"+ data["memberEmail"] +"')");
 							}
 						})
 					}

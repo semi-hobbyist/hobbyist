@@ -39,7 +39,6 @@
 
 #admin_notice .notice_content .talBox_top {
     margin: 0 5px;
-    margin-top: 10px;
 }
 
 #admin_notice .notice_content .talBox_middle {
@@ -57,7 +56,7 @@
 
 #admin_notice .notice_content .tal_top {
 	width: 100%;
-	margin: 10px 0;
+	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;

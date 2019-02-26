@@ -216,4 +216,39 @@ public class MemberDao {
 		}
 		return resultPwd;
 	}
+	
+	//작가신청 합격으로 인한 맴버 데이터 수정
+	public int writerPassUpdate(Connection conn, String memberEmail) {
+		PreparedStatement pstmt = null;
+		String sql=prop.getProperty("writerPassUpdate");
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	//작가신청 불합격으로 인한 맴버 데이터 수정
+	public int writerFailUpdate(Connection conn, String memberEmail) {
+		PreparedStatement pstmt = null;
+		String sql=prop.getProperty("writerFailUpdate");
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

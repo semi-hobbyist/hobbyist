@@ -75,7 +75,7 @@ public class BoardSearchServlet extends HttpServlet {
 		if(pageNo > totalPage) {
 			pageBar += "<button>다음</button>";
 		} else {
-			pageBar += "<button onclick=location.href='" + request.getContextPath() + "/board/boardSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "/'>다음</button>";
+			pageBar += "<button onclick=location.href='" + request.getContextPath() + "/board/boardSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>다음</button>";
 		}
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);

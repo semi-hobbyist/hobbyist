@@ -60,7 +60,7 @@
 
     <!-- alert 라이브러리 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 </head>
@@ -86,8 +86,7 @@
         <div id="header-top">
             <div class="left-top">
                 <a href="<%= request.getContextPath() %>"><img alt="하비스트"
-                            src="<%= request.getContextPath() %>/images/logo.png"></a><a href="<%= request.getContextPath() %>/writer/writerEnroll">[작가모집] 새로운 하비스트 작가님을 모십니다</a>
-                <div id="line"></div>
+                            src="<%= request.getContextPath() %>/images/logo.png"></a>
             </div>
             <div class="top">
                 <ul>
@@ -207,6 +206,10 @@
                     <div class="sub_left">
                         <h3>N O T I C E & E V E N T</h3>
                         <p>공지사항 및 이벤트</p>
+                        <br>
+                        [현재 작가모집중]<br>
+                        <a href="<%= request.getContextPath() %>/writer/writerEnroll">새로운 하비스트 작가님을 모십니다</a>
+                <div id="line"></div>
                     </div>
                     <div class="sub_center">
                         <h3>L A T E S T - N O T I C E</h3>
@@ -290,19 +293,9 @@
                             매달 추천수가 많은 작품들을 선정해 포인트를 적립해드립니다</p>
                     </div>
                     <div class="sub_center">
-                        <h3>L A T E S T - A W A R D</h3>
-                        <ul>
-                            <li> · [2019/01/01] 1월 어워드 베스트 수상자</li>
-                            <li> · [2018/12/01] 12월 어워드 베스트 수상자</li>
-                            <li> · [2018/11/01] 11월 어워드 베스트 수상자</li>
-                            <li> · [2018/10/01] 10월 어워드 베스트 수상자</li>
-                        </ul>
                     </div>
                     <div class="sub_right">
-                        <h3>S U B - M E N U</h3>
-                        <ul>
-                            <li> · 어워드</li>
-                        </ul>
+                        
                     </div>
                 </div>
             </div>

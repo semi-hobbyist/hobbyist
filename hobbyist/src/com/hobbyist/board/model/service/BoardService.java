@@ -480,6 +480,24 @@ public class BoardService {
 		return result;
 	}
 	
+	public int selectAdminReportCount() {
+		
+		Connection conn = getConnection();
+		int totalCount = dao.selectAdminReportCount(conn);
+		close(conn);
+		
+		return totalCount;
+	}
+	
+	public List<BoardReport> selectAdminReportList(int cPage, int numPerPage) {
+		
+		Connection conn = getConnection();
+		List<BoardReport> list = dao.selectAdminReportList(conn, cPage, numPerPage);
+		close(conn);
+		
+		return list;
+	}
+	
 	
 
 }

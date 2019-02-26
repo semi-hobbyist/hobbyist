@@ -3,7 +3,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/common/header.jsp" %>
 
 <%
 	List<Board> list = (List<Board>)request.getAttribute("list");
@@ -15,6 +14,7 @@
 	if(searchKeyword == null) searchKeyword = "";
 	if(searchType == null) searchType = "newUp";
 %>
+<%@ include file="/views/common/header.jsp" %>
 
 <section id="board">
 
@@ -22,7 +22,6 @@
 	
 		<div id="board_left">
 			<div id="board_sub">
-			<br>
 				<h3>Board Menu</h3>
 				<ul>
 					<li onclick="location.href='<%=request.getContextPath()%>/board/boardList'" style="cursor: pointer;"> · 자유게시판</li>
@@ -41,7 +40,6 @@
 				</ul>
 			</div>
 		</div>
-		<Br><Br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
@@ -50,13 +48,12 @@
 		</div>
 		
 		<div id="board_right">
-			<h3>COMMUNITY BOARD </h3>
-			<p>메인 > 커뮤니티 > 자유게시판</p>
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 자유게시판</p>
 			<div class="board_top">
 				<form name="searchFrm" action="<%=request.getContextPath()%>/board/boardSearch" method="POST">
 					<div class="sort">
 						<input type="hidden" name="searchType" value="<%=searchType%>"/>
-						<input type="hidden" name="cPage" value="<%=cPage%>"/>
+						<%-- <input type="hidden" name="cPage" value="<%=cPage%>"/> --%>
 						<input type="hidden" name="numPerPage" value="<%=numPerPage%>"/>
 						<div id="newUp" onclick="sortBtn(this)">최근 등록순</div>
 						<div id="viewsUp" onclick="sortBtn(this)">조회수 높은순</div>
@@ -91,7 +88,7 @@
 						<td><%=b.getBoardReadCount()%></td>
 						<td>
 							<% if(logginMember!=null && logginMember.getMemberEmail().equals("admin")) { %>
-							&nbsp;&nbsp;<button type="button" onclick="deleteBoard(<%=b.getBoardNo()%>)">X</button>&nbsp;&nbsp;
+							&nbsp;&nbsp;<button type="button" onclick="deleteBoard(<%=b.getBoardNo()%>)"/>X</button>&nbsp;&nbsp;
 							<% } %>
 						</td>
 					</tr>
@@ -150,7 +147,7 @@
 					
 				}
 			}
-
+			
 		</script>
 	</div>
 

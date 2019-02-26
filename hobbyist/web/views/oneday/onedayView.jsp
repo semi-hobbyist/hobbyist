@@ -7,7 +7,7 @@
 
 <%@ include file="/views/common/header.jsp" %>
 
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section id="onedayView">
 	<div class="onedayView_content">
@@ -49,12 +49,12 @@
 						<td>클래스 옵션</td>
 						<td class="tdclass">
 						<select name="class_option" id="class_option">
-							<option>------------- 선택 -------------</option>
-							<%= oneday.getOnedayOption1()!=null? "<option value=" + oneday.getOnedayOption1() + ">"+ oneday.getOnedayOption1() + "</option>" : " " %>
-							<%= oneday.getOnedayOption2()!=null? "<option value=" + oneday.getOnedayOption2() + ">"+ oneday.getOnedayOption2() + "</option>" : " " %>
-							<%= oneday.getOnedayOption3()!=null? "<option value=" + oneday.getOnedayOption3() + ">"+ oneday.getOnedayOption3() + "</option>"  :  " " %>
-							<%= oneday.getOnedayOption4()!=null? "<option value=" + oneday.getOnedayOption4() + ">"+ oneday.getOnedayOption4() + "</option>": " " %>
-							<%= oneday.getOnedayOption5()!=null? "<option value=" + oneday.getOnedayOption5() + ">"+ oneday.getOnedayOption5()+ "</option>" : " " %>
+							<option>선택</option>
+							<option><%= oneday.getOnedayOption1() %></option>
+							<option><%= oneday.getOnedayOption2() %></option>
+							<option><%= oneday.getOnedayOption3() %></option>
+							<option><%= oneday.getOnedayOption4() %></option>
+							<option><%= oneday.getOnedayOption5() %></option>
 						</select>
 						</td>
 					</tr>
@@ -103,24 +103,29 @@
 							<button class="addcart-btn" onclick="fn_addCart()">Add My Cart | 취미바구니 담기 </button>
 							<script>
 								function fn_addCart() {
-									if(<%= logginMember != null %>) {
-										if($('#reservationStatus').val()=='Y') {
-											var classOp = $('#class_option').val()
-											$.ajax({
-												url: '<%=request.getContextPath()%>/myCartOnedayInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=' + classOp,
-												success: function (data) {
-													if(confirm(data)){
-														location.href='<%=request.getContextPath()%>/myCart?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>';
-													} else {
-														
-													}
-												}
-											});
-										} else {
-											alert('예약정원 초과! 예약이 불가능합니다');
-										}
+									var classOp = $('#class_option').val();
+									if(classOp=='선택') {
+										alert('옵션을 선택하셔야 합니다!');
 									} else {
-										alert('로그인 후 취미바구니 이용이 가능합니다');
+										if(<%= logginMember != null %>) {
+											if($('#reservationStatus').val()=='Y') {
+												
+												$.ajax({
+													url: '<%=request.getContextPath()%>/myCartOnedayInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=oneday.getOnedayNo()%>&cartCate=oneday&cartOption=' + classOp,
+													success: function (data) {
+														if(confirm(data)){
+															location.href='<%=request.getContextPath()%>/myCart?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>';
+														} else {
+															location.href='<%=request.getContextPath()%>/oneday/onedayView?no=<%= oneday.getOnedayNo()%>';
+														}
+													}
+												});
+											} else {
+												alert('예약정원 초과! 예약이 불가능합니다');
+											}
+										} else {
+											alert('로그인 후 취미바구니 이용이 가능합니다');
+										}
 									}
 								}
 							</script>

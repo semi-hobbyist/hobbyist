@@ -8,8 +8,8 @@
 	List<BoardFAQ> list = (List<BoardFAQ>)request.getAttribute("list");
 	int cPage = (int)(request.getAttribute("cPage"));
 	String pageBar = (String)request.getAttribute("pageBar");
-	String searchType=(String)request.getAttribute("searchType");
-	String searchKeyword=(String)request.getAttribute("searchKeyword");
+	String searchType = (String)request.getAttribute("searchType");
+	String searchKeyword = (String)request.getAttribute("searchKeyword");
 	if(searchKeyword == null) searchKeyword = "";
 	
 	int secondNum = 0;
@@ -28,7 +28,16 @@
 					<li onclick="location.href='<%=request.getContextPath()%>/board/boardList'" style="cursor: pointer;"> · 자유게시판</li>
 					<li style="cursor: pointer;"> · 리뷰/후기</li>
 					<li onclick="location.href='<%=request.getContextPath()%>/board/boardFAQ'" style="cursor: pointer;"> · FAQ 자주 묻는 질문</li>
-					<li onclick="location.href='<%=request.getContextPath()%>/board/boardFAQ'" style="cursor: pointer;"> · 1:1문의</li>
+					<li onclick="directQuestion()" style="cursor: pointer;"> · 1:1문의</li>
+					<script>
+						function directQuestion() {
+							<%if(logginMember != null) {%>
+							location.href='<%=request.getContextPath()%>/board/boardDirectQuestion?NickName=<%=logginMember.getMemberNickname()%>';
+							<%} else {%>
+								alert('로그인 후 이용가능합니다.');
+							<%}%>
+						}
+					</script>
 				</ul>
 			</div>
 		</div>
@@ -40,7 +49,7 @@
 		</div>
 
 		<div id="board_right">
-			<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티 > 1:1문의
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 자주묻는 질문 (FAQ)</p>
 			<form name = searchFrm action="<%=request.getContextPath()%>/board/boardFAQSearch" method="POST">
 					<div class="FAQsearchForm">
 						<img src="<%=request.getContextPath()%>/images/faq.png">
@@ -57,12 +66,12 @@
 							<option value="soldOutAndWearing" <%="soldOutAndWearing".equals(searchType)?"selected":""%>>품절/입고</option>
 							<option value="contactUs" <%="contactUs".equals(searchType)?"selected":""%>>상품문의</option>
 						</select>
-						<input type="search" placeholder="Search..." name="searchKeyword" value='<%=searchKeyword%>'>
+						<input type="search" placeholder="Search..." name="searchKeyword" value='<%=searchKeyword%>'/>
 						<button type="submit">
 							<img src="<%= request.getContextPath() %>/images/search.png" width="70%">
 						</button>
 					</div>
-				<div class="board_top">
+				<div class="board_top" style="border-bottom: none;">
 				
 					<div class="sort">
 						<div id="all" onclick="sortBtn(this)">전체검색</div>
@@ -130,15 +139,15 @@
 
 				if (width == 0) {
 					// 서브메뉴가 열린상태
-					$('#board_left').css({ "transition": "500ms", "width": "210px" });
-					boardRight.css({ "transition": "500ms", "width": "735px", "margin-left": "260px" });
+					$('#board_left').css({"z-index":"999", "transition": "500ms", "width": "210px","border-right":"1px solid #c2c2c2"});
+					//shopRight.css({ "transition": "500ms", "width": "735px", "margin-left": "260px" });
 					slidebtn.css({ "transition": "800ms", "margin-left": "215px", "background-color": "#fff", "color": "#252525" });
 					slidebtn.html('메<br>뉴<br>접<br>기<br><');
 				} else {
 					// 서브메뉴가 접힌상태
-					$('#board_left').css({ "transition": "500ms", "width": "0px" });
+					$('#board_left').css({ "transition": "500ms", "width": "0px", "border":"none"});
 					boardRight.css({ "transition": "500ms", "width": "945px", "margin-left": "45px" });
-					slidebtn.css({ "transition": "800ms", "margin-left": "0px", "background-color": "#b6b6a8", "color": "#fff" });
+					slidebtn.css({ "transition": "800ms", "margin-left": "0px", "background-color": "#fff", "color": "#333" });
 					slidebtn.html('메<br>뉴<br>열<br>기<br>>');
 				}
 			}
@@ -180,74 +189,66 @@
 				}
 			}
 			
-			function directQuestion() {
-				<%if(logginMember != null) {%>
-				location.href='<%=request.getContextPath()%>/board/boardDirectQuestion?NickName=<%=logginMember.getMemberNickname()%>';
-				<%} else {%>
-					alert('로그인 후 이용가능합니다.');
-				<%}%>
-			}
-			
 			$(document).ready(function(){
 				  $(".a1").click(function(){
 				    $(".b1").slideToggle();
 				    $(".c1").slideToggle();
 				  });
-				});
-				$(document).ready(function(){
-					  $(".a2").click(function(){
-					    $(".b2").slideToggle();
-					    $(".c2").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a3").click(function(){
-					    $(".b3").slideToggle();
-					    $(".c3").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a4").click(function(){
-					    $(".b4").slideToggle();
-					    $(".c4").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a5").click(function(){
-					    $(".b5").slideToggle();
-					    $(".c5").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a6").click(function(){
-					    $(".b6").slideToggle();
-					    $(".c6").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a7").click(function(){
-					    $(".b7").slideToggle();
-					    $(".c7").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a8").click(function(){
-					    $(".b8").slideToggle();
-					    $(".c8").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a9").click(function(){
-					    $(".b9").slideToggle();
-					    $(".c9").slideToggle();
-					  });
-					});
-				$(document).ready(function(){
-					  $(".a10").click(function(){
-					    $(".b10").slideToggle();
-					    $(".c10").slideToggle();
-					  });
-					});
+			});
+			$(document).ready(function(){
+				  $(".a2").click(function(){
+				    $(".b2").slideToggle();
+				    $(".c2").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a3").click(function(){
+				    $(".b3").slideToggle();
+				    $(".c3").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a4").click(function(){
+				    $(".b4").slideToggle();
+				    $(".c4").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a5").click(function(){
+				    $(".b5").slideToggle();
+				    $(".c5").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a6").click(function(){
+				    $(".b6").slideToggle();
+				    $(".c6").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a7").click(function(){
+				    $(".b7").slideToggle();
+				    $(".c7").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a8").click(function(){
+				    $(".b8").slideToggle();
+				    $(".c8").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a9").click(function(){
+				    $(".b9").slideToggle();
+				    $(".c9").slideToggle();
+				  });
+			});
+			$(document).ready(function(){
+				  $(".a10").click(function(){
+				    $(".b10").slideToggle();
+				    $(".c10").slideToggle();
+				  });
+			});
 			
 		</script>
 	</div>

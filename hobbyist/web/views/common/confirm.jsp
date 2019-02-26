@@ -18,7 +18,7 @@
 		if (confirm) {
 			location.href="<%=request.getContextPath()%><%=loc%>";	
 		} else {
-			location.href="<%=request.getContextPath()%>/shop/shopList?no=<%= no %>";	
+			location.href="<%=request.getContextPath()%>/shop/shopView?no=<%= no %>";	
 		}
 		
 	</script>

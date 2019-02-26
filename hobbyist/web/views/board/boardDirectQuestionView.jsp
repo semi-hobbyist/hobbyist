@@ -40,7 +40,7 @@
 		</div>
 		
 		<div id="board_right">
-			<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티 > 1:1 문의
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 1:1문의</p>
 			<div class="board_top">
 				<h2>1:1 문의</h2>
 			</div>
@@ -73,13 +73,13 @@
 				<br/>
 				<br/>
 				<hr/>
-				<div id="view_DQ_page">
+				<div class="view_DQ_page">
 					<%if(logginMember != null && (logginMember.getMemberNickname().equals(b.getBoardDQWriter()) || logginMember.getMemberNickname().equals("Hobbyist"))) {%>
 						<%if(logginMember.getMemberNickname().equals("Hobbyist")) {%>
-						<a href="<%=request.getContextPath()%>/board/boardDQAnswer?boardDQNo=<%=b.getBoardDQNo()%>">답변하기</a>
+						<button onclick='location.href="<%=request.getContextPath()%>/board/boardDQAnswer?boardDQNo=<%=b.getBoardDQNo()%>"'>답변하기</button>
 						<%}%>
-						<a href="<%=request.getContextPath()%>/board/boardDQUpdate?boardDQNo=<%=b.getBoardDQNo()%>">수정</a>
-						<a href="<%=request.getContextPath()%>/board/boardDQDelete?boardDQNo=<%=b.getBoardDQNo()%>">삭제</a>
+						<button onclick='location.href="<%=request.getContextPath()%>/board/boardDQUpdate?boardDQNo=<%=b.getBoardDQNo()%>"'>수정</button>
+						<button onclick='location.href="<%=request.getContextPath()%>/board/boardDQDelete?boardDQNo=<%=b.getBoardDQNo()%>"'>삭제</button>
 					<% } %>
 				</div>
 			</div>

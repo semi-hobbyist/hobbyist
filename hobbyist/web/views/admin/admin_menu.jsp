@@ -26,7 +26,6 @@
          <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOnedayList'">원데이클래스 목록</li>
          <li onclick="location.href='<%= request.getContextPath() %>/admin/adminOnedayWrite'">원데이클래스 등록</li>
       </ul>
-      <li>어워드 관리</li>
       <li>커뮤니티 관리</li>
       <ul class="sub">
 	      <li onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityList'">자유게시판 목록</li>
@@ -58,7 +57,7 @@ $(function () {
     if (scrollTo != 0) {
        $('#admin_top').css("top", "97px");  
     } else {
-       $('#admin_top').css("top", "213px");
+       $('#admin_top').css("top", "153px");
     }
  });
 

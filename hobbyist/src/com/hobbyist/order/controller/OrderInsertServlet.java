@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hobbyist.mycart.model.service.MyCartService;
 import com.hobbyist.oneday.model.service.OnedayService;
 import com.hobbyist.order.model.service.OrderService;
 import com.hobbyist.order.model.vo.Order;
@@ -34,6 +35,8 @@ public class OrderInsertServlet extends HttpServlet {
 		String orderAddPhone = request.getParameter("order_add_phone");
 		String orderAddAddress = request.getParameter("order_add_address");
 		String orderMsg = request.getParameter("order_msg");
+		
+		
 		
 		System.out.println("주문하기 전 값이 잘들어왔나? : " + member + " , " + classNo_temp + " , " + " , " + classOption_temp  + " , " + orderType  + " , " + orderPrice + " , " + orderAddName  + " , " + orderAddPhone + " , " + orderAddAddress + " , " + orderMsg);;
 		for(String s : classNo) {
@@ -82,6 +85,9 @@ public class OrderInsertServlet extends HttpServlet {
 					insertResult = new OrderService().insertOrder(randomCode, member, classNo[i], classOption[i], orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg, "클래스샵");
 			}
 			System.out.println("---------------- 주문처리 (★★★★★) 완료 ---------------");
+			
+			// ----------- 장바구니에서 삭제하기
+			int deleteCart = new MyCartService().deleteCart(cartno);
 			
 			if(insertResult>0) {
 				msg = "결제가 완료되었습니다 [ 핀코드(PINCODE) : " + randomNum + " ] 핀코드를 복사(Ctrl + C)";

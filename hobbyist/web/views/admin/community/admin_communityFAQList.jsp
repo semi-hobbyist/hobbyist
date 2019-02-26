@@ -77,21 +77,21 @@
 					</div>
 				
 			</form>
-			<div class="admin_middle">
+			<div class="admin_FAQmiddle">
 				<table>				
 					<tr>
 						<td>분류</td>
 						<td>제목</td>
 					</tr>
-						<%for(BoardFAQ b : list) {%>
+					<%for(BoardFAQ b : list) {%>
 					<tr>
 						<td><%=b.getBoardFAQCategory()%></td>
 						<td><a href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQView?boardFAQNo=<%=b.getBoardFAQNo()%>'><%=b.getBoardFAQTitle()%></a></td>
-						<%}%>
 					</tr>
+					<%}%>
 					<tr>
 						<td class="tableBottom" style="float: left; padding-left:20px;"><%=pageBar%></td>
-						<td class="tableBottom" style="float: right; padding-right:20px;">
+						<td class="tableBottom" style="padding-left:410px;">
 							<input type='button' value="추가하기" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsert'"/>
 						</td>
 					</tr>

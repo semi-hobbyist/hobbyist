@@ -44,7 +44,7 @@ public class AwardListServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=8;
+			numPerPage=12;
 		}
 		
 		

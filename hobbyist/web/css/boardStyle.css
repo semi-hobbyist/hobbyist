@@ -9,15 +9,15 @@ section#board .board_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 130px;
+    padding-top: 150px;
 }
 
 section#board .board_content #board_left {
     display: inline-block;
     width: 0;
-    height: 600px;
+    height: 100vh;
     position: fixed;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.904);
     overflow-x: hidden;
     overflow: hidden;
 }
@@ -85,6 +85,7 @@ section#board .board_content #board_right {
     transition: 400ms;
     font-size: 13px;
     color: #3b3b3b;
+    padding-top: 20px;
 }
 
 section#board .board_content #board_right input {
@@ -361,7 +362,7 @@ section#boardView .boardView_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 120px;
+    padding-top: 150px;
 }
 
 section#boardView .boardView_content #boardView_left {
@@ -558,7 +559,7 @@ section#boardView .boardView_content #boardView_right .boardView_middle #chat_he
 }
 
 section#boardView .boardView_content #boardView_right .boardView_middle #chat_head input[type=submit] {
-	width: 180px;
+	width: 170px;
 	height: 125px;
 	border: 1px solid #e2e2e2;
 	background: #3e4b6c;

@@ -40,7 +40,7 @@
 		</div>
 		
 		<div id="board_right">
-			<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티 > 1:1 문의
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 1:1문의</p>
 			<div class="board_top">
 				<h2>1:1 문의</h2>
 			</div>
@@ -70,12 +70,12 @@
 					<br/>
 					<br/>
 					<hr/>
-					<div id="view_DQ_page">
+					<div class="view_DQ_page">
 							<input class="inp" type="submit" value="답변완료" onclick="return validate()"/>
 					</div>
 				</form>
-				<div id="view_DQ_page">
-					<a href="cancel()">취소</a>
+				<div class="view_DQ_page">
+					<button onclick="cancel()">취소</button>
 				</div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 	
 	function cancel() {
 		if(confirm('답변 작성을 취소하시겠습니까?')) {
-			href="<%=request.getContextPath()%>/board/boardDirectQuestionView?boardDQNo=<%=b.getBoardDQNo()%>";
+			location.href="<%=request.getContextPath()%>/board/boardDirectQuestionView?boardDQNo=<%=b.getBoardDQNo()%>";
 		}
 	}
 	

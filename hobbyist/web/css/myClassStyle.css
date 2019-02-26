@@ -9,7 +9,8 @@ section#myclass .myclass_content {
     display: inline-block;
     text-align: center;
     width: 990px;
-    padding-top: 213px;
+    padding-top: 160px;
+    padding-bottom: 120px;
 }
 
 section#myclass .myclass_content table {

@@ -28,6 +28,9 @@ public class OrderOnedayServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cartNo = request.getParameter("cartNoVal2");
+		String cartNoArr[] = cartNo.split(",");
+		System.out.println(cartNo);
 		String member = request.getParameter("memberVal2");
 		System.out.println(member);
 		String selectNo = request.getParameter("selectNoVal2");

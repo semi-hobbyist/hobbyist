@@ -7,7 +7,7 @@ section#admin .admin_content {
     display: inline-block;
     text-align: center;
     width: 990px;
-    padding-top: 213px;
+    padding-top: 143px;
 }
 section#admin .admin_content .admin_top {
     width: 970px;
@@ -21,7 +21,7 @@ section#admin .admin_content .admin_top {
     font-size: 14px;
     transition: 500ms;
     overflow: hidden;
-    top: 213px;
+    top: 153px;
     z-index: 1;
 }
 

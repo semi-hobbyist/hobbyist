@@ -47,14 +47,14 @@
 				<form class='searchForm' name="searchFrm" action="<%=request.getContextPath()%>/admin/community/adminCommunitySearch" method="POST">
 					<div class="sort">
 						<input type="hidden" name="searchType" value="<%=searchType%>"/>
-						<input type="hidden" name="cPage" value="<%=cPage%>"/>
+						<%-- <input type="hidden" name="cPage" value="<%=cPage%>"/> --%>
 						<input type="hidden" name="numPerPage" value="<%=numPerPage%>"/>
 						<div id="all" onclick="sortBtn(this)">전체 게시물</div>
 						<div id="delete" onclick="sortBtn(this)">삭제된 게시물</div>
 						<div id="exist" onclick="sortBtn(this)">미삭제 게시물</div>
 					</div>
 				
-					<div class="searchForm">
+					<div class="keyword">
 						게시물&nbsp;&nbsp;&nbsp;<input type="search" placeholder="Search..." name="searchKeyword" value="<%=searchKeyword%>">
 						<button type="submit"><img src="<%= request.getContextPath() %>/images/search.png" width="70%"></button>
 					</div>
@@ -72,7 +72,7 @@
 						<th style="width: 130px;">작성일</th>
 						<th style="width: 100px;">조회수</th>
 						<th style="width: 80px;">존재유무</th>
-						<th style="width: 80px;">추천수</th>
+						<th style="width: 100px;">추천수</th>
 					</tr>
 					<%for(Board b : list) { %>
 					<tr>
@@ -82,6 +82,7 @@
 						<td><%=b.getBoardWriter()%></td>
 						<td><%if(b.getBoardReNamedFileName()!=null) {%><img src="<%=request.getContextPath()%>/images/file.png" width="16px"/><%}%></td>
 						<td><%=b.getBoardDate()%></td>
+						<input type="hidden" name="fname<%=i%>" value="<%=b.getBoardReNamedFileName()%>"/>
 						<input type="hidden" name="no<%=i%>" value="<%=b.getBoardNo()%>"/>
 						<td><input type='text' name="readCount<%=i%>" value='<%=b.getBoardReadCount()%>' size='1px'/></td>
 						<td><input type='text' name="status<%=i%>" value='<%=b.getStatus()%>' size='1px'/></td>
@@ -89,11 +90,11 @@
 					</tr>
 					<% } %>
 					<tr>
-						<td class="tableBottom" colspan="3" style="text-align: left; padding-left:20px;"><%=pageBar%></td>
-						<td class="tableBottom" colspan="5" style="text-align: right; padding-right:20px;">
+						<td class="tableBottom" colspan="6" style="text-align: left; padding-left:20px;"><%=pageBar%></td>
+						<td class="tableBottom" colspan="2" style="text-align: right; padding-right:20px;">
 							<input id="btnsave" type='button' value="저장"/>
 						</td>
-						<td class="tableBottom" colspan="5" style="text-align: right; padding-right:20px;">
+						<td class="tableBottom" colspan="1" style="text-align: right; padding-right:20px;">
 							<input id="btndelete" type='button' value="삭제"/>
 						</td>
 					</tr>
@@ -116,15 +117,6 @@
 		} else if( e.innerText == '미삭제 게시물') {
 			$('[name = searchType]').val('exist');
 			$('[name = searchFrm]').submit();
-		}
-	}
-	
-	function deleteBoard(boardNo) {
-		var boardNo = boardNo;
-		if(confirm("정말 게시물을 삭제하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/board/boardDelete?boardNo=' + boardNo;
-		} else {
-			
 		}
 	}
 	
@@ -199,27 +191,31 @@
 	});
 	
 	$('#btndelete').click(function() {
-		var arr = [];
+		/* var arr = []; */
 		var noArr;
+		var fnameArr;
 		var bool = false;
 		
 		for(var i = 1; i <= 5; i++) {
 			var no = $('[name = no' + i + ']').val();
+			var fname = $('[name = fname' + i + ']').val();
 			
 			var check = $('.input_check'+ i).is(':checked');
 			if(check) {
 				/* arr.push({1:no, 2:readCount, 3:status, 4:like}); */
 				if(bool) {
 					noArr += "," + no;
+					fnameArr += "," + fname;
 				} else {
 					noArr = no;
+					fnameArr = fname;
 					bool = true;
 				}
 			}
 		}
 		if(confirm('삭제하시겠습니까?')) {
 			if(noArr != null) {
-				location.href='<%=request.getContextPath()%>/admin/community/adminCommunityBoardDelete?noArr='+ noArr;
+				location.href='<%=request.getContextPath()%>/admin/community/adminCommunityBoardDelete?noArr='+ noArr + '&fnameArr=' + fnameArr;
 			}
 			
 		}

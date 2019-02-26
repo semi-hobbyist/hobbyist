@@ -74,7 +74,7 @@
 						<input type="hidden" name="deleteFile" value="<%=a.getAwardOriginalFilename()%>">
 					</form>
 				</div>
-			<br				<!-- 커멘트 테이블  -->
+			<br>				<!-- 커멘트 테이블  -->
 					<table id="review_tbl">
 						<% 
 						if(!comments.isEmpty()&&logginMember!=null) {
@@ -228,7 +228,7 @@
 					dataType : 'text',
 					success : function(data) {
 						console.log(data);
-						alert('추천 완료');
+						alert(data);
 
 					}
 				});

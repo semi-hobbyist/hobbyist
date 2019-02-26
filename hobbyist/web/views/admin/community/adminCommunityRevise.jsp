@@ -34,36 +34,35 @@
 
 		<div class="admin_right">
 			<div id="admin_main">
-				<form action="<%=request.getContextPath()%>/admin/community/adminCommunityReviseEnd?boardNo=<%=b.getBoardNo()%>" method="post" enctype="multipart/form-data">
-	
-		<table id="tbl_revise">
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="title" id="title" value="<%=b.getBoardTitle()%>" required/></td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="writer"
-				value='<%=logginMember.getMemberNickname()%>' style="width: 80px;" value="<%=b.getBoardWriter()%>" readonly/></td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td>
-					<input type="file" name="up_file" value="<%=b.getBoardReNamedFileName()%>"/>
-				</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea name="content" id="editor1"><%=b.getBoardContent()%></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input class="inp" type="submit" value="변경" onclick="return validate();"/>
-					<input class="inp" type="button" value="취소" onclick="cancel()"/>
-				</td>
-			</tr>
-		</table>
-	</form>
+				<form action="<%=request.getContextPath()%>/admin/community/adminCommunityReviseEnd?boardNo=<%=b.getBoardNo()%>&fname=<%=b.getBoardReNamedFileName()%>" method="post" enctype="multipart/form-data">
+					<table id="tbl_revise">
+						<tr>
+							<th>제목</th>
+							<td><input type="text" name="title" id="title" value="<%=b.getBoardTitle()%>" required/></td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td><input type="text" name="writer"
+							value='<%=logginMember.getMemberNickname()%>' style="width: 80px;" value="<%=b.getBoardWriter()%>" readonly/></td>
+						</tr>
+						<tr>
+							<th>첨부파일</th>
+							<td>
+								<input type="file" name="up_file" value="<%=b.getBoardReNamedFileName()%>"/>
+							</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td><textarea name="content" id="editor1"><%=b.getBoardContent()%></textarea></td>
+						</tr>
+						<tr>
+							<td class="tableBottom" colspan="2">
+								<input class="inp" type="submit" value="변경" onclick="return validate();"/>
+								<input class="inp" type="button" value="취소" onclick="cancel()"/>
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

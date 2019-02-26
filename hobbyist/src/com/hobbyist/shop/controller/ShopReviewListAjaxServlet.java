@@ -94,7 +94,7 @@ public class ShopReviewListAjaxServlet extends HttpServlet {
 		for(int i=0; i<list.size();i++) {
 			html += "<tr><td>";
 			
-			html += list.get(i).getReviewCount()  == 1 ? "★" :  list.get(i).getReviewCount()  == 2 ? "★★" :  list.get(i).getReviewCount()  == 3 ? "★★★" :  list.get(i).getReviewCount()  == 5 ? "★★★★" : "★★★★★";
+			html += list.get(i).getReviewCount()  == 1 ? "★" :  list.get(i).getReviewCount()  == 2 ? "★★" :  list.get(i).getReviewCount()  == 3 ? "★★★" :  list.get(i).getReviewCount()  == 4 ? "★★★★" : "★★★★★";
 			html += "</td>";
 			html += "<td style='text-align:left;'>";
 			html +=  list.get(i).getReviewContent() + "</td>";

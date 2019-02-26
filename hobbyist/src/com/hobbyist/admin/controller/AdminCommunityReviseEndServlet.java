@@ -43,9 +43,11 @@ public class AdminCommunityReviseEndServlet extends HttpServlet {
 		}
 		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		String fname = request.getParameter("fname");
 		
 		String dir = getServletContext().getRealPath("/upload");
 		String filePath = dir + File.separator + "board";
+		File deleteFile = new File(filePath + "/" + fname);
 		
 		int maxSize = 10*1024*1024;
 		
@@ -67,6 +69,7 @@ public class AdminCommunityReviseEndServlet extends HttpServlet {
 		String view = "/views/common/msg.jsp";
 		
 		if(result > 0) {
+			deleteFile.delete();
 			msg = "게시물이 수정되었습니다.";
 		} else {
 			msg = "게시물 수정에 실패하였습니다.";

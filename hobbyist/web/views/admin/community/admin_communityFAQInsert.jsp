@@ -31,10 +31,10 @@
 			<div class="admin_main">
 				<form action="<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsertEnd" method="post">
 		
-					<table id="tbl_write">
+					<table id="tbl_FAQRevise">
 						<tr>
 							<th style="width: 200px">제목</th>
-							<td style="width: 600px"><input type="text" name="title" id="title" required/></td>
+							<td style="width: 600px"><input class="inptitle" type="text" name="title" id="title" required/></td>
 						</tr>
 						<tr>
 							<th>카테고리</th>
@@ -59,7 +59,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input class="writeBtn" type="submit" value="등록하기" onclick="return validate();"/>
+								<input class="inp" class="writeBtn" type="submit" value="등록하기" onclick="return validate();"/>
 							</td>
 						</tr>
 					</table>

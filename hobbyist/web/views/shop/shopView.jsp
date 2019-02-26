@@ -69,11 +69,16 @@
 							Add My Cart | 취미바구니 담기</button>
 							<script>
 								function fn_addCart() {
-									if(<%= logginMember != null %>) {
-										var cartOption = $('#cartOption').val();
-										location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=shop.getShopNo()%>&cartCate=classshop&cartOption=" + cartOption;
+									var classOp = $('#cartOption').val();
+									if(classOp=='선택') {
+										alert('옵션을 선택하셔야 합니다!');
 									} else {
-										alert('로그인 후 취미바구니 이용이 가능합니다');
+									
+										if(<%= logginMember != null %>) {
+											location.href="<%=request.getContextPath()%>/myCartInsert?member=<%= logginMember != null? logginMember.getMemberEmail() : 'a'%>&classNo=<%=shop.getShopNo()%>&cartCate=classshop&cartOption=" + classOp;
+										} else {
+											alert('로그인 후 취미바구니 이용이 가능합니다');
+										}
 									}
 								}
 							</script>
@@ -98,10 +103,10 @@
 							      content: {
 							        title: '<%= shop.getShopName() %>',
 							        description: '<%= shop.getShopInfo() %>',
-							        imageUrl: 'http://hobbyists.ddns.net:8080/hobbyist/upload/shop/images/<%= shop.getShopImage1() %>',
+							        imageUrl: '<%= request.getContextPath() %>/upload/shop/images/<%= shop.getShopImage1() %>',
 							        link: {
-							          mobileWebUrl: 'http://hobbyists.ddns.net:8080/hobbyist/shop/shopView?no=<%= shop.getShopNo() %>' ,
-							          webUrl: 'http://hobbyists.ddns.net:8080/hobbyist/shop/shopView?no=<%= shop.getShopNo() %>'
+							          mobileWebUrl: '<%= request.getContextPath() %>/shop/shopView?no=<%= shop.getShopNo() %>' ,
+							          webUrl: '<%= request.getContextPath() %>/shop/shopView?no=<%= shop.getShopNo() %>'
 							        }
 							      }
 							    });
@@ -160,14 +165,11 @@
 								<td rowspan="2" style="width: 200px;"><h3>R E V I E W</h3></td>
 								<th style="width: 100px;">별점</th>
 								<td style="width: 400px; height: 45px; text-align: left;">
-									<input type="radio" id="r1" name="review_count" value="1">
-									<label for="r1">★</label> <input type="radio" id="r2"
-									name="review_count" value="2"><label for="r2">★★</label>
-									<input type="radio" id="r3" name="review_count" value="3"><label
-									for="r3">★★★</label> <input type="radio" id="r4"
-									name="review_count" value="4"><label for="r4">★★★★</label>
-									<input type="radio" id="r5" name="review_count" value="5"><label
-									for="r5">★★★★★</label>
+									<input type="radio" id="r1" name="review_count" value="1"><label for="r1">★</label> 
+									<input type="radio" id="r2" name="review_count" value="2"><label for="r2">★★</label>
+									<input type="radio" id="r3" name="review_count" value="3"><label for="r3">★★★</label>
+									<input type="radio" id="r4" name="review_count" value="4"><label for="r4">★★★★</label>
+									<input type="radio" id="r5" name="review_count" value="5"><label for="r5">★★★★★</label>
 								</td>
 								<td rowspan="2" style="width: 250px;"><button type="button"
 										onclick="fn_reviewSubmit()">작성</button>

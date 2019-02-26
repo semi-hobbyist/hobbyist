@@ -23,7 +23,6 @@
 				</ul>
 			</div>
 		</div>
-		<Br><Br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
@@ -33,7 +32,7 @@
 		
 		<div id="boardView_right">
 			<div class="right_top">
-			<h3>COMMUNITY BOARD</h3><p>메인 > 커뮤니티 > 자유게시판</p>			
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 자유게시판</p>		
 			</div>
 			<div class="boardView_top">
 				<%=b.getBoardTitle()%>
@@ -52,6 +51,9 @@
 				</div>
 				<br>
 				<div id="view_content">
+				<% if(b.getBoardOriginalFileName()!=null) { %>
+					<img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReNamedFileName()%>" width="500px" />
+				<% } %>
 					<%=b.getBoardContent()%>
 				</div>
 				<br/>
@@ -60,11 +62,11 @@
 					<div id="like_btn" onclick="clickLike()">
 						<img id="like_img" src="<%=request.getContextPath()%>/images/board_like.png" width="20px">추천
 					</div>
-					<div id="report">
+					<%-- <div id="report">
 						<%if(logginMember != null) { %>
 						<a href="javascript:report();"><img src="<%=request.getContextPath()%>/images/report.png">신고</a>
 						<%}%>
-					</div>
+					</div> --%>
 				</div>
 				
 				
@@ -78,7 +80,7 @@
 					<div id="right">
 						<%if(logginMember != null && (logginMember.getMemberNickname().equals(b.getBoardWriter()) || logginMember.getMemberNickname().equals("Hobbyist"))) {%>
 							<button onclick="location.href='<%=request.getContextPath()%>/board/boardUpdate?boardNo=<%=b.getBoardNo()%>'">수정</button>
-							<button onclick="location.href='<%=request.getContextPath()%>/board/boardDelete?boardNo=<%=b.getBoardNo()%>">삭제</button>
+							<button onclick="location.href='<%=request.getContextPath()%>/board/boardDelete?boardNo=<%=b.getBoardNo()%>'">삭제</button>
 						<% } %>
 					</div>
 				</div>
@@ -92,9 +94,9 @@
 						<input type="hidden" name="boardRef" value="<%=b.getBoardNo()%>"/>
 						<input type="hidden" name="boardCommentRef" value="0"/>
 						<%if(logginMember != null) {%>
-						<textarea name="chat_content" id="chat_content" placeholder='댓글을 입력하세요.'></textarea>
+						<textarea name="chat_content" id="chat_content" placeholder='댓글을 입력하세요.' style="resize: none;"></textarea>
 						<% } else { %>
-						<textarea name="chat_content" id="chat_content" placeholder='로그인 후 이용가능합니다.'></textarea>
+						<textarea name="chat_content" id="chat_content" placeholder='로그인 후 이용가능합니다.' style="resize: none;"></textarea>
 						<% } %>
 						<input class="chat_write" type="submit" value="등록"/>
 					</form>
@@ -121,7 +123,7 @@
 								<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 								<%}%>
 								<%if(logginMember != null) { %>
-								<button class="btn-report" onclick="commentReport('<%=bc.getBoardCommentWriter()%>', '<%=bc.getBoardCommentContent()%>', '<%=bc.getBoardCommentNo()%>')">신고</button>
+								<button class="btn-report" onclick="commentReport('<%=bc.getBoardCommentWriter()%>', '<%=bc.getBoardCommentContent()%>', '<%=b.getBoardNo()%>')">신고</button>
 								<%} %>
 							</td>
 						</tr>
@@ -135,7 +137,7 @@
 											<button class="btn-delete" value="<%=bc.getBoardCommentNo()%>">삭제</button>
 											<%}%>
 											<%if(logginMember != null) { %>
-											<button class="btn-report" onclick="commentReport('<%=bc.getBoardCommentWriter()%>', '<%=bc.getBoardCommentContent()%>', '<%=bc.getBoardCommentNo()%>')">신고</button>
+											<button class="btn-report" onclick="commentReport('<%=bc.getBoardCommentWriter()%>', '<%=bc.getBoardCommentContent()%>', '<%=b.getBoardNo()%>')">신고</button>
 											<%}%>
 									</td>
 								</tr>

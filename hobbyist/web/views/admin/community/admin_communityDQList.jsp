@@ -53,7 +53,7 @@
 						<div id="statusN" onclick="sortBtn(this)">미처리 답변</div>
 					</div>
 				
-					<div class="searchForm">
+					<div class="keyword">
 						게시물&nbsp;&nbsp;&nbsp;<input type="search" placeholder="Search..." name="searchKeyword" value="<%=searchKeyword%>">
 						<button type="submit"><img src="<%= request.getContextPath() %>/images/search.png" width="70%"></button>
 					</div>

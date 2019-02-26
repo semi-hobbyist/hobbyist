@@ -25,7 +25,6 @@
 				</ul>
 			</div>
 		</div>
-		<Br><Br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>
@@ -34,7 +33,7 @@
 		</div>
 		
 		<div id="board_right">
-			<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 자유게시판</p>
 
 			<div class="board_middle">
 			<img src="<%= request.getContextPath() %>/images/board_write.png" width="50px">

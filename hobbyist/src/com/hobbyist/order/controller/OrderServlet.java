@@ -26,6 +26,9 @@ public class OrderServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cartNo = request.getParameter("cartNoVal");
+		String cartNoArr[] = cartNo.split(",");
+		System.out.println(cartNo);
 		String member = request.getParameter("memberVal");
 		System.out.println(member);
 		String selectNo = request.getParameter("selectNoVal");

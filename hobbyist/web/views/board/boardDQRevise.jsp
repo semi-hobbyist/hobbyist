@@ -38,7 +38,7 @@
 	</div>
 	
 	<div id="board_right">
-		<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티
+		<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 1:1문의</p>
 		<div class="board_top"></div>
 		<div class="board_middle">
 			<h2>자유게시판 등록</h2>

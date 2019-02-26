@@ -41,7 +41,7 @@ public class AdminCoummunityListServlet extends HttpServlet {
 		try {
 			numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
 		} catch (Exception e) {
-			numPerPage = 5;
+			numPerPage = 10;
 		}
 		
 		int totalCount = new BoardService().selectAdminCount();

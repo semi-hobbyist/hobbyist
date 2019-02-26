@@ -1,5 +1,6 @@
 package com.hobbyist.admin.controller;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +31,13 @@ public class AdminCommunityBoardDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String noArr = request.getParameter("noArr");
-		
 		String[] no = noArr.split(",");
+		
+		String fnameArr = request.getParameter("fnameArr");
+		String [] fname = fnameArr.split(",");
+		
+		String dir = getServletContext().getRealPath("/");
+		String filePath = dir + File.separator + "upload" + File.separator + "board";
 		
 		String loc = "/admin/community/adminCommunityList";
 		String view = "/views/common/msg.jsp";
@@ -45,6 +51,11 @@ public class AdminCommunityBoardDeleteServlet extends HttpServlet {
 				request.getRequestDispatcher(view).forward(request, response);
 				break;
 			}
+		}
+		
+		for(int i = 0; i < no.length; i++) {
+			File deleteFile = new File(filePath + "/" + fname[i]);
+			deleteFile.delete();
 		}
 		
 		request.setAttribute("msg", "삭제완료");

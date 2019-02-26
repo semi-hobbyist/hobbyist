@@ -71,12 +71,14 @@
 		
 		<form name="orderFrm" action="<%= request.getContextPath() %>/order/order" method="POST">
 		<input type="hidden" id="memberVal" name="memberVal">		
+		<input type="hidden" id="cartNoVal" name="cartNoVal">
 		<input type="hidden" id="selectNoVal" name="selectNoVal">
 		<input type="hidden" id="classOptionVal" name="classOptionVal">
 		</form>
 		
 		<form name="orderFrm2" action="<%= request.getContextPath() %>/order/orderOneday" method="POST">
-		<input type="hidden" id="memberVal2" name="memberVal2">		
+		<input type="hidden" id="memberVal2" name="memberVal2">
+		<input type="hidden" id="cartNoVal2" name="cartNoVal2">	
 		<input type="hidden" id="selectNoVal2" name="selectNoVal2">
 		<input type="hidden" id="classOptionVal2" name="classOptionVal2">
 		</form>
@@ -184,6 +186,7 @@
 				var classOptions = $('[name=classOption]');
 				$.each(checkbox, function(index) {
 						if(checkbox[index].checked) {
+							cartNo += checkbox[index].value + ',';
 							selectNo += classNo[index].value +',';
 							classOption += classOptions[index].value + ',';
 						}

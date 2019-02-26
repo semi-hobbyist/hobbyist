@@ -42,7 +42,7 @@
 		<div class="board_top"></div>
 		<div class="board_middle">
 			<h2>자유게시판 등록</h2>
-	<form action="<%=request.getContextPath()%>/board/boardReviseEnd?boardNo=<%=b.getBoardNo()%>" method="post" enctype="multipart/form-data">
+	<form action="<%=request.getContextPath()%>/board/boardReviseEnd?boardNo=<%=b.getBoardNo()%>&fname=<%=b.getBoardReNamedFileName()%>" method="post" enctype="multipart/form-data">
 	
 		<table id="tbl_write">
 			<tr>

@@ -90,6 +90,7 @@ public class BoardDao {
 				b.setBoardTitle(rs.getString("BOARD_TITLE"));
 				b.setBoardWriter(rs.getString("BOARD_WRITER"));
 				b.setBoardContent(rs.getString("BOARD_CONTENT"));
+				b.setBoardReNamedFileName(rs.getString("BOARD_RENAMED_FILENAME"));
 				b.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
 				b.setBoardDate(rs.getDate("BOARD_DATE"));
 				b.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
@@ -1454,7 +1455,69 @@ public List<BoardFAQ> selectFAQList(Connection conn, int cPage, int numPerPage) 
 		return result;
 	}
 	
+	public int selectAdminReportCount(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectAdminReportCount");
+		int totalCount = 0;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("CNT");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
 	
+	public List<BoardReport> selectAdminReportList(Connection conn, int cPage, int numPerPage) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectAdminReportList");
+		List<BoardReport> list = new ArrayList<BoardReport>();
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardReport b = new BoardReport();
+				
+				b.setBoardNo(rs.getInt("BOARD_NO"));
+				b.setBoardMainCategory(rs.getString("BOARD_MAIN_CATEGORY"));
+				b.setBoardWriter(rs.getString("BOARD_WRITER"));
+				b.setBoardReporter(rs.getString("BOARD_REPORTER"));
+				b.setBoardContent(rs.getString("BOARD_CONTENT"));
+				b.setBoardReportContent(rs.getString("BOARD_REPORTER_CONTENT"));
+				b.setBoardReportCategory(rs.getString("BOARD_REPORT_CATRGORY"));
+				b.setBoardReportDate(rs.getDate("BOARD_REPORT_DATE"));
+				
+				list.add(b);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 	
 	

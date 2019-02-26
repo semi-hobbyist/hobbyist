@@ -60,7 +60,7 @@ public class AdminCommunityFAQSearchServlet extends HttpServlet {
 		while(!(pageNo > totalPage || pageNo > pageEnd)) {
 			
 			if(cPage == pageNo) {
-				pageBar += "<button>" + pageNo + "</button>";
+				pageBar += "<button class='current'>" + pageNo + "</button>";
 			} else {
 				pageBar += "<button onclick=location.href='" + request.getContextPath() + "/admin/community/adminCommunityFAQSearch?cPage=" + pageNo + "&numPerPage=" + numPerPage + "&searchType=" + searchType + "&searchKeyword=" + searchKeyword + "'>" + pageNo + "</button>";
 			}

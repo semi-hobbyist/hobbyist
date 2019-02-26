@@ -42,15 +42,15 @@
 		</div>
 		
 		<div id="board_right">
-			<b>Class Board </b>|&nbsp;&nbsp;메인 > 커뮤니티
+			<h3>COMMUNITY</h3><p>메인 > 커뮤니티 > 1:1문의</p>
 			<div class="board_DQ_top">
 				<h2>1:1 문의</h2>
 		<form action="<%=request.getContextPath()%>/board/boardEndDirectQuestion" method="post" enctype="multipart/form-data">
 		
 			<table id="tbl_write">
 				<tr>
-					<th>제목</th>
-					<td><input type="text" name="title" id="title" required/></td>
+					<th style="width:200px">제목</th>
+					<td style="width:650px"><input type="text" name="title" id="title" required/></td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -68,8 +68,8 @@
 					<td><textarea name="content" id="editor1"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<input class="inp" type="submit" value="문의" onclick="return validate();"/>
+					<td colspan="2" style="text-align:right">
+						<button class="inp" type="submit" onclick="return validate();">문의하기</button>
 					</td>
 				</tr>
 			</table>

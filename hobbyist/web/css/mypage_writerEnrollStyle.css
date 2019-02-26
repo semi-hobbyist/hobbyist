@@ -1,5 +1,5 @@
 
-#admin_writerEnroll {
+#mypage_writerEnroll {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,12 +8,12 @@
 	flex-direction: column;
 }  
 
-#admin_writerEnroll .tableBox{
+#mypage_writerEnroll .tableBox{
     width: 95%;
     margin: 0 10px;
 }
 
-#admin_writerEnroll .tal_Title{
+#mypage_writerEnroll .tal_Title{
     display: table;
     width: 100%;
     padding: 10px 0;
@@ -22,7 +22,7 @@
     border-bottom: 1px solid #3b4f6a;
 }
 
-#admin_writerEnroll .tal_Content {
+#mypage_writerEnroll .tal_Content {
     display: table;
     width: 100%;
     padding: 10px 0;
@@ -31,7 +31,7 @@
     cursor: pointer;
 }
 
-#admin_writerEnroll .tal_Content:hover {
+#mypage_writerEnroll .tal_Content:hover {
     display: table;
     width: 100%;
     padding: 10px 0;
@@ -41,130 +41,149 @@
 	transition: 400ms;
 }
 
-#admin_writerEnroll .tal_text {
+#mypage_writerEnroll .tal_text {
     display: table-cell;
     width: 100%;
     padding: 5px;
 }
 
 
-#admin_writerEnroll .talT_WeNo {
-    display: table-cell;
-    width: 50px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_WeNo {
+#mypage_writerEnroll .talT_WeNo {
     display: table-cell;
     width: 50px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WeQuarter {
+#mypage_writerEnroll .talC_WeNo {
+    display: table-cell;
+    width: 50px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talT_WeQuarter {
     display: table-cell;
     width: 70px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
-#admin_writerEnroll .talC_WeQuarter {
+#mypage_writerEnroll .talC_WeQuarter {
     display: table-cell;
     width: 70px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_NickName {
+#mypage_writerEnroll .talT_NickName {
     display: table-cell;
-    width: 100px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
+	width: 100px;
+	padding: 5px;
 }
 
-#admin_writerEnroll .talC_NickName {
+#mypage_writerEnroll .talC_NickName {
     display: table-cell;
-    width: 100px;
-    padding: 5px;
-}
-
-#admin_writerEnroll .talT_Email {
-    display: table-cell;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_Email {
-    display: table-cell;
-    text-align: left;
-    text-indent: 15px;
+	width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_Name {
-    display: table-cell;
-    width: 60px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_Name {
-    display: table-cell;
-    width: 60px;
+#mypage_writerEnroll .talT_Email {
+	display: table-cell;
+	width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_Birthday {
-    display: table-cell;
-    width: 100px;
+#mypage_writerEnroll .talC_Email {
+	display: table-cell;
+	width: 100px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
-#admin_writerEnroll .talC_Birthday {
+#mypage_writerEnroll .talT_Name {
     display: table-cell;
     width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WeDate {
-    display: table-cell;
-    width: 100px;
-    padding: 5px;
-    border-right: 1px solid #3b4f6a;
-}
-
-#admin_writerEnroll .talC_WeDate {
+#mypage_writerEnroll .talC_Name {
     display: table-cell;
     width: 100px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talT_WePassYN {
+#mypage_writerEnroll .talT_Birthday {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talC_Birthday {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talT_WeDate {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talC_WeDate {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talT_WePassYN {
     display: table-cell;
     width: 60px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talC_WePassYN {
+#mypage_writerEnroll .talC_WePassYN {
     display: table-cell;
     width: 60px;
     padding: 5px;
 }
 
-#admin_writerEnroll .talC_WePassYN_textN {
+#mypage_writerEnroll .talC_WePassYN_textN {
 	padding: 0;
 	margin: 0;
 	color: red;
 }
 
-#admin_writerEnroll .talC_WePassYN_textY {
+#mypage_writerEnroll .talC_WePassYN_textY {
 	padding: 0;
 	margin: 0;
 	color: green;
 }
 
+#mypage_writerEnroll .talC_WePassYN_text1 {
+	display: inline-block;
+	width: 50px;
+	padding: 0;
+	margin: 0;
+	color: black;
+	border-radius: 5px;
+}
 
-#admin_writerEnroll .tal_bottom {
+#mypage_writerEnroll .talC_WePassYN_text2 {
+	display: inline-block;
+	width: 50px;
+	padding: 0;
+	margin: 0;
+	color: black;
+	border-radius: 5px;
+}
+
+#mypage_writerEnroll .talC_WePassYN_text3 {
+	display: inline-block;
+	width: 50px;
+	padding: 0;
+	margin: 0;
+	color: black;
+	border-radius: 5px;
+}
+
+#mypage_writerEnroll .tal_bottom {
     display: inline-block;
 	width:100%;
 	margin-top: 10px;
@@ -173,7 +192,7 @@
     font-size: 13px;
 }
 
-#admin_writerEnroll .tal_bottom a, #admin_writerEnroll .tal_bottom span {
+#mypage_writerEnroll .tal_bottom a, #mypage_writerEnroll .tal_bottom span {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -187,7 +206,7 @@
 }
 
 
-#admin_writerEnroll .tal_bottom a:hover, #admin_writerEnroll .tal_bottom span:hover {
+#mypage_writerEnroll .tal_bottom a:hover, #mypage_writerEnroll .tal_bottom span:hover {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -203,7 +222,7 @@
 
 /* 작가신청 미리보기 css */
 
-#admin_writerEnroll .pagePreviewModal {
+#mypage_writerEnroll .pagePreviewModal {
 	position: fixed;
 	z-index: 9200;
 	left: 0;
@@ -217,7 +236,7 @@
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-#admin_writerEnroll .pagePreviewModalBox {
+#mypage_writerEnroll .pagePreviewModalBox {
 	position: relative;
 	width: 810px;
 	height: 620px;
@@ -228,7 +247,7 @@
 	background-color: white;
 }
 
-#admin_writerEnroll .wEPreviewBody {
+#mypage_writerEnroll .wEPreviewBody {
 	position: absolute;
 	top:0;
 	width: 100%;
@@ -237,7 +256,7 @@
 	border: 1px solid #c2c2c2;
 }
 
-#admin_writerEnroll .wEPreviewFooter {
+#mypage_writerEnroll .wEPreviewFooter {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -248,7 +267,7 @@
 	background-color: rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .wEPreviewFooter>div {
+#mypage_writerEnroll .wEPreviewFooter>div {
 	width: 30%;
 	height: 100%;
 	display: flex;
@@ -256,7 +275,7 @@
 	align-items: center;
 }
 
-#admin_writerEnroll .wEnrollPreAreaI {
+#mypage_writerEnroll .wEnrollPreAreaI {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -265,13 +284,13 @@
 	flex-direction: column;
 }
 
-#admin_writerEnroll .wEnrollPreMemberImageBox img {
+#mypage_writerEnroll .wEnrollPreMemberImageBox img {
 	width: 100px;
 	height: 100px;
 	border-radius: 50px;
 }
 
-#admin_writerEnroll .wEnrollPreAreaT {
+#mypage_writerEnroll .wEnrollPreAreaT {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -280,7 +299,7 @@
 	flex-direction: column;
 }
 
-#admin_writerEnroll .wEnrollPreTitle {
+#mypage_writerEnroll .wEnrollPreTitle {
     width: 95%;
     height: 40px;
 	display: flex;
@@ -291,21 +310,21 @@
 	color:rgba(59, 79, 106, 0.6);
 }
 
-#admin_writerEnroll .wEnrollPreBox {
+#mypage_writerEnroll .wEnrollPreBox {
 	width: 95%;
 	padding: 5px;
 	text-align: left;
 	border: 1px solid rgba(59, 79, 106, 0.6);
 }
 
-#admin_writerEnroll .wEnrollPreAttr {
+#mypage_writerEnroll .wEnrollPreAttr {
 	padding: 0px 10px;
 	display: flex;
 	font-size:16px;
 	color:rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .wEnrollPreVal {
+#mypage_writerEnroll .wEnrollPreVal {
 	min-height: 30px;
 	margin-bottom: 15px;
 	padding: 10px 20px;
@@ -314,12 +333,12 @@
 	color:black;
 }
 
-#admin_writerEnroll .wEnrollPreValueBox {
+#mypage_writerEnroll .wEnrollPreValueBox {
 	margin: 10px;
 	border-left: 2px solid rgba(59, 79, 106, 1);
 }
 
-#admin_writerEnroll .button1 {
+#mypage_writerEnroll .button1 {
 	margin: 5px;
 	width: 100px;
 	height: 30px;
@@ -334,14 +353,14 @@
 	cursor: pointer;
 }
 
-#admin_writerEnroll .button1:hover {
+#mypage_writerEnroll .button1:hover {
     color: #fff;
 	background-color: #252525;
 	outline: none;
 	transition: 500ms;
 }
 
-#admin_writerEnroll .buttonY {
+#mypage_writerEnroll .buttonY {
 	margin: 5px;
 	width: 100px;
 	height: 30px;
@@ -356,14 +375,14 @@
 	cursor: pointer;
 }
 
-#admin_writerEnroll .buttonY:hover {
+#mypage_writerEnroll .buttonY:hover {
     color: #fff;
 	background-color: #428146;
 	outline: none;
 	transition: 500ms;
 }
 
-#admin_writerEnroll .buttonN {
+#mypage_writerEnroll .buttonN {
 	margin: 5px;
 	width: 100px;
 	height: 30px;
@@ -378,7 +397,7 @@
 	cursor: pointer;
 }
 
-#admin_writerEnroll .buttonN:hover {
+#mypage_writerEnroll .buttonN:hover {
     color: #fff;
 	background-color: #864343;
 	outline: none;
@@ -392,7 +411,7 @@
 
 
 
-#admin_writerEnroll .tableBox_top>form{
+#mypage_writerEnroll .tableBox_top>form{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -400,7 +419,7 @@
 
 }
 
-#admin_writerEnroll .tal_top {
+#mypage_writerEnroll .tal_top {
 	width: 100%;
 	margin-bottom: 5px;
 	display: flex;
@@ -408,7 +427,7 @@
 	align-items: flex-end;
 }
 
-#admin_writerEnroll .tableBox_top .sort .sortBtn {
+#mypage_writerEnroll .tableBox_top .sort .sortBtn {
     display: inline-block;
     cursor: pointer;
     width: 100px;
@@ -421,7 +440,7 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .sort .selected {
+#mypage_writerEnroll .tableBox_top .sort .selected {
     display: inline-block;
     cursor: pointer;
     width: 100px;
@@ -433,39 +452,39 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .sort .sortBtn:hover {
+#mypage_writerEnroll .tableBox_top .sort .sortBtn:hover {
     transition: 500ms;
     background-color: #eee;
 }
 
-#admin_writerEnroll .tableBox_top .sort .selected:hover {
+#mypage_writerEnroll .tableBox_top .sort .selected:hover {
     transition: 500ms;
     background-color: #eee;
 }
 
 
-#admin_writerEnroll .tableBox_top .sort button img {
+#mypage_writerEnroll .tableBox_top .sort button img {
     padding-right: 5px;
     width: 12px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm {
+#mypage_writerEnroll .tableBox_top .searchForm {
     color: #252525;
     letter-spacing: -0.5px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm input[type=search] {
+#mypage_writerEnroll .tableBox_top .searchForm input[type=search] {
     border: 1px solid #dadada;
     outline: none;
     height: 30px;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm input[type=search]:focus {
+#mypage_writerEnroll .tableBox_top .searchForm input[type=search]:focus {
     transition: 500ms;
     border: 1px solid #252525;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm button {
+#mypage_writerEnroll .tableBox_top .searchForm button {
     vertical-align: bottom;
     padding-top: 5px;
     height: 30px;
@@ -474,7 +493,7 @@
     outline: none;
 }
 
-#admin_writerEnroll .tableBox_top .searchForm #ajaxSearch {
+#mypage_writerEnroll .tableBox_top .searchForm #ajaxSearch {
     letter-spacing:-0.5px; 
     padding-left: 15px;
     display: none; 

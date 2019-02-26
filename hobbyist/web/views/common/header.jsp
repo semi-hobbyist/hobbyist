@@ -15,7 +15,6 @@
     <!-- ------- 페이지 별 CSS 추가 -------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/orderStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/noticeStyle.css">
@@ -40,6 +39,11 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_communityStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
+    
+	<!-- ------------- 마이페이지 CSS -------------- -->
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_writerEnrollStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPage_writerEnrollModifyStyle.css">
 
     <!-- ------ Wow 애니메이션 ------ -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/animate.css">

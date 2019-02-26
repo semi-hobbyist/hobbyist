@@ -52,6 +52,31 @@ public class WriterService {
 		return list;
 	}
 	
+	
+	// (마이페이지)검색결과에 따라 리스트 갯수 가져오기
+	public int myPageSearchCount(String keyword, int memberNo) {
+		Connection conn = getConnection();
+		int result = dao.myPageSearchCount(conn, keyword, memberNo);
+		close(conn);
+		return result;
+	}
+	
+	// (마이페이지)리스트 최근 등록순 정렬
+	public List<WriterEnroll> myPageDescEnroll(String keyword, int memberNo, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<WriterEnroll> list = dao.myPageDescEnroll(conn, keyword, memberNo, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	// (마이페이지)리스트 이전 등록순 정렬
+	public List<WriterEnroll> myPageAscEnroll(String keyword, int memberNo, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<WriterEnroll> list = dao.myPageAscEnroll(conn, keyword, memberNo, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
 	public List<WriterEnroll> selectAll() {
 		Connection conn = getConnection();
 		List<WriterEnroll> list = dao.selectAll(conn);
@@ -82,6 +107,19 @@ public class WriterService {
 	public int failWriterEnroll(int writerEnrollNo) {
 		Connection conn = getConnection();
 		int result = dao.failWriterEnroll(conn,writerEnrollNo);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int UpdateWriterEnroll(WriterEnroll we) {
+		Connection conn = getConnection();
+		int result = dao.UpdateWriterEnroll(conn,we);
 		if(result>0) {
 			commit(conn);
 		}

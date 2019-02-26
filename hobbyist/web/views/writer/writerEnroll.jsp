@@ -3,6 +3,11 @@
 
 <%@ include file="/views/common/header.jsp" %>
 
+<%
+	String weQuarter = request.getParameter("weQuarter");
+%>
+
+
 <script>
 	$(function () {
 		$("input[name='writerCategory']").focus();
@@ -515,7 +520,7 @@
 		<input type="hidden" name="memberName" value="<%= logginMember.getMemberName() %>" />
 		<input type="hidden" name="memberBirthday" value="<%= logginMember.getMemberBirthday() %>" />
 		<input type="hidden" name="memberPhone" value="<%= logginMember.getMemberPhone() %>" />
-		<input type="hidden" name="writerEnrollQuarter" value="201901" />
+		<input type="hidden" name="writerEnrollQuarter" value="<%= weQuarter %>" />
 
 
 	</form>

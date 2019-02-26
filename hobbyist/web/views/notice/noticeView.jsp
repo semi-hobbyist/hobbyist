@@ -1,3 +1,4 @@
+<%@page import="com.hobbyist.notice.model.vo.WeNotice"%>
 <%@page import="com.hobbyist.notice.model.vo.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
@@ -6,6 +7,9 @@
 	/* 자료 받아오기 */
 	Notice notice = (Notice)request.getAttribute("notice");
 	String profileImg = (String)request.getAttribute("profileImg");
+	WeNotice wnList = (WeNotice)request.getAttribute("wnList");
+	String weYear = (String)request.getAttribute("weYear");
+	String weQu = (String)request.getAttribute("weQu");
 	
 	/* 쿠키값을 이용한 조회수 출력 판단 */
 	Cookie[] noticeCookies = request.getCookies();
@@ -50,12 +54,15 @@
 
 					<% if(notice.getNoticeSort().equals("sortNotice")) { %>
 					<div class='nSTextNotice'>공지</div>
+					<div class="noticeViewTitle"><%= notice.getNoticeTitle() %></div>
+					
 					<% } else if(notice.getNoticeSort().equals("sortEvent")) { %>
 					<div class='nSTextEvent'>이벤트</div>
+					<div class="noticeViewTitle"><%= notice.getNoticeTitle() %></div>
 					<% } else if(notice.getNoticeSort().equals("sortWriterEnroll")) { %>
 					<div class='nSTextWriterEnroll'>작가신청</div>
-					<% } %>
 					<div class="noticeViewTitle"><%= notice.getNoticeTitle() %></div>
+					<% } %>
 				</div>
 				<div class="noticeViewInforBox">
 					<div class="noticeViewWriter">
@@ -73,6 +80,23 @@
 						<% } %>
 					</div>
 				</div>
+				<% if(notice.getNoticeSort().equals("sortWriterEnroll")) { %>
+					<div class="weNoticeView">
+						<div class="weNoticeViewText">[ <%= weYear %> 년도 &nbsp;&nbsp;<%= weQu %> 차 ] &nbsp;&nbsp;</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="weNoticeViewTextS"><%= wnList.getWeNoticeStartdate() %></div>
+						<div class="weNoticeViewText">에서</div>
+						&nbsp;&nbsp;
+						<div class="weNoticeViewTextE"><%= wnList.getWeNoticeEnddate() %></div>
+						<div class="weNoticeViewText">까지</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;
+						<button type="button" class="writerEnrollBtn" onclick="fn_writerEnrollBtn()">작가신청하기</button>
+					</div>
+				<% } %>
 				
 				<% if(notice.getNoticeImgnameRenamed()!=null) { %>
 				<div class="noticeViewImgBox">
@@ -113,10 +137,15 @@
 			</div>
 			<% } %>
 		</div>
-
+		<form action="<%= request.getContextPath() %>/writer/writerEnroll" type="post" id="noticeViewHidden">
+			<input type="hidden" name="weQuarter" value="<%= wnList.getWeQuarter() %>"/>
+		</form>
 	</div>
 	<script>
-
+		// 작가신청 버튼 기능 구현
+		function fn_writerEnrollBtn() {
+			$("#noticeViewHidden").submit();
+		}
 
 		// noticeModify 수정 버튼 기능 구현
 		function fn_noticeModify(index) {

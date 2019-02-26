@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 import com.hobbyist.writer.model.dao.WriterDao;
 
 public class NoticeDao {
@@ -586,5 +587,171 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return remainTime;
+	}
+	
+	public Notice searchNo(Connection conn, Notice no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("searchNo");
+		Notice noList = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no.getNoticeSort());
+			pstmt.setString(2, no.getNoticeTitle());
+			pstmt.setString(3, no.getNoticeWriter());
+			pstmt.setString(4, no.getNoticeContent());
+			pstmt.setDate(5, no.getNoticeDate());
+			
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				noList = new Notice();
+
+				noList.setNoticeNo(rs.getInt("notice_no"));
+				noList.setNoticeSort(rs.getString("notice_sort"));
+				noList.setNoticeTitle(rs.getString("notice_title"));
+				noList.setNoticeWriter(rs.getString("notice_writer"));
+				noList.setNoticeContent(rs.getString("notice_content"));
+				noList.setNoticeDate(rs.getDate("notice_date"));
+				noList.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				noList.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				noList.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				noList.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				noList.setNoticeReadcount(rs.getInt("notice_readcount"));
+				noList.setNoticeStatus(rs.getString("notice_status"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return noList;
+	}
+	
+	public int insertWn(Connection conn, WeNotice wn) {
+		PreparedStatement pstmt = null;
+		int wnResult = 0;
+		String sql = prop.getProperty("insertWn");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, wn.getNoticeNo());
+			pstmt.setString(2, wn.getWeQuarter());
+			pstmt.setDate(3, wn.getWeNoticeStartdate());
+			pstmt.setDate(4, wn.getWeNoticeEnddate());
+
+			wnResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return wnResult;
+	}
+	
+	public List<WeNotice> weSelectAll(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<WeNotice> list = new ArrayList();
+		String sql = prop.getProperty("weSelectAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				WeNotice wn = new WeNotice();
+				wn.setWeNoticeNo(rs.getInt("we_notice_no"));
+				wn.setNoticeNo(rs.getInt("notice_no"));
+				wn.setWeQuarter(rs.getString("we_quarter"));
+				wn.setWeNoticeStartdate(rs.getDate("we_notice_startdate"));
+				wn.setWeNoticeEnddate(rs.getDate("we_notice_enddate"));
+				wn.setWeNoticeStatus(rs.getString("we_notice_status"));
+				list.add(wn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	//작가신청 공지글 등록할때 날짜 최소값 구하기
+	public Date minTime(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Date minTime = null;
+		String sql = prop.getProperty("minTime");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				minTime = rs.getDate(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return minTime;
+	}
+	
+	public WeNotice weSelectOne(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		WeNotice wnList = null;
+		String sql = prop.getProperty("weSelectOne");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				wnList = new WeNotice();
+				wnList.setWeNoticeNo(rs.getInt("we_notice_no"));
+				wnList.setNoticeNo(rs.getInt("notice_no"));
+				wnList.setWeQuarter(rs.getString("we_quarter"));
+				wnList.setWeNoticeStartdate(rs.getDate("we_notice_startdate"));
+				wnList.setWeNoticeEnddate(rs.getDate("we_notice_enddate"));
+				wnList.setWeNoticeStatus(rs.getString("we_notice_status"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return wnList;
+	}
+	
+	public WeNotice cuWeSelectOne(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		WeNotice wnList = null;
+		String sql = prop.getProperty("cuWeSelectOne");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				wnList = new WeNotice();
+				wnList.setWeNoticeNo(rs.getInt("we_notice_no"));
+				wnList.setNoticeNo(rs.getInt("notice_no"));
+				wnList.setWeQuarter(rs.getString("we_quarter"));
+				wnList.setWeNoticeStartdate(rs.getDate("we_notice_startdate"));
+				wnList.setWeNoticeEnddate(rs.getDate("we_notice_enddate"));
+				wnList.setWeNoticeStatus(rs.getString("we_notice_status"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return wnList;
 	}
 }

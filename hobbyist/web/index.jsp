@@ -17,7 +17,8 @@
     
     <script>
   	//메인 헤더 숨기기
-	 $(window).scroll(function () {
+
+  	$(window).scroll(function () {
 	    if ($(window).scrollTop() != 0) {
 	       $("#header-middle").css("transition", "500ms")
 	       $("#header-middle").css("height", "0px");

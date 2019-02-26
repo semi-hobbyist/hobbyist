@@ -1,9 +1,8 @@
 
-#writerEnrollSection {
+#writerEnrollModify {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	padding-top: 130px;
 	font-family: 'Noto Sans KR', sans-serif;
 	display: flex;
 	justify-content: center;
@@ -12,20 +11,23 @@
 	text-align: left;
 }
 
+#writerEnrollModify>form {
+	background-color: white;
+}
 
 /* wEnrollbody css 영역 */
 
-#writerEnrollSection .wEnrollbody {
-	width: 990px;
+#writerEnrollModify .wEnrollbody {
+	width: 810px;
 	height: 100%;
-	margin-top: 60px;
+	top: 0px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
 
-#writerEnrollSection .wEnrollPage {
+#writerEnrollModify .wEnrollPage {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -33,23 +35,23 @@
 	height: 100%;
 }
 
-#writerEnrollSection .qBoxLocation {
+#writerEnrollModify .qBoxLocation {
 	width: 100%;
 	height: 100px;
 }
 
-#writerEnrollSection .qBox {
+#writerEnrollModify .qBox {
 	margin: 30px;
 	margin-right: 0;
 	display: flex;
 	justify-content: center;
 }
 
-#writerEnrollSection .qNumber {
+#writerEnrollModify .qNumber {
 	display: flex;
 }
 
-#writerEnrollSection .qNumber span {
+#writerEnrollModify .qNumber span {
 	font-size: 20px;
 	line-height: 40px;
 	display: inline-block;
@@ -57,7 +59,7 @@
 
 }
 
-#writerEnrollSection .qNumber::after {
+#writerEnrollModify .qNumber::after {
 	display: inline-block;
 	content: '';
 	width: 10px;
@@ -66,29 +68,29 @@
 	top: 15%;
 }
 
-#writerEnrollSection .qContent {
+#writerEnrollModify .qContent {
 	padding: 0 10px;
 	width: 600px;
 }
 
-#writerEnrollSection .qText {
+#writerEnrollModify .qText {
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 10px;
 }
 
-#writerEnrollSection .qTitle {
+#writerEnrollModify .qTitle {
 	font-size: 20px;
 	line-height: 40px;
 }
 
-#writerEnrollSection .qEx {
+#writerEnrollModify .qEx {
 	font-size: 16px;
 	line-height: 36px;
 	color: #7c7c7c;
 }
 
-#writerEnrollSection .inputImageback {
+#writerEnrollModify .inputImageback {
 	position: relative;
 	width:100%;
 	height:250px;
@@ -101,7 +103,7 @@
 	border-radius: 5px;
 }
 
-#writerEnrollSection .inputImage {
+#writerEnrollModify .inputImage {
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -109,13 +111,13 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .inputImage img {
+#writerEnrollModify .inputImage img {
 	width:300px;
 	height:200px;
 	border-radius: 5px;
 }
 
-#writerEnrollSection .inputImage1 {
+#writerEnrollModify .inputImage1 {
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -123,27 +125,27 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .inputImage1 img {
+#writerEnrollModify .inputImage1 img {
 	width:300px;
 	height:200px;
 	border-radius: 5px;
 }
 
-#writerEnrollSection .inputImageFile {
+#writerEnrollModify .inputImageFile {
 	position: absolute;
 	width:100%;
 	height:100%;
 	opacity: 0;
 }
 
-#writerEnrollSection .inputClassImageFile {
+#writerEnrollModify .inputClassImageFile {
 	position: absolute;
 	width:100%;
 	height:100%;
 	opacity: 0;
 }
 
-#writerEnrollSection .inputText {
+#writerEnrollModify .inputText {
 	margin: 10px 5px;
 	width: 100%;
 	border: 0;
@@ -153,7 +155,7 @@
 	color: #797A9E;
 	outline: none;
 }
-#writerEnrollSection .qTextarea {
+#writerEnrollModify .qTextarea {
 	margin: 10px 5px;
 	width: 100%;
 	border: 0;
@@ -166,29 +168,7 @@
 	resize: none;
 }
 
-#writerEnrollSection .button1 {
-	margin: 5px;
-	width: 100px;
-	height: 30px;
-	font-size: 16px;
-	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
-	color: #252525;
-	background-color: white;
-	outline: none;
-	opacity: 0;
-	transition: 500ms;
-	cursor: pointer;
-}
-
-#writerEnrollSection .button1:hover {
-    color: #fff;
-	background-color: #252525;
-	outline: none;
-	transition: 500ms;
-}
-
-#writerEnrollSection .button2 {
+#writerEnrollModify .button1 {
 	margin: 5px;
 	width: 100px;
 	height: 30px;
@@ -203,27 +183,49 @@
 	cursor: pointer;
 }
 
-#writerEnrollSection .button2:hover {
+#writerEnrollModify .button1:hover {
     color: #fff;
 	background-color: #252525;
 	outline: none;
 	transition: 500ms;
 }
 
-#writerEnrollSection .buttonYNBox {
+#writerEnrollModify .button2 {
+	margin: 5px;
+	width: 100px;
+	height: 30px;
+	font-size: 16px;
+	letter-spacing: 0.15em;
+	border: 1px solid #c2c2c2;
+	color: #252525;
+	background-color: white;
+	outline: none;
+	opacity: 1;
+	transition: 500ms;
+	cursor: pointer;
+}
+
+#writerEnrollModify .button2:hover {
+    color: #fff;
+	background-color: #252525;
+	outline: none;
+	transition: 500ms;
+}
+
+#writerEnrollModify .buttonYNBox {
 	margin: 0px 0px;
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 }
 
-#writerEnrollSection .buttonYNBox div {
+#writerEnrollModify .buttonYNBox div {
 	margin: 0px 0px;
 	display: flex;
 	flex-direction: column;
 }
 
-#writerEnrollSection .buttonYN {
+#writerEnrollModify .buttonYN {
 	margin: 5px;
 	padding: 0 15px;
 	height: 30px;
@@ -238,14 +240,14 @@
 	cursor: pointer;
 }
 
-#writerEnrollSection .buttonYN:hover {
+#writerEnrollModify .buttonYN:hover {
     color: #fff;
 	background-color: #252525;
 	outline: none;
 	transition: 500ms;
 }
 
-#writerEnrollSection .buttonYN1 {
+#writerEnrollModify .buttonYN1 {
 	margin: 5px;
 	padding: 0 15px;
 	height: 30px;
@@ -260,14 +262,14 @@
 	cursor: pointer;
 }
 
-#writerEnrollSection .buttonYN1:hover {
+#writerEnrollModify .buttonYN1:hover {
     color: #252525;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
 }
 
-#writerEnrollSection .submit1Next {
+#writerEnrollModify .submit1Next {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -275,7 +277,7 @@
 	align-items: center;
 }
 
-#writerEnrollSection .submit1Step {
+#writerEnrollModify .submit1Step {
 	width: 80%;
 	height: 100%;
 	display: flex;
@@ -283,7 +285,7 @@
 	align-items: center;
 }
 
-#writerEnrollSection .submit1StepPoint {
+#writerEnrollModify .submit1StepPoint {
 	width: 80%;
 	height: 70%;
 	display: flex;
@@ -292,7 +294,7 @@
 	text-align: center;
 }
 
-#writerEnrollSection .submit1BoxY {
+#writerEnrollModify .submit1BoxY {
 	width: 60px;
 	height: 100%;
 	display: flex;
@@ -304,7 +306,7 @@
 	border-radius: 10px;
 }
 
-#writerEnrollSection .submit1BoxN {
+#writerEnrollModify .submit1BoxN {
 	width: 60px;
 	height: 100%;
 	display: flex;
@@ -314,13 +316,13 @@
 	border-radius: 10px;
 }
 
-#writerEnrollSection .submit1BoxLine {
+#writerEnrollModify .submit1BoxLine {
 	width: 15%;
 	height: 48%;
 	border-bottom: 5px solid #c2c2c2;
 }
 
-#writerEnrollSection .writerClassLevelBox {
+#writerEnrollModify .writerClassLevelBox {
 	width: 100%;
 	height: 100px;
 	margin: 5px;
@@ -330,7 +332,7 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .writerClassLevelBtn {
+#writerEnrollModify .writerClassLevelBtn {
 	width: 100%;
 	height: 50px;
 	display: flex;
@@ -339,7 +341,7 @@
 	border: 1px solid #c2c2c2;
 }
 
-#writerEnrollSection .writerClassLevelNum {
+#writerEnrollModify .writerClassLevelNum {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -354,7 +356,7 @@
 	transition: 500ms;
 }
 
-#writerEnrollSection .writerClassLevelNum:hover {
+#writerEnrollModify .writerClassLevelNum:hover {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -369,7 +371,7 @@
 	transition: 500ms;
 }
 
-#writerEnrollSection .writerClassLevelNum1 {
+#writerEnrollModify .writerClassLevelNum1 {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -384,7 +386,7 @@
 	transition: 500ms;
 }
 
-#writerEnrollSection .writerClassLevelNum1:hover {
+#writerEnrollModify .writerClassLevelNum1:hover {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -399,7 +401,7 @@
 	transition: 500ms;
 }
 
-#writerEnrollSection .writerClassLevelContent {
+#writerEnrollModify .writerClassLevelContent {
 	width: 100%;
 	height: 30px;
 	display: flex;
@@ -411,9 +413,9 @@
 
 /* wEnrollFooter css 영역 */
 
-#writerEnrollSection .wEnrollFooter {
+#writerEnrollModify .wEnrollFooter {
 	position: fixed;
-	width: 990px;
+	width: 790px;
 	height: 80px;
 	bottom: 0;
 	background-color: rgba(255, 255, 255, 0.5);
@@ -425,7 +427,7 @@
 	transition: 400ms;
 }
 
-#writerEnrollSection .wEnrollFooterBox1 {
+#writerEnrollModify .wEnrollFooterBox1 {
 	width: 100%;
 	height: 50%;
 	display: none;
@@ -433,14 +435,14 @@
 	align-items: center;
 }
 
-#writerEnrollSection .qBoxS {
+#writerEnrollModify .qBoxS {
 	margin: 30px;
 	margin-right: 0;
 	display: flex;
 	justify-content: center;
 }
 
-#writerEnrollSection .wEnrollFooterBox2 {
+#writerEnrollModify .wEnrollFooterBox2 {
 	width: 100%;
 	height: 50%;
 	bottom: 0;
@@ -449,7 +451,7 @@
 	align-items: center;
 }
 
-#writerEnrollSection .wEnrollFooter1 {
+#writerEnrollModify .wEnrollFooter1 {
 	position: fixed;
 	width:100%;
 	height: 100px;
@@ -461,7 +463,7 @@
 	transition: 1000ms;
 }
 
-#writerEnrollSection .commitPoint {
+#writerEnrollModify .commitPoint {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -470,20 +472,20 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .commitLineBox {
+#writerEnrollModify .commitLineBox {
 	width: 70%;
 	height: 10px;
 	background-color: rgba(59, 79, 106, 0.5);
 }
 
-#writerEnrollSection .commitLine {
+#writerEnrollModify .commitLine {
 	width: 0%;
 	height: 10px;
 	background-color: rgba(59, 79, 106, 1);
 	transition: 500ms;
 }
 
-#writerEnrollSection .commitLineText {
+#writerEnrollModify .commitLineText {
 	width: 70%;
 	height: 20px;
 	padding-top: 10px;
@@ -491,13 +493,13 @@
 	align-items: center;
 }
 
-#writerEnrollSection .commitContent {
+#writerEnrollModify .commitContent {
 	text-align: left;
 	padding: 0 10px;
 	letter-spacing: 0.15em;
 }
 
-#writerEnrollSection .button3 {
+#writerEnrollModify .button3 {
 	font-size: 13px;
 	height: 28px;
 	text-align: left;
@@ -510,7 +512,7 @@
 	cursor: pointer;
 }
 
-#writerEnrollSection .button3:hover {
+#writerEnrollModify .button3:hover {
     color: black;
 	background-color: white;
 	outline: none;
@@ -518,7 +520,7 @@
 }
 
 
-#writerEnrollSection .qSelectBtn {
+#writerEnrollModify .qSelectBtn {
 	width: 30%;
 	height: 100%;
 	display: flex;
@@ -526,7 +528,7 @@
 	align-items: center;
 }
 
-#writerEnrollSection .buttonUpDown {
+#writerEnrollModify .buttonUpDown {
 	font-size: 40px;
 	width: 70px;
 	height: 50px;
@@ -543,7 +545,7 @@
 	cursor: pointer;
 }
 
-#writerEnrollSection .buttonUpDown:hover {
+#writerEnrollModify .buttonUpDown:hover {
     color: rgba(59, 79, 106, 1);
 	background-color: white;
 	outline: none;
@@ -553,7 +555,7 @@
 
 /* 작가신청 미리보기 css */
 
-#writerEnrollSection .pagePreviewModal {
+#writerEnrollModify .pagePreviewModal {
 	position: fixed;
 	z-index: 9200;
 	left: 0;
@@ -567,7 +569,7 @@
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-#writerEnrollSection .pagePreviewModalBox {
+#writerEnrollModify .pagePreviewModalBox {
 	position: relative;
 	width: 810px;
 	height: 620px;
@@ -578,7 +580,7 @@
 	background-color: white;
 }
 
-#writerEnrollSection .wEPreviewBody {
+#writerEnrollModify .wEPreviewBody {
 	position: absolute;
 	top:0;
 	width: 100%;
@@ -587,7 +589,7 @@
 	border: 1px solid #c2c2c2;
 }
 
-#writerEnrollSection .wEPreviewFooter {
+#writerEnrollModify .wEPreviewFooter {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -598,7 +600,7 @@
 	background-color: rgba(59, 79, 106, 1);
 }
 
-#writerEnrollSection .wEPreviewFooter>div {
+#writerEnrollModify .wEPreviewFooter>div {
 	width: 30%;
 	height: 100%;
 	display: flex;
@@ -606,7 +608,7 @@
 	align-items: center;
 }
 
-#writerEnrollSection .wEnrollPreAreaI {
+#writerEnrollModify .wEnrollPreAreaI {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -615,13 +617,13 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .wEnrollPreMemberImageBox img {
+#writerEnrollModify .wEnrollPreMemberImageBox img {
 	width: 100px;
 	height: 100px;
 	border-radius: 50px;
 }
 
-#writerEnrollSection .wEnrollPreAreaT {
+#writerEnrollModify .wEnrollPreAreaT {
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
@@ -630,7 +632,7 @@
 	flex-direction: column;
 }
 
-#writerEnrollSection .wEnrollPreTitle {
+#writerEnrollModify .wEnrollPreTitle {
 	width: 95%;
 	height: 40px;
 	display: flex;
@@ -641,21 +643,21 @@
 	color:rgba(59, 79, 106, 0.6);
 }
 
-#writerEnrollSection .wEnrollPreBox {
+#writerEnrollModify .wEnrollPreBox {
 	width: 95%;
 	padding: 5px;
 	text-align: left;
 	border: 1px solid rgba(59, 79, 106, 0.6);
 }
 
-#writerEnrollSection .wEnrollPreAttr {
+#writerEnrollModify .wEnrollPreAttr {
 	padding: 0px 10px;
 	display: flex;
 	font-size:16px;
 	color:rgba(59, 79, 106, 1);
 }
 
-#writerEnrollSection .wEnrollPreVal {
+#writerEnrollModify .wEnrollPreVal {
 	min-height: 30px;
 	margin-bottom: 15px;
 	padding: 10px 20px;
@@ -664,7 +666,34 @@
 	color:black;
 }
 
-#writerEnrollSection .wEnrollPreValueBox {
+#writerEnrollModify .wEnrollPreValueBox {
 	margin: 10px;
 	border-left: 2px solid rgba(59, 79, 106, 1);
+}
+
+
+#writerEnrollModify .fileImgDelBtn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0px;
+    right: 0px;
+    font-size: 16px;
+    font-weight: 700;
+	background-color: rgb(199, 136, 136);
+	border-radius: 10px;
+	color: white;
+	border: none;
+	outline: none;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#writerEnrollModify .fileImgDelBtn:hover {
+    transition: 400ms;
+    color: black;
+    border: 1px solid #475770;
+	background-color: white;
 }

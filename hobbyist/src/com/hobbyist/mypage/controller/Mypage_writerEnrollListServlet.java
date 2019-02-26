@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hobbyist.member.model.vo.Member;
-import com.hobbyist.writer.model.service.WriterService;
 import com.hobbyist.writer.model.vo.WriterEnroll;
 
 /**
- * Servlet implementation class MyPageServlet
+ * Servlet implementation class Mypage_writerEnrollListServlet
  */
-@WebServlet("/mypage/myPage")
-public class MyPageServlet extends HttpServlet {
+@WebServlet("/mypage/mypage_writerEnrollList")
+public class Mypage_writerEnrollListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageServlet() {
+    public Mypage_writerEnrollListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,21 @@ public class MyPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//작가신청 메뉴 : 작가신청 여부 따른 메뉴 출력 판단을 위한 데이터 불러오기
-		List<WriterEnroll> we = new WriterService().selectAll(); 
-		
-		Member logginMember = (Member)request.getSession().getAttribute("logginMember");
-		int memberNo = logginMember.getMemberNo();
-		
-		boolean weFlag = false;
-		for(WriterEnroll weP : we) {
-			if(logginMember.getMemberNo() == weP.getMemberNo()) {
-				weFlag = true;
-			}
-		}
-		
-		
+		List<WriterEnroll> list = null;
+		String sort = "";
+		int cPage = 0;
+		int numPerPage = 0;
+		String pageBar = "";
+		String keyword = "";
+		boolean weFlag = true;
+		request.setAttribute("list", list);
+		request.setAttribute("sort", sort);
+		request.setAttribute("cPage", cPage);
+		request.setAttribute("numPerPage", numPerPage);
+		request.setAttribute("pageBar", pageBar);
+		request.setAttribute("keyword", keyword);
 		request.setAttribute("weFlag", weFlag);
-		request.getRequestDispatcher("/views/mypage/myPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/mypage/writer/myPage_writerEnroll.jsp").forward(request, response);
 	}
 
 	/**

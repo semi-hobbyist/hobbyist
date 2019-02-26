@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hobbyist.member.model.service.MemberService;
 import com.hobbyist.member.model.vo.Member;
+import com.hobbyist.mycart.model.vo.MyCart;
 import com.hobbyist.oneday.model.service.OnedayService;
 import com.hobbyist.oneday.model.vo.Oneday;
 import com.hobbyist.order.model.service.OrderDataService;
@@ -53,9 +54,19 @@ public class OrderOnedayServlet extends HttpServlet {
 			orderList.add(oneday);
 		}
 		
+		// 카트번호 담아주기
+		List<MyCart> cartNum = new ArrayList<MyCart>();
+		for(int i=0; i<cartNoArr.length;i++) {
+			MyCart mc = new MyCart();
+			mc.setMyCartNo(Integer.parseInt(cartNoArr[i]));
+			cartNum.add(mc);
+		}
+		
 		
 		// 멤버정보 보내주기
 		request.setAttribute("Member", mb);
+		// 카트번호 보내주기
+		request.setAttribute("CartNum", cartNum);
 		// 주문정보리스트 보내주기
 		request.setAttribute("OrderList", orderList);
 		

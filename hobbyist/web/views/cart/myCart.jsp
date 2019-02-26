@@ -181,6 +181,7 @@
 				if(check_count>0) {
 				var selectNo = '';
 				var classOption = '';
+				var cartNo = '';
 				var checkbox = $('[name=checkbox]');
 				var classNo = $('[name=classNo]');
 				var classOptions = $('[name=classOption]');
@@ -191,6 +192,7 @@
 							classOption += classOptions[index].value + ',';
 						}
 				});
+				$('#cartNoVal').val(cartNo);
 				$('#memberVal').val('<%= logginMember.getMemberEmail() %>');
 				$('#selectNoVal').val(selectNo);
 				$('#classOptionVal').val(classOption);
@@ -214,16 +216,19 @@
 				if(check_count2>0) {
 				var selectNo = '';
 				var classOption = '';
+				var cartNo = '';
 				var checkbox = $('[name=checkbox]');
 				var classNo = $('[name=classNo]');
 				var classOptions = $('[name=classOption]');
 				$.each(checkbox, function(index) {
 						if(checkbox[index].checked) {
+							cartNo += checkbox[index].value + ',';
 							selectNo += classNo[index].value +',';
 							classOption += classOptions[index].value + ',';
 						}
 				});
 				
+				$('#cartNoVal2').val(cartNo);
 				$('#memberVal2').val('<%= logginMember.getMemberEmail() %>');
 				$('#selectNoVal2').val(selectNo);
 				$('#classOptionVal2').val(classOption);

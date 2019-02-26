@@ -10,7 +10,7 @@
     position: relative;
     width: 990px;
     height: 100%;
-    padding-top: 200px;
+    padding-top: 150px;
     display: flex;
     justify-content: center;
 	align-items: center;
@@ -357,7 +357,7 @@
 #noticeWrite .noticeWriteBox {
     width: 990px;
     height: 100%;
-    padding-top: 200px;
+    padding-top: 150px;
     display: flex;
     justify-content: center;
 	align-items: center;
@@ -922,7 +922,7 @@
 #noticeView .noticeView_content {
     width: 990px;
     height: 100%;
-    padding-top: 200px;
+    padding-top: 150px;
     display: flex;
     justify-content: center;
 	align-items: center;

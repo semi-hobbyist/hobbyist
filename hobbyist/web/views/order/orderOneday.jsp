@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.hobbyist.member.model.vo.Member, com.hobbyist.oneday.model.vo.Oneday, com.hobbyist.shop.model.vo.Shop" %>
+    pageEncoding="UTF-8" import="java.util.*, com.hobbyist.mycart.model.vo.MyCart,  com.hobbyist.member.model.vo.Member, com.hobbyist.oneday.model.vo.Oneday, com.hobbyist.shop.model.vo.Shop" %>
 
 <%
 	Member member = (Member)request.getAttribute("Member");
+	List<MyCart> cartNum = (List)request.getAttribute("CartNum");
 	List<Oneday> orderList = (List)request.getAttribute("OrderList");
 %>
 
@@ -21,6 +22,17 @@
 		</ul>
 		<br>
 		<form name="orderFrm" action="<%= request.getContextPath() %>/order/orderInsert" method="POST">
+		<!-- 카트번호 담기 -->
+		<%
+			for(MyCart c : cartNum) {
+		%>
+				
+				<input type="hidden" name="cartNo" value="<%= c.getMyCartNo() %>"/>
+				
+		<%
+			}
+		%>
+		<input type="hidden" id="cartNoVal" name="cartNoVal">
 		<table>
 			<input type="hidden" name="orderOneday" value="oneday"/>
 			<tr>
@@ -231,7 +243,6 @@
 		
 		function fn_iampay() {
 			
-			
 			var IMP = window.IMP; // 생략해도 괜찮습니다.
 			IMP.init("imp83236178"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다
 			
@@ -249,12 +260,16 @@
 				if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
 					var selectNo = '';
 					var classOption = '';
+					var cartNo = '';
+					var cartNos = $('[name=cartNo]');
 					var classNos = $('[name=classNos]');
 					var classOptions = $('[name=classOptions]');
 					$.each(classOptions, function(index) {
+								cartNo += cartNos[index].value + ',';
 								selectNo += classNos[index].value +',';
 								classOption += classOptions[index].value + ',';
 					});
+					$('#cartNoVal').val(cartNo);
 					$('#classNo').val(selectNo);
 					$('#classOption').val(classOption);
 					orderFrm.submit();

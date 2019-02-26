@@ -22,6 +22,8 @@ public class OrderInsertServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cartNo_temp = request.getParameter("cartNoVal");
+		String cartNo[] = cartNo_temp.split(",");
 		System.out.println("---------------- 주문처리 (★) ---------------");
 		// 주문정보 매개변수로 받아오기 ------------------------------------->>
 		String member = request.getParameter("member");
@@ -36,9 +38,10 @@ public class OrderInsertServlet extends HttpServlet {
 		String orderAddAddress = request.getParameter("order_add_address");
 		String orderMsg = request.getParameter("order_msg");
 		
-		
-		
 		System.out.println("주문하기 전 값이 잘들어왔나? : " + member + " , " + classNo_temp + " , " + " , " + classOption_temp  + " , " + orderType  + " , " + orderPrice + " , " + orderAddName  + " , " + orderAddPhone + " , " + orderAddAddress + " , " + orderMsg);;
+		for(String s : cartNo) {
+			System.out.println("받은 카트번호 : " + s);
+		}
 		for(String s : classNo) {
 			System.out.println("결제하는 클래스 : " + s);
 		}
@@ -78,6 +81,7 @@ public class OrderInsertServlet extends HttpServlet {
 			}
 			System.out.println("---------------- 주문처리 (★★★) ---------------");
 			int insertResult = 0;
+			
 			// ----------------------------- 결제정보 등록
 			int randomCode_temp = (int) ((Math.random()*10000000)+1);
 			String randomCode = "A" + randomCode_temp;   // 주문번호
@@ -88,6 +92,11 @@ public class OrderInsertServlet extends HttpServlet {
 			
 			
 			if(insertResult>0) {
+				// 장바구니 지워주기 ---------------------------------------------------
+				for(int i=0; i<cartNo.length;i++) {
+					new MyCartService().deleteCart(Integer.parseInt(cartNo[i]));
+				}
+				
 				msg = "결제가 완료되었습니다 [ 핀코드(PINCODE) : " + randomNum + " ] 핀코드를 복사(Ctrl + C)";
 				loc = "/myClass?member=" + member;
 			} else {
@@ -107,11 +116,17 @@ public class OrderInsertServlet extends HttpServlet {
 				if(updateOneday>0) {
 					new OrderService().insertOrder(randomCode, member, classNo[i], classOption[i], orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg, "원데이클래스");
 					msg += "주문번호 : " + randomCode + "예약성공 ";
+					
+					// 장바구니 지워주기 ---------------------------------------------------
+					for(int j=0; j<cartNo.length;j++) {
+						new MyCartService().deleteCart(Integer.parseInt(cartNo[j]));
+					}
 				} else {
 					msg += ", " +randomCode + "모집인원 초과, 예약 실패";
 				}
 			}
 			loc = "/myClass?member=" + member;
+			
 		}
 		
 		

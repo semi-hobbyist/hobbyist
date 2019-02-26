@@ -11,13 +11,16 @@
 	String randomPwd = (String)request.getAttribute("randomPwd");
 	Member result = (Member)request.getAttribute("result");
 %> --%>
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/css/emailCheck.css">
 </head>
 <body>
-<section>
+<div id="searchPw">
 	<form action="<%=request.getContextPath()%>/searchPwd.do" method="post">
 		<div>
+			<img src="<%= request.getContextPath() %>/images/logo.jpg" width="140px">
+			<h3>비밀번호 찾기</h3>
 			<div>
-				이메일<input type="text" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해주세요."/><br>
+				이메일<br><input type="text" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해주세요."/><br>
 				<select name="memberEmailaddress" id="memberEmailaddress">
 					<option>선택해주세요.</option>
 					<option>@naver.com</option>
@@ -31,14 +34,7 @@
 					<option>@nate.com</option>
 				</select>
 				<div>
-					<input type="button" id="checkId" name="checkId" value="아이디확인" onclick="fn_checkId()"/>
-				</div>
-				
-				<div id="check">
-					<input type="text" id="checkCode" name="checkCode" onclick="fn_checkCode()"/>	
-				</div>
-				<div>
-					<input type="button" id="cancel" value="취소" onclick="self.close()"/> 
+					<button type="button" id="checkId" name="checkId"onclick="fn_checkId()">아이디 확인</button><button type="button" id="cancel"  onclick="self.close()">닫기</button> 
 				</div>
 			</div>
 		</div>
@@ -47,7 +43,7 @@
 	<form name="pwdCodeFrm" method="post">
 		<input type="hidden" id="pwdCode" name="pwdCode"/>
 	</form>
-	</section>
+	</div>
 	
 	<script>
 	function fn_checkId(){

@@ -34,8 +34,8 @@
 	<div class="container">
 		<div class="message signup">
 			<div class="btn-wrapper">
-				<button class="button" id="signup">로그인</button>
-				<button class="button" id="login">회원가입</button>
+				<button  id="signup" style="width: 210px;">로그인</button><Br>
+				<button  id="login" style="width: 210px;">회원가입</button>
 				<input type="button" id="searchId" class="searchIdButton" value="아이디찾기" onclick="searchId()"/>
 				<input type="button" id="searchPwd" class="searchPwdButton" value="비밀번호 찾기" onclick="searchPwd()"/>
 			</div>
@@ -45,22 +45,22 @@
 			onsubmit="return fn_loginMember();" autocomplete="off">
 			<div class="form form--memberLogin">
 				<div class="form--heading"></div>
-				<input type="text" class="inputText" name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
-				<input type="password" class="inputText" name="memberPassword" placeholder="Password" autocomplete="new-password">
+				<input type="text"  name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
+				<input type="password" name="memberPassword" placeholder="Password" autocomplete="new-password">
 				<div class="checkboxDiv">
 					<input type="checkbox" name="saveEmail" id="saveEmail" <%= saveEmail!=null?"checked":"" %> />
-					<label for="saveEmail">email 저장</label>
+					<label for="saveEmail">EMAIL 저장</label>
 				</div>
-				<input type="submit" class="button" value="LOGIN"/>
+				<button style="width: 230px;" type="submit">L O G I N</button>
 			</div>
 		</form>
 
 		<form action="<%= request.getContextPath() %>/member/memberEnroll" id="memberEnroll" method="post" name="memberEnrollFrm"
 				onsubmit="return fn_memberEnroll();" autocomplete="off" enctype="multipart/form-data">
-			<div class="form form--memberEnroll enroll signup" id="memberEnrollSignup">
-				<div class="form--heading2"></div>
-				<input type="text" class="inputText" name="memberEmail" placeholder="Email" id="memberEmail">
-				<div class="emailSelect">
+			<div class="enroll signup" id="memberEnrollSignup">
+			<br>
+				<h3>회원가입</h3>
+				<input type="text" name="memberEmail" placeholder="Email" id="memberEmail"><Br>
 				<select name="memberEmailaddress" id="memberEmailaddress">
 					<option>선택해주세요.</option>
 					<option>@naver.com</option>
@@ -73,34 +73,33 @@
 					<option>@korea.com</option>
 					<option>@nate.com</option>
 				</select>
-				</div>
 				<div>
-					<input type="button" class="comfirmIdButton" value="ID check" id="comfirmIdButton">
-					<input type="button" class="emailCheckButton" value="인증하기" id="emailCheckButton" onclick="fn_emailSend()">
+					<button type="button"  id="comfirmIdButton">아이디체크</button>
+					<button type="button"  id="emailCheckButton" onclick="fn_emailSend()">이메일인증</button>
 				</div>
 				<div id="send"></div>
 				<input type="hidden" id="confirmIdButtonHidden" value="2"/>
-				<input type="password" class="inputText" name="memberPassword" id="memberPassword" placeholder="Password">
-				<input type="password" class="inputText" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
-				<input type="button" id="signupStart" class="button" value="다음" onclick="return fn_nextJoin()"/>
+				<input type="password" name="memberPassword" id="memberPassword" placeholder="Password" autocomplete="new-password">
+				<input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password"><br>
+				<button style="width: 230px; " type="button" id="signupStart"  onclick="return fn_nextJoin()">다음</button>
 			</div>
 		
-			<div class="form form--memberEnroll enroll1 signup" id="memberEnrollSignup2">
+			<div class="endForm">
 				<div class="memberImage">
 					<div class="inputBackground">
 						<input type="file" class="inputImage" name="memberOriginalImage" id="memberOriginalImage"/>
 					</div>
 					<img alt="camaraIcon" id="image_section" src="<%= request.getContextPath() %>/images/camaraIcon30.png" width="30px" height="30px"/>
 				</div>
-				<input type="text" class="inputText" name="memberNickname" placeholder="NickName" id="memberNickname"/>
-				<input type="button" class="comfirmNickNameButton" value="NickName check" id="comfirmNickNameButton">
+				<input style="width: 140px;" type="text" class="inputText" name="memberNickname" placeholder="NickName" id="memberNickname"/>
+				<input type="button" class="comfirmNickNameButton" value="중복확인" id="comfirmNickNameButton">
 				<input type="hidden" id="comfirmNickNameButtonHidden" value="2"/>
 				<input type="text" class="inputText" name="memberName" id="memberName" placeholder="Name" />
 				<input type="number" class="inputText" name="memberBirthday" id="memberBirthday" placeholder="Birthday ex)940308"/>
 				<input type="text" class="inputText" name="memberPhone" id="memberPhone" placeholder="Phone"/>
 				<div id="selectBtn">
-					<input type="button" id="beforeBtn" class="beforeBtn" value="이전" />
-					<input type="submit" class="nextBtn" value="가입" onclick="return fn_submit()"/>
+					<button type="button" id="beforeBtn" class="beforeBtn">이전</button>
+					<button type="submit" class="nextBtn"  onclick="return fn_submit()">가입</button>
 				</div>
 			</div>
 		</form>
@@ -118,7 +117,7 @@
 			<input type="hidden" id="numberCode" name="numberCode" value="<%=getRandom()%>" readonly/>
 		</form>
 	</div>
-</div>
+</div>#3a4763
 
 		
 <script>
@@ -159,8 +158,7 @@
 	});
 
 	$("#nextBtn").click(function () {
-		$(".enroll1").css("display", "flex");
-		$(".enroll").css("transform", "translateX(0%)");
+		$(".enroll").css({"transform":"translateX(0)"});
 	});
 	
 </script>
@@ -177,8 +175,7 @@
 		})
 		$("#loginSection").on("click", function () {
 			if (closeFlag) {
-				// location.href = "<%= request.getContextPath()%>/member/loginPage";
-				$("#loginSection").css("display","none");
+				location.href = "<%= request.getContextPath()%>/member/loginPage";
 			}
 		})
 	});
@@ -238,18 +235,18 @@
 			return false;
 		} 
 		
-		//이메일 인증버튼 누르기 하기
+		/* //이메일 인증버튼 누르기 하기
 		if($('#code_check').val()==null || $('#code_check').val().trim().length==0 || $('#emailCheckButton').val()!='인증완료'){
 			alert('이메일 인증버튼을 눌러주세요');
 			return false;
-		}
+		} */
 		
-		$(".enroll").css("transform", "translateX(-200%)"); 
+		$(".enroll").css("transform", "translateX(-100%)"); 
 		console.log($('#code_check').val());
 		return true;
 	} 
 	
-	//비밀번호 일치하는지 확인하기
+	/* //비밀번호 일치하는지 확인하기
 	//비밀번호 정규화
 	$(function(){
 		$('#confirmPassword').blur(function(){
@@ -269,10 +266,10 @@
 				$('#confirmPassword').val('');
 			} 
 		});
-	});
+	}); */
 	
-	 //아이디 정규화
-	$(function(){
+	//아이디 정규화
+	/* $(function(){
 		$('#memberEmail').blur(function(){
 			//아이디 정규화하기
 			var idFlag = /^[a-z](?=.{0,28})[\w]{6,15}$/; //_제외한 특수문자 안되고,영문+숫자
@@ -285,7 +282,7 @@
 	}); 
 	
 	//생년월일 6글자 이상 입력하는 경우 or 6글자 미만인 경우 경고문 처리
-	 $(function(){
+	$(function(){
 		$('#memberBirthday').blur(function(){
 			var memberBirthday = $('#memberBirthday').val();
 			if(memberBirthday.trim().length>6 || memberBirthday.trim().length<6){
@@ -295,15 +292,17 @@
 		});
 	});
 	
-	$(function(){
+	/* $(function(){
 		$('#memberName').blur(function(){
 			var nameFlag = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
 			if(!nameFlag.test($('#memberName').val())|| $('#memberName').val().trim().length==0){
-				alert('이름은 영문 또는 영어로 입력해주세요. 띄어쓰기는 사용 할 수 없습니다.');
+				alert('이름은 한글 또는 영어로 입력해주세요. 띄어쓰기는 사용 할 수 없습니다.');
 				$('#memberName').val('');
+				
 			};
 		});
-	}); 
+	}); */
+	
 </script>
 
 <script>
@@ -318,7 +317,7 @@
 			type:"get",
 			dataType:"text",
 			success:function(result){
-				if(memberEmail.trim().length<=0){
+				if(memberEmail.trim().length=0){
 					alert('아이디를 입력해주세요. 아이디는 6~12글자 사이만 가능합니다.');
 				} 
 				else if(memberEmailaddress=='선택해주세요.'){

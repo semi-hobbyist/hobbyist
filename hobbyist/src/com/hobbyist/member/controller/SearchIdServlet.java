@@ -39,11 +39,10 @@ public class SearchIdServlet extends HttpServlet {
 		m.setMemberPhone(memberPhone);
 		
 		Member result = new MemberService().selectMemberName(m);
-		String msg = "";
 		
-		/*String view="/views/common/msg.jsp";
+		String view="/views/common/msg.jsp";
 		String msg="";
-		String view="/views/member/searchId.jsp";*/
+		/*String view="/views/member/searchId.jsp";*/
 
 		if(result.getMemberName()!=null && result.getMemberPhone()!=null) {
 			msg="아이디는"+result.getMemberEmail()+"입니다.";
@@ -57,9 +56,10 @@ public class SearchIdServlet extends HttpServlet {
     	json.put("msg", msg);
 		
 		request.setAttribute("msg", msg);
+		request.getRequestDispatcher(view).forward(request, response);
 		
 		response.setContentType("text/html; charset=UTF-8");
-    	response.getWriter().print(msg);
+    	response.getWriter().print(result.getMemberEmail());
 		
 	}
 

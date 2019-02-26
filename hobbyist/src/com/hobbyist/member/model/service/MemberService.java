@@ -1,11 +1,12 @@
 package com.hobbyist.member.model.service;
 
 import static common.JdbcTemplate.close;
-import static common.JdbcTemplate.getConnection;
 import static common.JdbcTemplate.commit;
+import static common.JdbcTemplate.getConnection;
 import static common.JdbcTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.hobbyist.member.model.dao.MemberDao;
 import com.hobbyist.member.model.vo.Member;
@@ -38,6 +39,13 @@ public class MemberService {
 		Connection conn = getConnection();
 		int result = dao.emailCheck(conn, finalEmail);
 		close(conn);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
 		return result;
 	}
 
@@ -45,7 +53,15 @@ public class MemberService {
 		Connection conn = getConnection();
 		int result = dao.nicknameCheck(conn, memberNickname);
 		close(conn);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
 		return result;
+
 	}
 
 	public Member selectMemberName(Member m) {
@@ -66,14 +82,19 @@ public class MemberService {
 	public int updateTempPwd(Member m) {
 		Connection conn = getConnection();
 		int resultPwd = dao.updateTempPwd(conn, m);
+		if(resultPwd>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
 		close(conn);
 		return resultPwd;
 	}
-	
-	//작가신청 합격으로 인한 맴버 데이터 수정
-	public int writerPassUpdate(String memberEmail) {
+
+	public int updateMember(Member m) {
 		Connection conn = getConnection();
-		int result = dao.writerPassUpdate(conn,memberEmail);
+		int result = dao.updateMember(conn, m);
 		if(result>0) {
 			commit(conn);
 		}
@@ -82,21 +103,44 @@ public class MemberService {
 		}
 		close(conn);
 		return result;
-	}
-	
 
-	//작가신청 불합격으로 인한 맴버 데이터 수정
-	public int writerFailUpdate(String memberEmail) {
+	}
+
+	public int deleteMember(Member m) {
 		Connection conn = getConnection();
-		int result = dao.writerFailUpdate(conn,memberEmail);
+		int result = dao.deleteMember(conn, m);
 		if(result>0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
 		return result;
 	}
 
+	public int updatePwd(Member m) {
+		Connection conn = getConnection();
+		int result = dao.updatePwd(conn, m);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public List<Member> memberList(int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Member> list = dao.memberList(conn, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+
+	public int selectMemberCount() {
+		Connection conn = getConnection();
+		int result = dao.selectMemberCount(conn);
+		close(conn);
+		return result;
+	}
 }

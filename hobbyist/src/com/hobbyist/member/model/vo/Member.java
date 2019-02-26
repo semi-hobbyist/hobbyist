@@ -1,7 +1,6 @@
 package com.hobbyist.member.model.vo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Member implements Serializable{
 
@@ -18,10 +17,12 @@ public class Member implements Serializable{
 	private String memberPhone;
 	private String memberOriginalImage;
 	private String memberRenamedImage;
-	private Date memberEnrolldate;
+	private String memberEnrolldate;
 	private String memberGrade;
 	private String memberWriterYN;
 	private String memberStatus;
+	private String memberAddress;
+	private String memberMemo;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
@@ -29,7 +30,7 @@ public class Member implements Serializable{
 
 	public Member(int memberNo, String memberEmail, String memberPassword, String memberNickname, String memberName,
 			String memberBirthday, String memberPhone, String memberOriginalImage, String memberRenamedImage,
-			Date memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus) {
+			String memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus, String memberAddress, String memberMemo) {
 		super();
 		this.memberNo = memberNo;
 		this.memberEmail = memberEmail;
@@ -44,6 +45,8 @@ public class Member implements Serializable{
 		this.memberGrade = memberGrade;
 		this.memberWriterYN = memberWriterYN;
 		this.memberStatus = memberStatus;
+		this.memberAddress = memberAddress;
+		this.memberMemo = memberMemo;
 	}
 
 	public int getMemberNo() {
@@ -118,11 +121,11 @@ public class Member implements Serializable{
 		this.memberRenamedImage = memberRenamedImage;
 	}
 
-	public Date getMemberEnrolldate() {
+	public String getMemberEnrolldate() {
 		return memberEnrolldate;
 	}
 
-	public void setMemberEnrolldate(Date memberEnrolldate) {
+	public void setMemberEnrolldate(String memberEnrolldate) {
 		this.memberEnrolldate = memberEnrolldate;
 	}
 
@@ -150,6 +153,22 @@ public class Member implements Serializable{
 		this.memberStatus = memberStatus;
 	}
 
+	public String getMemberAddress() {
+		return memberAddress;
+	}
+
+	public void setMemberAddress(String memberAddress) {
+		this.memberAddress = memberAddress;
+	}
+
+	public String getMemberMemo() {
+		return memberMemo;
+	}
+
+	public void setMemberMemo(String memberMemo) {
+		this.memberMemo = memberMemo;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -161,7 +180,7 @@ public class Member implements Serializable{
 				+ memberBirthday + ", memberPhone=" + memberPhone + ", memberOriginalImage=" + memberOriginalImage
 				+ ", memberRenamedImage=" + memberRenamedImage + ", memberEnrolldate=" + memberEnrolldate
 				+ ", memberGrade=" + memberGrade + ", memberWriterYN=" + memberWriterYN + ", memberStatus="
-				+ memberStatus + "]";
+				+ memberStatus + ", memberAddress=" + memberAddress + ", memberMemo=" + memberMemo + "]";
 	}
-	
+
 }

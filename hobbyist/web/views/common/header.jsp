@@ -15,6 +15,7 @@
     <!-- ------- 페이지 별 CSS 추가 -------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/loginStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/emailCheck.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/orderStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/noticeStyle.css">
@@ -298,9 +299,9 @@
                     </div>
                     <div class="sub_center">
                     <br><Br><Br>
-                    <img src="http://localhost:9090/hobbyist/upload/award/images/award39.jpg" width="110px">
-                    <img src="http://localhost:9090/hobbyist/upload/award/images/award38.jpg" width="110px">
-                    <img src="http://localhost:9090/hobbyist/upload/award/images/award37.jpg" width="110px">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px">
                     
                     </div>
                 </div>

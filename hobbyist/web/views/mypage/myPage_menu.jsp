@@ -1,13 +1,5 @@
-<%@page import="com.hobbyist.writer.model.vo.WriterEnroll"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
-	
-<%
-	boolean weFlag = false;
-	if(request.getAttribute("weFlag")!=null) {
-		weFlag = (boolean)request.getAttribute("weFlag");
-	}
-%>
 
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
@@ -46,17 +38,18 @@
       <li>내 포인트</li>
       <li>내 정보보기</li>
       <ul class="sub">
-         <li onclick="location.href='#'">내 정보 수정</li>
-         <li onclick="location.href='#'">비밀번호 수정</li>
+         <li onclick="fn_updateMember()">내 정보 수정</li>
+         <li onclick="fn_changePwd()">비밀번호 수정</li>
       </ul>
-      <% if(weFlag) { %>
-		<li onclick="location.href='<%= request.getContextPath() %>/mypage/mypage_writerEnrollList'">작가신청</li>
+      <% if(logginMember.getMemberWriterYN().equals("N")) { %>
+      <li>작가신청</li>
       <% } %>
    </ul>
 </div>
 
 <script>
    $(function () {
+      console.log("<%=logginMember.getMemberWriterYN()%>");
       var myPageLeftSelectValue = "";
       $(".myPage_left>ul>li").click(function () {
          if ($(this).html() == myPageLeftSelectValue) {
@@ -76,7 +69,7 @@
       if (scrollTo != 0) {
          $('#myPage_top').css("top", "97px");
       } else {
-         $('#myPage_top').css("top", "213px");
+         $('#myPage_top').css("top", "163px");
       }
    });
 
@@ -93,4 +86,15 @@
          }, 500)
       }
    })
+
+</script>
+
+<script>
+	function fn_updateMember(){
+		location.href="<%=request.getContextPath()%>/memberUpdateView.do";
+	}
+	
+	function fn_changePwd(){
+		location.href="<%=request.getContextPath()%>/changePwdView.do";
+	}
 </script>

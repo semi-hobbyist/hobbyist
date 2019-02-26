@@ -22,7 +22,7 @@ section#myPage .myPage_content .myPage_top {
     font-size: 14px;
     transition: 500ms;
     overflow: hidden;
-    top: 213px;
+    top: 163px;
 }
 
 section#myPage .myPage_content .myPage_top ul {
@@ -194,4 +194,134 @@ section#myPage .memberSimpleProfileTalContent {
     display: table-cell;
     text-align: right;
 }
+
+/* 내정보보기 -> 회원수정 */
+
+section#myPage .myPage_content .myPage_MemberInfo_right {
+	float: right;
+	margin-left: 15px;
+	margin-top: 57px;
+	padding-top: 20px;
+	padding-bottom: 60px;
+	width: 800px;
+	background-color: #fff;
+	border-radius: 6px;
+	text-align: center;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table {
+	border-collapse: collapse;
+	display: inline-block;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table tr:hover{
+	background-color: #eee;
+	transition: 500ms;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table tr:nth-last-child(1) {
+	background-color: #fff;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table input {
+	outline: none;
+	padding-left:10px;
+	width: 220px;
+	height: 26px;
+	border-radius: 4px;
+	border: 1px solid #dedede;
+	background-color: #fff;
+	font-size: 13px;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table button {
+		margin-top: 7px;
+	margin:5px;
+	outline: none;
+	width: 110px;
+	height: 30px;
+	border-radius: 4px;
+	border:1px solid #2c2c2c;
+	background-color: #3a4763;
+	color: #fff;
+	font-size: 12px;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table button:hover {
+	transition: 500ms;
+	background-color: #252525;
+	color: #fff;
+}
+
+section#myPage .myPage_content .myPage_MemberInfo_right  table td {
+	height: 45px;
+	text-align: left;
+}
+
+
+/* 내정보보기 - 비밀번호 변경 */
+
+
+section#myPage .myPage_content .myPage_MemberPwd_right {
+	float: right;
+	margin-left: 15px;
+	margin-top: 57px;
+	padding-top: 20px;
+	padding-bottom: 60px;
+	width: 800px;
+	background-color: #fff;
+	border-radius: 6px;
+	text-align: center;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table {
+	border-collapse: collapse;
+	display: inline-block;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table tr:hover{
+	background-color: #eee;
+	transition: 500ms;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table tr:nth-last-child(1) {
+	background-color: #fff;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table input {
+	outline: none;
+	padding-left:10px;
+	width: 220px;
+	height: 26px;
+	border-radius: 4px;
+	border: 1px solid #dedede;
+	background-color: #fff;
+	font-size: 13px;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table button {
+		margin-top: 7px;
+	margin:5px;
+	outline: none;
+	width: 110px;
+	height: 30px;
+	border-radius: 4px;
+	border:1px solid #2c2c2c;
+	background-color: #3a4763;
+	color: #fff;
+	font-size: 12px;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table button:hover {
+	transition: 500ms;
+	background-color: #252525;
+	color: #fff;
+}
+
+section#myPage .myPage_content .myPage_MemberPwd_right  table td {
+	height: 45px;
+	text-align: left;
+}
+
+
 

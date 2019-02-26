@@ -10,17 +10,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이메일 인증 메일 보내기</title>
+<title>회원가입 > 이메일인증</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/emailCheck.css">
 </head>
 <body>
 	<div class="emailSendCheck" id="emailSendCheck">
 		<form action="<%=request.getContextPath()%>/emailSend.do" method="post" name="emailSendFrm" id="emailSendForm">
 			<div>
 				<div>
-					<h4>인증메일을 보냈습니다 메일을 확인해주세요.</h4>
+					<img src="<%= request.getContextPath() %>/images/logo.jpg" width="140px">
+					<h3>인증메일이 전송되었습니다!<br>이메일을 확인해주세요.</h3>
 				</div>
-				<div class="emailSendImg"><img src="<%=request.getContextPath()%>/images/emailSend.png" width="100px"></div>
+				<div class="emailSendImg"><img src="<%=request.getContextPath()%>/images/mail.png" width="60px"></div>
 				
 				<div>
 					<input type="text" class="EmailInputText" value="<%=finalEmail %>" readonly/><br>
@@ -32,8 +34,8 @@
 				<div id="confirm"></div>
 				
 				<div>
-					<input type="button" id="emailBeforeBtn" class="emailSendCheckButton" value="취소" onclick="fn_cancel()" >
-					<input type="button" id="emailAfterBtn" class="emailSendCheckButton" value="확인" onclick="fn_comfirm()">
+					<button type="button" id="emailBeforeBtn" class="emailSendCheckButton" onclick="fn_cancel()" >취소</button>
+					<button type="button" id="emailAfterBtn" class="emailSendCheckButton" onclick="fn_comfirm()">확인</button>
 				</div>
 			</div>
 		</form>

@@ -20,11 +20,19 @@ import com.hobbyist.member.model.vo.Member;
 public class LoginMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public LoginMemberServlet() {
         super();
+        
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String email = request.getParameter("loginMemberEmail");
 		String password = request.getParameter("memberPassword");
 		

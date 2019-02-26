@@ -8,7 +8,7 @@
 	if(<%= logginMember!=null %>) {
 		
 	} else {
-		alert('접근 오류');
+		alert('회원만 접근 가능합니다');
 		location.href=history.back(-1);
 	}
 </script>

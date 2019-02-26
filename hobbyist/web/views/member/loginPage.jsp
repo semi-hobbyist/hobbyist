@@ -271,7 +271,7 @@
 		});
 	});
 	
-	/* //아이디 정규화
+	 //아이디 정규화
 	$(function(){
 		$('#memberEmail').blur(function(){
 			//아이디 정규화하기
@@ -282,10 +282,10 @@
 				$('#memberEmail').val('');
 			}
 		});
-	}); */
+	}); 
 	
 	//생년월일 6글자 이상 입력하는 경우 or 6글자 미만인 경우 경고문 처리
-	/* $(function(){
+	 $(function(){
 		$('#memberBirthday').blur(function(){
 			var memberBirthday = $('#memberBirthday').val();
 			if(memberBirthday.trim().length>6 || memberBirthday.trim().length<6){
@@ -303,7 +303,7 @@
 				$('#memberName').val('');
 			};
 		});
-	}); */
+	}); 
 </script>
 
 <script>

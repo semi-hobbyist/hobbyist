@@ -86,8 +86,6 @@ public class OrderInsertServlet extends HttpServlet {
 			}
 			System.out.println("---------------- 주문처리 (★★★★★) 완료 ---------------");
 			
-			// ----------- 장바구니에서 삭제하기
-			int deleteCart = new MyCartService().deleteCart(cartno);
 			
 			if(insertResult>0) {
 				msg = "결제가 완료되었습니다 [ 핀코드(PINCODE) : " + randomNum + " ] 핀코드를 복사(Ctrl + C)";

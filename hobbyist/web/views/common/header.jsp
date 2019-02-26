@@ -293,9 +293,11 @@
                             매달 추천수가 많은 작품들을 선정해 포인트를 적립해드립니다</p>
                     </div>
                     <div class="sub_center">
-                    </div>
-                    <div class="sub_right">
-                        
+                    <br><Br><Br>
+                    <img src="http://localhost:9090/hobbyist/upload/award/images/award39.jpg" width="110px">
+                    <img src="http://localhost:9090/hobbyist/upload/award/images/award38.jpg" width="110px">
+                    <img src="http://localhost:9090/hobbyist/upload/award/images/award37.jpg" width="110px">
+                    
                     </div>
                 </div>
             </div>

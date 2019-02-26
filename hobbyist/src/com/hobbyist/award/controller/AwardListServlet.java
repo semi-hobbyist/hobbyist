@@ -34,13 +34,13 @@ public class AwardListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int cPage;
+		int cPage=0;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
-		int numPerPage;
+		int numPerPage=0;
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
@@ -93,6 +93,10 @@ public class AwardListServlet extends HttpServlet {
 					+"/award/awardList?cPage="+pageNo
 					
 					+"&numPerPage="+numPerPage+"'>[다음]</a>";
+				}
+				
+				for(Award a : list) {
+					System.out.println(a.toString());
 				}
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);

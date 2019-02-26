@@ -112,29 +112,30 @@
         <div id="header-bottom">
             <div class="bottom">
                 <ul>
-                    <li>
+                    <li style="width: 160px;">
                         <div class="menuline"></div><img src="<%=request.getContextPath()%>/images/allmenu.png"
                             width="10px">&nbsp;&nbsp;전체보기
                     </li>
-                    <li onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">
+                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">
                         <div class="menuline"></div>공지사항
                     </li>
-                    <li onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">
+                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">
                         <div class="menuline"></div>클래스샵
                     </li>
-                    <li onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">
+                    <li  style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">
                         <div class="menuline"></div>원데이클래스
                     </li>
-                    <li onclick="location.href='<%= request.getContextPath()%>/award/awardList'">
+                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/award/awardList'">
                         <div class="menuline"></div>어워드
                     </li>
-                    <li onclick="location.href='<%=request.getContextPath()%>/board/boardList'">
+                    <li  style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/board/boardList'">
                         <div class="menuline"></div>커뮤니티
                     </li>
-                    <li><img src="<%= request.getContextPath() %>/images/myclass.png" id="icon_myclass" width="20px"
-                        onclick="fn_myclass()" style="cursor:pointer;">&nbsp;&nbsp;
-                    <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="20px"
-                        onclick="fn_cart()" style="cursor:pointer;"><span id="cartCount"></span></li>
+                    <li  style="width: 66px;"><img src="<%= request.getContextPath() %>/images/myclass.png" id="icon_myclass" width="23px"
+                        onclick="fn_myclass()" style="cursor:pointer;"></li>
+                        <li  style="width: 66px;">
+                    <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="23px"
+                        onclick="fn_cart()" style="cursor:pointer;"></li>
                     
                 </ul>
             </div>
@@ -595,7 +596,6 @@
                     }
          </script>
     </header>
-
 
 	<%@ include file="/views/member/loginPage.jsp" %>
 	

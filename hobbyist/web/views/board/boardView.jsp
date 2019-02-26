@@ -33,7 +33,7 @@
 		
 		<div id="boardView_right">
 			<div class="right_top">
-			<b>COMMUNITY BOARD </b>|&nbsp;&nbsp;메인 > 커뮤니티 > 자유게시판			
+			<h3>COMMUNITY BOARD</h3><p>메인 > 커뮤니티 > 자유게시판</p>			
 			</div>
 			<div class="boardView_top">
 				<%=b.getBoardTitle()%>

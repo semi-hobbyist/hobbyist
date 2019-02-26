@@ -285,7 +285,7 @@
 	}); */
 	
 	//생년월일 6글자 이상 입력하는 경우 or 6글자 미만인 경우 경고문 처리
-	$(function(){
+	/* $(function(){
 		$('#memberBirthday').blur(function(){
 			var memberBirthday = $('#memberBirthday').val();
 			if(memberBirthday.trim().length>6 || memberBirthday.trim().length<6){
@@ -301,11 +301,9 @@
 			if(!nameFlag.test($('#memberName').val())|| $('#memberName').val().trim().length==0){
 				alert('이름은 영문 또는 영어로 입력해주세요. 띄어쓰기는 사용 할 수 없습니다.');
 				$('#memberName').val('');
-				
 			};
 		});
-	});
-	
+	}); */
 </script>
 
 <script>

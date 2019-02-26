@@ -4,137 +4,109 @@
 <%@ include file="/views/common/header.jsp"%>
 <%
 	Award a = (Award)request.getAttribute("award");
-	List<AwardComment> comments = (List) request.getAttribute("comments");
+	List<AwardComment> comments= (List) request.getAttribute("comments");
+
+	if(request.getAttribute("comments")!=null) {
+	} else {
+	}
+	
 %>
 <section id="award">
 	<div class="award_content">
 		<div id="award_right">
-			<b>Award</b>|&nbsp;&nbsp;메인 > 하비스트 어워드 > 어워드 게시물
+			<h3>AWARD</h3><p>자신의 취미를 자랑해보세요~ 하비스트 어워드!</p>
 			<!-- =============== -->
 			<div class="award_top">
 				<div class="award_top_left">
 					<div class="award_board_no">
-						<span>게시글 NO. <%=a.getAwardNo()%></span>
-					</div>
-
-				</div>
-				<div class="award_top_right">
-					<div class="award_board_date">
-
-						<span><%=a.getAwardDate()%></span>
+						<span>게시글 NO. <%=a.getAwardNo()%></span>&nbsp;&nbsp;&nbsp;<span><%=a.getAwardDate()%></span>
 					</div>
 				</div>
 			</div>
 			<!-- ================ -->
 			<div class="award_board_view">
 				<div class="award_board_view_name"><%=a.getAwardName()%></div>
+				
 				<div class="award_board_view_writer">
-					   작성자 :<%=a.getAwardWriter()%>
-					   <br>조회수 :<%=a.getReadCount() %>
-					   <br>추천수: ♡ <%=a.getLikeCount() %>
-					
+					작성자 : <%=a.getAwardWriter()%>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;조회수 : <%=a.getReadCount() %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;추천수 : ♡ <%=a.getLikeCount() %>
 				</div>
 
-				<div class="award_board_view_content"><%=a.getAwardContent()%></div>
-				<div class="award_board_view_original">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardOriginalFilename()%>"
-						width="200px" height="200px">
+				<div class="award_board_view_content">
+				<img src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardOriginalFilename()%>" width="300px"><br>
+				<%=a.getAwardContent()%><br><br><br><br><br>
 				</div>
-				<div class="award_board_view_image">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardOriginalFilename()%>"
-						width="300px">
-				</div>
-				<div class="award_board_view_image">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardImage2()%>"
-						width="300px">
-				</div>
-				<div class="award_board_view_image">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardImage3()%>"
-						width="300px">
-				</div>
-				<div class="award_board_view_image">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardImage4()%>"
-						width="300px">
-				</div>
-				<div class="award_board_view_image">
-					<img
-						src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardImage5()%>"
-						width="300px">
+				<br>
+				<img  onclick="fn_clickLike()" id="award_like_img" src="<%=request.getContextPath()%>/images/award_like_off.png" width="90px" height="90px" style=" cursor: pointer;">
+				</br>
+				<div id="awardlike_btn">
+					 어워드 게시물이 마음에 드셨다면 <strong>추천</strong>버튼을 눌러주세요<br>
 				</div>
 			</div>
-			<!-- =========좋아요버튼======= -->
-			<div id="awardlike_btn" >
-			<span>어워드 게시물이 마음에 드셨다면 <strong>추천</strong>버튼을 눌러주세요</span>
-			<br><br>
-			<span>
-			<a href=""><img id="award_like_img" src="<%=request.getContextPath()%>/images/award_like_off.png" onclick="fn_clickLike()" width="90px" height="90px"></a>
-			</span>
+		
+			<div class="award_board_view_bottom">
+				<%if(logginMember!=null&&(a.getAwardWriter().equals(logginMember.getMemberEmail()))) {%>
+				<button type="button">어워드 삭제</button>
+				<button type="button">어워드 수정</button>
+				<%} %>
 			</div>
-		</div>
-
-		
-		
-		<br><br><br><br>
-		<%if(logginMember!=null&&(a.getAwardWriter().equals(logginMember.getMemberEmail()))) {%>
-		<input type="button" value="게시글 삭제하기" onclick="fn_deleteAward()">
-		<input type="button" value="게시글 수정하기" onclick="fn_updateAward()">
-		<%} %>
+			
 		<!-- ================ -->
-		<div class="view_comment">
-			<form name="commentFrm"
-				action="<%=request.getContextPath()%>/award/awardCommentInsert"
-				method="post">
-				<input type="hidden" name="awardRef" value="<%=a.getAwardNo()%>">
-				<input type="hidden" name="awardCommentWriter"
-					value="<%=logginMember != null ? logginMember.getMemberEmail() : ""%>">
-				<input type="hidden" name="awardCommentLevel" value="1"> <input
-					type="hidden" name="awardCommentRef" value="0">
-
-				<textarea name="awardCommentContent" rows="3" cols="60"></textarea>
-				<button type="submit" id="btn-insert">댓글등록</button>
-			</form>
-
-			<form name="deleteFrm"
-				action="<%=request.getContextPath()%>/award/awardDelete"
-				method="post">
-				<input type="hidden" name="deleteNo" value="<%=a.getAwardNo()%>">
-				<input type="hidden" name="deleteFile"
-					value="<%=a.getAwardOriginalFilename()%>">
-			</form>
+				<div id=review>
+				<div class="view_comment">
+					<form name="commentFrm" id="commentFrm" action="<%=request.getContextPath()%>/award/awardCommentInsert" method="post">
+						<input type="hidden" name="awardRef" value="<%=a.getAwardNo()%>">
+						<input type="hidden" name="awardCommentWriter"
+							value="<%=logginMember != null ? logginMember.getMemberEmail() : ""%>">
+						<input type="hidden" name="awardCommentLevel" value="1"> <input
+							type="hidden" name="awardCommentRef" value="0">
+		
+		
+						<%if(logginMember!=null) {%>
+						<textarea name="awardCommentContent"></textarea>
+						<button type="submit" id="btn-insert">작성</button>
+						<%} %>
+					</form>
+		
+					<form name="deleteFrm"
+						action="<%=request.getContextPath()%>/award/awardDelete"
+						method="post">
+						<input type="hidden" name="deleteNo"  value="<%=a.getAwardNo()%>">
+						<input type="hidden" name="deleteFile" value="<%=a.getAwardOriginalFilename()%>">
+					</form>
+				</div>
+			<br				<!-- 커멘트 테이블  -->
+					<table id="review_tbl">
+						<% 
+						if(!comments.isEmpty()&&logginMember!=null) {
+							for(AwardComment ac : comments) {
+								if(ac.getAwardCommentLevel()==1) {
+					%>
+						<tr>
+							<td style="width: 600px; text-align: left;">작성자 : <%=ac.getAwardCommentWriter() %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;작성일 : <%=ac.getAwardCommentDate() %>
+								<br /><%=ac.getAwardCommentContent() %></td>
+							<td style="width:200px;">
+								<!-- 대댓글버튼 -->
+								<button class="btn-reply" value="<%=ac.getAwardCommentNo()%>">답글</button>
+			
+			 					<% if(logginMember!=null){ %>
+								<% if(ac.getAwardCommentWriter().equals(logginMember.getMemberEmail()) || logginMember.getMemberEmail().equals("admin")) { %>
+									<button class="btn-delete" value="<%=ac.getAwardCommentNo()%>" onclick="fn_reCommentDelete()">삭제</button>
+								<% } %>
+								<% } %>
+							</td>
+						</tr>
+			
+							<%} else { %>
+							<tr class='level2'>
+								<td style="text-align: left; padding-left: 30px;">작성자 : <%=ac.getAwardCommentWriter() %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;작성일 : <%=ac.getAwardCommentDate() %>
+									<br /><%=ac.getAwardCommentContent() %></td>
+				
+							</tr>
+							<%} %>
+						<%}} %>
+					</table>
+				</div>
 		</div>
-
-		<!-- 커멘트 테이블  -->
-		<table id="">
-			<% 
-			if(!comments.isEmpty()) {
-				for(AwardComment ac : comments) {
-					if(ac.getAwardCommentLevel()==1) {
-		%>
-			<tr>
-				<td><sub><%=ac.getAwardCommentWriter() %></sub> <sub><%=ac.getAwardCommentDate() %></sub>
-					<br /><%=ac.getAwardCommentContent() %></td>
-				<td>
-					<!-- 대댓글버튼 -->
-					<button class="btn-reply" value="<%=ac.getAwardCommentNo()%>">답글</button>
-					<button class="btn-delete" value="<%=ac.getAwardCommentNo()%>">삭제</button>
-
-				</td>
-			</tr>
-
-			<%} else { %>
-			<tr class='level2'>
-				<td><sub><%=ac.getAwardCommentWriter() %></sub> <sub><%=ac.getAwardCommentWriter() %></sub>
-					<br /><%=ac.getAwardCommentContent() %></td>
-
-			</tr>
-			<%} %>
-			<%}} %>
-		</table>
 	</div>
 </section>
 <script>
@@ -249,24 +221,39 @@
 		});
 		
 		function fn_clickLike(){
-			<%if(logginMember!=null&&logginMember.getMemberEmail()!=null){%>
-			/* awardLikeServlet으로  */
-			location.href='<%=request.getContextPath()%>/award/awardLike?awardNo=<%=a.getAwardNo()%>&userId=<%=logginMember.getMemberEmail()%>'
-			<%}else{%>
-			alert('로그인 후 이용하세요');
-			<%}%>
+			if(<%= logginMember!=null %>) {
+				$.ajax({
+					url:'<%= request.getContextPath() %>/award/awardLike',
+					data : {"awardNo" : "<%= a.getAwardNo() %>", "userId" : "<%=logginMember!=null?logginMember.getMemberEmail():'a'%>"},
+					dataType : 'text',
+					success : function(data) {
+						console.log(data);
+						alert('추천 완료');
+
+					}
+				});
+			} else {
+				alert('회원만 추천가능합니다. 로그인 후 이용하세요!');
+			}
 		}
 		
+		
+		
+		
 		/* ============================= */
+		
 		$(function(){
 			$(function(){
+		
 				$(".btn-delete").on('click',function(){
 					if(!confirm("댓글을 삭제하시겠습니까?"))
 					return;
 					{
 						location.href='<%=request.getContextPath()%>/award/awardCommentDelete?awardNo=<%=a.getAwardNo()%>&deleteNo='+ $(this).val();}
+				
 			})
 		})
+
 	});
 </script>
 

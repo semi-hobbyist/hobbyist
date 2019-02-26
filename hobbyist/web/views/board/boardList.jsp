@@ -22,6 +22,7 @@
 	
 		<div id="board_left">
 			<div id="board_sub">
+			<br>
 				<h3>Board Menu</h3>
 				<ul>
 					<li onclick="location.href='<%=request.getContextPath()%>/board/boardList'" style="cursor: pointer;"> · 자유게시판</li>
@@ -49,7 +50,8 @@
 		</div>
 		
 		<div id="board_right">
-			<b>COMMUNITY BOARD </b>|&nbsp;&nbsp;메인 > 커뮤니티 > 자유게시판
+			<h3>COMMUNITY BOARD </h3>
+			<p>메인 > 커뮤니티 > 자유게시판</p>
 			<div class="board_top">
 				<form name="searchFrm" action="<%=request.getContextPath()%>/board/boardSearch" method="POST">
 					<div class="sort">

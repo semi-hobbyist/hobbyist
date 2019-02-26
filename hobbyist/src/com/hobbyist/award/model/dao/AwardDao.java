@@ -14,6 +14,8 @@ import java.util.Properties;
 
 import com.hobbyist.award.model.vo.Award;
 import com.hobbyist.award.model.vo.AwardComment;
+import com.hobbyist.board.model.vo.Board;
+import com.sun.corba.se.impl.ior.GenericTaggedComponent;
 
 public class AwardDao {
 
@@ -51,6 +53,7 @@ public class AwardDao {
 				a.setLikeCount(rs.getInt("AWARD_LIKECOUNT"));
 				a.setAwardWriter(rs.getString("AWARD_WRITER"));
 				a.setAwardContent(rs.getString("AWARD_CONTENT"));
+				a.setReadCount(rs.getInt("AWARD_READCOUNT"));			
 				a.setAwardImage1(rs.getString("AWARD_IMAGE1"));
 				a.setAwardImage2(rs.getString("AWARD_IMAGE2"));
 				a.setAwardImage3(rs.getString("AWARD_IMAGE3"));
@@ -61,6 +64,7 @@ public class AwardDao {
 				a.setAwardOriginalFilename(rs.getString("AWARD_ORIGINALFILENAME"));
 				a.setAwardRenamedFilename(rs.getString("AWARD_RENAMEDFILENAME"));
 				list.add(a);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -71,28 +75,6 @@ public class AwardDao {
 		return list;
 	}
 
-	public int selectCount(Connection conn) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int totalCount = 0;
-		String sql = prop.getProperty("selectCount");
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				totalCount = rs.getInt("cnt");
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return totalCount;
-
-	}
 
 	public Award selectOne(Connection conn, int awardNo) {
 		PreparedStatement pstmt = null;
@@ -110,6 +92,7 @@ public class AwardDao {
 				a.setLikeCount(rs.getInt("AWARD_LIKECOUNT"));
 				a.setAwardWriter(rs.getString("AWARD_WRITER"));
 				a.setAwardContent(rs.getString("AWARD_CONTENT"));
+				a.setReadCount(rs.getInt("AWARD_READCOUNT"));			
 				a.setAwardImage1(rs.getString("AWARD_IMAGE1"));
 				a.setAwardImage2(rs.getString("AWARD_IMAGE2"));
 				a.setAwardImage3(rs.getString("AWARD_IMAGE3"));
@@ -129,8 +112,35 @@ public class AwardDao {
 		return a;
 	}
 
+	
+	public int selectCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("selectCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setString(1, "Y");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+		
+	}
+
 	public int increReadCount(Connection conn, int awardNo) {
 		PreparedStatement pstmt = null;
+		
 		int result = 0;
 		String sql = prop.getProperty("increReadCount");
 		try {
@@ -317,7 +327,8 @@ public class AwardDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, awardNo);
 			rs = pstmt.executeQuery();
-
+			
+			// 만약 리스트가 있다면 users 값을 String user에 담는다
 			if (rs.next()) {
 				users = rs.getString("USERS");
 			}
@@ -373,6 +384,8 @@ public class AwardDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, users);
 			pstmt.setInt(2, awardNo);
+			result=pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -382,4 +395,95 @@ public class AwardDao {
 
 	}
 
-}
+	
+	public List<Award> selectSearchList(Connection conn, int cPage, int numPerPage, String searchType, String searchKeyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "";
+		//String sql2 = "";
+		List<Award> list = new ArrayList<Award>();
+		if(searchType.equals("newUp")) {
+			sql1 = prop.getProperty("newUpList");
+			//sql2 = prop.getProperty("newUpListCommentCount");
+		}
+		else if(searchType.equals("viewsUp")) {
+			sql1 = prop.getProperty("viewsUpList");
+			//sql2 = prop.getProperty("viewsUpListCommentCount");
+		}
+		else if(searchType.equals("LikeUp")) {
+			sql1 = prop.getProperty("LikeUpList");
+			//sql2 = prop.getProperty("LikeUpListCommentCount");
+		}
+		try {
+			
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+			
+		
+		while(rs.next()) {
+			Award a=new Award();
+			a.setAwardNo(rs.getInt("AWARD_NO"));
+			a.setAwardName(rs.getString("AWARD_NAME"));
+			a.setLikeCount(rs.getInt("AWARD_LIKECOUNT"));
+			a.setAwardWriter(rs.getString("AWARD_WRITER"));
+			a.setAwardContent(rs.getString("AWARD_CONTENT"));
+			a.setReadCount(rs.getInt("AWARD_READCOUNT"));			
+			a.setAwardImage1(rs.getString("AWARD_IMAGE1"));
+			a.setAwardImage2(rs.getString("AWARD_IMAGE2"));
+			a.setAwardImage3(rs.getString("AWARD_IMAGE3"));
+			a.setAwardImage4(rs.getString("AWARD_IMAGE4"));
+			a.setAwardImage5(rs.getString("AWARD_IMAGE5"));
+			a.setAwardDate(rs.getDate("AWARD_DATE"));
+			a.setAwardStatus(rs.getString("AWARD_STATUS"));
+			a.setAwardOriginalFilename(rs.getString("AWARD_ORIGINALFILENAME"));
+			a.setAwardRenamedFilename(rs.getString("AWARD_RENAMEDFILENAME"));
+			list.add(a);
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectSearchCount(Connection conn, String searchType, String searchKeyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		int totalCount = 0;
+		
+		if(searchType.equals("newUp")) sql = prop.getProperty("newUpCount");
+		else if(searchType.equals("viewsUp")) sql = prop.getProperty("viewsUpCount");
+		else if(searchType.equals("LikeUp")) sql = prop.getProperty("LikeUpCount");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "Y");
+			pstmt.setString(2, "%" + searchKeyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalCount = rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return totalCount;
+	}
+		
+	}
+	
+	
+
+

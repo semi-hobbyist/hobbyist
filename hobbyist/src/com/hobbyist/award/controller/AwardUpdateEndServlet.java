@@ -52,17 +52,18 @@ public class AwardUpdateEndServlet extends HttpServlet {
 			a.setAwardName(mr.getParameter("title"));
 			a.setAwardWriter(mr.getParameter("writer"));
 			a.setAwardContent(mr.getParameter("content"));
-			String fileName=mr.getFilesystemName("up_file");
+			String fileName=mr.getFilesystemName("up_file");//새로 받을 파일은 filesysname으로 
 
 			File f=mr.getFile("up_file");
 			if(f!=null&&f.length()>0) {
 				File deleFile=new File(filePath+"/"+mr.getParameter("old_file"));
 				boolean flag = deleFile.delete();
 			} else {
-				fileName=mr.getFilesystemName("old_file");
+				fileName=mr.getParameter("old_file");//기존에 있던 파일 그대로 받기
 			}
 			a.setAwardOriginalFilename(fileName);
 
+		
 			int result = new AwardService().updateAward(a);
 			
 			String msg="";

@@ -9,13 +9,13 @@ section#cart .cart_content {
     display: inline-block;
     text-align: center;
     width: 970px;
-    padding-top: 213px;
+    padding-top: 163px;
     padding-bottom: 100px;
 }
 
 section#cart .cart_content .mycart_banner {
 	width: 950px;
-	height: 60px;
+	height: 55px;
 	border: 1px solid #ddd;
 	text-align: left;
 	padding-left: 20px;

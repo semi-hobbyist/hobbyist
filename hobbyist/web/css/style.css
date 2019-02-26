@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
 
 html, body {
     padding: 0;
     margin: 0;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
     letter-spacing: -0.3px;
     scroll-behavior: smooth;
@@ -248,15 +248,15 @@ header #header-bottom .bottom ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    height: 45px;
 }
 
 header #header-bottom .bottom ul li {
     text-align: center;
     display: inline-block;
-    padding-left: 43px;
-    padding-right: 43px;
-    padding-bottom: 12px;
     cursor: pointer;
+	padding-top: 8px;
+	padding-bottom: 10px;
 }
 
 header #header-bottom .bottom ul li:nth-child(1) {
@@ -264,39 +264,8 @@ header #header-bottom .bottom ul li:nth-child(1) {
     color: #fff;
 }
 
-
-header #header-bottom .bottom ul li:nth-last-child(1) {
-	padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-header #header-bottom .bottom ul #icon_sub {
-	z-index: 9999;
-	position: absoulte;
-	opacity: 0;
-	display: none;
-	width: 60px;
-	padding-top: 2px;
-	height: 20px;
-	background-color: #252525;
-	color: #fff;
-	font-size: 11px;
-	transition: 1000ms;
-	border-radius: 5px;
-}
-
 /* ---------------------------------------------------------  포인트 컬러 */
 
-header #header-bottom .bottom ul li .menuline {
-    width: 0;
-    height: 3px;
-    margin-bottom: 7px;
-}
-
-header #header-bottom .bottom ul li:hover .menuline {
-	transition: 500ms;
-    width: 100%;
 }
 
 header .active {
@@ -908,7 +877,7 @@ section#shop .shop_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 170px;
+    padding-top: 140px;
 }
 
 section#shop .shop_content #shop_left {

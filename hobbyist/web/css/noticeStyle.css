@@ -76,15 +76,15 @@
     height: 26px;
     padding-top: 7px;
     background-color: #fff;
-    color: #424242;
-    border-bottom: 2px solid #3b4f6a;
+    color: #32343a;
+    border-bottom: 2px solid #575b69;
     outline: none;
 }
 
 #notice .notice_content .tal_top .sort .sortBtn:hover {
     transition: 500ms;
     color: white;
-    background-color: #475770;
+    background-color: #575b69;
 }
 
 #notice .notice_content .tal_top .sort .selected:hover {
@@ -136,8 +136,8 @@
 }
 
 #notice .weNoticeColor {
-    background-color: rgb(100, 100, 100);
-    color: white;
+    background-color: #e1e3e9;
+    color: #32343a;
 }
 
 
@@ -147,7 +147,9 @@
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: #eceef2;
+    background-color: white;
+    border-top: 2px solid #575b69;
+    border-bottom: 1px solid #575b69;
     border-left: 5px solid white;
     color: black;
 }
@@ -170,7 +172,7 @@
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: #eef1f7;
+    background-color: #c8cad1;
     border-left: 3px solid #3e4b6c;    
     border-bottom: 1px solid #eee;
     color: black;
@@ -682,9 +684,9 @@
 	width: 100px;
 	height: 30px;
 	letter-spacing: 0.15em;
-	border: 1px solid #475770;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: #475770;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 	cursor: pointer;
@@ -693,8 +695,8 @@
 #notice .button1:hover,
 #noticeWrite .button1:hover,
 #noticeView .button1:hover {
-    color: black;
-    border: 1px solid #475770;
+    color: #32343a;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -1177,7 +1179,7 @@
     right: -40px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+    background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -1190,8 +1192,9 @@
 }
 #notice .noticeListDel:hover {
     transition: 400ms;
-    color: white;
-	background-color: rgb(184, 0, 0);
+    color: #32343a;
+    background-color: white;
+    border: 1px solid #9fa3b1;
 }
 
 

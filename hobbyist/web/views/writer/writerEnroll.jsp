@@ -65,7 +65,7 @@
 						<div class="inputImageBox">
 							<div class="inputImageback">
 								<div class="inputImage">
-									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" width="100px" height="100px"/>
 									<div class="imageTitle"></div>
 								</div>
 								<input type="file" name="writerMajorImgfileOriginal" class="inputImageFile" />

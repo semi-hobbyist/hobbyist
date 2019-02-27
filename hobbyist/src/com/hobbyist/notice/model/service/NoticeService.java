@@ -286,5 +286,12 @@ public class NoticeService {
 		close(conn);
 		return wnList;
 	}
+	
+	public List<Notice> newLatestList() {
+		Connection conn = getConnection();
+		List<Notice> list = dao.newLatestList(conn);
+		close(conn);
+		return list;
+	}
 
 }

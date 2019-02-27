@@ -27,7 +27,7 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'">
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
 					<img src="<%= request.getContextPath() %>/images/back.png" width="18px">
 				</li>
 				<li>WRITER | 작가신청 관리</li>

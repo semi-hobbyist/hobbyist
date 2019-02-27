@@ -48,10 +48,9 @@ section#award {
 
 section#award .award_content {
 	width: 990px;
-	padding-top: 200px; /* 기본메뉴만큼 띄우기 */
+	padding-top: 120px; /* 기본메뉴만큼 띄우기 */
 	text-align: center;
 	display: inline-block;
-	padding-top: 140px;
 }
 
 section#award .award_content #award_left {

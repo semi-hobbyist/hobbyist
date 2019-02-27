@@ -8,6 +8,7 @@ section#myPage .myPage_content {
     text-align: center;
     width: 990px;
     padding-top: 140px;
+    color: #515359;
 }
 section#myPage .myPage_content .myPage_top {
     width: 970px;
@@ -119,13 +120,50 @@ section#myPage .myPage_content .myPage_right #myPage_main .image {
 
 
 section#myPage .myPage_content .myPage_right #myPage_main table {
+	display: inline-block;
     border-collapse: collapse;
+}
+
+section#myPage .myPage_content .myPage_right #myPage_main table a {
+	    color: #515359;
+	text-decoration: none;
 }
 
 section#myPage .myPage_content .myPage_right #myPage_main table th {
     border-top: 2px solid #777777;
     height: 45px;
 }
+
+section#myPage .myPage_content .myPage_right #myPage_main table td {
+	border-bottom: 1px solid #eee;
+	height: 35px;
+}
+
+section#myPage .myPage_content .myPage_right #myPage_main table td p {
+	margin: 0;
+}
+
+
+section#myPage .myPage_content .myPage_right #myPage_main  table button {
+	margin-top: 7px;
+	margin:5px;
+	outline: none;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:5px;
+	padding-bottom:5px;
+	border:1px solid #575b69;
+	background-color: #575b69;
+	color: #fff;
+	font-size: 12px;
+}
+
+section#myPage .myPage_content .myPage_right #myPage_main table button:hover {
+	transition: 500ms;
+	background-color: #42454d;
+	color: #fff;
+}
+
 
 
 /* memberSimpleProfileBox css */

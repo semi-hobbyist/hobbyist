@@ -92,13 +92,22 @@ section#admin .admin_content .admin_left ul li:hover {
 
 
 section#admin .admin_content .admin_right {
-    padding-top: 60px;
+    padding-top: 47px;
     float: right;
     width: 830px;
+    padding-bottom: 50px;
 }
 
 section#admin .admin_content .admin_right #admin_main {
+	display: inline-block;
     width: 100%;
+    text-align: center;
+}
+
+section#admin .admin_content .admin_right #admin_main .image {
+    cursor: pointer;
+	margin: 15px;
+	display: inline-block;
 }
 
 section#admin .admin_content .admin_right #admin_main table {

@@ -16,6 +16,8 @@ import com.hobbyist.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import common.rename.MyFileRenamePolicy;
+
 /**
  * Servlet implementation class MemberEnrollServlet
  */
@@ -46,7 +48,7 @@ public class MemberEnrollServlet extends HttpServlet {
          String dir = getServletContext().getRealPath("/");
          String filepath = dir+File.separator+"upload"+File.separator+"member";
          int maxSize=1024*1024*10;
-         MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+         MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, "UTF-8", new MyFileRenamePolicy());
          
          String memberEmail = mr.getParameter("memberEmail");
          String memberEmailaddress = mr.getParameter("memberEmailaddress");
@@ -55,7 +57,8 @@ public class MemberEnrollServlet extends HttpServlet {
          String memberName = mr.getParameter("memberName");
          String memberBirthday = mr.getParameter("memberBirthday");
          String memberPhone = mr.getParameter("memberPhone");
-         String memberOriginalImage = mr.getFilesystemName("memberOriginalImage");
+         String memberOriginalImage = mr.getOriginalFileName("memberOriginalImage");
+         String memberRenameImage = mr.getFilesystemName("memberOriginalImage");
          String finalEmail = memberEmail+memberEmailaddress;
          
          Member m = new Member();
@@ -67,6 +70,7 @@ public class MemberEnrollServlet extends HttpServlet {
          m.setMemberBirthday(memberBirthday);
          m.setMemberPhone(memberPhone);
          m.setMemberOriginalImage(memberOriginalImage);
+         m.setMemberRenamedImage(memberRenameImage);
          
          int result = new MemberService().enrollMember(m);
          

@@ -148,14 +148,6 @@
                 <div class="sub_content">
                     <ul>
                     <li class="all_li">
-                  		<ul>
-                        	<li>로그인</li>
-                        	<li>회원가입</li>
-                        	<li>마이페이지</li>
-                        	<li></li>
-                        	<li>내클래스</li>
-                        	<li>취미바구니</li>
-                        </ul>
                     </li>
                     <li  class="all_li">
                         <ul>

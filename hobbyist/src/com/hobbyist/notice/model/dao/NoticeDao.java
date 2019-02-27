@@ -802,5 +802,41 @@ public class NoticeDao {
 		}
 		return wnList;
 	}
+	
+	public List<Notice> newLatestList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("newLatestList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }

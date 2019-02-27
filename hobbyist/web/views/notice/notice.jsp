@@ -311,7 +311,7 @@
 		function fn_noticeListDel(index) {
 			var flag = confirm("삭제하시겠습니까?");
 			if(flag){
-								
+
 				$.ajax({
 					url: '<%= request.getContextPath() %>/notice/noticeDelAjax.do',
 					type: 'POST',

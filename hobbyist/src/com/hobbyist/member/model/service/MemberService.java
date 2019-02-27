@@ -161,4 +161,32 @@ public class MemberService {
 		}
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	//작가신청에서 사용하는 중.. 
+	public int writerPassUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerPassUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+	
+	public int writerFailUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerFailUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+	
+	public int writerReUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerReUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+
 }

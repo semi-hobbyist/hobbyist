@@ -34,10 +34,12 @@
 					<tr>
 						<th style="width:150px;">프로필사진</th>
 						<td style="width:400px;">
+							<img src="<%= request.getContextPath() %>/upload/member/<%= result.getMemberRenamedImage() %>" width="150px" style="border-radius: 40px;"><br>
 							<% if(result.getMemberOriginalImage()!=null){ %>
 								<input type="file" class="inputImage" name="memberOriginalImage" value="<%=result.getMemberOriginalImage()%>"/>
-								<span id="fname"><%=result.getMemberOriginalImage()%></span>
+								<span id="fname"><%=result.getMemberOriginalImage() %></span>
 								<input type="hidden" name="old_file" value="<%=result.getMemberOriginalImage()%>"/>
+								<input type="hidden" name="old_rename" value="<%= result.getMemberRenamedImage() %>"/>
 							<%} else {%>
 									<input type="file" name="memberOriginalImage"/>
 							<%} %>

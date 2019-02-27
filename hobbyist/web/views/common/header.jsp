@@ -99,9 +99,7 @@
                     <li onclick="fn_loginPageView()">로그인/회원가입
                     </li>
                     <% } else { %>
-                    <span><a href="#"><img alt="프로필 이미지"
-                                src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>"
-                                width="15px" height="15px">
+                    <span><a href="#"><img src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>" width="15px" height="15px">
                             <%= logginMember.getMemberNickname() %></a> 님 환영합니다</span>
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
                     <li id="admin" onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">관리자

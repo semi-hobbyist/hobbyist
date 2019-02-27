@@ -30,13 +30,14 @@ public class MemberDao {
 	public Member selectOne(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Member result = new Member();
+		Member result = null;
 		String sql = prop.getProperty("selectOne");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				result = new Member();
 				result.setMemberNo(rs.getInt("member_no"));
 				result.setMemberEmail(rs.getString("member_email"));
 				result.setMemberPassword(rs.getString("member_password"));
@@ -50,7 +51,6 @@ public class MemberDao {
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));
-				System.out.println("dao에서 result : " + result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("dao에서 result2 : " + result);
+		System.out.println("한명 회원정보 가져오기 (DAO) : " + result);
 		return result;
 
 	}
@@ -233,7 +233,8 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemberNickname());
 			pstmt.setString(2, m.getMemberPhone());
 			pstmt.setString(3, m.getMemberOriginalImage());
-			pstmt.setString(4, m.getMemberEmail());
+			pstmt.setString(4, m.getMemberRenamedImage());
+			pstmt.setString(5, m.getMemberEmail());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

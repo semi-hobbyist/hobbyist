@@ -131,7 +131,7 @@ function fn_myclass() {
 
 <script>
 	function fn_updateMember(){
-		location.href="<%=request.getContextPath()%>/memberUpdateView.do";
+		location.href="<%=request.getContextPath()%>/memberUpdateView.do?memberEmail=<%= logginMember.getMemberEmail() %>";
 	}
 	
 	function fn_changePwd(){

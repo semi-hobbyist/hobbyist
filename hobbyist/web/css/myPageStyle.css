@@ -107,8 +107,16 @@ section#myPage .myPage_content .myPage_right {
 }
 
 section#myPage .myPage_content .myPage_right #myPage_main {
+	text-align: center;
     width: 100%;
 }
+
+section#myPage .myPage_content .myPage_right #myPage_main .image {
+	cursor: pointer;
+	margin: 15px;
+	display: inline-block;
+}
+
 
 section#myPage .myPage_content .myPage_right #myPage_main table {
     border-collapse: collapse;

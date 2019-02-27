@@ -26,7 +26,7 @@ public class MemberDao {
 		}
 
 	}
-
+	
 	public Member selectOne(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -36,7 +36,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				result.setMemberNo(rs.getInt("member_no"));
 				result.setMemberEmail(rs.getString("member_email"));
 				result.setMemberPassword(rs.getString("member_password"));
@@ -46,11 +46,11 @@ public class MemberDao {
 				result.setMemberPhone(rs.getString("member_phone"));
 				result.setMemberOriginalImage(rs.getString("member_original_image"));
 				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
-				result.setMemberEnrolldate(rs.getString("member_enrolldate"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));
-				System.out.println("dao에서 result : " + result);
+				System.out.println("dao에서 result : "+result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,11 +58,11 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("dao에서 result2 : " + result);
+		System.out.println("dao에서 result2 : "+result);
 		return result;
-
+		
 	}
-
+	
 	public int enrollMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -144,7 +144,7 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemberName());
 			pstmt.setString(2, m.getMemberPhone());
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				result.setMemberNo(rs.getInt("member_no"));
 				result.setMemberEmail(rs.getString("member_email"));
 				result.setMemberPassword(rs.getString("member_password"));
@@ -154,7 +154,7 @@ public class MemberDao {
 				result.setMemberPhone(rs.getString("member_phone"));
 				result.setMemberOriginalImage(rs.getString("member_original_image"));
 				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
-				result.setMemberEnrolldate(rs.getString("member_enrolldate"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));
@@ -172,15 +172,15 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Member result = null;
-
+		
 		System.out.println("dao 에서 확인 : " + m.getMemberEmail());
-
+		
 		String sql = prop.getProperty("searchPwd");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				result = new Member();
 				result.setMemberNo(rs.getInt("member_no"));
 				result.setMemberEmail(rs.getString("member_email"));
@@ -191,7 +191,7 @@ public class MemberDao {
 				result.setMemberPhone(rs.getString("member_phone"));
 				result.setMemberOriginalImage(rs.getString("member_original_image"));
 				result.setMemberRenamedImage(rs.getString("member_renamed_image"));
-				result.setMemberEnrolldate(rs.getString("member_enrolldate"));
+				result.setMemberEnrolldate(rs.getDate("member_enrolldate"));
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));

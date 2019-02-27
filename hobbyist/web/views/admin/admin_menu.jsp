@@ -3,7 +3,7 @@
 
 <div class="admin_left">
    <ul>
-      <li>회원관리</li>
+      <li onclick="location.href='<%=request.getContextPath()%>/adminMemberList.do'">회원관리</li>
       <li>작가관리</li>
       <ul class="sub">
          <li onclick="location.href='<%= request.getContextPath()%>/admin/adminWriterEnroll'">작가 신청 관리</li>

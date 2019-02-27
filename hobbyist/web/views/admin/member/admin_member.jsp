@@ -36,8 +36,8 @@
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="admin_right">
-			<div id="admin_main">
+		<div class="adminMember_right">
+			<div id="adminMember_main">
 				<table>
 					<tr>
 						<td colspan="11"><h3>회원 목록</h3>

@@ -77,12 +77,12 @@
 					</table>
 					<script>
 						function fn_delete(num) {
-							if(confirm('해당 상품을 환불처리 하시겠습니까?')) {
+							if(confirm('해당 상품 환불취소하시겠습니까?')) {
 								$.ajax({
-									url:'<%=request.getContextPath() %>/admin/adminOrderReDelete?no=' + num,
+									url:'<%=request.getContextPath() %>/admin/adminOrderReList?no=' + num,
 									success: function (data) {
 										alert(data);
-										location.href="<%=request.getContextPath() %>/admin/adminOrderList";
+										location.href="<%=request.getContextPath() %>/admin/adminOrderExList";
 									}
 								});
 							} else {

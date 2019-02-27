@@ -364,4 +364,58 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+	
+	
+	
+	
+	//작가신청에서 사용하는 중.. 
+	public int writerPassUpdate(Connection conn, String memberEmail) {
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("writerPassUpdate");
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int writerFailUpdate(Connection conn, String memberEmail) {
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("writerFailUpdate");
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int writerReUpdate(Connection conn, String memberEmail) {
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("writerReUpdate");
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

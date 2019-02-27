@@ -564,7 +564,6 @@ public class NoticeDao {
 	public int updateNotice(Connection conn, Notice no) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		System.out.println(no.getNoticeDate());
 		String sql = prop.getProperty("updateNotice");
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -771,4 +770,5 @@ public class NoticeDao {
 		}
 		return wnList;
 	}
+
 }

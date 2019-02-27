@@ -59,7 +59,7 @@
 				onsubmit="return fn_memberEnroll();" autocomplete="off" enctype="multipart/form-data">
 			<div class="enroll signup" id="memberEnrollSignup">
 			<br>
-				<h3>회원가입</h3>
+				<img src="<%= request.getContextPath() %>/images/joinlogo.png" width="120px">
 				<input type="text" name="memberEmail" placeholder="Email" id="memberEmail"><Br>
 				<select name="memberEmailaddress" id="memberEmailaddress">
 					<option>선택해주세요.</option>

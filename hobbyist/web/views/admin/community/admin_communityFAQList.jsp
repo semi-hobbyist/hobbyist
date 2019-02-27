@@ -90,9 +90,9 @@
 					</tr>
 					<%}%>
 					<tr>
-						<td class="tableBottom" style="float: left; padding-left:20px;"><%=pageBar%></td>
-						<td class="tableBottom" style="padding-left:410px;">
-							<input type='button' value="추가하기" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsert'"/>
+						<td colspan="2" class="tableBottom" style="float: left; padding-left:20px;"><%=pageBar%>
+						<p align="right">
+							<input type='button' value="추가하기" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsert'"/></p>
 						</td>
 					</tr>
 				</table>

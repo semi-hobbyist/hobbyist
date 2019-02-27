@@ -64,29 +64,29 @@
 			<div class="admin_middle">
 				<table>
 					<tr>
-						<th><input id="allchecked" type="checkbox"/></th>
-						<th style="width: 60px;">번호</th>
+						<th style="width: 50px;"><input id="allchecked" type="checkbox"/></th>
+						<th style="width: 40px;">번호</th>
 						<th style="width: 370px;">제목</th>
 						<th style="width: 100px;">작성자</th>
 						<th style="width: 70px;">파일</th>
 						<th style="width: 130px;">작성일</th>
-						<th style="width: 100px;">조회수</th>
-						<th style="width: 80px;">존재유무</th>
-						<th style="width: 100px;">추천수</th>
+						<th style="width: 50px; ">조회수</th>
+						<th style="width: 50px;">존재유무</th>
+						<th style="width: 50px;">추천수</th>
 					</tr>
 					<%for(Board b : list) { %>
 					<tr>
 						<td><input class="input_check<%=++i%>" type="checkbox"<%--  onclick="test('<%=b.getBoardNo()%>', '<%=b.getBoardReadCount()%>', '<%=b.getStatus()%>', '<%=b.getBoardLike()%>')" --%>/></td>
-						<td><%=b.getBoardNo()%></td>
-						<td style="padding-left: 25px; padding-top: 9px;"><a href="<%=request.getContextPath() %>/admin/community/adminCommunityRevise?boardNo=<%= b.getBoardNo()%>"><%=b.getBoardTitle()%><%if(b.getBoardCommentCount() != 0) {%> <span class="comment"><%="[" + b.getBoardCommentCount() + "]"%></span><% } %></a></td>
+						<td style="text-align:center;"><%=b.getBoardNo()%></td>
+						<td style="padding-left: 15px; text-align:left;"><a href="<%=request.getContextPath() %>/admin/community/adminCommunityRevise?boardNo=<%= b.getBoardNo()%>"><%=b.getBoardTitle()%><%if(b.getBoardCommentCount() != 0) {%> <span class="comment"><%="[" + b.getBoardCommentCount() + "]"%></span><% } %></a></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%if(b.getBoardReNamedFileName()!=null) {%><img src="<%=request.getContextPath()%>/images/file.png" width="16px"/><%}%></td>
 						<td><%=b.getBoardDate()%></td>
 						<input type="hidden" name="fname<%=i%>" value="<%=b.getBoardReNamedFileName()%>"/>
 						<input type="hidden" name="no<%=i%>" value="<%=b.getBoardNo()%>"/>
-						<td><input type='text' name="readCount<%=i%>" value='<%=b.getBoardReadCount()%>' size='1px'/></td>
-						<td><input type='text' name="status<%=i%>" value='<%=b.getStatus()%>' size='1px'/></td>
-						<td><input type='text' name="like<%=i%>" value='<%=b.getBoardLike()%>' size='1px'/></td>
+						<td style="text-align:center;"><input type='text' name="readCount<%=i%>" value='<%=b.getBoardReadCount()%>'/></td>
+						<td style="text-align:center;"><input type='text' name="status<%=i%>" value='<%=b.getStatus()%>'/></td>
+						<td style="text-align:center;"><input type='text' name="like<%=i%>" value='<%=b.getBoardLike()%>'/></td>
 					</tr>
 					<% } %>
 					<tr>
@@ -124,12 +124,12 @@
 		$('#allchecked').click(function() {
 			var allck = $(this).is(':checked');
 			if(allck) {
-				for(var i = 1; i <= 5; i++) {
+				for(var i = 1; i <= 10; i++) {
 					$('.input_check' + i).prop('checked', true);
 				}
 				
 			} else {
-				for(var i = 1; i <= 5; i++) {
+				for(var i = 1; i <= 10; i++) {
 					$('.input_check' + i).prop('checked', false);
 				}
 			}

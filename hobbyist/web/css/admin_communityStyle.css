@@ -52,8 +52,8 @@ section#admin .admin_content #admin_right .admin_main .sort div {
 }
 
 section#admin .admin_content #admin_right .admin_main .sort div:hover {
-	border: 1px solid #252525;
-    background-color: #475770;
+	border: 1px solid #575b69;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
@@ -101,6 +101,11 @@ section#admin .admin_content #admin_right .admin_middle  a {
 	font-size: 13px;
 }
 
+section#admin .admin_content #admin_right .admin_middle input {
+	border: 1px solid #dfdfdf;
+	width: 60px;
+}
+
 section#admin .admin_content #admin_right .admin_middle  a:hover {
 	text-decoration: underline;
 }
@@ -110,16 +115,17 @@ section#admin .admin_content #admin_right .admin_middle table {
 	border-collapse: collapse;
 	font-size: 13px;
 	letter-spacing: -0.3px;
+	text-align: center;
 }
 
 section#admin .admin_content #admin_right .admin_middle table th {
-	border-bottom: 1px solid #eee;
+	border-top: 2px solid #575b69;
 	background-color: #ffffff;
 	height: 45px;
 }
 
 section#admin .admin_content #admin_right .admin_middle table td {
-	height: 35px;
+	height: 40px;
 	border-bottom: 1px solid #eee;
 }
 
@@ -144,7 +150,9 @@ section#admin .admin_content #admin_right .admin_middle table td.tableBottom but
 }
 
 section#admin .admin_content #admin_right .admin_middle table td.tableBottom button.current {
-	background-color: #8c9cb5;
+	background-color: #575b69;
+	padding-left:15px;
+	padding-right:15px;
 	color: #fff;
 }
 
@@ -218,29 +226,36 @@ section#admin .admin_content #admin_right .admin_middle a {
 
 /* -------------------------community revise----------------------------- */
 
+section#admin .admin_content .admin_right #admin_main form table#tbl_revise th {
+	border:none;
+}
+
 section#admin .admin_content .admin_right #admin_main form table#tbl_revise tr:nth-child(1) td input {
 	width: 665px;
 	height: 24px;
-	font-size: 16px;
+	font-size: 13px;
 }
-section#admin .admin_content .admin_right #admin_main form table#tbl_revise tr:nth-child(2) td input {width: 80px;}
-section#admin .admin_content .admin_right #admin_main form table#tbl_revise tr:last-of-type td input {float: right;}
+section#admin .admin_content .admin_right #admin_main form table#tbl_revise tr:nth-child(2) td input {
+	width: 80px;
+}
+section#admin .admin_content .admin_right #admin_main form table#tbl_revise tr:last-of-type td input {
+	float: right;
+}
 
 section#admin .admin_content .admin_right #admin_main table#tbl_revise tr td input.inp {
 	outline: none;
 	float: left;
 	width: 120px;
-	height: 50px;
-	background-color: #FFBB00;
+	height: 40px;
+	background-color: #575b69;
 	color: white;
-	font-size: 20px;
+	font-size: 14px;
 	padding-left: 5px;
-	border-radius: 7px;
 	transition: 500ms;
 }
 
 section#admin .admin_content .admin_right #admin_main table#tbl_revise tr td input.inp:hover {
-	background-color: #de950e;
+	background-color: #3d4049;
     color: #f0f0f0;
     transition: 500ms;
 }
@@ -317,15 +332,15 @@ section#admin .admin_content #admin_right .admin_main .faq_sort div {
 }
 
 section#admin .admin_content #admin_right .admin_main .faq_sort div:hover {
-	border: 1px solid #252525;
-    background-color: #475770;
+	border: 1px solid #575b69;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
 
 section#admin .admin_content #admin_right .admin_main .sort div:hover {
-	border: 1px solid #252525;
-    background-color: #475770;
+	border: 1px solid #575b69;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
@@ -343,8 +358,8 @@ section#admin div#admin_right div.admin_FAQ_bottom input[type=button] {
 }
 
 section#admin div#admin_right div.admin_FAQ_bottom input[type=button]:hover {
-    border: 1px solid #252525;
-    background-color: #383838;
+    border: 1px solid #575b69;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
@@ -390,7 +405,9 @@ section#admin .admin_content #admin_right .admin_FAQmiddle table td.tableBottom 
 }
 
 section#admin .admin_content #admin_right .admin_FAQmiddle table td.tableBottom button.current {
-	background-color: #8c9cb5;
+	background-color: #575b69;
+	padding-left:10px;
+	padding-right: 10px;
 	color: #fff;
 }
 
@@ -412,14 +429,14 @@ section#admin .admin_content #admin_right .admin_FAQmiddle table td.tableBottom 
 
 section#admin .admin_content #admin_right .admin_FAQmiddle table td.tableBottom input[type=button]:hover {
 	transition: 400ms;
-	background-color: #475770;
+	background-color: #575b69;
 	color: #fff;
 }
 
 section#admin .admin_content #admin_right .admin_FAQmiddle table tr:hover {
 	transition: 400ms;
 	background-color: #eef1f7;
-	border-left: 3px solid #3e4b6c;
+	border-left: 3px solid #575b69;
 }
 
 section#admin .admin_content #admin_right .admin_FAQmiddle table tr:nth-child(1) {
@@ -444,7 +461,7 @@ section#admin .admin_content #admin_right .admin_FAQmiddle table button {
 
 section#admin .admin_content #admin_right .admin_FAQmiddle table button:hover {
 	transition: 300ms;
-	background: #3e4b6c;
+	background: #575b69;
 }
 
 section#admin .admin_content #admin_right .admin_FAQmiddle {margin-left: 10px; margin-top:20px; width: 820px; float: left;}
@@ -459,6 +476,7 @@ section#admin .admin_content #admin_right .admin_FAQmiddle a {
 /* -------------------------community FAQView----------------------------- */
 
 section#admin .admin_content .admin_FAQright {
+	padding-top: 20px;
 	margin-left: 180px;
 }
 
@@ -476,9 +494,10 @@ section#admin .admin_content #admin_right #info_head {
 }
 
 section#admin .admin_content #admin_right #FAQview_content {
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 	padding: 20px 100px;
+	line-height: 30px;
 }
 
 section#admin .admin_content #admin_right #FAQview_bottom {
@@ -500,7 +519,7 @@ section#admin .admin_content #admin_right #FAQview_bottom button {
 
 section#admin .admin_content #admin_right #FAQview_bottom button:hover {
 	transition: 300ms;
-	background: #3e4b6c;
+	background: #575b69;
 }
 
 
@@ -510,7 +529,7 @@ section#admin .admin_content #admin_right #FAQview_bottom button:hover {
 section#admin .admin_content #admin_right .admin_main form table#tbl_FAQRevise tr:nth-child(1) td input {
 	width: 665px;
 	height: 24px;
-	font-size: 16px;
+	font-size: 13px;
 }
 section#admin .admin_content #admin_right .admin_main form table#tbl_FAQRevise tr:nth-child(2) td input {width: 80px;}
 section#admin .admin_content #admin_right .admin_main form table#tbl_FAQRevise tr:last-of-type td input {float: right;}
@@ -521,16 +540,16 @@ section#admin .admin_content #admin_right .admin_main table#tbl_FAQRevise tr td 
     float: left;
     padding-left: 5px;
 	height: 50px;
-	background-color: #FFBB00;
+	background-color: #575b69;
 	color: white;
-	font-size: 20px;
+	font-size: 13px;
 	border-radius: 7px;
 	transition: 500ms;
 }
 
 section#admin .admin_content #admin_right .admin_main table#tbl_FAQRevise tr td input.inp:hover {
-	background-color: #de950e;
-    color: #f0f0f0;
+	background-color: #575b69;
+    color: #fff;
     transition: 500ms;
 }
 

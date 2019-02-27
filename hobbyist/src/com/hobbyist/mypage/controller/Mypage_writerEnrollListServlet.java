@@ -36,8 +36,11 @@ public class Mypage_writerEnrollListServlet extends HttpServlet {
 		
 		//현시간 작가신청 하고 있는 공지글 가져오기
 		WeNotice wnList = new NoticeService().cuWeSelectOne();
+		Notice cuNotice = null;
+		if(wnList!=null) {
 		boolean hasRead = true;
-		Notice cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
+		cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
+		}
 
 		
 		

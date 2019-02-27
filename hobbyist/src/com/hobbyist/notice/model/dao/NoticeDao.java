@@ -511,6 +511,22 @@ public class NoticeDao {
 		}
 		return result;
 	}
+	
+	public int wnDelNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int wnResult = 0;
+		String sql = prop.getProperty("wnDelNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			wnResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return wnResult;
+	}
 
 	public int reNotice(Connection conn, int NoticeNo) {
 		PreparedStatement pstmt = null;
@@ -526,6 +542,22 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int wnReNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int reResult = 0;
+		String sql = prop.getProperty("wnReNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			reResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return reResult;
 	}
 
 	public int del_DB(Connection conn, int NoticeNo) {

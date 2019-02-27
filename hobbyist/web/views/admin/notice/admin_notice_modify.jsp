@@ -4,6 +4,7 @@
 
 
 <%
+	Date cuTime = (Date)request.getAttribute("cuTime");
 %>
 
 
@@ -27,7 +28,7 @@
 						<input type="radio" name="noticeDate" id="noticeDate2" value="noData" />현재날짜
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="noticeDate" id="noticeDate3"/>
-						<input type="date" id="noticeDate3_1"/>
+						<input type="date" id="noticeDate3_1" min="<%= cuTime %>"/>
 					</div>
 				</div>
 				<div class="noticeWriteSort noticeWriteRow">
@@ -45,7 +46,7 @@
 					<div class="noticeWriteVal"></div>
 				</div>
 				<div class="noticeWriteSortEvent noticeWriteRow">
-					<div class="noticeWriteAttr">세부설정</div>
+<!-- 					<div class="noticeWriteAttr">세부설정</div>
 					<div class="noticeWriteVal">
 						<div>
 							<div>
@@ -72,10 +73,10 @@
 								<input type="number" name="eventNoticeCouponDc" min="5" max="50" step="5" value="5" />
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="noticeWriteSortWriterEnroll noticeWriteRow">
-					<div class="noticeWriteAttr">세부설정</div>
+<!-- 					<div class="noticeWriteAttr">세부설정</div>
 					<div class="noticeWriteVal">
 						<div>
 							시작날짜
@@ -88,7 +89,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="date" name="wENoticeStartdate" />
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="noticeWriteTitle noticeWriteRow">

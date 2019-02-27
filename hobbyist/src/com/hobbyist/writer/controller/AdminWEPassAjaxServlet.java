@@ -45,6 +45,10 @@ public class AdminWEPassAjaxServlet extends HttpServlet {
 			result = new WriterService().failWriterEnroll(writerEnrollNo);
 			resultM = new MemberService().writerFailUpdate(memberEmail);
 		}
+		else if (writerPassYn.equals("return")) {
+			result = new WriterService().returnWriterEnroll(writerEnrollNo);
+			resultM = new MemberService().writerReUpdate(memberEmail);
+		}
 		
 		if(result>0) {
 			System.out.println("writerEnrollNo : "+ writerEnrollNo + "  '작가신청 테이블 합격 여부 정상 처리 완료'");

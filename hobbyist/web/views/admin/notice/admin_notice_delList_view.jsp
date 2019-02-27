@@ -23,6 +23,12 @@
 	</div>
 </div>
 <script>
+	
+	// 작가신청 버튼 기능 구현
+	function fn_writerEnrollBtn() {
+		alert("관리자페이지에서는 작가신청 페이지로 들어갈 수 없습니다.");
+	}
+
 	function fn_defaultViewAjax(index) {
 		$.ajax({
 			url: '<%= request.getContextPath() %>/notice/noticeDelListViewAjax.do',

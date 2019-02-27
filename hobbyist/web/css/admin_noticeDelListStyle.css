@@ -690,6 +690,65 @@
 
 
 
+#noticeDelListView  .weNoticeView {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    background-color: #d8d8d8;
+    color:#5b5b5b;
+    display: flex;
+    align-items: center;
+}
+
+#noticeDelListView  .weNoticeViewText {
+    font-size: 16px;
+    text-indent: 10px;
+    display: flex;
+    
+}
+
+#noticeDelListView  .weNoticeViewTextS {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noticeDelListView  .weNoticeViewTextE {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#noticeDelListView .writerEnrollBtn {
+    margin: 5px;
+    width: 120px;
+    height: 30px;
+    letter-spacing: 0.15em;
+    border: 1px solid #475770;
+    color: white;
+    background-color: #475770;
+    outline: none;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+
+
 /* ------------------------------------------------------------- */
 /* 기본 모달창 css 구성 */
 #defaultModifyModal {
@@ -865,6 +924,7 @@
 	color: #797A9E;
     display: flex;
     align-items: center;
+    text-align: left;
 }
 
 
@@ -1256,51 +1316,3 @@
 	background-color: #475770;
 }
 
-
-#defaultModifyModal .weNoticeView {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    background-color: #d8d8d8;
-    color:#5b5b5b;
-    display: flex;
-    align-items: center;
-}
-
-#defaultModifyModal .noticeViewTitle {
-    font-size: 20px;
-    text-indent: 10px;
-}
-
-#defaultModifyModal .weNoticeViewText {
-    font-size: 16px;
-    text-indent: 10px;
-    display: flex;
-    
-}
-
-#defaultModifyModal .weNoticeViewTextS {
-    font-size: 16px;
-    text-align: center;
-    width: 120px;
-    height: 30px;
-    padding-right: 10px;
-    background-color: #eee;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#defaultModifyModal .weNoticeViewTextE {
-    font-size: 16px;
-    text-align: center;
-    width: 120px;
-    height: 30px;
-    padding-right: 10px;
-    background-color: #eee;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

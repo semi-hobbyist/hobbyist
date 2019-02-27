@@ -50,6 +50,12 @@ public class NoticeInsertServlet extends HttpServlet {
 		String cuYear = "";
 		String cuQu = "";
 		Date minTime = null;
+		
+		//현재 시간 구하기
+		long currentTime = System.currentTimeMillis();
+		Date cuTime = new Date(currentTime);
+		
+		
 		if(wn.size()!=0) {
 			String[] weQuarter = wn.get(0).getWeQuarter().split(",");
 			String weYear = weQuarter[0];
@@ -66,14 +72,16 @@ public class NoticeInsertServlet extends HttpServlet {
 		} else {
 			cuYear = String.valueOf(c.get(Calendar.YEAR));
 			cuQu = "1";
-			long currentTime = System.currentTimeMillis();
 			minTime = new Date(currentTime);
 		}
+		
+		
 		
 		request.setAttribute("wn", wn);
 		request.setAttribute("cuYear", cuYear);
 		request.setAttribute("cuQu", cuQu);
 		request.setAttribute("minTime", minTime);
+		request.setAttribute("cuTime", cuTime);
 		request.getRequestDispatcher("/views/notice/noticeWrite.jsp").forward(request, response);
 		
 	}

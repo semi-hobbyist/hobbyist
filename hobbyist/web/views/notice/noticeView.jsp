@@ -137,9 +137,12 @@
 			</div>
 			<% } %>
 		</div>
-		<form action="<%= request.getContextPath() %>/writer/writerEnroll" type="post" id="noticeViewHidden">
-			<input type="hidden" name="weQuarter" value="<%= wnList.getWeQuarter() %>"/>
-		</form>
+		<% if(wnList!=null) { %>
+			<form action="<%= request.getContextPath() %>/writer/writerEnroll" type="post" id="noticeViewHidden">
+				<input type="hidden" name="weQuarter" value="<%= wnList.getWeQuarter() %>"/>
+			</form>
+		<% } %>
+		
 	</div>
 	<script>
 		// 작가신청 버튼 기능 구현

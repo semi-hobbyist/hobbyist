@@ -14,21 +14,20 @@ import com.hobbyist.member.model.vo.Member;
 public class MemberService {
 
 	private MemberDao dao = new MemberDao();
-	
+
 	public Member selectOne(Member m) {
 		Connection conn = getConnection();
-		Member result = dao.selectOne(conn,m);
+		Member result = dao.selectOne(conn, m);
 		close(conn);
 		return result;
 	}
-	
+
 	public int enrollMember(Member m) {
 		Connection conn = getConnection();
-		int result = dao.enrollMember(conn,m);
-		if(result>0) {
+		int result = dao.enrollMember(conn, m);
+		if (result > 0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
@@ -39,10 +38,9 @@ public class MemberService {
 		Connection conn = getConnection();
 		int result = dao.emailCheck(conn, finalEmail);
 		close(conn);
-		if(result>0) {
+		if (result > 0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
@@ -53,10 +51,9 @@ public class MemberService {
 		Connection conn = getConnection();
 		int result = dao.nicknameCheck(conn, memberNickname);
 		close(conn);
-		if(result>0) {
+		if (result > 0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
@@ -66,7 +63,7 @@ public class MemberService {
 
 	public Member selectMemberName(Member m) {
 		Connection conn = getConnection();
-		Member result = dao.selectMemberName(conn,m);
+		Member result = dao.selectMemberName(conn, m);
 		close(conn);
 		return result;
 	}
@@ -81,51 +78,60 @@ public class MemberService {
 	public int updateTempPwd(Member m) {
 		Connection conn = getConnection();
 		int resultPwd = dao.updateTempPwd(conn, m);
-		if(resultPwd>0) {
+		if (resultPwd > 0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
 		return resultPwd;
 	}
-	
-	//작가신청 합격으로 인한 맴버 데이터 수정
-		public int writerPassUpdate(String memberEmail) {
-			Connection conn = getConnection();
-			int result = dao.writerPassUpdate(conn,memberEmail);
-			if(result>0) {
-				commit(conn);
-			}
-			else {
-				rollback(conn);
-			}
-			close(conn);
-			return result;
+
+	// 작가신청 합격으로 인한 맴버 데이터 수정
+	public int writerPassUpdate(String memberEmail) {
+		Connection conn = getConnection();
+		int result = dao.writerPassUpdate(conn, memberEmail);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
 		}
-		
-		//작가신청 불합격으로 인한 맴버 데이터 수정
-		public int writerFailUpdate(String memberEmail) {
-			Connection conn = getConnection();
-			int result = dao.writerFailUpdate(conn,memberEmail);
-			if(result>0) {
-				commit(conn);
-			}
-			else {
-				rollback(conn);
-			}
-			close(conn);
-			return result;
+		close(conn);
+		return result;
+	}
+
+	// 작가신청 불합격으로 인한 맴버 데이터 수정
+	public int writerFailUpdate(String memberEmail) {
+		Connection conn = getConnection();
+		int result = dao.writerFailUpdate(conn, memberEmail);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
 		}
+		close(conn);
+		return result;
+	}
+
+	// 작가신청 처리전으로 되돌리기
+	public int writerReUpdate(String memberEmail) {
+		Connection conn = getConnection();
+		int result = dao.writerReUpdate(conn, memberEmail);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 
 	public int updateMember(Member m) {
 		Connection conn = getConnection();
 		int result = dao.updateMember(conn, m);
-		if(result>0) {
+		if (result > 0) {
 			commit(conn);
-		}
-		else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
@@ -136,7 +142,7 @@ public class MemberService {
 	public int deleteMember(Member m) {
 		Connection conn = getConnection();
 		int result = dao.deleteMember(conn, m);
-		if(result>0) {
+		if (result > 0) {
 			commit(conn);
 		} else {
 			rollback(conn);
@@ -148,7 +154,7 @@ public class MemberService {
 	public int updatePwd(Member m) {
 		Connection conn = getConnection();
 		int result = dao.updatePwd(conn, m);
-		if(result>0) {
+		if (result > 0) {
 			commit(conn);
 		} else {
 			rollback(conn);

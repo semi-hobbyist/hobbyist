@@ -28,6 +28,7 @@
    
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_memberStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticePreListStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopStyle.css">

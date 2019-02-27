@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.hobbyist.notice.model.dao.NoticeDao;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 
 public class NoticeService {
 
@@ -183,6 +184,20 @@ public class NoticeService {
 		return result;
 	}
 	
+	//작가신청 공지사항 DB 삭제
+	public int wnDel_DB(int noticeNo) {
+		Connection conn = getConnection();
+		int wnResult = dao.wnDel_DB(conn,noticeNo);
+			if(wnResult>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		close(conn);
+		return wnResult;
+	}
+	
 	public int updateNotice(Notice no) {
 		Connection conn = getConnection();
 		int result = dao.updateNotice(conn,no);
@@ -202,4 +217,48 @@ public class NoticeService {
 		close(conn);
 		return remainTime;
 	}
+	
+	public Notice searchNo(Notice no) {
+		Connection conn = getConnection();
+		Notice noList = dao.searchNo(conn,no);
+		close(conn);
+		return noList;
+	}
+	
+	public int insertWn(WeNotice wn) {
+		Connection conn = getConnection();
+		int wnResult = dao.insertWn(conn,wn);
+		close(conn);
+		return wnResult;
+	}
+	
+	public List<WeNotice> weSelectAll() {
+		Connection conn = getConnection();
+		List<WeNotice> list = dao.weSelectAll(conn);
+		close(conn);
+		return list;
+	}
+	
+	//작가신청 공지글 등록할때 날짜 최소값 구하기
+	public Date minTime(int no) {
+		Connection conn = getConnection();
+		Date minTime = dao.minTime(conn,no);
+		close(conn);
+		return minTime;
+	}
+	
+	public WeNotice weSelectOne(int noticeNo) {
+		Connection conn = getConnection();
+		WeNotice wnList = dao.weSelectOne(conn,noticeNo);
+		close(conn);
+		return wnList;
+	}
+	
+	public WeNotice cuWeSelectOne() {
+		Connection conn = getConnection();
+		WeNotice wnList = dao.cuWeSelectOne(conn);
+		close(conn);
+		return wnList;
+	}
+
 }

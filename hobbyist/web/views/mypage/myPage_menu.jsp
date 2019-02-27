@@ -63,7 +63,6 @@
 
 <script>
    $(function () {
-      console.log("<%=logginMember.getMemberWriterYN()%>");
       var myPageLeftSelectValue = "";
       $(".myPage_left>ul>li").click(function () {
          if ($(this).html() == myPageLeftSelectValue) {

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hobbyist.member.model.vo.Member;
+import com.hobbyist.notice.model.service.NoticeService;
+import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 import com.hobbyist.writer.model.service.WriterService;
 import com.hobbyist.writer.model.vo.WriterEnroll;
 
@@ -116,26 +119,36 @@ public class MypageWEAjaxServlet extends HttpServlet {
 			pageBar += "<a href='javascript:fn_ListAjax(" + pageNo + ")'>다음</a>";
 		}
 		
+		//현시간 작가신청 하고 있는 공지글 가져오기
+		WeNotice wnList = new NoticeService().cuWeSelectOne();
+		boolean hasRead = true;
+		Notice cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
+		
 		// 리스트 담기
 		String html = "";
 		if(list.size() != 0) {
 			for(int i=0;i<list.size();i++) {
-					html += "<div class='tal_Content' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ")'>";
-					html += "<div class='talC_WeNo'>" + list.get(i).getWriterEnrollNo() + "</div>";
-					html += "<div class='talC_WeQuarter'>" + list.get(i).getWriterEnrollQuarter() + "</div>";
-					html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
-					html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate() + "</div>";
-					
-					html += "<div class='talC_Birthday'>";
-					if (list.get(i).getWriterPrepRequestYN().equals("Y")) {
-						html += "<p class='talC_WePassYN_textY' style='color:black;'>yes</p>";
-					} else {
-						html += "<p class='talC_WePassYN_textN' style='color:black;'>no</p>";
-					}
+					html += "<div class='tal_Content'>";
+					html += "<div class='talC_WeNo' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
+					html += list.get(i).getWriterEnrollNo();
 					html += "</div>";
 					
+					html += "<div class='talC_WeQuarter' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					
-					html += "<div class='talC_Email'>";
+					//분기 출력 변환
+					String[] weQuarter = list.get(i).getWriterEnrollQuarter().split(",");
+					String weYear = weQuarter[0];
+					String weQu = weQuarter[1];
+					html += weYear + "년  / " + weQu + "차";
+					
+					html += "</div>";
+					
+//					html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
+					html += "<div class='talC_WeDate'>";
+					html += list.get(i).getWriterEnrolldate();
+					html += "</div>";
+					
+					html += "<div class='talC_WeDate' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					if(list.get(i).getWriterPassYN().equals("N")) {
 						html += "<p class='talC_WePassYN_textN'>처리전</p>";
 					} else {
@@ -143,7 +156,7 @@ public class MypageWEAjaxServlet extends HttpServlet {
 					}
 					html += "</div>";
 					
-					html += "<div class='talC_Name'>";
+					html += "<div class='talC_Name' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					if(list.get(i).getWriterPassYN().equals("P")) {
 						html += "<div class='talC_WePassYN_text1'>합격</div>";
 					}
@@ -156,7 +169,21 @@ public class MypageWEAjaxServlet extends HttpServlet {
 					html += "</div>";
 					
 					
-					html += "<div class='talC_WePassYN'></div>";
+					html += "<div class='talC_Birthday' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
+					if (list.get(i).getWriterPrepRequestYN().equals("Y")) {
+						html += "<p class='talC_WePassYN_textY' style='color:black;'>수락</p>";
+					} else {
+						html += "<p class='talC_WePassYN_textN' style='color:black;'>거부</p>";
+					}
+					html += "</div>";
+					
+					
+					html += "<div class='talC_noticeStatus'>";
+							
+					html += "<button type='button' class='noticeListRe' onclick='fn_prepRequestYN("+ list.get(i).getWriterEnrollNo() +", 1)'>신청</button>";
+					html += "<button type='button' class='noticeListDel' onclick='fn_prepRequestYN("+ list.get(i).getWriterEnrollNo() +", 2)'>거부</button>";
+							
+					html += "</div>";
 	
 					html += "</div>";
 			}

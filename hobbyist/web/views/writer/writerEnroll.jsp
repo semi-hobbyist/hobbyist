@@ -3,6 +3,11 @@
 
 <%@ include file="/views/common/header.jsp" %>
 
+<%
+	String weQuarter = request.getParameter("weQuarter");
+%>
+
+
 <script>
 	$(function () {
 		$("input[name='writerCategory']").focus();
@@ -70,6 +75,7 @@
 							$(function () {
 								$("input[name='writerMajorImgfileOriginal']").change(function (event) {
 									$(".inputImage img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='writerMajorImgfileOriginal']").val();
 									$(".imageTitle").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {
@@ -281,6 +287,7 @@
 							$(function () {
 								$("input[name='classImgfileOriginal']").change(function (event) {
 									$(".inputImage1 img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage1 img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='classImgfileOriginal']").val();
 									$(".imageTitle1").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {
@@ -515,7 +522,7 @@
 		<input type="hidden" name="memberName" value="<%= logginMember.getMemberName() %>" />
 		<input type="hidden" name="memberBirthday" value="<%= logginMember.getMemberBirthday() %>" />
 		<input type="hidden" name="memberPhone" value="<%= logginMember.getMemberPhone() %>" />
-		<input type="hidden" name="writerEnrollQuarter" value="201901" />
+		<input type="hidden" name="writerEnrollQuarter" value="<%= weQuarter %>" />
 
 
 	</form>

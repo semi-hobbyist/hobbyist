@@ -1,25 +1,26 @@
-package com.hobbyist.notice.controller;
+package com.hobbyist.writer.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hobbyist.notice.model.service.NoticeService;
+import com.hobbyist.writer.model.service.WriterService;
 
 /**
- * Servlet implementation class NoticeDB_DelAjaxServlet
+ * Servlet implementation class PrepRequestYN_AjaxServlet
  */
-@WebServlet("/notice/noticeDB_DelAjax.do")
-public class NoticeDB_DelAjaxServlet extends HttpServlet {
+@WebServlet("/mypage/prepRequestYN_Ajax.do")
+public class PrepRequestYN_AjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDB_DelAjaxServlet() {
+    public PrepRequestYN_AjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,12 +30,18 @@ public class NoticeDB_DelAjaxServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		int writerEnrollNo = Integer.parseInt(request.getParameter("writerEnrollNo"));
+		String flagYN = request.getParameter("flagYN");
 		
-		int wnResult = new NoticeService().wnDel_DB(noticeNo);
+		String writerPrepRequestYN = "";
+		if(flagYN.equals("1")) {
+			writerPrepRequestYN = "Y";
+		} else {
+			writerPrepRequestYN = "N";
+		}
 		
-		int result = new NoticeService().del_DB(noticeNo);
-		
+		int result = new WriterService().prepRequestYN(writerEnrollNo,writerPrepRequestYN);
+
 	}
 
 	/**

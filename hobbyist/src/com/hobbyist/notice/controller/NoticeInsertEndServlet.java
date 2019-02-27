@@ -15,6 +15,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.hobbyist.member.model.vo.Member;
 import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 import com.oreilly.servlet.MultipartRequest;
 
 import common.rename.MyFileRenamePolicy;
@@ -84,7 +85,27 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		no.setNoticeImgnameRenamed(noticeImgnameRenamed);
 
 		int result = new NoticeService().insertNotice(no);
+		
+		Notice noList = new NoticeService().searchNo(no);
 
+		//작가 신청 공지 DB 테이블 저장
+		if(noticeSort.equals("sortWriterEnroll")) {
+			
+			Date weNoticeStartdate = Date.valueOf(mr.getParameter("weNoticeStartdate"));
+			Date weNoticeEnddate = Date.valueOf(mr.getParameter("weNoticeEnddate"));
+			String weNoticeYear = mr.getParameter("weNoticeYear");
+			String weNoticeQuarter = mr.getParameter("weNoticeQuarter");
+			
+			WeNotice wn = new WeNotice(); 
+			
+			wn.setNoticeNo(noList.getNoticeNo());
+			wn.setWeQuarter(weNoticeYear +","+ weNoticeQuarter);
+			wn.setWeNoticeStartdate(weNoticeStartdate);
+			wn.setWeNoticeEnddate(weNoticeEnddate);
+			
+			int wnResult = new NoticeService().insertWn(wn);  
+		}
+		
 		String msg="";
 		String loc="";
 		String view="/views/common/msg.jsp";

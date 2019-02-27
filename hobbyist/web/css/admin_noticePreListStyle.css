@@ -374,3 +374,51 @@
 	background-color: rgb(184, 0, 0);
 }
 
+
+#admin_noticePre .weNoticeView {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    background-color: #d8d8d8;
+    color:#5b5b5b;
+    display: flex;
+    align-items: center;
+}
+
+#admin_noticePre .noticeViewTitle {
+    font-size: 20px;
+    text-indent: 10px;
+}
+
+#admin_noticePre .weNoticeViewText {
+    font-size: 16px;
+    text-indent: 10px;
+    display: flex;
+    
+}
+
+#admin_noticePre .weNoticeViewTextS {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#admin_noticePre .weNoticeViewTextE {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

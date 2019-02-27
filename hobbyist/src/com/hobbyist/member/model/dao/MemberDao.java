@@ -14,7 +14,7 @@ import java.util.Properties;
 import com.hobbyist.member.model.vo.Member;
 
 public class MemberDao {
-
+	
 	private Properties prop = new Properties();
 
 	public MemberDao() {
@@ -24,20 +24,19 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 	
 	public Member selectOne(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Member result = null;
+		Member result = new Member();
 		String sql = prop.getProperty("selectOne");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result = new Member();
+			if(rs.next()) {
 				result.setMemberNo(rs.getInt("member_no"));
 				result.setMemberEmail(rs.getString("member_email"));
 				result.setMemberPassword(rs.getString("member_password"));
@@ -51,6 +50,7 @@ public class MemberDao {
 				result.setMemberGrade(rs.getString("member_grade"));
 				result.setMemberWriterYN(rs.getString("member_writer_yn"));
 				result.setMemberStatus(rs.getString("member_status"));
+				System.out.println("dao에서 result : "+result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("한명 회원정보 가져오기 (DAO) : " + result);
+		System.out.println("dao에서 result2 : "+result);
 		return result;
 		
 	}
@@ -89,19 +89,19 @@ public class MemberDao {
 	public int emailCheck(Connection conn, String finalEmail) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		ResultSet rs = null;
+		ResultSet rs =null;
 		String sql = prop.getProperty("emailCheck");
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, finalEmail);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result = rs.getInt(1); // 가입할수 없음 //기존의 아이디가 있는거
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1); //가입할수 없음 //기존의 아이디가 있는거
 			}
 			System.out.println(result);
 			System.out.println(finalEmail);
-
-		} catch (Exception e) {
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -116,16 +116,16 @@ public class MemberDao {
 		int result = 0;
 		String sql = prop.getProperty("nicknameCheck");
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, memberNickname);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) { // 가입할수 없음
-				result = rs.getInt(1);
-			}
-			System.out.println("닉네임 값 : " + result);
-
-		} catch (Exception e) {
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) { //가입할수 없음
+				result=rs.getInt(1);
+			} 
+			System.out.println("닉네임 값 : "+result);
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -206,15 +206,15 @@ public class MemberDao {
 	}
 
 	public int updateTempPwd(Connection conn, Member m) {
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("updateTempPwd");
-		int resultPwd = 0;
+		PreparedStatement pstmt=null;
+		String sql=prop.getProperty("updateTempPwd");
+		int resultPwd=0;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberPassword());
 			pstmt.setString(2, m.getMemberEmail());
-			resultPwd = pstmt.executeUpdate();
-		} catch (SQLException e) {
+			resultPwd=pstmt.executeUpdate();
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -225,18 +225,16 @@ public class MemberDao {
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateMember");
-		System.out.println("dao에서 확인 : " + m.getMemberNickname() + m.getMemberPhone() + m.getMemberOriginalImage()
-				+ m.getMemberEmail());
-		int result = 0;
+		System.out.println("dao에서 확인 : "+m.getMemberNickname()+m.getMemberPhone()+m.getMemberOriginalImage()+m.getMemberEmail());
+		int result =0;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberNickname());
 			pstmt.setString(2, m.getMemberPhone());
 			pstmt.setString(3, m.getMemberOriginalImage());
-			pstmt.setString(4, m.getMemberRenamedImage());
-			pstmt.setString(5, m.getMemberEmail());
+			pstmt.setString(4, m.getMemberEmail());
 			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -247,13 +245,13 @@ public class MemberDao {
 	public int deleteMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteMember");
-		int result = 0;
-		System.out.println("dao에서 확인 : " + m.getMemberEmail());
+		int result=0;
+		System.out.println("dao에서 확인 : "+m.getMemberEmail());
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
 			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -264,13 +262,13 @@ public class MemberDao {
 	public int updatePwd(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updatePwd");
-		int result = 0;
+		int result =0;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberPassword());
 			pstmt.setString(2, m.getMemberEmail());
 			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -285,10 +283,10 @@ public class MemberDao {
 		List<Member> list = new ArrayList<>();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, (cPage - 1) * numPerPage + 1);
-			pstmt.setInt(2, cPage * numPerPage);
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			while(rs.next()) {
 				Member m = new Member();
 				m.setMemberNo(rs.getInt("member_no"));
 				m.setMemberEmail(rs.getString("member_email"));
@@ -298,9 +296,11 @@ public class MemberDao {
 				m.setMemberBirthday(rs.getString("member_birthday"));
 				m.setMemberAddress(rs.getString("member_address"));
 				m.setMemberMemo(rs.getString("member_memo"));
+				m.setMemberEnrolldate(rs.getDate("member_enrolldate"));
+				m.setMemberPhone(rs.getString("member_Phone"));
 				list.add(m);
 			}
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -316,65 +316,14 @@ public class MemberDao {
 		String sql = prop.getProperty("selectMemberCount");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result = rs.getInt(1);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
 			}
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-
-		return result;
-	}
-
-	// 작가신청 합격으로 인한 맴버 데이터 수정
-	public int writerPassUpdate(Connection conn, String memberEmail) {
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("writerPassUpdate");
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberEmail);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-
-	// 작가신청 불합격으로 인한 맴버 데이터 수정
-	public int writerFailUpdate(Connection conn, String memberEmail) {
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("writerFailUpdate");
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberEmail);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-
-	// 작가신청 처리전으로 되돌리기
-	public int writerReUpdate(Connection conn, String memberEmail) {
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("writerReUpdate");
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberEmail);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
+		
 		return result;
 	}
 
@@ -386,6 +335,27 @@ public class MemberDao {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateAdmin(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql=prop.getProperty("updateAdmin");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberNickname());
+			pstmt.setString(2, m.getMemberPhone());
+			pstmt.setString(3, m.getMemberGrade());
+			pstmt.setString(4, m.getMemberAddress());
+			pstmt.setString(5, m.getMemberMemo());
+			pstmt.setString(6, m.getMemberEmail());
 			result = pstmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();

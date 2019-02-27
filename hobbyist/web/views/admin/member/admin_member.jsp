@@ -36,8 +36,8 @@
 		<%@ include file="/views/admin/admin_menu.jsp" %> 
 		<!-- 관리자 메뉴 인클루드 끝 -->
 
-		<div class="adminMember_right">
-			<div id="adminMember_main">
+		<div class="adminShop_right">
+			<div id="adminShop_main">
 				<table>
 					<tr>
 						<td colspan="11"><h3>회원 목록</h3>
@@ -55,7 +55,6 @@
 						<th style="width:200px;">닉네임</th>
 						<th style="width:200px;">전화번호</th>
 						<th style="width:100px;">생년월일</th>
-						<th style="width:50px;">등급</th>
 						<th style="width:315px;">주소</th>
 						<th style="width:90px;">가입일</th>
 						<th style="width:300px;">메모</th>
@@ -66,13 +65,12 @@
 					%>
 						<tr>
 							<td><%=m.getMemberNo()%></td>
-							<td><%=m.getMemberName()%></td>
+							<td><a href="<%=request.getContextPath()%>/adminMemberUpdateView.do?memberEmail=<%=m.getMemberEmail()%>"><%=m.getMemberName()%></a></td>
 							<td><%=m.getMemberEmail()%></td>
 							<td><%=m.getMemberNickname()%></td>
 							<td><%=m.getMemberPhone()%></td>
 							<td><%=m.getMemberBirthday()%></td>
-							<td><%=m.getMemberGrade()%></td>
-							<td><%=m.getMemberAddress()%></td>
+							<td><%=m.getMemberAddress()%></td> 
 							<td><%=m.getMemberEnrolldate()%></td>
 							<td><%=m.getMemberMemo()%></td>
 							<td><input type="button" id="deleteMember" value="X" onclick="fn_deleteMember('<%=m.getMemberEmail()%>')"/></td>
@@ -102,7 +100,7 @@
 		} else{
 			return;
 		}
-		
 	}
+	
 </script>
 <%@ include file="/views/common/footer.jsp" %>

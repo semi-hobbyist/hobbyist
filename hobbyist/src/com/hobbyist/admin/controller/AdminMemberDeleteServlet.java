@@ -39,6 +39,7 @@ public class AdminMemberDeleteServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="회원 탈퇴가 완료되었습니다.";
+			loc="/adminMemberList.do";
 		} else {
 			msg="탈퇴가 되지 않았습니다. 다시 시도해주세요.";
 			loc="/adminMemberList.do";

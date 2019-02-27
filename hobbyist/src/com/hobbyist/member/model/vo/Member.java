@@ -170,16 +170,6 @@ public class Member implements Serializable{
 	public void setMemberMemo(String memberMemo) {
 		this.memberMemo = memberMemo;
 	}
-
-	@Override
-	public String toString() {
-		return "Member [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
-				+ ", memberNickname=" + memberNickname + ", memberName=" + memberName + ", memberBirthday="
-				+ memberBirthday + ", memberPhone=" + memberPhone + ", memberOriginalImage=" + memberOriginalImage
-				+ ", memberRenamedImage=" + memberRenamedImage + ", memberEnrolldate=" + memberEnrolldate
-				+ ", memberGrade=" + memberGrade + ", memberWriterYN=" + memberWriterYN + ", memberStatus="
-				+ memberStatus + ", memberAddress=" + memberAddress + ", memberMemo=" + memberMemo + "]";
-	}
 	
 	
 	

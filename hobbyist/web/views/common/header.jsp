@@ -91,7 +91,7 @@
         <div id="header-top">
             <div class="left-top">
                 <a href="<%= request.getContextPath() %>"><img alt="하비스트"
-                            src="<%= request.getContextPath() %>/images/logo.png"></a>
+                            src="<%= request.getContextPath() %>/images/logo.jpg"></a>
             </div>
             <div class="top">
                 <ul>
@@ -102,7 +102,7 @@
                     <span><a href="#"><img alt="프로필 이미지"
                                 src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>"
                                 width="15px" height="15px">
-                            <%= logginMember.getMemberNickname() %><div id="line"></div></a> 님 환영합니다</span>
+                            <%= logginMember.getMemberNickname() %></a> 님 환영합니다</span>
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
                     <li id="admin" onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">관리자
                     </li>&nbsp;&nbsp;&nbsp;
@@ -285,7 +285,7 @@
                     <div class="sub_right">
                         <h3>S U B - M E N U</h3>
                         <ul>
-                            <li> · 원데이클래스</li>
+                            <li  onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'"> · 원데이클래스</li>
                         </ul>
                     </div>
                 </div>

@@ -66,7 +66,7 @@ section#admin .admin_content .admin_left ul {
 section#admin .admin_content .admin_left ul li {
 	cursor: pointer;
     padding-top: 6px;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
     height: 30px;
     font-size: 13px;
@@ -77,7 +77,7 @@ section#admin .admin_content .admin_left ul.sub {
 }
 
 section#admin .admin_content .admin_left ul.sub li {
-    background-color: #56739a;
+    background-color: #6f7486;
 }
 
 section#admin .admin_content .admin_left ul.sub li a {
@@ -87,7 +87,7 @@ section#admin .admin_content .admin_left ul.sub li a {
 
 section#admin .admin_content .admin_left ul li:hover {
     transition: 500ms;
-    background-color: #304056;
+    background-color: #424551;
 }
 
 

@@ -9,7 +9,7 @@
             <script>
             var typed = new Typed('#intro-text', {
             	  strings: ["하비스트와 함께 새로운 취미를 찾아보세요 <br> Find a new Hobby, with Hobbyist"],
-            	  typeSpeed: 90
+            	  typeSpeed: 40
             	});
             </script>
         </div>

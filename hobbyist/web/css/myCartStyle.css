@@ -47,13 +47,13 @@ section#cart .cart_content ul.mycart_submenu li {
 
 section#cart .cart_content ul.mycart_submenu li:hover {
 	transition: 400ms;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	color: #fff;
 } 
 
 .addCartSelected {
 	transition: 400ms;
-	border-bottom: 2px solid #3b4f6a;
+	background-color: #575b69;
 	color: #fff;
 } 
 
@@ -73,7 +73,6 @@ section#cart .cart_content th {
 	padding-bottom: 15px;
 	font-size: 13px;
 	border-bottom: 1px solid #e7e7e7;
-	background-color: #f1f3f8;
 }
 
 section#cart .cart_content tr {
@@ -81,7 +80,7 @@ section#cart .cart_content tr {
 
 section#cart .cart_content tr:hover {
 	transition: 400ms;
-	border-left: 3px solid #3b4f6a;
+	border-left: 3px solid #575b69;
 }
 
 section#cart .cart_content tr:nth-child(1):hover , section#cart .cart_content tr:nth-last-child(1):hover {
@@ -89,7 +88,6 @@ section#cart .cart_content tr:nth-child(1):hover , section#cart .cart_content tr
 }
 
 section#cart .cart_content tr:nth-last-child(1) {
-	background-color: #f1f3f8;
 }
 
 section#cart .cart_content td {
@@ -104,14 +102,14 @@ section#cart .cart_content td.result {
 	padding-bottom: 5px;
 	border-top: 1px solid #eee;
 	font-size: 15px;
-	color: #3b4f6a;
+	color: #575b69;
 }
 
 section#cart .cart_content table button {
 	margin: 5px;
 	border: 1px solid #e7e7e7;
 	outline: none;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	color: #fff;
 	width: 120px;
 	height: 35px;
@@ -145,6 +143,6 @@ section#cart .cart_content table a {
 
 section#cart .cart_content table a:hover {
 	transition: 500ms;
-	color: #3b4f6a;
+	color: #575b69;
 	text-decoration: underline;
 }

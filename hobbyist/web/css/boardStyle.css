@@ -9,7 +9,7 @@ section#board .board_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 150px;
+    padding-top: 120px;
 }
 
 section#board .board_content #board_left {
@@ -72,7 +72,7 @@ section#board .board_content #slideButton {
 
 section#board .board_content #slideButton:hover {
     transition: 400ms;
-    background-color: #475770;
+    background-color: #575b69;
     color:#fff;
 }
 
@@ -108,7 +108,7 @@ section#board .board_content #board_right .writeBtn:hover {
 	transition: 500ms;
 	width: 150px;
 	height: 45px;
-	background: #252525;
+	background: #42454d;
 	color: #fff;
 	padding: 0;
 }
@@ -121,7 +121,7 @@ section#board .board_content #board_right .board_top {
 
 section#board .board_content #board_right .board_top .sort {
     float: left;
-    padding-top: 5px;
+    padding-top: 2px;
     padding-left: 15px;
 }
 
@@ -133,7 +133,7 @@ section#board .board_content #board_right .board_top .sort div {
     font-size: 12px;
     width: 100px;
     height: 33px;
-    padding-top: 5px;
+    padding-top: 2px;
     margin-right: 2px;
     background: none;
     border: 1px solid #cacaca;
@@ -142,8 +142,8 @@ section#board .board_content #board_right .board_top .sort div {
 }
 
 section#board .board_content #board_right .board_top .sort div:hover {
-	border: 1px solid #252525;
-    background-color: #475770;
+	border: 1px solid #42454d;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
@@ -151,7 +151,7 @@ section#board .board_content #board_right .board_top .sort div:hover {
 
 
 section#board .board_content #board_right .board_top .searchForm {
-    color: #252525;
+    color: #42454d;
     font-size: 13px;
     letter-spacing: -0.5px;
     float: right;
@@ -165,7 +165,7 @@ section#board .board_content #board_right .board_top .searchForm input[type=sear
 
 section#board .board_content #board_right .board_top .searchForm input[type=search]:focus {
     transition: 500ms;
-    border: 1px solid #252525;
+    border: 1px solid #42454d;
 }
 
 section#board .board_content #board_right .board_top .searchForm button {
@@ -199,9 +199,10 @@ section#board .board_content #board_right .board_middle table {
 }
 
 section#board .board_content #board_right .board_middle table th {
-	border-top: 1px solid #eee;
-	background-color: #eceef2;
+	border-top: 2px solid #575b69;
+	background-color: #fff;
 	height: 45px;
+	border-bottom: 1px solid #575b69;
 }
 
 section#board .board_content #board_right .board_middle table td {
@@ -224,14 +225,18 @@ section#board .board_content #board_right .board_middle table td.tableBottom but
 	background-color: #fff;
 	border: 1px solid #dfdfdf;
 	border-radius: 0;
-	color: #252525;
+	color: #42454d;
 	margin-right: 2px;
 	height: 30px;
+	cursor: pointer;
 }
 
 section#board .board_content #board_right .board_middle table td.tableBottom button.current {
-	background-color: #8c9cb5;
+	cursor: pointer;
+	background-color: #575b69;
 	color: #fff;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 section#board .board_content #board_right .board_middle table td.tableBottom input[type=button] {
@@ -243,7 +248,7 @@ section#board .board_content #board_right .board_middle table td.tableBottom inp
 	background-color: #fff;
 	border: 1px solid #dfdfdf;
 	border-radius: 0;
-	color: #252525;
+	color: #42454d;
 	margin-right: 2px;
 	height: 33px;
 	width: 110px;
@@ -252,14 +257,17 @@ section#board .board_content #board_right .board_middle table td.tableBottom inp
 
 section#board .board_content #board_right .board_middle table td.tableBottom input[type=button]:hover {
 	transition: 400ms;
-	background-color: #475770;
+	background-color: #575b69;
 	color: #fff;
 }
 
+section#board .board_content #board_right .board_middle table tr {
+	border: 2px solid #fff;
+}
+
 section#board .board_content #board_right .board_middle table tr:hover {
-	transition: 400ms;
-	background-color: #eef1f7;
-	border-left: 3px solid #3e4b6c;
+	transition: 500ms;
+	background-color: #e1e3e9;
 }
 
 section#board .board_content #board_right .board_middle table tr:nth-child(1) {
@@ -276,6 +284,7 @@ section#board .board_content #board_right .board_middle table span.comment {
 	margin: 0;
 	padding: 0;
 	color: #7286a5;
+	padding-left:15px;
 }
 
 section#board .board_content #board_right .board_middle table button {
@@ -314,7 +323,7 @@ section#board div#board_right .board_bottom input[type=button] {
 }
 
 section#board div#board_right .board_bottom input[type=button]:hover {
-    border: 1px solid #252525;
+    border: 1px solid #42454d;
     background-color: #383838;
     color: #fff;
     transition: 500ms;
@@ -425,7 +434,7 @@ section#boardView .boardView_content #slideButton {
 
 section#boardView .boardView_content #slideButton:hover {
     transition: 400ms;
-    background-color: #475770;
+    background-color: #575b69;
     color:#fff;
 }
 
@@ -517,7 +526,7 @@ section#boardView .boardView_content #boardView_right .boardView_middle #view_bo
 }
 
 section#boardView .boardView_content #boardView_right .boardView_middle #view_bottom #report a {
-	color: #252525;
+	color: #42454d;
 	text-decoration: none;
 }
 
@@ -541,7 +550,7 @@ section#boardView .boardView_content #boardView_right .boardView_middle #view_pa
 	width: 100px;
 	height: 40px;
 	background-color: #fff;
-	color: #252525;
+	color: #42454d;
 	border: 1px solid #e2e2e2;
 	outline: none;
 }
@@ -622,7 +631,7 @@ section#boardView .boardView_content #boardView_right .boardView_middle #comment
 /* --------------------------------boardFAQList---------------------------------- */
 
 section#board .board_content #board_right .FAQsearchForm {
-    color: #252525;
+    color: #42454d;
     font-size: 13px;
     letter-spacing: -0.5px;
     border: 1px solid #c3c3c3;
@@ -657,7 +666,7 @@ section#board .board_content #board_right .FAQsearchForm img {
 
 section#board .board_content #board_right .FAQsearchForm input[type=search]:focus {
     transition: 500ms;
-    border: 1px solid #252525;
+    border: 1px solid #42454d;
 }
 
 section#board .board_content #board_right .FAQsearchForm button {
@@ -764,7 +773,7 @@ section#board div#board_right div.board_FAQ_bottom input[type=button] {
 }
 
 section#board div#board_right div.board_FAQ_bottom input[type=button]:hover {
-    border: 1px solid #252525;
+    border: 1px solid #42454d;
     background-color: #383838;
     color: #fff;
     transition: 500ms;

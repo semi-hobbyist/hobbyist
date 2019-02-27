@@ -66,7 +66,7 @@
 					<tr>
 						<td colspan="2">
 							<button class="addcart-btn" onclick="fn_addCart()">
-							Add My Cart | 취미바구니 담기</button>
+							취미바구니 담기</button>
 							<script>
 								function fn_addCart() {
 									var classOp = $('#cartOption').val();
@@ -293,7 +293,7 @@
 
 		if (scrollTo < about) {
 			sub1.css({
-				"background-color" : "#3b4f6a",
+				"background-color" : "#575b69",
 				"color" : "#fff"
 			});
 			sub2.css({
@@ -314,7 +314,7 @@
 				"color" : "#252525"
 			});
 			sub2.css({
-				"background-color" : "#3b4f6a",
+				"background-color" : "#575b69",
 				"color" : "#fff"
 			});
 			sub3.css({
@@ -335,7 +335,7 @@
 				"color" : "#252525"
 			});
 			sub3.css({
-				"background-color" : "#3b4f6a",
+				"background-color" : "#575b69",
 				"color" : "#fff"
 			});
 			sub4.css({
@@ -356,7 +356,7 @@
 				"color" : "#252525"
 			});
 			sub4.css({
-				"background-color" : "#3b4f6a",
+				"background-color" : "#575b69",
 				"color" : "#fff"
 			});
 		}

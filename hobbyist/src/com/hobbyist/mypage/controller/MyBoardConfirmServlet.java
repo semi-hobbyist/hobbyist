@@ -32,8 +32,6 @@ public class MyBoardConfirmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String nickName = request.getParameter("nickName");
-		int selectMyPageBoardCount = Integer.parseInt(request.getParameter("selectMyPageBoardCount"));
-		int selectMyPageBoardCommentCount = Integer.parseInt(request.getParameter("selectMyPageBoardCommentCount"));
 		
 		int cPage = 0;
 		try {
@@ -81,8 +79,6 @@ public class MyBoardConfirmServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("list", list);
-		request.setAttribute("selectMyPageBoardCount", selectMyPageBoardCount);
-		request.setAttribute("selectMyPageBoardCommentCount", selectMyPageBoardCommentCount);
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("numPerPage", numPerPage);
 		request.setAttribute("pageBar", pageBar);

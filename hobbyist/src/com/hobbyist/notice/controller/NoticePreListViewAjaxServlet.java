@@ -95,11 +95,9 @@ public class NoticePreListViewAjaxServlet extends HttpServlet {
 			html += "&nbsp;&nbsp;";
 			html += "<div class='weNoticeViewTextE'>" + wnList.getWeNoticeEnddate() + "</div>";
 			html += "<div class='weNoticeViewText'>까지</div>";
-			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			html += "&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			html += "<button type='button' class='writerEnrollBtn' onclick='fn_writerEnrollBtn()'>작가신청하기</button>";
 			html += "</div>";
 		}

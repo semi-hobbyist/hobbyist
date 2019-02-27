@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 
 /**
  * Servlet implementation class NoticeDelListViewAjaxServlet
@@ -41,6 +42,20 @@ public class NoticeDelListViewAjaxServlet extends HttpServlet {
 		String writer = notice.getNoticeWriter();
 		String profileImg = new NoticeService().writerImg(writer);
 
+		
+		// 작가신청 관련 자료 가져오기
+		WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
+		String weYear = "";
+		String weQu = "";
+		if(wnList!=null) {
+			String[] weQuarter = wnList.getWeQuarter().split(",");
+			weYear = weQuarter[0];
+			weQu = weQuarter[1];
+		}
+
+		
+		
+		
 		// notice자료 담기
 		String html = "";
 
@@ -79,6 +94,26 @@ public class NoticeDelListViewAjaxServlet extends HttpServlet {
 		html += "<div class='noticeViewReadcount'>조회수 : " + notice.getNoticeReadcount() + "</div>";
 		html += "</div>";
 		html += "</div>";
+		
+		
+
+		if (notice.getNoticeSort().equals("sortWriterEnroll")) {
+			html += "<div class='weNoticeView'>";
+			html += "<div class='weNoticeViewText'>[ " + weYear + " 년도 &nbsp;&nbsp;" + weQu + " 차 ] &nbsp;&nbsp;</div>";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "<div class='weNoticeViewTextS'>" + wnList.getWeNoticeStartdate() + "</div>";
+			html += "<div class='weNoticeViewText'>에서</div>";
+			html += "&nbsp;&nbsp;";
+			html += "<div class='weNoticeViewTextE'>" + wnList.getWeNoticeEnddate() + "</div>";
+			html += "<div class='weNoticeViewText'>까지</div>";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "<button type='button' class='writerEnrollBtn' onclick='fn_writerEnrollBtn()'>작가신청하기</button>";
+			html += "</div>";
+		}
+
+		
 		
 		if(notice.getNoticeImgnameRenamed()!=null) {
 			html += "<div class='noticeViewImgBox'>";

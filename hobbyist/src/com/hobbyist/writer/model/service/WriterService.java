@@ -117,6 +117,20 @@ public class WriterService {
 		return result;
 	}
 	
+	public int returnWriterEnroll(int writerEnrollNo) {
+		Connection conn = getConnection();
+		int result = dao.returnWriterEnroll(conn,writerEnrollNo);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
 	public int UpdateWriterEnroll(WriterEnroll we) {
 		Connection conn = getConnection();
 		int result = dao.UpdateWriterEnroll(conn,we);

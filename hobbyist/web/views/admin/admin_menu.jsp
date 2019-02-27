@@ -7,8 +7,6 @@
       <li>작가관리</li>
       <ul class="sub">
          <li onclick="location.href='<%= request.getContextPath()%>/admin/adminWriterEnroll'">작가 신청 관리</li>
-         <li onclick="location.href='#'">정식 작가 목록</li>
-         <li onclick="location.href='#'">예비 작가 목록</li>
       </ul>
       <li>공지&이벤트 관리</li>
       <ul class="sub">

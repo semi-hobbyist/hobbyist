@@ -128,10 +128,12 @@ public class MypageWEAjaxServlet extends HttpServlet {
 		String html = "";
 		if(list.size() != 0) {
 			for(int i=0;i<list.size();i++) {
-					html += "<div class='tal_Content' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
-					html += "<div class='talC_WeNo'>" + list.get(i).getWriterEnrollNo() + "</div>";
+					html += "<div class='tal_Content'>";
+					html += "<div class='talC_WeNo' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
+					html += list.get(i).getWriterEnrollNo();
+					html += "</div>";
 					
-					html += "<div class='talC_WeQuarter'>";
+					html += "<div class='talC_WeQuarter' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					
 					//분기 출력 변환
 					String[] weQuarter = list.get(i).getWriterEnrollQuarter().split(",");
@@ -142,9 +144,11 @@ public class MypageWEAjaxServlet extends HttpServlet {
 					html += "</div>";
 					
 //					html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
-					html += "<div class='talC_WeDate'>" + list.get(i).getWriterEnrolldate() + "</div>";
+					html += "<div class='talC_WeDate'>";
+					html += list.get(i).getWriterEnrolldate();
+					html += "</div>";
 					
-					html += "<div class='talC_Email'>";
+					html += "<div class='talC_WeDate' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					if(list.get(i).getWriterPassYN().equals("N")) {
 						html += "<p class='talC_WePassYN_textN'>처리전</p>";
 					} else {
@@ -152,7 +156,7 @@ public class MypageWEAjaxServlet extends HttpServlet {
 					}
 					html += "</div>";
 					
-					html += "<div class='talC_Name'>";
+					html += "<div class='talC_Name' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					if(list.get(i).getWriterPassYN().equals("P")) {
 						html += "<div class='talC_WePassYN_text1'>합격</div>";
 					}
@@ -165,19 +169,19 @@ public class MypageWEAjaxServlet extends HttpServlet {
 					html += "</div>";
 					
 					
-					html += "<div class='talC_Birthday'>";
+					html += "<div class='talC_Birthday' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ",\""+ wnList.getWeQuarter() +"\")'>";
 					if (list.get(i).getWriterPrepRequestYN().equals("Y")) {
-						html += "<p class='talC_WePassYN_textY' style='color:black;'>O</p>";
+						html += "<p class='talC_WePassYN_textY' style='color:black;'>수락</p>";
 					} else {
-						html += "<p class='talC_WePassYN_textN' style='color:black;'>X</p>";
+						html += "<p class='talC_WePassYN_textN' style='color:black;'>거부</p>";
 					}
 					html += "</div>";
 					
 					
 					html += "<div class='talC_noticeStatus'>";
 							
-					html += "<button type='button' class='noticeListRe' onclick='fn_noticeListRe("+ list.get(i).getWriterEnrollNo() +")'>신청</button>";
-					html += "<button type='button' class='noticeListDel' onclick='fn_noticeListRe("+ list.get(i).getWriterEnrollNo() +")'>거부</button>";
+					html += "<button type='button' class='noticeListRe' onclick='fn_prepRequestYN("+ list.get(i).getWriterEnrollNo() +", 1)'>신청</button>";
+					html += "<button type='button' class='noticeListDel' onclick='fn_prepRequestYN("+ list.get(i).getWriterEnrollNo() +", 2)'>거부</button>";
 							
 					html += "</div>";
 	

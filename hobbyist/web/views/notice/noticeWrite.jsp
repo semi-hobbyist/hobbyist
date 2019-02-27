@@ -110,7 +110,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								종료날짜
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="date" name="weNoticeEnddate"/>
+								<input type="date" name="weNoticeEnddate" min="<%= minTime %>"/>
 							</div>
 						</div>
 					</div>

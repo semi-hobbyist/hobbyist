@@ -260,4 +260,5 @@ public class NoticeService {
 		close(conn);
 		return wnList;
 	}
+
 }

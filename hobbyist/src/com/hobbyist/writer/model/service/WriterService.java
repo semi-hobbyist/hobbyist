@@ -129,4 +129,25 @@ public class WriterService {
 		close(conn);
 		return result;
 	}
+
+	// (마이페이지) 예비작가 신청 수락 여부
+	public int prepRequestYN(int writerEnrollNo, String writerPrepRequestYN) {
+		Connection conn = getConnection();
+		int result = dao.prepRequestYN(conn, writerEnrollNo, writerPrepRequestYN);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	//작가신청 기간 중복 신청 막는 로직
+	public List<WriterEnroll> selectQuarter(String weQuarter) {
+		Connection conn = getConnection();
+		List<WriterEnroll> result = dao.selectQuarter(conn,weQuarter);
+		close(conn);
+		return result;
+	}
 }

@@ -23,7 +23,7 @@ public class AdminOrderReListServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String no = request.getParameter("no");
+		int no = Integer.parseInt(request.getParameter("no"));
 		
 		int result = new OrderService().recoverOrder(no);
 		

@@ -29,7 +29,7 @@ public class OrderService {
 	}
 
 
-	public int insertOrder(String randomCode, String member, String s, String c, String orderType, String orderPrice,
+	public int insertOrder(String randomCode, String member, String s, String c, String orderType, int orderPrice,
 			String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
 		Connection conn = getConnection();
 		int result = dao.insertOrder(conn, randomCode, member, s, c, orderType, orderPrice, orderAddName, orderAddPhone, orderAddAddress, orderMsg, orderCate);
@@ -96,7 +96,7 @@ public class OrderService {
 		}
 
 
-		public int deleteOrder(String no) {
+		public int deleteOrder(int no) {
 			Connection conn = getConnection();
 			int result = new OrderDao().deleteOrder(conn, no);
 			close(conn);
@@ -104,15 +104,15 @@ public class OrderService {
 		}
 
 
-		public List<Order> exList(String keyword, int cPage, int numPerPage) {
+		public List<Order> exList(int cPage, int numPerPage) {
 			Connection conn = getConnection();
-			List<Order> list = new OrderDao().exList(conn, keyword, cPage, numPerPage);
+			List<Order> list = new OrderDao().exList(conn, cPage, numPerPage);
 			close(conn);
 			return list;
 		}
 
 
-		public int recoverOrder(String no) {
+		public int recoverOrder(int no) {
 			Connection conn = getConnection();
 			int result = new OrderDao().recoverOrder(conn, no);
 			close(conn);
@@ -131,6 +131,14 @@ public class OrderService {
 		public int searchOrderCount(String member) {
 			Connection conn = getConnection();
 			int result = dao.searchOrderCount(conn, member);
+			close(conn);
+			return result;
+		}
+
+
+		public int searchExCount() {
+			Connection conn = getConnection();
+			int result = dao.searchExCount(conn);
 			close(conn);
 			return result;
 		}

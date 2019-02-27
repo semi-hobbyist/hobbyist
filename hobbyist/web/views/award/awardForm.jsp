@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td  style="text-align:left"><textarea id="noticeContent_editor" rows="5" cols="50" name="content"></textarea></td>
+							<td  style="text-align:left"><textarea id="noticeContent_editor" rows="5" cols="50" name="content">&nbsp;&nbsp;</textarea></td>
 						</tr>
 
 						<tr>

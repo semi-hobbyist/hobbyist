@@ -48,10 +48,9 @@ section#award {
 
 section#award .award_content {
 	width: 990px;
-	padding-top: 200px; /* 기본메뉴만큼 띄우기 */
+	padding-top: 120px; /* 기본메뉴만큼 띄우기 */
 	text-align: center;
 	display: inline-block;
-	padding-top: 140px;
 }
 
 section#award .award_content #award_left {
@@ -358,10 +357,24 @@ section#award .award_content #award_right .award_board_view .section#award .awar
 }
 
 section#award .award_content #award_right .award_board_view_bottom {
+	padding-top: 60px;
+	width: 990px;
 	display: inline-block;
 	text-align: center;
 }
 
+section#award .award_content #award_right .award_board_view_bottom button {
+	width: 130px;
+	height: 40px;
+	border: 1px solid #eee;
+	background-color: #fff;
+}
+
+section#award .award_content #award_right .award_board_view_bottom button:hover {
+	background-color: #252525;
+	transition: 400ms;
+	color: #fff;
+}
 
 section#award .award_content #award_right .award_top span{
 	 color: #9d9da4;

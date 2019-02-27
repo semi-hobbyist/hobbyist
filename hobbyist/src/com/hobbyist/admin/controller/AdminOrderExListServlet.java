@@ -64,9 +64,9 @@ public class AdminOrderExListServlet extends HttpServlet {
 		if(sort.equals("descEnroll")) {
 			System.out.println("DESC ENROLL 진입");
 			// 기본값 등록일순 정렬
-			totalCount = new OrderService().searchCount();
+			totalCount = new OrderService().searchExCount();
 			totalPage = (int)Math.ceil((double)totalCount/numPerPage);
-			list = new OrderService().exList(keyword, cPage, numPerPage);
+			list = new OrderService().exList(cPage, numPerPage);
 			System.out.println("리스트 사이즈 : " + list.size());
 		} /*else if (sort.equals("descPrice")) {
 			System.out.println("DESC PRICE 진입");

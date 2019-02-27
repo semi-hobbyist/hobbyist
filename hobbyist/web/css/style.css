@@ -361,6 +361,11 @@ header #header-bottom .sub#notice .sub_content {
     width: 990px;
 }
 
+header #header-bottom .sub#notice .sub_content a {
+	text-decoration: none;
+	color: #252525;
+}
+
 header #header-bottom .sub#notice .sub_content .sub_left {
     display: inline-block;
     vertical-align: top;
@@ -876,7 +881,7 @@ section#shop .shop_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-    padding-top: 140px;
+    padding-top: 110px;
 }
 
 section#shop .shop_content #shop_left {
@@ -1217,7 +1222,7 @@ section#shopView .shopView_content {
     display: inline-block;
     text-align: center;
     width: 990px;
-    padding-top: 230px;
+    padding-top: 140px;
 }
 
 section#shopView .shopView_content .view_right .view_menu {

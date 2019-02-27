@@ -9,7 +9,6 @@
 #notice .notice_content {
     position: relative;
     width: 990px;
-    height: 100%;
     padding-top: 150px;
     display: flex;
     justify-content: center;

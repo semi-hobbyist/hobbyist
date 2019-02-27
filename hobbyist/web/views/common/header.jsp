@@ -43,6 +43,7 @@
     
 	<!-- ------------- 마이페이지 CSS -------------- -->
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_communityStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPage_writerEnrollModifyStyle.css">
 
@@ -99,8 +100,7 @@
                     <li onclick="fn_loginPageView()">로그인/회원가입
                     </li>
                     <% } else { %>
-                    <span><a href="#"><img alt="프로필 이미지"
-                                src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>"
+                    <span><a href="#"><img alt="프로필 이미지" src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>"
                                 width="15px" height="15px">
                             <%= logginMember.getMemberNickname() %><div id="line"></div></a> 님 환영합니다</span>
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
@@ -150,12 +150,10 @@
                     <ul>
                     <li class="all_li">
                   		<ul>
-                        	<li>로그인</li>
-                        	<li>회원가입</li>
-                        	<li>마이페이지</li>
+                        	<li onclick="fn_loginPageView()">로그인</li>
                         	<li></li>
-                        	<li>내클래스</li>
-                        	<li>취미바구니</li>
+                        	<li onclick="fn_myclass()">내클래스</li>
+                        	<li onclick="fn_cart()">취미바구니</li>
                         </ul>
                     </li>
                     <li  class="all_li">
@@ -299,9 +297,9 @@
                     </div>
                     <div class="sub_center">
                     <br><Br><Br>
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px">
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px">
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
                     
                     </div>
                 </div>

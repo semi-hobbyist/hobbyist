@@ -10,6 +10,22 @@
 	}
 %>
 
+<script>
+
+	$.ajax({
+		url: '<%=request.getContextPath()%>/mypage/myBoardCount',
+		success: function(data) {
+			var nums = data.split(",");
+			
+			$('#bCount').html(nums[0]+" 개");
+			$('#bcCount').html(nums[1]+"개");
+			console.log(nums[0]);
+			
+		}
+	});
+
+</script>
+
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
@@ -20,7 +36,7 @@
             <div>
                <div class="memberSimpleProfileNickname"><%= logginMember.getMemberNickname() %></div>
                <div class="memberSimpleProfile">
-                  가입일<br>
+                 	 가입일<br>
                   <%= logginMember.getMemberEnrolldate() %>
                </div>
             </div>
@@ -33,22 +49,21 @@
          </div>
          <div class="memberSimpleProfileTal">
             <div class="memberSimpleProfileTalTitle">내가 쓴 글 보기</div>
-            <div class="memberSimpleProfileTalContent"><%-- <%=selectMyPageBoardCount%> --%>개</div>
+            <div class="memberSimpleProfileTalContent" id="bCount"></div>
          </div>
          <div class="memberSimpleProfileTal">
             <div class="memberSimpleProfileTalTitle">내가 쓴 댓글 보기</div>
-            <div class="memberSimpleProfileTalContent"><%-- <%=selectMyPageBoardCommentCount%> --%>개</div>
+            <div class="memberSimpleProfileTalContent" id="bcCount"></div>
          </div>
       </div>
    </div>
    <ul>
-      <li>내 클래스</li>
+      <li onclick="fn_myclass()">내 클래스</li>
       <li>내 커뮤니티</li>
-	      <%-- <ul class="sub">
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>&selectMyPageBoardCount=<%=selectMyPageBoardCount%>&selectMyPageBoardCommentCount=<%=selectMyPageBoardCommentCount%>'">나의 게시물</li>
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>&selectMyPageBoardCount=<%=selectMyPageBoardCount%>&selectMyPageBoardCommentCount=<%=selectMyPageBoardCommentCount%>'">나의 댓글</li>
-	      	</ul> --%>
-      <li>내 포인트</li>
+	     <ul class="sub">
+         	<li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 게시물</li>
+         	<li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 댓글</li>
+   	  	</ul>
       <li onclick="location.href='<%=request.getContextPath()%>/mypage/myOrderList?member=<%=logginMember.getMemberEmail()%>'">내 주문내역</li>
       <li>내 정보보기</li>
       <ul class="sub">
@@ -62,6 +77,15 @@
 </div>
 
 <script>
+	function fn_myclass() {
+	    if (<%= logginMember != null %>) {
+	        location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+	    } else {
+	        swal("[내 클래스] 로그인 후 이용해주세요");
+	        return;
+	    }
+	}
+
    $(function () {
       console.log("<%=logginMember.getMemberWriterYN()%>");
       var myPageLeftSelectValue = "";

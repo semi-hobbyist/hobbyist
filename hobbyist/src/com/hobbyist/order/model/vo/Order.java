@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 
 public class Order {
 	
-	private String orderNo;
+	private int orderNo;
+	private String orderCode;
+	private String orderCate;
 	private String orderMember;
 	private int orderClass;
 	private String orderClassOption;
@@ -15,20 +17,19 @@ public class Order {
 	private String orderAddAddress;
 	private String orderMsg;
 	private Timestamp orderDate;
-	private String orderCate;
 	private String orderStatus;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 	
-
-
-	public Order(String orderNo, String orderMember, int orderClass, String orderClassOption, String orderType,
-			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg,
-			Timestamp orderDate, String orderCate, String orderStatus) {
+	public Order(int orderNo, String orderCode, String orderCate, String orderMember, int orderClass,
+			String orderClassOption, String orderType, int orderPrice, String orderAddName, String orderAddPhone,
+			String orderAddAddress, String orderMsg, Timestamp orderDate, String orderStatus) {
 		super();
 		this.orderNo = orderNo;
+		this.orderCode = orderCode;
+		this.orderCate = orderCate;
 		this.orderMember = orderMember;
 		this.orderClass = orderClass;
 		this.orderClassOption = orderClassOption;
@@ -39,18 +40,31 @@ public class Order {
 		this.orderAddAddress = orderAddAddress;
 		this.orderMsg = orderMsg;
 		this.orderDate = orderDate;
-		this.orderCate = orderCate;
 		this.orderStatus = orderStatus;
 	}
 
-
-
-	public String getOrderNo() {
+	public int getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(String orderNo) {
+	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
+	}
+
+	public String getOrderCode() {
+		return orderCode;
+	}
+
+	public void setOrderCode(String orderCode) {
+		this.orderCode = orderCode;
+	}
+
+	public String getOrderCate() {
+		return orderCate;
+	}
+
+	public void setOrderCate(String orderCate) {
+		this.orderCate = orderCate;
 	}
 
 	public String getOrderMember() {
@@ -133,31 +147,14 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-
-
-	public String getOrderCate() {
-		return orderCate;
-	}
-
-
-
-	public void setOrderCate(String orderCate) {
-		this.orderCate = orderCate;
-	}
-
-
-
 	public String getOrderStatus() {
 		return orderStatus;
 	}
 
-
-
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	
-	
-	
+
+
 	
 }

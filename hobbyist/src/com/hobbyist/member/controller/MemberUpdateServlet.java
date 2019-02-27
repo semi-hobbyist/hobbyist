@@ -59,11 +59,11 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 			File f = mr.getFile("file");
 			if(f!=null && f.length()>0) {
-				File deleteFile = new File(filepath+"/"+mr.getParameter("memberOriginalImage"));
+				File deleteFile = new File(filepath+"/"+mr.getFilesystemName("memberOriginalImage"));
 				boolean deleteResult = deleteFile.delete();
 				System.out.println(deleteResult?"제대로 지워짐":"안지워짐");
 			} else {
-				memberOriginalImage=mr.getParameter("old_file");
+				memberOriginalImage=mr.getFilesystemName("old_file");
 			}
 			
 			m.setMemberOriginalImage(memberOriginalImage);

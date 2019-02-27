@@ -101,23 +101,23 @@ public class OrderDao {
 	}
 
 	public int insertOrder(Connection conn, String randomCode, String member, String s, String c, String orderType,
-			String orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
+			int orderPrice, String orderAddName, String orderAddPhone, String orderAddAddress, String orderMsg, String orderCate) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertOrder");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, randomCode);
-			pstmt.setString(2, member);
-			pstmt.setString(3, s);
-			pstmt.setString(4, c);
-			pstmt.setString(5, orderType);
-			pstmt.setString(6, orderPrice);
-			pstmt.setString(7, orderAddName);
-			pstmt.setString(8, orderAddPhone);
-			pstmt.setString(9, orderAddAddress);
-			pstmt.setString(10, orderMsg);
-			pstmt.setString(11, orderCate);
+			pstmt.setString(2, orderCate);
+			pstmt.setString(3, member);
+			pstmt.setInt(4, Integer.parseInt(s));
+			pstmt.setString(5, c);
+			pstmt.setString(6, orderType);
+			pstmt.setInt(7, orderPrice);
+			pstmt.setString(8, orderAddName);
+			pstmt.setString(9, orderAddPhone);
+			pstmt.setString(10, orderAddAddress);
+			pstmt.setString(11, orderMsg);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -276,7 +276,9 @@ public class OrderDao {
 
 			while(rs.next()) {
 				Order order = new Order();
-				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderNo(rs.getInt("order_no"));
+				order.setOrderCode(rs.getString("order_code"));
+				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderMember(rs.getString("order_member"));
 				order.setOrderClass(rs.getInt("order_class"));
 				order.setOrderClassOption(rs.getString("order_class_option"));
@@ -287,7 +289,6 @@ public class OrderDao {
 				order.setOrderAddAddress(rs.getString("order_add_address"));
 				order.setOrderMsg(rs.getString("order_msg"));
 				order.setOrderDate(rs.getTimestamp("order_date"));
-				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderStatus(rs.getString("order_status"));
 				list.add(order);
 			}
@@ -312,7 +313,7 @@ public class OrderDao {
 
 			while(rs.next()) {
 				Order order = new Order();
-				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderNo(rs.getInt("order_no"));
 				order.setOrderPrice(rs.getInt("order_price"));
 				list.add(order);
 			}
@@ -325,14 +326,14 @@ public class OrderDao {
 		return list;
 	}
 
-	public int deleteOrder(Connection conn, String no) {
+	public int deleteOrder(Connection conn, int no) {
 		PreparedStatement pstmt = null;
 		int result =0;
 		
 		try {
 			String sql = prop.getProperty("deleteOrder");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, no);
+			pstmt.setInt(1, no);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -342,7 +343,7 @@ public class OrderDao {
 		return result;
 	}
 
-	public List<Order> exList(Connection conn, String keyword, int cPage, int numPerPage) {
+	public List<Order> exList(Connection conn, int cPage, int numPerPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Order> list = new ArrayList<Order>();
@@ -356,7 +357,9 @@ public class OrderDao {
 
 			while(rs.next()) {
 				Order order = new Order();
-				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderNo(rs.getInt("order_no"));
+				order.setOrderCode(rs.getString("order_code"));
+				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderMember(rs.getString("order_member"));
 				order.setOrderClass(rs.getInt("order_class"));
 				order.setOrderClassOption(rs.getString("order_class_option"));
@@ -367,7 +370,6 @@ public class OrderDao {
 				order.setOrderAddAddress(rs.getString("order_add_address"));
 				order.setOrderMsg(rs.getString("order_msg"));
 				order.setOrderDate(rs.getTimestamp("order_date"));
-				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderStatus(rs.getString("order_status"));
 				list.add(order);
 			}
@@ -380,14 +382,14 @@ public class OrderDao {
 		return list;
 	}
 
-	public int recoverOrder(Connection conn, String no) {
+	public int recoverOrder(Connection conn, int no) {
 		PreparedStatement pstmt = null;
 		int result =0;
 		
 		try {
 			String sql = prop.getProperty("recoverOrder");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, no);
+			pstmt.setInt(1, no);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -413,7 +415,9 @@ public class OrderDao {
 
 			while(rs.next()) {
 				Order order = new Order();
-				order.setOrderNo(rs.getString("order_no"));
+				order.setOrderNo(rs.getInt("order_no"));
+				order.setOrderNo(rs.getInt("order_code"));
+				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderMember(rs.getString("order_member"));
 				order.setOrderClass(rs.getInt("order_class"));
 				order.setOrderClassOption(rs.getString("order_class_option"));
@@ -424,7 +428,6 @@ public class OrderDao {
 				order.setOrderAddAddress(rs.getString("order_add_address"));
 				order.setOrderMsg(rs.getString("order_msg"));
 				order.setOrderDate(rs.getTimestamp("order_date"));
-				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderStatus(rs.getString("order_status"));
 				list.add(order);
 			}
@@ -446,6 +449,25 @@ public class OrderDao {
 			String sql = prop.getProperty("searchOrderCount");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int searchExCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("searchExCount");
+			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {

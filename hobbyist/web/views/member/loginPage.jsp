@@ -45,7 +45,7 @@
 			onsubmit="return fn_loginMember();" autocomplete="off">
 			<div class="form form--memberLogin">
 				<div class="form--heading"></div>
-				<input type="text"  name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
+				<input type="text" name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autofocus="autofocus" autocomplete="off">
 				<input type="password" name="memberPassword" placeholder="Password" autocomplete="new-password">
 				<div class="checkboxDiv">
 					<input type="checkbox" name="saveEmail" id="saveEmail" <%= saveEmail!=null?"checked":"" %> />
@@ -235,11 +235,11 @@
 			return false;
 		} 
 		
-		/* //이메일 인증버튼 누르기 하기
+		 //이메일 인증버튼 누르기 하기
 		if($('#code_check').val()==null || $('#code_check').val().trim().length==0 || $('#emailCheckButton').val()!='인증완료'){
 			alert('이메일 인증버튼을 눌러주세요');
 			return false;
-		} */
+		} 
 		
 		$(".enroll").css("transform", "translateX(-100%)"); 
 		console.log($('#code_check').val());

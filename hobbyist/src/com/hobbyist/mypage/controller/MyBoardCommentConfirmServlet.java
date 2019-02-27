@@ -33,8 +33,6 @@ public class MyBoardCommentConfirmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String nickName = request.getParameter("nickName");
-		int selectMyPageBoardCount = Integer.parseInt(request.getParameter("selectMyPageBoardCount"));
-		int selectMyPageBoardCommentCount = Integer.parseInt(request.getParameter("selectMyPageBoardCommentCount"));
 		
 		int cPage = 0;
 		try {
@@ -85,8 +83,6 @@ public class MyBoardCommentConfirmServlet extends HttpServlet {
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("numPerPage", numPerPage);
 		request.setAttribute("pageBar", pageBar);
-		request.setAttribute("selectMyPageBoardCount", selectMyPageBoardCount);
-		request.setAttribute("selectMyPageBoardCommentCount", selectMyPageBoardCommentCount);
 		request.getRequestDispatcher("/views/mypage/community/myBoard_comment_confirm.jsp").forward(request, response);
 	
 	}

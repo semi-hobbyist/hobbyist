@@ -45,8 +45,8 @@
 		
 			<div class="award_board_view_bottom">
 				<%if(logginMember!=null&&(a.getAwardWriter().equals(logginMember.getMemberEmail()))) {%>
-				<button type="button">어워드 삭제</button>
-				<button type="button">어워드 수정</button>
+				<button type="button" onclick="fn_deleteAward()">어워드 삭제</button>
+				<button type="button" onclick="fn_updateAward()">어워드 수정</button>
 				<%} %>
 			</div>
 			
@@ -55,8 +55,7 @@
 				<div class="view_comment">
 					<form name="commentFrm" id="commentFrm" action="<%=request.getContextPath()%>/award/awardCommentInsert" method="post">
 						<input type="hidden" name="awardRef" value="<%=a.getAwardNo()%>">
-						<input type="hidden" name="awardCommentWriter"
-							value="<%=logginMember != null ? logginMember.getMemberEmail() : ""%>">
+						<input type="hidden" name="awardCommentWriter" value="<%=logginMember != null ? logginMember.getMemberEmail() : ""%>">
 						<input type="hidden" name="awardCommentLevel" value="1"> <input
 							type="hidden" name="awardCommentRef" value="0">
 		

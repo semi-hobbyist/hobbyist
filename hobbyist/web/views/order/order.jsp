@@ -131,7 +131,7 @@
 					<option value="택배함">택배함</option>
 				</select></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<th class="tableLine" colspan="2"  id="step03"><h3>할인정보 입력</h3></th>
 			</tr>
 			<tr>
@@ -153,7 +153,7 @@
 					%>
 						<input type="hidden" name="addPoint" value="<%= resultPoint %>"/><%= resultPoint %>
 				</td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<th class="tableLine" colspan="2"  id="step04"><h3>결제방법 선택</h3></th>
 			</tr>

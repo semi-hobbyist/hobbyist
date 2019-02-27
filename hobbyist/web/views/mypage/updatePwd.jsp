@@ -35,7 +35,7 @@
 					<input type="password" id="memberPassword" name="memberPassword" /></td>
 				</tr>
 				<tr>
-					<th colspan="2"><button type="button" id="checkIdBtn" name="checkIdBtn">본인인증</button></th>
+					<th colspan="2"><!-- <button type="button" id="checkIdBtn" name="checkIdBtn">본인인증</button> --></th>
 				</tr>
 				<tr>
 					<th>변경할 비밀번호</th>

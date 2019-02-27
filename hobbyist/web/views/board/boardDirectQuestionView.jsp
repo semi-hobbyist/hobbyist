@@ -61,6 +61,9 @@
 					</dl>
 				</div>
 				<div id="view_content">
+					<% if(b.getBoardDQReNameFileName()!=null) { %>
+					<img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardDQReNameFileName()%>" width="500px" />
+					<% } %>
 					<p><%=b.getBoardDQContent()%></p>
 				</div>
 				<%if(b.getBoardDQAnswer() != null) {%>

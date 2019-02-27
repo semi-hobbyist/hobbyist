@@ -32,7 +32,7 @@ public class OrderInsertServlet extends HttpServlet {
 		String classOption_temp = request.getParameter("classOption");
 		String classOption[] = classOption_temp.split(",");
 		String orderType = request.getParameter("order_type");
-		String orderPrice = request.getParameter("order_price");
+		int orderPrice = Integer.parseInt(request.getParameter("order_price"));
 		String orderAddName = request.getParameter("order_add_name");
 		String orderAddPhone = request.getParameter("order_add_phone");
 		String orderAddAddress = request.getParameter("order_add_address");
@@ -56,9 +56,11 @@ public class OrderInsertServlet extends HttpServlet {
 		String loc = "";
 		String view = "/views/common/msg.jsp";
 		
+		String flag = request.getParameter("orderOneday");
 		
+		System.out.println("클래스샵인지 원데이인지 : " + flag);
 		// 원데이클래스 주문인지 아닌지 확인
-		if(request.getParameter("orderOneday").equals("class")) {
+		if(!flag.equals("oneday")) {
 			System.out.println("---------------- 클래스샵 주문처리 (★★) ---------------");
 			int randomNum = 0;
 			int result = 0;
@@ -101,7 +103,7 @@ public class OrderInsertServlet extends HttpServlet {
 				loc = "/myClass?member=" + member;
 			} else {
 				msg = "결제실패";
-				loc = "/myCartList?=" + member;
+				loc = "/myCart?=" + member;
 			}
 			
 		} else {
@@ -122,7 +124,7 @@ public class OrderInsertServlet extends HttpServlet {
 						new MyCartService().deleteCart(Integer.parseInt(cartNo[j]));
 					}
 				} else {
-					msg += ", " +randomCode + "모집인원 초과, 예약 실패";
+					msg += "모집인원 초과되었습니다, 예약 실패";
 				}
 			}
 			loc = "/myClass?member=" + member;

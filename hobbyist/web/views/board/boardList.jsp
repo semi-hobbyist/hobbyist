@@ -39,7 +39,7 @@
 					</script>
 				</ul>
 			</div>
-		</div>
+		</div><br>
 		<div id="slideButton" onclick="slide()">
 			메<br>
 			뉴<br>

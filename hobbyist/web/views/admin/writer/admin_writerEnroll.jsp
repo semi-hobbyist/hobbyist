@@ -289,7 +289,12 @@
 									</div>
 									<div class="wEP_MajorImgfile wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">대표 작품 사진 파일</div>
-										<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal"></div>
+										<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal">
+											<div class="inputImage1">
+												<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+												<div class="imageTitle1"></div>
+											</div>
+										</div>
 									</div>
 									<div class="wEP_ScheduleYN wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">
@@ -348,7 +353,12 @@
 									</div>
 									<div class="wEP_ClassImgfile wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">클래스의 제품사진 파일</div>
-										<div id="EP_classImgfileOriginal" class="wEnrollPreVal"></div>
+										<div id="EP_classImgfileOriginal" class="wEnrollPreVal">
+											<div class="inputImage1">
+												<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+												<div class="imageTitle1"></div>
+											</div>
+										</div>
 									</div>
 									<div class="wEP_PrepRequestYN wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">예비작가 신청 여부</div>
@@ -511,7 +521,7 @@
 								$("#EP_writerCategory").html(data["writerCategory"]);
 								$("#EP_writerAddress").html(data["writerAddress"]);
 								$("#EP_writerReason").html(data["writerReason"]);
-								$("#EP_writerMajorImgfileOriginal").html(data["writerMajorImgfileOriginal"]);
+								// $("#EP_writerMajorImgfileOriginal").html(data["writerMajorImgfileOriginal"]);
 								$("#EP_writerScheduleYN").html(data["writerScheduleYN"]);
 								$("#EP_writerContractYN").html(data["writerContractYN"]);
 								$("#EP_writerWishMonth").html(data["writerWishMonth"]);
@@ -521,9 +531,17 @@
 								$("#EP_writerProductTime").html(data["writerProductTime"]);
 								$("#EP_writerClassKitWarningPoint").html(data["writerClassKitWarningPoint"]);
 								$("#EP_writerClassKitPart").html(data["writerClassKitPart"]);
-								$("#EP_classImgfileOriginal").html(data["classImgfileOriginal"]);
+								// $("#EP_classImgfileOriginal").html(data["classImgfileOriginal"]);
 								$("#EP_writerPrepRequestYN").html(data["writerPrepRequestYN"]);
 								$("#EP_writerFinalPoint").html(data["writerFinalPoint"]);
+
+								$(".inputImage1 img").attr("src", "<%= request.getContextPath() %>/upload/writer/"+data["writerMajorImgfileRenamed"]);
+								$(".inputImage1 img").css({"width":"300px","height":"200px"});
+								$(".inputImage2 img").attr("src", "<%= request.getContextPath() %>/upload/writer/"+data["classImgfileRenamed"]);
+								$(".inputImage2 img").css({"width":"300px","height":"200px"});
+								$(".imageTitle1").text("파일명 : " + data["writerMajorImgfileOriginal"]);
+								$(".imageTitle2").text("파일명 : " + data["classImgfileOriginal"]);
+
 
 								$("#writerEnrollPass").attr("onclick", "fn_wEpass(" + index + ",'" + data["memberEmail"] + "')");
 								$("#writerEnrollFail").attr("onclick", "fn_wEfail(" + index + ",'" + data["memberEmail"] + "')");

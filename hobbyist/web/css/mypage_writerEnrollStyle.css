@@ -110,7 +110,7 @@
 
 #mypage_writerEnroll .talT_Birthday {
     display: table-cell;
-    width: 100px;
+    width: 200px;
     padding: 5px;
 }
 
@@ -143,6 +143,21 @@
     width: 60px;
     padding: 5px;
 }
+
+
+#mypage_writerEnroll .talT_noticeStatus {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+#mypage_writerEnroll .talC_noticeStatus {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+}
+
+
 
 #mypage_writerEnroll .talC_WePassYN_textN {
 	padding: 0;
@@ -503,3 +518,46 @@
     background-color: #fff; 
     border: 1px solid #888888;
 }
+
+
+/* 복구버튼 */
+#mypage_writerEnroll .noticeListRe {
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: rgb(136, 147, 199);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+	color: white;
+	border: none;
+	outline: none;
+    cursor: pointer;
+}
+#mypage_writerEnroll .noticeListRe:hover {
+    transition: 400ms;
+    color: white;
+	background-color: rgb(0, 86, 184);
+}
+
+/* 삭제버튼 */
+#mypage_writerEnroll .noticeListDel {
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+	background-color: rgb(199, 136, 136);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+	color: white;
+	border: none;
+	outline: none;
+}
+#mypage_writerEnroll .noticeListDel:hover {
+    transition: 400ms;
+    color: white;
+	background-color: rgb(184, 0, 0);
+}
+

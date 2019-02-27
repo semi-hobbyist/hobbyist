@@ -36,29 +36,30 @@ public class WriterEnrollServlet extends HttpServlet {
 		String msg = "";
 		String loc = "";
 		String view = "";
+		String  weQuarter = "";
+		WeNotice wnList = null;
 		if(session.getAttribute("logginMember")==null) {
 			msg="작가신청을 하기 위해서는 로그인이 필요합니다.";
-			loc="/index.jsp";
-			view="/views/common/msg.jsp";
-		}
-		else {
-			view="/views/writer/writerEnroll.jsp";
-		}
-		
-		String  weQuarter = request.getParameter("weQuarter");
-		WeNotice wnList = new NoticeService().cuWeSelectOne();
-		
-		System.out.println(wnList.getWeQuarter());
-		System.out.println(weQuarter);
-
-		if(!wnList.getWeQuarter().equals(weQuarter)) {
-			msg="작가신청기간이 아닙니다.";
 			loc="/notice/noticeList";
 			view="/views/common/msg.jsp";
 		}
 		else {
-			view="/views/writer/writerEnroll.jsp";
+			
+			//작가신청 관련 작가신청 기간이 아닐때 막는 로직
+			weQuarter = request.getParameter("weQuarter");
+			wnList = new NoticeService().cuWeSelectOne();
+			
+			if(!wnList.getWeQuarter().equals(weQuarter)) {
+				msg="작가신청기간이 아닙니다.";
+				loc="/notice/noticeList";
+				view="/views/common/msg.jsp";
+			}
+			else {
+				view="/views/writer/writerEnroll.jsp";
+			}
 		}
+		
+
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

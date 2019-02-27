@@ -45,19 +45,30 @@ public class NoticeInsertServlet extends HttpServlet {
 		
 		//작가신청 공지글 관련 시기 변수 가져오기(중복공지 방지 로직)
 		List<WeNotice> wn = new NoticeService().weSelectAll();
-		String[] weQuarter = wn.get(0).getWeQuarter().split(",");
-		String weYear = weQuarter[0];
-		String weQu = weQuarter[1];
-		
+		System.out.println(wn);
 		Calendar c = Calendar.getInstance();
-		String cuYear = String.valueOf(c.get(Calendar.YEAR));
-		String cuQu = weQu;
-		if(weYear.equals(cuYear)) {
-			cuQu = String.valueOf(Integer.parseInt(weQu) + 1);
+		String cuYear = "";
+		String cuQu = "";
+		Date minTime = null;
+		if(wn.size()!=0) {
+			String[] weQuarter = wn.get(0).getWeQuarter().split(",");
+			String weYear = weQuarter[0];
+			String weQu = weQuarter[1];
+			
+			cuYear = String.valueOf(c.get(Calendar.YEAR));
+			cuQu = weQu;
+			if(weYear.equals(cuYear)) {
+				cuQu = String.valueOf(Integer.parseInt(weQu) + 1);
+			}
+			
+			//작가신청 공지글 등록할때 날짜 최소값 구하기
+			minTime = new NoticeService().minTime(wn.get(0).getWeNoticeNo());
+		} else {
+			cuYear = String.valueOf(c.get(Calendar.YEAR));
+			cuQu = "1";
+			long currentTime = System.currentTimeMillis();
+			minTime = new Date(currentTime);
 		}
-		
-		//작가신청 공지글 등록할때 날짜 최소값 구하기
-		Date minTime = new NoticeService().minTime(wn.get(0).getWeNoticeNo());
 		
 		request.setAttribute("wn", wn);
 		request.setAttribute("cuYear", cuYear);

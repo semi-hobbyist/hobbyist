@@ -120,7 +120,16 @@ public class AdminWEAjaxServlet extends HttpServlet {
 			for(int i=0;i<list.size();i++) {
 					html += "<div class='tal_Content' onclick='fn_WEViewAjax(" + list.get(i).getWriterEnrollNo() + ")'>";
 					html += "<div class='talC_WeNo'>" + list.get(i).getWriterEnrollNo() + "</div>";
-					html += "<div class='talC_WeQuarter'>" + list.get(i).getWriterEnrollQuarter() + "</div>";
+					
+					html += "<div class='talC_WeQuarter'>";
+					
+					//분기 출력 변환
+					String[] weQuarter = list.get(i).getWriterEnrollQuarter().split(",");
+					String weYear = weQuarter[0];
+					String weQu = weQuarter[1];
+					html += weYear + "년  / " + weQu + "차";
+					
+					html += "</div>";
 					html += "<div class='talC_NickName'>" + list.get(i).getMemberNickname() + "</div>";
 					html += "<div class='talC_Email'>" + list.get(i).getMemberEmail() + "</div>";
 					html += "<div class='talC_Name'>" + list.get(i).getMemberName() + "</div>";

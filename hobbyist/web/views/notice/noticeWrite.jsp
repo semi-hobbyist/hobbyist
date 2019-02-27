@@ -104,7 +104,7 @@
 							<div>
 								시작날짜
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="date" name="weNoticeStartdate" min="<%= minTime %>"/>
+								<input type="date" name="weNoticeStartdate" min="<%= minTime %>" value="<%= minTime %>"/>
 							</div>
 							<div>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

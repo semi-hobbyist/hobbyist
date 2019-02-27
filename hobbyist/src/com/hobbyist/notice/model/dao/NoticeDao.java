@@ -543,6 +543,23 @@ public class NoticeDao {
 		}
 		return result;
 	}
+
+	//작가신청 공지사항 DB 삭제
+	public int wnDel_DB(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int wnResult = 0;
+		String sql = prop.getProperty("wnDel_DB");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			wnResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return wnResult;
+	}
 	
 	public int updateNotice(Connection conn, Notice no) {
 		PreparedStatement pstmt = null;

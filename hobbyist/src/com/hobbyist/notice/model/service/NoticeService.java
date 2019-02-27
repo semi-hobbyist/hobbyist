@@ -184,6 +184,20 @@ public class NoticeService {
 		return result;
 	}
 	
+	//작가신청 공지사항 DB 삭제
+	public int wnDel_DB(int noticeNo) {
+		Connection conn = getConnection();
+		int wnResult = dao.wnDel_DB(conn,noticeNo);
+			if(wnResult>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		close(conn);
+		return wnResult;
+	}
+	
 	public int updateNotice(Notice no) {
 		Connection conn = getConnection();
 		int result = dao.updateNotice(conn,no);

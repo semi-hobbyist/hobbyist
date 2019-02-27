@@ -75,6 +75,7 @@
 							$(function () {
 								$("input[name='writerMajorImgfileOriginal']").change(function (event) {
 									$(".inputImage img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='writerMajorImgfileOriginal']").val();
 									$(".imageTitle").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {
@@ -286,6 +287,7 @@
 							$(function () {
 								$("input[name='classImgfileOriginal']").change(function (event) {
 									$(".inputImage1 img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage1 img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='classImgfileOriginal']").val();
 									$(".imageTitle1").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {

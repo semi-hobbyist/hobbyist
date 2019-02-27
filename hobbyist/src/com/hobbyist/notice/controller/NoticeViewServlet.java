@@ -70,7 +70,6 @@ public class NoticeViewServlet extends HttpServlet {
 		
 		// 작가신청 관련 자료 가져오기
 		WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
-		System.out.println(wnList.toString());
 		String[] weQuarter = wnList.getWeQuarter().split(",");
 		String weYear = weQuarter[0];
 		String weQu = weQuarter[1];

@@ -28,8 +28,10 @@ public class NoticeDB_DelAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		
+		int wnResult = new NoticeService().wnDel_DB(noticeNo);
 		
 		int result = new NoticeService().del_DB(noticeNo);
 		

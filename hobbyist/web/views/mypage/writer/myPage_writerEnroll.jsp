@@ -1,3 +1,4 @@
+<%@page import="com.hobbyist.notice.model.vo.Notice"%>
 <%@page import="com.hobbyist.writer.model.vo.WriterEnroll"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,6 +10,7 @@
 	String pageBar = (String)request.getAttribute("pageBar");
 	String keyword = (String)request.getAttribute("keyword");
 	String sort = (String)request.getAttribute("sort");
+	Notice cuNotice = (Notice)request.getAttribute("cuNotice");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
@@ -61,12 +63,11 @@
 							<div class="tal_Title">
 								<div class="talT_WeNo">번호</div>
 								<div class="talT_WeQuarter">분기</div>
-								<div class="talT_NickName">닉네임</div>
+								<!-- <div class="talT_NickName">닉네임</div> -->
 								<div class="talT_WeDate">등록일</div>
-								<div class="talT_Birthday">예비작가신청</div>
 								<div class="talT_Email">처리상태</div>
 								<div class="talT_Name">합격여부</div>
-								<div class="talT_WePassYN"></div>
+								<div class="talT_Birthday">예비작가 신청</div>
 							</div>
 						</form>
 						<script>
@@ -361,11 +362,15 @@
 				</div>
 
 				<script>
-					function fn_wEmodifyMypage(index) {
+					function fn_wEmodifyMypageY(index) {
+						alert("접수기간입니다. 수정이 가능합니다.");
 						location.href="<%= request.getContextPath() %>/mypage/mypageWEmodify?writerEnrollNo="+index;
 					}
+					function fn_wEmodifyMypageN(index) {
+						alert("접수기간이 지났습니다. 수정이 불가능합니다.");
+					}
 
-					function fn_WEViewAjax(index) {
+					function fn_WEViewAjax(index,weQuarter) {
 						$(".pagePreviewModal").css("display", "flex");
 						$(".wEPreviewBody").animate({ scrollTop: 0 }, 0);
 						$.ajax({
@@ -397,7 +402,11 @@
 								$("#EP_writerPrepRequestYN").html(data["writerPrepRequestYN"]);
 								$("#EP_writerFinalPoint").html(data["writerFinalPoint"]);
 								
-								$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypage("+ index +")")
+								if(weQuarter == data["writerEnrollQuarter"]) {
+									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageY("+ index +")");
+								} else {
+									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageN("+ index +")");
+								}
 							}
 						})
 					}

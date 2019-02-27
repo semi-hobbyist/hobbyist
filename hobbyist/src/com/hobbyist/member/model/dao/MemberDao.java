@@ -377,4 +377,20 @@ public class MemberDao {
 		return result;
 	}
 
+	public int deleteAdmin(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteAdmin");
+		int result=0;
+		System.out.println("dao에서 확인 : "+m.getMemberEmail());
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberEmail());
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

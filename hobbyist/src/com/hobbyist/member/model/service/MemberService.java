@@ -176,4 +176,11 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+	
+	public int deleteAdmin(Member m) {
+		Connection conn =getConnection();
+		int result = dao.deleteAdmin(conn, m);
+		close(conn);
+		return result;
+	}
 }

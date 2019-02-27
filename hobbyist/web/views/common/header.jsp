@@ -25,12 +25,12 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myClassStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/onedayStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/studyStyle.css">
-   
+
     <!-- ------------- 관리자페이지 CSS -------------- -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/adminStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_memberStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticePreListStyle.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticePreListStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopViewStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_shopWriteStyle.css">
@@ -41,9 +41,9 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_communityStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
-    
-	<!-- ------------- 마이페이지 CSS -------------- -->
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
+
+    <!-- ------------- 마이페이지 CSS -------------- -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPage_writerEnrollModifyStyle.css">
 
@@ -66,7 +66,7 @@
 
     <!-- alert 라이브러리 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 </head>
@@ -78,7 +78,7 @@
     <div class="blur"></div>
 
     <header>
-    <div id="header_line"></div>
+        <div id="header_line"></div>
         <script>
             $(window).scroll(function () {
                 var target = $('#header_line');
@@ -92,7 +92,7 @@
         <div id="header-top">
             <div class="left-top">
                 <a href="<%= request.getContextPath() %>"><img alt="하비스트"
-                            src="<%= request.getContextPath() %>/images/logo.jpg"></a>
+                        src="<%= request.getContextPath() %>/images/logo.jpg"></a>
             </div>
             <div class="top">
                 <ul>
@@ -100,7 +100,9 @@
                     <li onclick="fn_loginPageView()">로그인/회원가입
                     </li>
                     <% } else { %>
-                    <span><a href="#"><img src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>" width="15px" height="15px">
+                    <span><a href="#"><img
+                                src="<%= request.getContextPath() %>/upload/member/<%= logginMember.getMemberRenamedImage() %>"
+                                width="15px" height="15px">
                             <%= logginMember.getMemberNickname() %></a> 님 환영합니다</span>
                     <% if (logginMember.getMemberEmail().equals("admin")) {%>
                     <li id="admin" onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">관리자
@@ -119,31 +121,32 @@
                         <div class="menuline"></div><img src="<%=request.getContextPath()%>/images/allmenu.png"
                             width="10px">&nbsp;&nbsp;전체보기
                     </li>
-                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">
+                    <li style="width: 130px;"
+                        onclick="location.href='<%= request.getContextPath()%>/notice/noticeList'">
                         <div class="menuline"></div>공지사항
                     </li>
-                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">
+                    <li style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/shop/shopList'">
                         <div class="menuline"></div>클래스샵
                     </li>
-                    <li  style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">
+                    <li style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'">
                         <div class="menuline"></div>원데이클래스
                     </li>
-                    <li  style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/award/awardList'">
+                    <li style="width: 130px;" onclick="location.href='<%= request.getContextPath()%>/award/awardList'">
                         <div class="menuline"></div>어워드
                     </li>
-                    <li  style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/board/boardList'">
+                    <li style="width: 130px;" onclick="location.href='<%=request.getContextPath()%>/board/boardList'">
                         <div class="menuline"></div>커뮤니티
                     </li>
-                    <li  style="width: 66px;"><img src="<%= request.getContextPath() %>/images/myclass.png" id="icon_myclass" width="23px"
-                        onclick="fn_myclass()" style="cursor:pointer;"></li>
-                        <li  style="width: 66px;">
-                    <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="23px"
-                        onclick="fn_cart()" style="cursor:pointer;"></li>
-                    
+                    <li style="width: 66px;"><img src="<%= request.getContextPath() %>/images/myclass.png"
+                            id="icon_myclass" width="23px" onclick="fn_myclass()" style="cursor:pointer;"></li>
+                    <li style="width: 66px;">
+                        <img src="<%= request.getContextPath() %>/images/cart.png" id="icon_cart" width="23px"
+                            onclick="fn_cart()" style="cursor:pointer;"></li>
+
                 </ul>
             </div>
-        
-        <!-- ------------ 전체메뉴보기 서브메뉴 ----------- -->
+
+            <!-- ------------ 전체메뉴보기 서브메뉴 ----------- -->
             <div class="sub" id="menuAll">
                 <div class="sub_content">
                     <ul>
@@ -188,13 +191,13 @@
 									<%if(logginMember != null) {%>
 									location.href='<%=request.getContextPath()%>/board/boardDirectQuestion?NickName=<%=logginMember.getMemberNickname()%>';
 									<% } else { %>
-										alert('로그인 후 이용가능합니다.');
+                                            alert('로그인 후 이용가능합니다.');
 									<% } %>
 								}
-							</script>
-                        </ul>
-                    </li>
-                </ul>
+                                </script>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="sub" id="notice">
@@ -203,24 +206,39 @@
                         <h3>N O T I C E & E V E N T</h3>
                         <p>공지사항 및 이벤트</p>
                         <br>
-                        [현재 작가모집중]<br>
-                        <a href="<%= request.getContextPath() %>/writer/writerEnroll">새로운 하비스트 작가님을 모십니다</a>
-                <div id="line"></div>
+                        <div id="writerEnrollAlert">
+                        </div>
+                        <script>
+                        	// 작가 모집 공고 AJAX
+	                        $.ajax({
+	                            url: '<%= request.getContextPath() %>/notice/writerEnrollAlertAjax.do',
+	                            success: function (data) {
+                                    $('#writerEnrollAlert').empty();
+	                                $('#writerEnrollAlert').html(data);
+	                            }
+	                        });
+                        </script>
+                        <div id="line"></div>
                     </div>
                     <div class="sub_center">
                         <h3>L A T E S T - N O T I C E</h3>
-                        <ul>
-                            <li>[2019/01/21] 설연휴 배송지연 안내</li>
-                            <li>[2019/01/16] 2019년 무이자 할부 카드 안내</li>
-                            <li>[2019/01/11] 2019년 새해맞이 이벤트</li>
-                            <li>[2019/01/05] 작가 신청방법 안내</li>
+                        <ul id="newLatestNotice">
                         </ul>
+                        <script>
+                            // 공지사항 최근 글 AJAX
+                            $.ajax({
+                                url: '<%= request.getContextPath() %>/notice/newLatestNoticeAjax.do',
+                                success: function (data) {
+                                    $('#newLatestNotice').html(data);
+                                }
+                            });
+                        </script>
                     </div>
                     <div class="sub_right">
                         <h3>S U B - M E N U</h3>
                         <ul>
-                            <li> · 공지사항</li>
-                            <li> · 이벤트</li>
+                            <li onclick="location.href='<%=request.getContextPath()%>/notice/noticeList'"> · 공지사항</li>
+                            <li onclick="location.href='<%=request.getContextPath()%>/notice/noticeList'"> · 이벤트</li>
                         </ul>
                     </div>
                 </div>
@@ -276,7 +294,7 @@
                     <div class="sub_right">
                         <h3>S U B - M E N U</h3>
                         <ul>
-                            <li  onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'"> · 원데이클래스</li>
+                            <li onclick="location.href='<%=request.getContextPath()%>/oneday/onedayList'"> · 원데이클래스</li>
                         </ul>
                     </div>
                 </div>
@@ -289,11 +307,11 @@
                             매달 추천수가 많은 작품들을 선정해 포인트를 적립해드립니다</p>
                     </div>
                     <div class="sub_center">
-                    <br><Br><Br>
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px">
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px">
-                    <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px">
-                    
+                        <br><Br><Br>
+                        <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px">
+                        <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px">
+                        <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px">
+
                     </div>
                 </div>
             </div>
@@ -343,8 +361,8 @@
             </div>
             <script>
                 var subMenu = $('.bottom ul>li');
-                
-               var menuAll = $('#menuAll');
+
+                var menuAll = $('#menuAll');
                 var notice = $('#notice');
                 var classshop = $('#classshop');
                 var oneday = $('#oneday');
@@ -355,30 +373,30 @@
 
                 // 전체보기
                 subMenu.eq(0).mouseover(function () {
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).addClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                   	menuAll.css({"transition": "400ms", "height": "250px" });
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    oneday.css({"transition": "400ms", "height": "0px"});
-                    award.css({"transition": "400ms", "height": "0px"});
-                    community.css({"transition": "400ms", "height": "0px"});
+                    menuAll.css({ "transition": "400ms", "height": "250px" });
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    oneday.css({ "transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 menuAll.mouseleave(function () {
                     subMenu.eq(1).removeClass("active");
-                    menuAll.css({"transition": "400ms", "height": "0px"});
-                    blur.eq(0).css("display","none");
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display", "none");
                 })
-                
+
                 // 공지사항 서브메뉴 이벤트
                 subMenu.eq(1).mouseover(function () {
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).removeClass("active");
 
                     subMenu.eq(1).addClass("active");
@@ -386,24 +404,24 @@
                     subMenu.eq(3).removeClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    menuAll.css({"transition": "400ms", "height": "0px"});
-                    notice.css({"transition": "400ms", "height": "200px" });
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    oneday.css({"transition": "400ms", "height": "0px"});
-                    award.css({"transition": "400ms", "height": "0px"});
-                    community.css({"transition": "400ms", "height": "0px"});
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    notice.css({ "transition": "400ms", "height": "200px" });
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    oneday.css({ "transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 notice.mouseleave(function () {
                     subMenu.eq(1).removeClass("active");
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    blur.eq(0).css("display","none");
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display", "none");
                 })
 
                 // 클래스샵 서브메뉴 이벤트
                 subMenu.eq(2).mouseover(function () {
 
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).addClass("active");
@@ -411,23 +429,23 @@
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
 
-                    menuAll.css({"transition": "400ms", "height": "0px"});
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    classshop.css({"transition": "400ms", "height": "270px" });
-                    oneday.css({"transition": "400ms", "height": "0px"});
-                    award.css({"transition": "400ms", "height": "0px"});
-                    community.css({"transition": "400ms", "height": "0px"});
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    classshop.css({ "transition": "400ms", "height": "270px" });
+                    oneday.css({ "transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 classshop.mouseleave(function () {
                     subMenu.eq(2).removeClass("active");
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    blur.eq(0).css("display","none");
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    blur.eq(0).css("display", "none");
                 })
 
                 // 원데이클래스 서브메뉴 이벤트
                 subMenu.eq(3).mouseover(function () {
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).removeClass("active");
 
                     subMenu.eq(1).removeClass("active");
@@ -435,24 +453,24 @@
                     subMenu.eq(3).addClass("active");
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).removeClass("active");
-                    menuAll.css({"transition": "400ms", "height": "0px"});
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    oneday.css({"transition": "400ms", "height": "160px" });
-                    award.css({"transition": "400ms", "height": "0px"});
-                    community.css({"transition": "400ms", "height": "0px"});
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    oneday.css({ "transition": "400ms", "height": "160px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 oneday.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(3).removeClass("active");
-                    oneday.css({"transition": "400ms", "height": "0px"});
+                    oneday.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 // 어워드 서브메뉴 이벤트
                 subMenu.eq(4).mouseover(function () {
 
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).removeClass("active");
 
                     subMenu.eq(1).removeClass("active");
@@ -461,23 +479,23 @@
                     subMenu.eq(4).addClass("active");
                     subMenu.eq(5).removeClass("active");
 
-                    menuAll.css({"transition": "400ms", "height": "0px"});
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    oneday.css({"transition": "400ms", "height": "0px"});
-                    award.css({"transition": "400ms", "height": "210px" });
-                    community.css({"transition": "400ms", "height": "0px" });
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    oneday.css({ "transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "210px" });
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 award.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(4).removeClass("active");
-                    award.css({"transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
                 })
 
                 // 커뮤니티 서브메뉴 이벤트
                 subMenu.eq(5).mouseover(function () {
-                    blur.eq(0).css("display","block");
+                    blur.eq(0).css("display", "block");
                     subMenu.eq(0).removeClass("active");
                     subMenu.eq(1).removeClass("active");
                     subMenu.eq(2).removeClass("active");
@@ -485,19 +503,19 @@
                     subMenu.eq(4).removeClass("active");
                     subMenu.eq(5).addClass("active");
 
-                    menuAll.css({"transition": "400ms", "height": "0px" });
-                    notice.css({"transition": "400ms", "height": "0px"});
-                    classshop.css({"transition": "400ms", "height": "0px"});
-                    oneday.css({"transition": "400ms", "height": "0px" });
-                    award.css({"transition": "400ms", "height": "0px"});
-                    community.css({"transition": "400ms", "height": "205px" });
+                    menuAll.css({ "transition": "400ms", "height": "0px" });
+                    notice.css({ "transition": "400ms", "height": "0px" });
+                    classshop.css({ "transition": "400ms", "height": "0px" });
+                    oneday.css({ "transition": "400ms", "height": "0px" });
+                    award.css({ "transition": "400ms", "height": "0px" });
+                    community.css({ "transition": "400ms", "height": "205px" });
 
                 })
 
                 community.mouseleave(function () {
                     blur.eq(0).css("display", "none");
                     subMenu.eq(5).removeClass("active");
-                    community.css({"transition": "400ms", "height": "0px"});
+                    community.css({ "transition": "400ms", "height": "0px" });
                 })
 
 
@@ -546,7 +564,8 @@
                     // 내클래스
                     function fn_myclass() {
                         if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                            location.href =
+                                '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
                         } else {
                             swal("[내 클래스] 로그인 후 이용해주세요");
                             return;
@@ -556,47 +575,48 @@
                     // 장바구니
                     function fn_cart() {
                         if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                            location.href =
+                                '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
                         } else {
                             swal("[장바구니] 로그인 후 이용해주세요");
                             return;
                         }
                     }
                 </script>
-            </div>
+        </div>
         </div> --%>
         <script>
-        // 내클래스
-                    function fn_myclass() {
-                        if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
-                        } else {
-                            swal("[내 클래스] 로그인 후 이용해주세요");
-                            return;
-                        }
-                    }
+            // 내클래스
+            function fn_myclass() {
+                if (<%= logginMember != null %>) {
+                    location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                } else {
+                    swal("[내 클래스] 로그인 후 이용해주세요");
+                    return;
+                }
+            }
 
-                    // 장바구니
-                    function fn_cart() {
-                        if (<%= logginMember != null %>) {
-                            location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
-                        } else {
-                            swal("[장바구니] 로그인 후 이용해주세요");
-                            return;
-                        }
-                    }
-         </script>
+            // 장바구니
+            function fn_cart() {
+                if (<%= logginMember != null %>) {
+                    location.href = '<%= request.getContextPath() %>/myCart?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
+                } else {
+                    swal("[장바구니] 로그인 후 이용해주세요");
+                    return;
+                }
+            }
+        </script>
     </header>
 
-	<%@ include file="/views/member/loginPage.jsp" %>
-	
-	<script>
-	function fn_loginPageView() {
-		$("#loginSection").css("display","flex");
-	}
-	
-	</script>
-	<%-- 
+    <%@ include file="/views/member/loginPage.jsp" %>
+
+    <script>
+        function fn_loginPageView() {
+            $("#loginSection").css("display", "flex");
+        }
+
+    </script>
+    <%-- 
     <!-- 로그인 페이지 연결 -->
     <%
 	// 로그인 화면창 분기 처리
@@ -607,4 +627,4 @@
 	%>
     <% if(loginFlag==true) { %>
     <% }; %>
-     --%>
+    --%>

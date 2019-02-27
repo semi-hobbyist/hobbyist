@@ -433,12 +433,57 @@ header #header-bottom .sub#notice .sub_content .sub_right ul li {
     padding-left: 10px;
     height: 24px;
     border-bottom: 1px solid #eee;
+    cursor: pointer;
 }
 
 header #header-bottom .sub#notice .sub_content .sub_right ul li:hover {
     transition: 500ms;
     background-color: #eee;
 }
+
+header #header-bottom .sub#notice .sub_content .sub_center ul li a {
+    color: #515359;
+    text-decoration: none;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_center ul li a:hover {
+    transition: 500ms;
+    color: #3b4f6a;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li a {
+    color: #515359;
+    text-decoration: none;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li a:hover {
+    transition: 500ms;
+    color: #3b4f6a;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul {
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li {
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    padding-top: 6px;
+    padding-left: 10px;
+    height: 24px;
+    border-bottom: 1px solid #eee;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
 
 /* 클래스샵 서브메뉴 */
 

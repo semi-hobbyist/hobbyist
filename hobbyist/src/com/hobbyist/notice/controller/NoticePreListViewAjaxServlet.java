@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hobbyist.notice.model.service.NoticeService;
 import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 
 /**
  * Servlet implementation class NoticePreListViewAjaxServlet
@@ -16,19 +17,21 @@ import com.hobbyist.notice.model.vo.Notice;
 @WebServlet("/notice/noticePreListViewAjax.do")
 public class NoticePreListViewAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public NoticePreListViewAjaxServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public NoticePreListViewAjaxServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 
@@ -38,7 +41,19 @@ public class NoticePreListViewAjaxServlet extends HttpServlet {
 		// 작성자 프로필 이미지 가져오기
 		String writer = notice.getNoticeWriter();
 		String profileImg = new NoticeService().writerImg(writer);
+		
+		// 작가신청 관련 자료 가져오기
+		WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
+		String weYear = "";
+		String weQu = "";
+		if(wnList!=null) {
+			String[] weQuarter = wnList.getWeQuarter().split(",");
+			weYear = weQuarter[0];
+			weQu = weQuarter[1];
+		}
 
+		
+		
 		// notice자료 담기
 		String html = "";
 
@@ -70,8 +85,24 @@ public class NoticePreListViewAjaxServlet extends HttpServlet {
 		html += "<div class='noticeViewReadcount'>조회수 : " + notice.getNoticeReadcount() + "</div>";
 		html += "</div>";
 		html += "</div>";
-		
-		if(notice.getNoticeImgnameRenamed()!=null) {
+
+		if (notice.getNoticeSort().equals("sortWriterEnroll")) {
+			html += "<div class='weNoticeView'>";
+			html += "<div class='weNoticeViewText'>[ " + weYear + " 년도 &nbsp;&nbsp;" + weQu + " 차 ] &nbsp;&nbsp;</div>";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "<div class='weNoticeViewTextS'>" + wnList.getWeNoticeStartdate() + "</div>";
+			html += "<div class='weNoticeViewText'>에서</div>";
+			html += "&nbsp;&nbsp;";
+			html += "<div class='weNoticeViewTextE'>" + wnList.getWeNoticeEnddate() + "</div>";
+			html += "<div class='weNoticeViewText'>까지</div>";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			html += "<button type='button' class='writerEnrollBtn' onclick='fn_writerEnrollBtn()'>작가신청하기</button>";
+			html += "</div>";
+		}
+
+		if (notice.getNoticeImgnameRenamed() != null) {
 			html += "<div class='noticeViewImgBox'>";
 			html += "<div class='noticeViewImg'>";
 			html += "<img alt='공지 이미지' src='" + request.getContextPath() + "/upload/notice/"
@@ -80,7 +111,7 @@ public class NoticePreListViewAjaxServlet extends HttpServlet {
 			html += "<div class='noticeViewImgName'>" + notice.getNoticeImgnameOriginal() + "</div>";
 			html += "</div>";
 		}
-		
+
 		html += "<div class='noticeViewContent'>" + notice.getNoticeContent() + "</div>";
 		html += "<div class='noticeViewFileBox'>";
 		html += "<div class='noticeViewFileTitle'>첨부파일</div>";
@@ -106,9 +137,11 @@ public class NoticePreListViewAjaxServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

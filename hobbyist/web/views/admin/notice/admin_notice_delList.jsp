@@ -28,7 +28,8 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
+				<img
 						src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li onclick="location.href='#'">NOTICE & EVENT | 공지&이벤트</li>
 				<li onclick="location.href='#'">관리자페이지 > 공지&이벤트 관리 > 삭제 목록</li>

@@ -511,6 +511,22 @@ public class NoticeDao {
 		}
 		return result;
 	}
+	
+	public int wnDelNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int wnResult = 0;
+		String sql = prop.getProperty("wnDelNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			wnResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return wnResult;
+	}
 
 	public int reNotice(Connection conn, int NoticeNo) {
 		PreparedStatement pstmt = null;
@@ -526,6 +542,22 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int wnReNotice(Connection conn, int NoticeNo) {
+		PreparedStatement pstmt = null;
+		int reResult = 0;
+		String sql = prop.getProperty("wnReNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NoticeNo);
+			reResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return reResult;
 	}
 
 	public int del_DB(Connection conn, int NoticeNo) {
@@ -564,7 +596,6 @@ public class NoticeDao {
 	public int updateNotice(Connection conn, Notice no) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		System.out.println(no.getNoticeDate());
 		String sql = prop.getProperty("updateNotice");
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -771,4 +802,41 @@ public class NoticeDao {
 		}
 		return wnList;
 	}
+	
+	public List<Notice> newLatestList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Notice> list = new ArrayList();
+		String sql = prop.getProperty("newLatestList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Notice no = new Notice();
+				
+				no.setNoticeNo(rs.getInt("notice_no"));
+				no.setNoticeSort(rs.getString("notice_sort"));
+				no.setNoticeTitle(rs.getString("notice_title"));
+				no.setNoticeWriter(rs.getString("notice_writer"));
+				no.setNoticeContent(rs.getString("notice_content"));
+				no.setNoticeDate(rs.getDate("notice_date"));
+				no.setNoticeFilenameOriginal(rs.getString("notice_filename_original"));
+				no.setNoticeFilenameRenamed(rs.getString("notice_filename_renamed"));
+				no.setNoticeImgnameOriginal(rs.getString("notice_imgname_original"));
+				no.setNoticeImgnameRenamed(rs.getString("notice_imgname_renamed"));
+				no.setNoticeReadcount(rs.getInt("notice_readcount"));
+				no.setNoticeStatus(rs.getString("notice_status"));
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
 }

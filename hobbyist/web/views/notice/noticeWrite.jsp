@@ -9,7 +9,7 @@
 	String cuYear = (String)request.getAttribute("cuYear");
 	String cuQu = (String)request.getAttribute("cuQu");
 	Date minTime = (Date)request.getAttribute("minTime");
-
+	Date cuTime = (Date)request.getAttribute("cuTime");
 %>
 
 <%@ include file="/views/common/header.jsp" %>
@@ -45,7 +45,7 @@
 						<input type="radio" name="noticeDate" id="noticeDate2" value="noData" checked/>바로 공지
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="noticeDate" id="noticeDate3"/>
-						날짜 지정&nbsp;&nbsp;<input type="date" id="noticeDate3_1"/>
+						날짜 지정&nbsp;&nbsp;<input type="date" id="noticeDate3_1" min="<%= cuTime %>"/>
 					</div>
 				</div>
 				<div class="noticeWriteSort noticeWriteRow">
@@ -63,7 +63,7 @@
 					<div class="noticeWriteVal"></div>
 				</div>
 				<div class="noticeWriteSortEvent noticeWriteRow">
-					<div class="noticeWriteAttr">세부설정</div>
+<!-- 					<div class="noticeWriteAttr">세부설정</div>
 					<div class="noticeWriteVal">
 						<div>
 							<div>
@@ -90,7 +90,7 @@
 								<input type="number" name="eventNoticeCouponDc" min="5" max="50" step="5" value="5" />
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="noticeWriteSortWriterEnroll noticeWriteRow">
 					<div class="noticeWriteAttr">세부설정</div>
@@ -110,7 +110,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								종료날짜
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="date" name="weNoticeEnddate"/>
+								<input type="date" name="weNoticeEnddate" min="<%= minTime %>"/>
 							</div>
 						</div>
 					</div>
@@ -404,7 +404,7 @@
 			if (scrollTo != 0) {
 				$('.noticeWrite_top').css("top", "97px");
 			} else {
-				$('.noticeWrite_top').css("top", "213px");
+				$('.noticeWrite_top').css("top", "180px");
 			}
 		});
 		//메인 헤더 숨기기

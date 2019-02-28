@@ -18,7 +18,7 @@ section#admin .admin_content .admin_top {
     text-align: left;
     border: 1px solid #c7cacf;
     background-color: #fff;
-    font-size: 14px;
+    font-size: 13px;
     transition: 500ms;
     overflow: hidden;
     top: 153px;
@@ -66,7 +66,7 @@ section#admin .admin_content .admin_left ul {
 section#admin .admin_content .admin_left ul li {
 	cursor: pointer;
     padding-top: 6px;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
     height: 30px;
     font-size: 13px;
@@ -77,7 +77,7 @@ section#admin .admin_content .admin_left ul.sub {
 }
 
 section#admin .admin_content .admin_left ul.sub li {
-    background-color: #56739a;
+    background-color: #6f7486;
 }
 
 section#admin .admin_content .admin_left ul.sub li a {
@@ -87,18 +87,27 @@ section#admin .admin_content .admin_left ul.sub li a {
 
 section#admin .admin_content .admin_left ul li:hover {
     transition: 500ms;
-    background-color: #304056;
+    background-color: #424551;
 }
 
 
 section#admin .admin_content .admin_right {
-    padding-top: 60px;
+    padding-top: 47px;
     float: right;
     width: 830px;
+    padding-bottom: 50px;
 }
 
 section#admin .admin_content .admin_right #admin_main {
+	display: inline-block;
     width: 100%;
+    text-align: center;
+}
+
+section#admin .admin_content .admin_right #admin_main .image {
+    cursor: pointer;
+	margin: 15px;
+	display: inline-block;
 }
 
 section#admin .admin_content .admin_right #admin_main table {

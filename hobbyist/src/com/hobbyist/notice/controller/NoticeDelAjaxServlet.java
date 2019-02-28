@@ -32,7 +32,8 @@ public class NoticeDelAjaxServlet extends HttpServlet {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		
 		int result = new NoticeService().delNotice(noticeNo);
-		
+		int wnResult = new NoticeService().wnDelNotice(noticeNo);
+
 	}
 
 	/**

@@ -27,11 +27,12 @@ public class MemberUpdateViewServlet extends HttpServlet {
 		String memberEmail = request.getParameter("memberEmail");
 		
 		Member m = new Member();
-		
 		m.setMemberEmail(memberEmail);
 		
 		Member result = new MemberService().selectOne(m);
-		System.out.println("view : "+result);
+		
+		System.out.println("회원정보 수정 서블릿 값 확인 >>>  " + result);
+		
 		String msg ="";
 		String loc="";
 		String view="";

@@ -128,6 +128,7 @@ public class BoardDao {
 				b.setBoardDQWriter(rs.getString("BOARD_DQ_WRITER"));
 				b.setBoardDQContent(rs.getString("BOARD_DQ_CONTENT"));
 				b.setBoardDQOriginalFileName(rs.getString("BOARD_DQ_ORIGINAL_FILENAME"));
+				b.setBoardDQReNameFileName(rs.getString("BOARD_DQ_RENAMED_FILENAME"));
 				b.setBoardDQDate(rs.getDate("BOARD_DQ_DATE"));
 				b.setBoardDQProcess(rs.getString("BOARD_DQ_PROCESS"));
 				b.setBoardDQAnswer(rs.getString("BOARD_DQ_ANSWER"));

@@ -117,6 +117,20 @@ public class WriterService {
 		return result;
 	}
 	
+	public int returnWriterEnroll(int writerEnrollNo) {
+		Connection conn = getConnection();
+		int result = dao.returnWriterEnroll(conn,writerEnrollNo);
+		if(result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
 	public int UpdateWriterEnroll(WriterEnroll we) {
 		Connection conn = getConnection();
 		int result = dao.UpdateWriterEnroll(conn,we);
@@ -126,6 +140,27 @@ public class WriterService {
 		else {
 			rollback(conn);
 		}
+		close(conn);
+		return result;
+	}
+
+	// (마이페이지) 예비작가 신청 수락 여부
+	public int prepRequestYN(int writerEnrollNo, String writerPrepRequestYN) {
+		Connection conn = getConnection();
+		int result = dao.prepRequestYN(conn, writerEnrollNo, writerPrepRequestYN);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	//작가신청 기간 중복 신청 막는 로직
+	public List<WriterEnroll> selectQuarter(String weQuarter) {
+		Connection conn = getConnection();
+		List<WriterEnroll> result = dao.selectQuarter(conn,weQuarter);
 		close(conn);
 		return result;
 	}

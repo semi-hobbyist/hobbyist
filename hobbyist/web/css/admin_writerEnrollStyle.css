@@ -17,10 +17,10 @@
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: rgba(59, 79, 106, 0.8);
-    color: white;
-    border-bottom: 1px solid #3b4f6a;
-}
+    background-color: white;
+    color: #32343a;
+    border-top: 2px solid #575b69;
+    border-bottom: 1px solid #575b69;}
 
 #admin_writerEnroll .tal_Content {
     display: table;
@@ -52,7 +52,6 @@
     display: table-cell;
     width: 50px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_WeNo {
@@ -65,7 +64,6 @@
     display: table-cell;
     width: 70px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_WeQuarter {
@@ -78,7 +76,6 @@
     display: table-cell;
     width: 100px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_NickName {
@@ -90,7 +87,6 @@
 #admin_writerEnroll .talT_Email {
     display: table-cell;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_Email {
@@ -104,7 +100,6 @@
     display: table-cell;
     width: 60px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_Name {
@@ -117,7 +112,6 @@
     display: table-cell;
     width: 100px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_Birthday {
@@ -130,7 +124,6 @@
     display: table-cell;
     width: 100px;
     padding: 5px;
-    border-right: 1px solid #3b4f6a;
 }
 
 #admin_writerEnroll .talC_WeDate {
@@ -245,11 +238,11 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #c8cad1;
 }
 
 #admin_writerEnroll .wEPreviewFooter>div {
-	width: 30%;
+	width: 70%;
 	height: 100%;
 	display: flex;
 	justify-content: space-evenly;
@@ -316,7 +309,7 @@
 
 #admin_writerEnroll .wEnrollPreValueBox {
 	margin: 10px;
-	border-left: 2px solid rgba(59, 79, 106, 1);
+	border-left: 2px solid #575b69;
 }
 
 #admin_writerEnroll .button1 {
@@ -336,7 +329,7 @@
 
 #admin_writerEnroll .button1:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -358,7 +351,7 @@
 
 #admin_writerEnroll .buttonY:hover {
     color: #fff;
-	background-color: #428146;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -369,7 +362,7 @@
 	height: 30px;
 	font-size: 16px;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: #252525;
 	background-color: white;
 	outline: none;
@@ -380,7 +373,7 @@
 
 #admin_writerEnroll .buttonN:hover {
     color: #fff;
-	background-color: #864343;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -417,7 +410,7 @@
     background:none;
 	color: #424242;
 	background-color: white;
-    border: 1px solid #dadada;
+    border: 1px solid #9fa3b1;
     outline: none;
 }
 
@@ -429,18 +422,20 @@
     padding-top: 7px;
     background-color: #fff;
     color: #424242;
-    border-bottom: 2px solid #3b4f6a;
+    border-bottom: 2px solid #575b69;
     outline: none;
 }
 
 #admin_writerEnroll .tableBox_top .sort .sortBtn:hover {
     transition: 500ms;
-    background-color: #eee;
+	background-color: #575b69;
+	color:white;
 }
 
 #admin_writerEnroll .tableBox_top .sort .selected:hover {
     transition: 500ms;
-    background-color: #eee;
+	background-color: #575b69;
+	color:white;
 }
 
 

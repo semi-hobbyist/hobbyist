@@ -21,7 +21,8 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
+				<img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>CLASS SHOP | 클래스샵</li>
 				<li>관리자페이지 > 클래스샵 관리 > 클래스샵 등록</li>
 			</ul>

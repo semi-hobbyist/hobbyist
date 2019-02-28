@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
     
-<%
-	int selectMyPageBoardCount = (int)request.getAttribute("selectMyPageBoardCount");
-	int selectMyPageBoardCommentCount = (int)request.getAttribute("selectMyPageBoardCommentCount");
-%>
-
 <%@ include file="/views/common/header.jsp" %>
 
 <!-- 로그인 안된 상태로 왔을때 접근 막기 -->
@@ -22,7 +17,7 @@
 	<div class="myPage_content">
 		<div class="myPage_top" id="myPage_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>Member</li>
 				<li>마이 페이지에 오신 걸 환영합니다.</li>
 			</ul>
@@ -35,7 +30,11 @@
 
 		<div class="myPage_right">
 			<div id="myPage_main">
-				<h2>마이페이지 메인</h2>
+				<div class="image" onclick="location.href='<%=request.getContextPath()%>/memberUpdateView.do?memberEmail=<%= logginMember.getMemberEmail() %>'"><img src="<%= request.getContextPath() %>/images/myinfo_1.jpg"></div>
+				<div class="image" onclick="location.href='<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>'"><img src="<%= request.getContextPath() %>/images/myinfo_2.jpg"></div>
+				<Br>
+				<div class="image" onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'"><img src="<%= request.getContextPath() %>/images/myinfo_3.jpg"></div>
+				<div class="image" onclick="location.href='<%=request.getContextPath()%>/mypage/myOrderList?member=<%=logginMember.getMemberEmail()%>'"><img src="<%= request.getContextPath() %>/images/myinfo_4.jpg"></div>
 			</div>
 		</div>
 	</div>

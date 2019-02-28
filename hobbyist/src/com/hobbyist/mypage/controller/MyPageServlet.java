@@ -46,16 +46,9 @@ public class MyPageServlet extends HttpServlet {
 			}
 		}
 		
-		
-		
-		int selectMyPageBoardCount = new BoardService().selectMyPageBoardCount(logginMember.getMemberNickname());
-		int selectMyPageBoardCommentCount = new BoardService().selectMyPageBoardCommentCount(logginMember.getMemberNickname());
-		
-		
-		request.setAttribute("selectMyPageBoardCount", selectMyPageBoardCount);
-		request.setAttribute("selectMyPageBoardCommentCount", selectMyPageBoardCommentCount);
 		request.setAttribute("weFlag", weFlag);
 		request.getRequestDispatcher("/views/mypage/myPage.jsp").forward(request, response);
+		
 	}
 
 	/**

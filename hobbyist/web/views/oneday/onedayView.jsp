@@ -16,9 +16,10 @@
 			<div class="view_top_info">작가명 :
 				<%= oneday.getOnedayWriter() %> | 클래스코드 :
 				<%= oneday.getOnedayNo() %>
+				<Br>
 			</div>
 			<div class="view_top_left">
-			<b><%= oneday.getOnedayName() %></b><Br><%= oneday.getOnedayInfo() %><br>
+			<b><%= oneday.getOnedayName() %></b><Br><br><%= oneday.getOnedayInfo() %><br>
 			<img src="<%=request.getContextPath()%>/upload/oneday/images/<%= oneday.getOnedayImage1() %>"
 				 width="400px"></div>
 			<div class="view_top_right">
@@ -100,7 +101,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button class="addcart-btn" onclick="fn_addCart()">Add My Cart | 취미바구니 담기 </button>
+							<button class="addcart-btn" onclick="fn_addCart()">취미바구니 담기 </button>
 							<script>
 								function fn_addCart() {
 									var classOp = $('#class_option').val();
@@ -183,7 +184,7 @@
 
 		if (scrollTo < about) {
 			sub1.css({
-				"background-color" : "#3b4f6a",
+				"background-color" : "#575b69",
 				"color" : "#fff"
 			});
 			sub2.css({

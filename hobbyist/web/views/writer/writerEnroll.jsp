@@ -65,7 +65,7 @@
 						<div class="inputImageBox">
 							<div class="inputImageback">
 								<div class="inputImage">
-									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+									<img src="<%= request.getContextPath() %>/images/uploadIcon.png" width="100px" height="100px"/>
 									<div class="imageTitle"></div>
 								</div>
 								<input type="file" name="writerMajorImgfileOriginal" class="inputImageFile" />
@@ -76,8 +76,11 @@
 								$("input[name='writerMajorImgfileOriginal']").change(function (event) {
 									$(".inputImage img").attr("src", URL.createObjectURL(event.target.files[0]));
 									$(".inputImage img").css({"width":"300px","height":"200px"});
+									$(".inputImage3 img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage3 img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='writerMajorImgfileOriginal']").val();
 									$(".imageTitle").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
+									$(".imageTitle3").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {
 										$("#qBoxBtn4").css("opacity", 1);
 									}
@@ -288,8 +291,11 @@
 								$("input[name='classImgfileOriginal']").change(function (event) {
 									$(".inputImage1 img").attr("src", URL.createObjectURL(event.target.files[0]));
 									$(".inputImage1 img").css({"width":"300px","height":"200px"});
+									$(".inputImage4 img").attr("src", URL.createObjectURL(event.target.files[0]));
+									$(".inputImage4 img").css({"width":"300px","height":"200px"});
 									var fileName = $("input[name='classImgfileOriginal']").val();
 									$(".imageTitle1").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
+									$(".imageTitle4").text("파일명 : " + fileName.substring(fileName.lastIndexOf('\\') + 1));
 									if (fileName != "") {
 										$("#qBoxBtn15").css("opacity", 1);
 									}
@@ -437,7 +443,12 @@
 							</div>
 							<div class="wEP_MajorImgfile wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">대표 작품 사진 파일</div>
-								<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal"></div>
+								<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal">
+									<div class="inputImage3">
+										<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+										<div class="imageTitle3"></div>
+									</div>
+								</div>
 							</div>
 							<div class="wEP_ScheduleYN wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">
@@ -494,7 +505,12 @@
 							</div>
 							<div class="wEP_ClassImgfile wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">클래스의 제품사진 파일</div>
-								<div id="EP_classImgfileOriginal" class="wEnrollPreVal"></div>
+								<div id="EP_classImgfileOriginal" class="wEnrollPreVal">
+									<div class="inputImage4">
+										<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+										<div class="imageTitle4"></div>
+									</div>
+								</div>
 							</div>
 							<div class="wEP_PrepRequestYN wEnrollPreValueBox">
 								<div class="wEnrollPreAttr">예비작가 신청 여부</div>
@@ -553,7 +569,7 @@
 				$("#EP_writerCategory").html(writerCategory);
 				$("#EP_writerAddress").html(writerAddress);
 				$("#EP_writerReason").html(writerReason);
-				$("#EP_writerMajorImgfileOriginal").html(writerMajorImgfileOriginal);
+				// $("#EP_writerMajorImgfileOriginal").html(writerMajorImgfileOriginal);
 				$("#EP_writerScheduleYN").html(writerScheduleYN);
 				$("#EP_writerContractYN").html(writerContractYN);
 				$("#EP_writerWishMonth").html(writerWishMonth);
@@ -563,7 +579,7 @@
 				$("#EP_writerProductTime").html(writerProductTime);
 				$("#EP_writerClassKitWarningPoint").html(writerClassKitWarningPoint);
 				$("#EP_writerClassKitPart").html(writerClassKitPart);
-				$("#EP_classImgfileOriginal").html(classImgfileOriginal);
+				// $("#EP_classImgfileOriginal").html(classImgfileOriginal);
 				$("#EP_writerPrepRequestYN").html(writerPrepRequestYN);
 				$("#EP_writerFinalPoint").html(writerFinalPoint);
 

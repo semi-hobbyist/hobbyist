@@ -32,6 +32,7 @@ public class NoticeReAjaxServlet extends HttpServlet {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		
 		int result = new NoticeService().reNotice(noticeNo);
+		int wnResult = new NoticeService().wnReNotice(noticeNo);
 		
 	}
 

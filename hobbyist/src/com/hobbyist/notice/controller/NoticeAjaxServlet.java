@@ -137,60 +137,64 @@ public class NoticeAjaxServlet extends HttpServlet {
 		String html = "";
 
 		if (list.size() != 0) {
-			
-			//현시간 작가신청 하고 있는 공지글 가져오기
-			WeNotice wnList = new NoticeService().cuWeSelectOne();
-			boolean hasRead = true;
-			Notice cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
 
 			String writer = "";
 			String profileImg = "";
 			Member logginMember = null;
+			
+			// 현시간 작가신청 하고 있는 공지글 가져오기
+			WeNotice wnList = new NoticeService().cuWeSelectOne();
+			if (wnList != null) {
 
-			if (cuNotice.getNoticeStatus().equals("Y")) {
-				html += "<div class='tal_ContentBox'>";
-				html += "<div class='weNoticeColor tal_Content' onclick='fn_noticeView(" + cuNotice.getNoticeNo()
-						+ ")'>";
-				html += "<div class='talC_noticeNo'>" + cuNotice.getNoticeNo() + "</div>";
-				html += "<div class='talC_noticeSort'>";
+				boolean hasRead = true;
+				Notice cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
 
-				switch (cuNotice.getNoticeSort()) {
-				case "sortNotice":
-					html += "<div class='nSTextNotice'>공지</div>";
-					break;
-				case "sortEvent":
-					html += "<div class='nSTextEvent'>이벤트</div>";
-					break;
-				case "sortWriterEnroll":
-					html += "<div class='nSTextWriterEnroll'>작가신청</div>";
-					break;
+				if (cuNotice.getNoticeStatus().equals("Y")) {
+					html += "<div class='tal_ContentBox'>";
+					html += "<div class='weNoticeColor tal_Content' onclick='fn_noticeView(" + cuNotice.getNoticeNo()
+							+ ")'>";
+					html += "<div class='talC_noticeNo'>" + cuNotice.getNoticeNo() + "</div>";
+					html += "<div class='talC_noticeSort'>";
+
+					switch (cuNotice.getNoticeSort()) {
+					case "sortNotice":
+						html += "<div class='nSTextNotice'>공지</div>";
+						break;
+					case "sortEvent":
+						html += "<div class='nSTextEvent'>이벤트</div>";
+						break;
+					case "sortWriterEnroll":
+						html += "<div class='nSTextWriterEnroll'>작가신청</div>";
+						break;
+					}
+
+					html += "</div>";
+					html += "<div class='talC_noticeTitle'>" + cuNotice.getNoticeTitle() + "</div>";
+
+					html += "<div class='talC_noticeWriter'>";
+
+					// 작성자 프로필 이미지 가져오기
+					writer = cuNotice.getNoticeWriter();
+					profileImg = new NoticeService().writerImg(writer);
+
+					html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg
+							+ "'/>";
+					html += cuNotice.getNoticeWriter();
+					html += "</div>";
+
+					html += "<div class='talC_noticeDate'>" + cuNotice.getNoticeDate() + "</div>";
+					html += "<div class='talC_noticeReadcount'>" + cuNotice.getNoticeReadcount() + "</div>";
+					html += "</div>";
+
+					// 관리자일때만 삭제버튼 띠우기
+					logginMember = (Member) request.getSession().getAttribute("logginMember");
+					if (logginMember != null && logginMember.getMemberEmail().equals("admin")) {
+						html += "<button type='button' class='noticeListDel' onclick='fn_noticeListDel("
+								+ cuNotice.getNoticeNo() + ")'>X</button>";
+					}
+
+					html += "</div>";
 				}
-
-				html += "</div>";
-				html += "<div class='talC_noticeTitle'>" + cuNotice.getNoticeTitle() + "</div>";
-
-				html += "<div class='talC_noticeWriter'>";
-
-				// 작성자 프로필 이미지 가져오기
-				writer = cuNotice.getNoticeWriter();
-				profileImg = new NoticeService().writerImg(writer);
-
-				html += "<img alt='프로필이미지' src='" + request.getContextPath() + "/upload/member/" + profileImg + "'/>";
-				html += cuNotice.getNoticeWriter();
-				html += "</div>";
-
-				html += "<div class='talC_noticeDate'>" + cuNotice.getNoticeDate() + "</div>";
-				html += "<div class='talC_noticeReadcount'>" + cuNotice.getNoticeReadcount() + "</div>";
-				html += "</div>";
-
-				// 관리자일때만 삭제버튼 띠우기
-				logginMember = (Member) request.getSession().getAttribute("logginMember");
-				if (logginMember != null && logginMember.getMemberEmail().equals("admin")) {
-					html += "<button type='button' class='noticeListDel' onclick='fn_noticeListDel("
-							+ cuNotice.getNoticeNo() + ")'>X</button>";
-				}
-
-				html += "</div>";
 			}
 
 			for (int i = 0; i < list.size(); i++) {

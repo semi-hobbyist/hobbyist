@@ -29,7 +29,7 @@
 	<div class="myPage_content">
 		<div class="myPage_top" id="myPage_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/mypage/myPage'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>Member</li>
 				<li>마이 페이지에 오신 걸 환영합니다.</li>
 			</ul>

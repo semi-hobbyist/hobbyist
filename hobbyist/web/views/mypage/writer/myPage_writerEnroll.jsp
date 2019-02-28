@@ -36,27 +36,32 @@
 			</ul>
 
 		</div><br>
-		
+
 		<!-- 마이페이지메뉴는 중복되기때문에 myPage_menu.jsp 파일로 인클루드 시켜 가져옴 -->
-		<%@ include file="/views/mypage/myPage_menu.jsp" %> 
+		<%@ include file="/views/mypage/myPage_menu.jsp" %>
 		<!-- 마이페이지 메뉴 인클루드 끝 -->
 
 
 		<div class="myPage_right">
 			<div id="mypage_writerEnroll">
-				
+
 				<div class="tableBox">
 					<div class="tableBox_top">
 						<form id="searchFrm" name="searchFrm" action="javascript:fn_searchFrm();" method="POST">
 							<div class="tal_top">
 								<div class="sort">
-									<input type="hidden" id="sort" name="sort" value="<%= sort!=null? sort : "" %>"/>
-									<div id="sort1" class="sortBtn" name="descEnroll" value="descEnroll" onclick="fn_sortBtn(this)" >최근등록순</div>
-									<div id="sort2" class="sortBtn" name="ascEnroll" value="ascEnroll" onclick="fn_sortBtn(this)" >이전등록순</div>
+									<input type="hidden" id="sort" name="sort" value="<%= sort!=null? sort : "" %>" />
+									<div id="sort1" class="sortBtn" name="descEnroll" value="descEnroll"
+										onclick="fn_sortBtn(this)">최근등록순</div>
+									<div id="sort2" class="sortBtn" name="ascEnroll" value="ascEnroll"
+										onclick="fn_sortBtn(this)">이전등록순</div>
 								</div>
 								<div class="searchForm">
-									닉네임명&nbsp;&nbsp;&nbsp;<input type="search" autocomplete="off" placeholder="Search..." name="keyword" id="keyword" value="<%= !keyword.equals("")? keyword : "" %>">
-									<button type="submit"><img src="<%= request.getContextPath() %>/images/search.png" width="70%"></button>
+									닉네임명&nbsp;&nbsp;&nbsp;<input type="search" autocomplete="off"
+										placeholder="Search..." name="keyword" id="keyword"
+										value="<%= !keyword.equals("")? keyword : "" %>">
+									<button type="submit"><img src="<%= request.getContextPath() %>/images/search.png"
+											width="70%"></button>
 									<div id="ajaxSearch"></div>
 								</div>
 							</div>
@@ -75,16 +80,16 @@
 					</div>
 
 					<script>
-						
+
 						/* 처음 페이지 들어올때 ajax로 목록 띠우기(최신등록순으로..) */
 						var keyword = $('#keyword');
-						$(function() {
+						$(function () {
 							$.ajax({
 								url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
 								type: 'POST',
 								dataType: 'text',
-								data: {"sort":"descEnroll","keyword":keyword.val()},
-								success: function(data) {
+								data: { "sort": "descEnroll", "keyword": keyword.val() },
+								success: function (data) {
 									var adminWEAjax = $('#adminWE-Ajax');
 									adminWEAjax.empty();
 									adminWEAjax.html(data);
@@ -96,13 +101,13 @@
 
 						function fn_searchFrm() {
 							var text = $('.selected')[0].innerText;
-							if(text=='최근등록순') {
+							if (text == '최근등록순') {
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
 									type: 'POST',
 									dataType: 'text',
-									data: {"sort":"descEnroll","keyword":keyword.val()},
-									success: function(data) {
+									data: { "sort": "descEnroll", "keyword": keyword.val() },
+									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
 										adminWEAjax.html(data);
@@ -111,13 +116,13 @@
 									}
 								})
 							}
-							else if(text=='이전등록순') {
+							else if (text == '이전등록순') {
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
 									type: 'POST',
 									dataType: 'text',
-									data: {"sort":"ascEnroll","keyword":keyword.val()},
-									success: function(data) {
+									data: { "sort": "ascEnroll", "keyword": keyword.val() },
+									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
 										adminWEAjax.html(data);
@@ -129,56 +134,56 @@
 						}
 
 						function fn_sortBtn(e) {
-							if(e.innerText=='최근등록순') {
+							if (e.innerText == '최근등록순') {
 								$('#sort').val('');
 								$('#sort').val('descEnroll');
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
 									type: 'POST',
 									dataType: 'text',
-									data: {"sort":"descEnroll","keyword":keyword.val()},
-									success: function(data) {
+									data: { "sort": "descEnroll", "keyword": keyword.val() },
+									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
 										adminWEAjax.html(data);
 										$('#sort1').addClass('selected');
 										$('#sort2').removeClass('selected');
-										}
+									}
 								});
-							} else if (e.innerText=='이전등록순') {
+							} else if (e.innerText == '이전등록순') {
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
 									type: 'POST',
 									dataType: 'text',
-									data: {"sort":"ascEnroll","keyword":keyword.val()},
-									success: function(data) {
+									data: { "sort": "ascEnroll", "keyword": keyword.val() },
+									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
 										adminWEAjax.html(data);
 										$('#sort2').addClass('selected');
 										$('#sort1').removeClass('selected');
-										}
+									}
 								});
 							}
 						}
 
 						function fn_ListAjax(pageNo) {
 							var text = $('.selected')[0].innerText;
-							
-							if(text=='최근등록순') {
+
+							if (text == '최근등록순') {
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
-									data : 'sort=descEnroll&cPage=' + pageNo,
+									data: 'sort=descEnroll&cPage=' + pageNo,
 									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
 										adminWEAjax.html(data);
 									}
 								});
-							} else if (text=='이전등록순') {
+							} else if (text == '이전등록순') {
 								$.ajax({
 									url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
-									data : 'sort=ascEnroll&cPage=' + pageNo,
+									data: 'sort=ascEnroll&cPage=' + pageNo,
 									success: function (data) {
 										var adminWEAjax = $('#adminWE-Ajax');
 										adminWEAjax.empty();
@@ -280,7 +285,12 @@
 									</div>
 									<div class="wEP_MajorImgfile wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">대표 작품 사진 파일</div>
-										<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal"></div>
+										<div id="EP_writerMajorImgfileOriginal" class="wEnrollPreVal">
+											<div class="inputImage1">
+												<img src="<%=request.getContextPath()%>/images/uploadIcon.png" />
+												<div class="imageTitle1"></div>
+											</div>
+										</div>
 									</div>
 									<div class="wEP_ScheduleYN wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">
@@ -339,7 +349,12 @@
 									</div>
 									<div class="wEP_ClassImgfile wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">클래스의 제품사진 파일</div>
-										<div id="EP_classImgfileOriginal" class="wEnrollPreVal"></div>
+										<div id="EP_classImgfileOriginal" class="wEnrollPreVal">
+											<div class="inputImage1">
+												<img src="<%= request.getContextPath() %>/images/uploadIcon.png" />
+												<div class="imageTitle1"></div>
+											</div>
+										</div>
 									</div>
 									<div class="wEP_PrepRequestYN wEnrollPreValueBox">
 										<div class="wEnrollPreAttr">예비작가 신청 여부</div>
@@ -364,13 +379,57 @@
 				<script>
 					function fn_wEmodifyMypageY(index) {
 						alert("접수기간입니다. 수정이 가능합니다.");
-						location.href="<%= request.getContextPath() %>/mypage/mypageWEmodify?writerEnrollNo="+index;
+						location.href = "<%= request.getContextPath() %>/mypage/mypageWEmodify?writerEnrollNo=" + index;
 					}
 					function fn_wEmodifyMypageN(index) {
 						alert("접수기간이 지났습니다. 수정이 불가능합니다.");
 					}
 
-					function fn_WEViewAjax(index,weQuarter) {
+					function fn_prepRequestYN(index,flagYN) {
+						$.ajax({
+							url: '<%= request.getContextPath() %>/mypage/prepRequestYN_Ajax.do',
+							type: 'POST',
+							dataType: 'text',
+							data: { "writerEnrollNo" : index, "flagYN" : flagYN },
+							success: function (data) {
+								console.log(data);
+							}
+						})
+
+						var text = $('.selected')[0].innerText;
+						if (text == '최근등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: { "sort": "descEnroll", "keyword": keyword.val() },
+								success: function (data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort1').addClass('selected');
+									$('#sort2').removeClass('selected');
+								}
+							})
+						}
+						else if (text == '이전등록순') {
+							$.ajax({
+								url: '<%= request.getContextPath() %>/mypage/mypageWEAjax.do',
+								type: 'POST',
+								dataType: 'text',
+								data: { "sort": "ascEnroll", "keyword": keyword.val() },
+								success: function (data) {
+									var adminWEAjax = $('#adminWE-Ajax');
+									adminWEAjax.empty();
+									adminWEAjax.html(data);
+									$('#sort2').addClass('selected');
+									$('#sort1').removeClass('selected');
+								}
+							})
+						}
+					}
+
+					function fn_WEViewAjax(index, weQuarter) {
 						$(".pagePreviewModal").css("display", "flex");
 						$(".wEPreviewBody").animate({ scrollTop: 0 }, 0);
 						$.ajax({
@@ -388,7 +447,7 @@
 								$("#EP_writerCategory").html(data["writerCategory"]);
 								$("#EP_writerAddress").html(data["writerAddress"]);
 								$("#EP_writerReason").html(data["writerReason"]);
-								$("#EP_writerMajorImgfileOriginal").html(data["writerMajorImgfileOriginal"]);
+								/* $("#EP_writerMajorImgfileOriginal").html(data["writerMajorImgfileOriginal"]); */
 								$("#EP_writerScheduleYN").html(data["writerScheduleYN"]);
 								$("#EP_writerContractYN").html(data["writerContractYN"]);
 								$("#EP_writerWishMonth").html(data["writerWishMonth"]);
@@ -398,14 +457,21 @@
 								$("#EP_writerProductTime").html(data["writerProductTime"]);
 								$("#EP_writerClassKitWarningPoint").html(data["writerClassKitWarningPoint"]);
 								$("#EP_writerClassKitPart").html(data["writerClassKitPart"]);
-								$("#EP_classImgfileOriginal").html(data["classImgfileOriginal"]);
+								/* $("#EP_classImgfileOriginal").html(data["classImgfileOriginal"]); */
 								$("#EP_writerPrepRequestYN").html(data["writerPrepRequestYN"]);
 								$("#EP_writerFinalPoint").html(data["writerFinalPoint"]);
-								
-								if(weQuarter == data["writerEnrollQuarter"]) {
-									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageY("+ index +")");
+
+								$(".inputImage1 img").attr("src", "<%= request.getContextPath() %>/upload/writer/"+data["writerMajorImgfileRenamed"]);
+								$(".inputImage1 img").css({"width":"300px","height":"200px"});
+								$(".inputImage2 img").attr("src", "<%= request.getContextPath() %>/upload/writer/"+data["classImgfileRenamed"]);
+								$(".inputImage2 img").css({"width":"300px","height":"200px"});
+								$(".imageTitle1").text("파일명 : " + data["writerMajorImgfileOriginal"]);
+								$(".imageTitle2").text("파일명 : " + data["classImgfileOriginal"]);
+
+								if (weQuarter == data["writerEnrollQuarter"]) {
+									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageY(" + index + ")");
 								} else {
-									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageN("+ index +")");
+									$("#wEmodifyMypage").attr("onclick", "fn_wEmodifyMypageN(" + index + ")");
 								}
 							}
 						})

@@ -476,6 +476,22 @@ public class WriterDao {
 		return result;
 	}
 	
+	public int returnWriterEnroll(Connection conn, int writerEnrollNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("returnWriterEnroll");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, writerEnrollNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	public int UpdateWriterEnroll(Connection conn, WriterEnroll we) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -515,6 +531,77 @@ public class WriterDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	//(마이페이지) 예비작가 신청 수락 여부
+	public int prepRequestYN(Connection conn, int writerEnrollNo, String writerPrepRequestYN) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("prepRequestYN");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writerPrepRequestYN);
+			pstmt.setInt(2, writerEnrollNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List<WriterEnroll> selectQuarter(Connection conn, String weQuarter) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectQuarter");
+		List<WriterEnroll> result = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, weQuarter);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				WriterEnroll we = new WriterEnroll();
+				we.setWriterEnrollNo(rs.getInt("writer_enroll_no"));
+				we.setMemberNo(rs.getInt("member_no"));
+				we.setMemberProfileImg(rs.getString("member_profile_img"));
+				we.setMemberNickname(rs.getString("member_nickname"));
+				we.setMemberEmail(rs.getString("member_email"));
+				we.setMemberName(rs.getString("member_name"));
+				we.setMemberBirthday(rs.getString("member_birthday"));
+				we.setMemberPhone(rs.getString("member_phone"));
+				we.setWriterEnrollQuarter(rs.getString("writer_enroll_quarter"));
+				we.setWriterCategory(rs.getString("writer_category"));
+				we.setWriterAddress(rs.getString("writer_address"));
+				we.setWriterReason(rs.getString("writer_reason"));
+				we.setWriterMajorImgfileOriginal(rs.getString("writer_major_imgfile_original"));
+				we.setWriterMajorImgfileRenamed(rs.getString("writer_major_imgfile_renamed"));
+				we.setWriterScheduleYN(rs.getString("writer_schedule_yn"));
+				we.setWriterContractYN(rs.getString("writer_contract_yn"));
+				we.setWriterWishMonth(rs.getString("writer_wish_month"));
+				we.setWriterClassName(rs.getString("writer_class_name"));
+				we.setWriterClassSelectReason(rs.getString("writer_class_select_reason"));
+				we.setWriterClassLevel(rs.getInt("writer_class_level"));
+				we.setWriterProductTime(rs.getString("writer_product_time"));
+				we.setWriterClassKitWarningPoint(rs.getString("writer_class_kit_warning_point"));
+				we.setWriterClassKitPart(rs.getString("writer_class_kit_part"));
+				we.setClassImgfileOriginal(rs.getString("class_imgfile_original"));
+				we.setClassImgfileRenamed(rs.getString("class_imgfile_renamed"));
+				we.setWriterPrepRequestYN(rs.getString("writer_prep_request_yn"));
+				we.setWriterFinalPoint(rs.getString("writer_final_point"));
+				we.setWriterEnrolldate(rs.getDate("writer_enrolldate"));
+				we.setWriterPassYN(rs.getString("writer_pass_yn"));
+				we.setWriterStatus(rs.getString("writer_status"));
+				result.add(we);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
 			close(pstmt);
 		}
 		return result;

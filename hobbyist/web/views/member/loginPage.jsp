@@ -32,12 +32,13 @@
 
 <div id="loginSection">
 	<div class="container">
+		<button type="button" class="loginPageClose" onclick='fn_loginPageClose()'>X</button>
 		<div class="message signup">
 			<div class="btn-wrapper">
 				<button  id="signup" style="width: 210px;">로그인</button><Br>
 				<button  id="login" style="width: 210px;">회원가입</button>
-				<input type="button" id="searchId" class="searchIdButton" value="아이디찾기" onclick="searchId()"/>
-				<input type="button" id="searchPwd" class="searchPwdButton" value="비밀번호 찾기" onclick="searchPwd()"/>
+				<input type="button" id="searchId" class="loginInputCss searchIdButton" value="아이디찾기" onclick="searchId()"/>
+				<input type="button" id="searchPwd" class="loginInputCss searchPwdButton" value="비밀번호 찾기" onclick="searchPwd()"/>
 			</div>
 		</div>
 		
@@ -45,10 +46,10 @@
 			onsubmit="return fn_loginMember();" autocomplete="off">
 			<div class="form form--memberLogin">
 				<div class="form--heading"></div>
-				<input type="text"  name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
-				<input type="password" name="memberPassword" placeholder="Password" autocomplete="new-password">
+				<input type="text" class="loginInputCss" name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
+				<input type="password" class="loginInputCss" name="memberPassword" placeholder="Password" autocomplete="new-password">
 				<div class="checkboxDiv">
-					<input type="checkbox" name="saveEmail" id="saveEmail" <%= saveEmail!=null?"checked":"" %> />
+					<input type="checkbox" class="loginInputCss" name="saveEmail" id="saveEmail" <%= saveEmail!=null?"checked":"" %> />
 					<label for="saveEmail">EMAIL 저장</label>
 				</div>
 				<button style="width: 230px;" type="submit">L O G I N</button>
@@ -59,8 +60,8 @@
 				onsubmit="return fn_memberEnroll();" autocomplete="off" enctype="multipart/form-data">
 			<div class="enroll signup" id="memberEnrollSignup">
 			<br>
-				<h3>회원가입</h3>
-				<input type="text" name="memberEmail" placeholder="Email" id="memberEmail"><Br>
+				<img src="<%= request.getContextPath() %>/images/joinlogo.png" width="120px">
+				<input type="text" class="loginInputCss" name="memberEmail" placeholder="Email" id="memberEmail"><Br>
 				<select name="memberEmailaddress" id="memberEmailaddress">
 					<option>선택해주세요.</option>
 					<option>@naver.com</option>
@@ -79,24 +80,36 @@
 				</div>
 				<div id="send"></div>
 				<input type="hidden" id="confirmIdButtonHidden" value="2"/>
-				<input type="password" name="memberPassword" id="memberPassword" placeholder="Password" autocomplete="new-password">
-				<input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password"><br>
+				<input type="password" class="loginInputCss" name="memberPassword" id="memberPassword" placeholder="Password" autocomplete="new-password">
+				<input type="password" class="loginInputCss" name="confirmPassword" id="confirmPassword" placeholder="Confirm password"><br>
 				<button style="width: 230px; " type="button" id="signupStart"  onclick="return fn_nextJoin()">다음</button>
 			</div>
 		
 			<div class="endForm">
+				<div class="memberImageBox">
+					<div class="memberImage">
+						<div class="inputBackground" id="image_section">
+							<div>
+								<img class="fileUploadIcon" width="100px" height="100px"/>
+								<input type="file" class="profileImgBox" name="memberOriginalImage" id="memberOriginalImage"/>
+							</div>
+						</div>
+						<img alt="camaraIcon" class="image_section" src="<%= request.getContextPath() %>/images/camaraIcon30.png"/>
+					</div>
+				</div>
+<!-- 
 				<div class="memberImage">
 					<div class="inputBackground">
 						<input type="file" class="inputImage" name="memberOriginalImage" id="memberOriginalImage"/>
 					</div>
-					<img alt="camaraIcon" id="image_section" src="<%= request.getContextPath() %>/images/camaraIcon30.png" width="30px" height="30px"/>
-				</div>
+				</div> -->
+
 				<input style="width: 140px;" type="text" class="inputText" name="memberNickname" placeholder="NickName" id="memberNickname"/>
-				<input type="button" class="comfirmNickNameButton" value="중복확인" id="comfirmNickNameButton">
+				<input type="button" class="loginInputCss comfirmNickNameButton" value="중복확인" id="comfirmNickNameButton">
 				<input type="hidden" id="comfirmNickNameButtonHidden" value="2"/>
-				<input type="text" class="inputText" name="memberName" id="memberName" placeholder="Name" />
-				<input type="number" class="inputText" name="memberBirthday" id="memberBirthday" placeholder="Birthday ex)940308"/>
-				<input type="text" class="inputText" name="memberPhone" id="memberPhone" placeholder="Phone"/>
+				<input type="text" class="loginInputCss inputText" name="memberName" id="memberName" placeholder="Name" />
+				<input type="number" class="loginInputCss inputText" name="memberBirthday" id="memberBirthday" placeholder="Birthday ex)940308"/>
+				<input type="text" class="loginInputCss inputText" name="memberPhone" id="memberPhone" placeholder="Phone"/>
 				<div id="selectBtn">
 					<button type="button" id="beforeBtn" class="beforeBtn">이전</button>
 					<button type="submit" class="nextBtn"  onclick="return fn_submit()">가입</button>
@@ -165,6 +178,7 @@
 
 <script>
 	/* 로그인 창 닫기 분기 처리 */
+	<%-- 
 	$(function () {
 		var closeFlag = true;
 		$("#loginSection .container").click(function () {
@@ -179,6 +193,10 @@
 			}
 		})
 	});
+	 --%>
+	function fn_loginPageClose() {
+		$("#loginSection").css("display","none");
+	}
 </script>
 
 <!-- 회원가입 창 띠우기 -->
@@ -423,7 +441,7 @@
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                $('#image_section').attr('src', e.target.result)
+                $('.fileUploadIcon').attr('src', e.target.result)
                  .width(100)
                  .height(100);
             }

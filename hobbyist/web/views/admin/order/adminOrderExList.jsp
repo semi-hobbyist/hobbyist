@@ -26,7 +26,8 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='#'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
+				<img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li onclick="location.href='#'">Order List | 주문목록</li>
 				<li onclick="location.href='#'">관리자페이지 > 주문 관리 > 주문 목록</li>
 			</ul>
@@ -77,12 +78,12 @@
 					</table>
 					<script>
 						function fn_delete(num) {
-							if(confirm('해당 상품을 환불처리 하시겠습니까?')) {
+							if(confirm('해당 상품 환불취소하시겠습니까?')) {
 								$.ajax({
-									url:'<%=request.getContextPath() %>/admin/adminOrderReDelete?no=' + num,
+									url:'<%=request.getContextPath() %>/admin/adminOrderReList?no=' + num,
 									success: function (data) {
 										alert(data);
-										location.href="<%=request.getContextPath() %>/admin/adminOrderList";
+										location.href="<%=request.getContextPath() %>/admin/adminOrderExList";
 									}
 								});
 							} else {

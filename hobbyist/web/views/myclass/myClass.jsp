@@ -27,7 +27,7 @@
 				<td style="width: 700px; text-align: left; padding-left: 20px; " class="wow fadeInUp" data-wow-delay="0.2"><h3 class="wow fadeInUp" data-wow-delay="0.3">클래스 PIN CODE 입력</h3>클래스를 등록하시려면 클래스키트와 함께 동봉된 하비스트 클래스 PIN CODE를 입력해주세요<br>* PIN CODE 등록 시, 교환 및 환불 불가능 (키트 불량은 교환가능합니다)</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: right"><input type="text" id="pin" name="class_pin" placeholder="PIN CODE (숫자)"/><button style="width: 110px; height: 30px; margin:0;" onclick="fn_pincheck()">PIN CODE 등록</button></td>
+				<td colspan="2" style="text-align: right"><input type="text" id="pin" name="class_pin" placeholder="PIN CODE (숫자)"/><button style="width: 110px; height: 36px; margin:0; background-color:#575b69;border: 2px solid #575b69; color: #fff;" onclick="fn_pincheck()">PIN CODE 등록</button></td>
 				
 			</tr>
 			<tr>

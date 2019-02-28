@@ -15,7 +15,7 @@ section#award .awardSortBtn {
 
 section#award .awardSortBtn:hover  {
     transition: 500ms;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
 }
 
@@ -27,7 +27,7 @@ section#award .awardSortBtn:hover  {
     padding-top: 7px;
     background-color: #fff;
     color: #424242;
-    border-bottom: 2px solid #3b4f6a;
+    border-bottom: 2px solid #575b69;
     outline: none;
     font-size: 12px;
 }
@@ -48,10 +48,9 @@ section#award {
 
 section#award .award_content {
 	width: 990px;
-	padding-top: 200px; /* 기본메뉴만큼 띄우기 */
+	padding-top: 120px; /* 기본메뉴만큼 띄우기 */
 	text-align: center;
 	display: inline-block;
-	padding-top: 140px;
 }
 
 section#award .award_content #award_left {
@@ -132,13 +131,13 @@ section#award .award_content #award_right .award_bottom2 button {
 	width: 200px;
 	height: 45px;
 	color: #fff;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	border: 1px solid #444;
 	outline: none;
 }
 
 section#award .award_content #award_right .award_bottom2 button:hover {
-	background-color: #252525;
+	background-color: #575b69;
 	transition: 400ms;
 }
 
@@ -190,7 +189,7 @@ section#award .award_content #award_right .award_middle #tbl-awardForm td {
 
 section#award .award_content #award_right .award_middle #tbl-awardForm input {
 	height: 30px;
-	border: 1px solid #dfdfdf;
+	border: 2px solid #e1e3e9;
 	padding-left: 15px;
 	outline: none;
 }
@@ -200,12 +199,12 @@ section#award .award_content #award_right .award_middle #tbl-awardForm button {
 	width: 200px;
 	height: 35px;
 	color: #fff;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	border: none;
 }
 
 section#award .award_content #award_right .award_middle #tbl-awardForm button:hover {
-	background-color: #252525;
+	background-color: #575b69;
 	transition: 300ms;
 }
 
@@ -388,14 +387,14 @@ section#award .award_content #award_right .award_top .searchForm {
 }
 
 section#award .award_content #award_right .award_top .searchForm input[type=search] {
-    border: 1px solid #dadada;
+    border: 2px solid #e1e3e9;
     outline: none;
     height: 30px;
 }
 
 section#award .award_content #award_right .award_top .searchForm input[type=search]:focus {
     transition: 500ms;
-    border: 1px solid #252525;
+    border: 2px solid #e1e3e9;
 }
 
 section#award .award_content #award_right .award_top .searchForm button {
@@ -473,7 +472,7 @@ section#award .award_content #award_right .award_bottom2 #btn_add {
 section#award .award_content #award_right .award_bottom2 #btn_add:hover {
     transition: 400ms;
     color: #fff;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     border: 1px solid #252525;
 	
 }
@@ -501,7 +500,7 @@ section#award .award_content #award_right #review #btn-insert {
 
 section#award .award_content #award_right #review #btn-insert:hover {
 	transition: 400ms;
-	background-color: #252525;
+	background-color: #575b69;
 	color: #fff;
 }
 

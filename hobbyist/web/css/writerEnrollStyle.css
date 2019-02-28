@@ -182,7 +182,7 @@
 
 #writerEnrollSection .button1:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -193,7 +193,7 @@
 	height: 30px;
 	font-size: 16px;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: #252525;
 	background-color: white;
 	outline: none;
@@ -204,7 +204,7 @@
 
 #writerEnrollSection .button2:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -229,7 +229,7 @@
 	font-size: 16px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: #252525;
 	background-color: white;
 	outline: none;
@@ -239,7 +239,7 @@
 
 #writerEnrollSection .buttonYN:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -251,9 +251,9 @@
 	font-size: 16px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 	cursor: pointer;
@@ -298,7 +298,7 @@
 	justify-content: center;
 	align-items: center;
 	border: 1px solid #c2c2c2;
-	background-color:  black;
+	background-color:  #575b69;
 	color: white;
 	border-radius: 10px;
 }
@@ -377,9 +377,9 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: black;
+	background-color: #575b69;
 	transition: 500ms;
 }
 
@@ -392,7 +392,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: black;
 	background-color: white;
 	transition: 500ms;
@@ -472,13 +472,13 @@
 #writerEnrollSection .commitLineBox {
 	width: 70%;
 	height: 10px;
-	background-color: rgba(59, 79, 106, 0.5);
+	background-color: #e1e3e9;
 }
 
 #writerEnrollSection .commitLine {
 	width: 0%;
 	height: 10px;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #c8cad1;
 	transition: 500ms;
 }
 
@@ -501,16 +501,16 @@
 	height: 28px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid rgba(59, 79, 106, 1);
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 	cursor: pointer;
 }
 
 #writerEnrollSection .button3:hover {
-    color: black;
+    color: #32343a;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -533,9 +533,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid rgba(59, 79, 106, 1);
+	border: 1px solid #e1e3e9;
 	color: white;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #575b69;
 	border-radius: 10px;
 	outline: none;
 	transition: 500ms;
@@ -543,7 +543,7 @@
 }
 
 #writerEnrollSection .buttonUpDown:hover {
-    color: rgba(59, 79, 106, 1);
+    color: #575b69;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -594,7 +594,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #c8cad1;
 }
 
 #writerEnrollSection .wEPreviewFooter>div {

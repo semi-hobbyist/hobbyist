@@ -454,13 +454,13 @@
 }
 #defaultViewModal .defaultViewClose {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: -20px;
-    right: -20px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -14px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -812,7 +812,7 @@
 	width: 100px;
 	height: 30px;
 	letter-spacing: 0.15em;
-    border: 1px solid #475770;
+    border: 1px solid #9fa3b1;
     border-radius: 10px;
 	color: white;
 	background-color: #475770;
@@ -822,20 +822,20 @@
 }
 #defaultModifyModal .button1:hover {
     color: black;
-    border: 1px solid #475770;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
 }
 #defaultModifyModal .defaultViewClose {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: -20px;
-    right: -20px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -14px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -1266,13 +1266,13 @@
 
 #defaultModifyModal .fileImgDelBtn {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     top: 0px;
     right: 0px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -1285,8 +1285,8 @@
 
 #defaultModifyModal .fileImgDelBtn:hover {
     transition: 400ms;
-    color: black;
-    border: 1px solid #475770;
+    color: #32343a;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 }
 

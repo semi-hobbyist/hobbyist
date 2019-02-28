@@ -174,7 +174,7 @@
 			if (scrollTo != 0) {
 				$('.contentBox_top').css("top", "97px");
 			} else {
-				$('.contentBox_top').css("top", "213px");
+				$('.contentBox_top').css("top", "180px");
 			}
 		});
 		//메인 헤더 숨기기

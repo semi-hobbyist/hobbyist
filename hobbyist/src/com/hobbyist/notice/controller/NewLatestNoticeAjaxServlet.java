@@ -45,7 +45,7 @@ public class NewLatestNoticeAjaxServlet extends HttpServlet {
 		String html = "";
 
 		for (int i = 0; i < list.size(); i++) {
-			if (list.size() < 4) {
+			if (i < 4) {
 				html += "<li><a href='" + request.getContextPath() + "/notice/noticeView?noticeNo="
 						+ list.get(i).getNoticeNo() + "'>" + to + "&nbsp;&nbsp;" + list.get(i).getNoticeTitle()
 						+ "</a></li>";

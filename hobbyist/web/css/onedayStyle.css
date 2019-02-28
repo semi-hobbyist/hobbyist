@@ -9,7 +9,11 @@ section#oneday .oneday_content {
     display: inline-block;
     text-align: left;
     width: 990px;
+<<<<<<< HEAD
     padding-top: 110px;
+=======
+    padding-top: 100px;
+>>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 }
 
 section#oneday .oneday_content #oneday_left {
@@ -134,8 +138,8 @@ section#oneday .oneday_content #oneday_right .oneday_top .sort .sortBtn {
     height: 28px;
     padding-top: 9px;
     background:none;
-    color: #424242;
-    border: 1px solid #dadada;
+    color: #32343a;
+    border: 1px solid #e1e3e9;
     outline: none;
     font-size: 12px;
     text-align: left;
@@ -146,13 +150,13 @@ section#oneday .oneday_content #oneday_right .oneday_top .sort .selected {
     display: inline-block;
     cursor: pointer;
     color: #fff;
-    background: #3b4f6a;
+    background: #575b69;
     outline: none;
 }
 
 section#oneday .oneday_content #oneday_right .oneday_top .sort .sortBtn:hover {
     transition: 500ms;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
 }
 
@@ -235,13 +239,13 @@ section#oneday .oneday_content #oneday_right .oneday_middle .item #img {
 section#oneday .oneday_content #oneday_right .oneday_middle .item p {
     font-size: 12px;
     letter-spacing: -0.4px;
-    color: #424242;
+    color: #32343a;
     margin: 4px;
 }
 
 section#oneday .oneday_content #oneday_right .oneday_middle .item:hover {
-	transition: 500ms;
-	border: 2px solid #e6e6e3;
+	transition: 700ms;
+	border: 2px solid #c8cad1;
 }
 
 section#oneday .oneday_content #oneday_right .oneday_middle .item:hover img {
@@ -300,7 +304,7 @@ section#oneday .oneday_content #oneday_right .oneday_middle .item ul li.title a 
 section#oneday .oneday_content #oneday_right .oneday_middle .item ul li.title a:hover{
     transition: 500ms;
     text-decoration: underline;
-    color: #3b4f6a;
+    color: #575b69;
 }
 
 section#oneday .oneday_content #oneday_right .oneday_middle .item button {
@@ -354,6 +358,10 @@ section#onedayView .onedayView_content {
     text-align: center;
     width: 990px;
     padding-top: 140px;
+<<<<<<< HEAD
+=======
+    color: #32343a;
+>>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 }
 
 
@@ -378,14 +386,14 @@ section#onedayView .onedayView_content .view_right .view_menu ul li {
     padding-top: 10px;
     width: 170px;
     height: 30px;
-    color: #424242;
+    color: #32343a;
     font-size: 13px;
     letter-spacing: -0.4px;
 }
 
 section#onedayView .onedayView_content .view_right .view_menu ul li:hover {
     transition: 500ms;
-    color: #3b4f6a;
+    color: #575b69;
 }
 
 
@@ -400,9 +408,9 @@ section#onedayView .onedayView_content .view_right .view_top_info {
     text-align: left;
     font-size: 13px;
     letter-spacing: -0.5px;
-    color: #666666;
+    color: #32343a;
     padding-left: 10px;
-    height: 40px;
+    height: 45px;
 }
 
 /* 클래스 상세페이지 -> 상품이미지 */
@@ -413,9 +421,15 @@ section#onedayView .onedayView_content .view_right .view_top_left {
 }
 
 section#onedayView .onedayView_content .view_right .view_top_left b {
-	font-size: 18px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 16px;
 	margin-right: 15px;
-	background-color: #d5ddea;
+	margin-bottom: 5px;
+	background-color: #575b69;
+	color: #fff;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_left img {
@@ -442,7 +456,7 @@ section#onedayView .onedayView_content .view_right .view_top_right a {
 
 section#onedayView .onedayView_content .view_right .view_top_right a:hover {
     transition: 400ms;
-    color: #3b4f6a;
+    color: #575b69;
     background-color:#e7e7e7;
     text-decoration: underline;
 }
@@ -497,7 +511,7 @@ section#onedayView .onedayView_content .view_right .view_top_right button {
     background:none;
     outline: none;
     font-size: 13px;
-    border: 1px solid #9c9c9c;
+    border: 1px solid #e1e3e9;
     margin: 5px;
     margin-left: 10px;
     margin-right: 10px;
@@ -517,10 +531,6 @@ section#onedayView .onedayView_content .view_right .view_top_right button.api:nt
 	border-bottom: 1px solid #fff;
 } 
 
-section#onedayView .onedayView_content .view_right .view_top_right button.api:hover {
-	transition: 500ms;
-	border-bottom: 1px solid #a0a0a0;
-} 
 
 section#onedayView .onedayView_content .view_right .view_top_right button:hover {
     transition: 400ms;
@@ -534,10 +544,12 @@ section#onedayView .onedayView_content .view_right .view_top_right button.addcar
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: -0.4px;
+	border: 2px solid #e1e3e9;
 }
 
 section#onedayView .onedayView_content .view_right .view_top_right button.addcart-btn:hover {
-	background-color: #3b4f6a;
+	background-color: #575b69;
+	border: 2px solid #575b69;
 }
 
 section#onedayView .onedayView_content .view_right #about {
@@ -575,7 +587,7 @@ section#onedayView .onedayView_content .view_right #review .review-container {
     width: 100%;
     border: 1px solid #e7e7e7;
     text-align: center;
-    color: #424242;
+    color: #32343a;
 }
 
 section#onedayView .onedayView_content .view_right #review .review-container button {
@@ -586,7 +598,7 @@ section#onedayView .onedayView_content .view_right #review .review-container but
 section#onedayView .onedayView_content .view_right #review table#review_tbl {
     display: inline-block;
     border-collapse: collapse;
-    color: #424242;
+    color: #32343a;
 }
 
 section#onedayView .onedayView_content .view_right #review table#review_tbl th {
@@ -676,7 +688,7 @@ section#onedayWrite .onedayWrite_content .onedayWrite_left ul li {
     padding-top: 7px;
     padding-left: 15px;
     height: 28px;
-    color: #424242;
+    color: #32343a;
     font-size: 13px;
     letter-spacing: -0.4px;
 }

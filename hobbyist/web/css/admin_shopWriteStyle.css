@@ -18,7 +18,7 @@ section#admin .admin_content .adminShopWrite_right #adminShopWrite_main button {
 	padding-top: 6px;
 	padding-bottom: 6px;
 	height: 32px;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	color: #fff;
 	outline:none;
 	border: none;
@@ -50,7 +50,7 @@ section#admin .admin_content .adminShopWrite_right #adminShopWrite_main table tr
 section#admin .admin_content .adminShopWrite_right #adminShopWrite_main table tr:hover {
 	transition: 500ms;
 	background-color:  #e6e9ec;
-	border-left: 3px solid #3b4f6a;
+	border-left: 3px solid #575b69;
 }
 
 section#admin .admin_content .adminShopWrite_right #adminShopWrite_main table tr:hover a {

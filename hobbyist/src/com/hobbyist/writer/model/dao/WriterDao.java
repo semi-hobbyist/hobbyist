@@ -476,6 +476,22 @@ public class WriterDao {
 		return result;
 	}
 	
+	public int returnWriterEnroll(Connection conn, int writerEnrollNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("returnWriterEnroll");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, writerEnrollNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	public int UpdateWriterEnroll(Connection conn, WriterEnroll we) {
 		PreparedStatement pstmt = null;
 		int result = 0;

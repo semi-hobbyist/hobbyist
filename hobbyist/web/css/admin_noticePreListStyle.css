@@ -72,7 +72,7 @@
     background:none;
 	color: #424242;
 	background-color: white;
-    border: 1px solid #dadada;
+    border: 1px solid #9fa3b1;
     outline: none;
 }
 
@@ -84,20 +84,20 @@
     padding-top: 7px;
     background-color: #fff;
     color: #424242;
-    border-bottom: 2px solid #3b4f6a;
+    border-bottom: 2px solid #9fa3b1;
     outline: none;
 }
 
 #admin_noticePre .notice_content .tal_top .sort .sortBtn:hover {
     transition: 500ms;
     color: white;
-    background-color: #475770;
+    background-color: #575b69;
 }
 
 #admin_noticePre .notice_content .tal_top .sort .selected:hover {
     transition: 500ms;
     color: white;
-    background-color: #475770;
+    background-color: #575b69;
 }
 
 
@@ -149,8 +149,10 @@
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: rgba(59, 79, 106, 0.8);
-    color: white;
+    background-color: white;
+    border-top: 2px solid #575b69;
+    border-bottom: 1px solid #575b69;
+    color: black;
 }
 
 #admin_noticePre .notice_content .tal_ContentBox {
@@ -173,8 +175,8 @@
     width: 100%;
     padding: 7px 0;
     background-color: #eef1f7;
-    border-left: 3px solid #3e4b6c;    
-    border-bottom: 1px solid #eee;
+    border-left: 3px solid #575b69;    
+    border-bottom: 1px solid #e1e3e9;
 	cursor: pointer;
 	transition: 400ms;
 }

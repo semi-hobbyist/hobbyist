@@ -69,9 +69,9 @@
     height: 26px;
     padding-top: 7px;
     background:none;
-	color: #424242;
+	color: #32343a;
 	background-color: white;
-    border: 1px solid #dadada;
+    border: 1px solid #9fa3b1;
     outline: none;
 }
 
@@ -83,20 +83,20 @@
     padding-top: 7px;
     background-color: #fff;
     color: #424242;
-    border-bottom: 2px solid #3b4f6a;
+    border-bottom: 2px solid #575b69;
     outline: none;
 }
 
 #admin_notice .notice_content .tal_top .sort .sortBtn:hover {
     transition: 500ms;
     color: white;
-    background-color: #475770;
+    background-color: #575b69;
 }
 
 #admin_notice .notice_content .tal_top .sort .selected:hover {
     transition: 500ms;
     color: white;
-    background-color: #475770;
+    background-color: #575b69;
 }
 
 
@@ -148,8 +148,9 @@
     display: table;
     width: 100%;
     padding: 10px 0;
-    background-color: rgba(59, 79, 106, 0.8);
-    color: white;
+    border-top: 2px solid #575b69;
+    border-bottom: 1px solid #575b69;
+    color: black;
 }
 
 #admin_notice .notice_content .tal_ContentBox {
@@ -171,9 +172,9 @@
     display: table;
     width: 100%;
     padding: 7px 0;
-    background-color: #eef1f7;
-    border-left: 3px solid #3e4b6c;    
-    border-bottom: 1px solid #eee;
+    background-color: #e1e3e9;
+    border-left: 3px solid #575b69;    
+    border-bottom: 1px solid #e1e3e9;
 	cursor: pointer;
 	transition: 400ms;
 }
@@ -339,10 +340,10 @@
     height: 30px;
     font-size: 16px;
     font-weight: 700;
-    background-color: rgb(136, 147, 199);
+    background-color: #c8cad1;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-	color: white;
+	color: #32343a;
 	border: none;
 	outline: none;
     cursor: pointer;
@@ -350,7 +351,7 @@
 #admin_notice .noticeListRe:hover {
     transition: 400ms;
     color: white;
-	background-color: rgb(0, 86, 184);
+	background-color: #575b69;
 }
 
 /* 삭제버튼 */
@@ -360,17 +361,17 @@
     height: 30px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #e1e3e9;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-	color: white;
+	color: #32343a;
 	border: none;
 	outline: none;
 }
 #admin_notice .noticeListDel:hover {
     transition: 400ms;
     color: white;
-	background-color: rgb(184, 0, 0);
+	background-color: #575b69;
 }
 
 
@@ -408,7 +409,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-    background-color: #eceef2;
+    background-color: #e1e3e9;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -427,7 +428,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-    background-color: #eceef2;
+    background-color: #e1e3e9;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -436,30 +437,30 @@
 	width: 100px;
 	height: 30px;
 	letter-spacing: 0.15em;
-    border: 1px solid #475770;
+    border: 1px solid #9fa3b1;
     border-radius: 10px;
 	color: white;
-	background-color: #475770;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
     cursor: pointer;
 }
 #defaultViewModal .button1:hover {
-    color: black;
-    border: 1px solid #475770;
+    color: #32343a;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
 }
 #defaultViewModal .defaultViewClose {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: -20px;
-    right: -20px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -14px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -563,7 +564,7 @@
     width: 100%;
     padding: 10px 0;
     display: flex;
-    background-color: #e8ebf2;
+    background-color: #e1e3e9;
     color:#5b5b5b;
     display: flex;
     justify-content: space-between;
@@ -634,7 +635,7 @@
 
 #noticeDelListView .noticeViewFileBox .noticeViewFileTitle {
     padding: 5px 10px;
-    background-color: #e8ebf2;
+    background-color: #e1e3e9;
     border-radius: 5px;
 }
 
@@ -686,6 +687,65 @@
     border-radius: 10px;
     color: #3b6a3b;
     background-color: white;
+}
+
+
+
+#noticeDelListView  .weNoticeView {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    background-color: #c8cad1;
+    color:#5b5b5b;
+    display: flex;
+    align-items: center;
+}
+
+#noticeDelListView  .weNoticeViewText {
+    font-size: 16px;
+    text-indent: 10px;
+    display: flex;
+    
+}
+
+#noticeDelListView  .weNoticeViewTextS {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noticeDelListView  .weNoticeViewTextE {
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    padding-right: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#noticeDelListView .writerEnrollBtn {
+    margin: 5px;
+    width: 120px;
+    height: 30px;
+    letter-spacing: 0.15em;
+    border: 1px solid #9fa3b1;
+    color: white;
+    background-color: #575b69;
+    outline: none;
+    transition: 500ms;
+    cursor: pointer;
 }
 
 
@@ -752,7 +812,7 @@
 	width: 100px;
 	height: 30px;
 	letter-spacing: 0.15em;
-    border: 1px solid #475770;
+    border: 1px solid #9fa3b1;
     border-radius: 10px;
 	color: white;
 	background-color: #475770;
@@ -762,20 +822,20 @@
 }
 #defaultModifyModal .button1:hover {
     color: black;
-    border: 1px solid #475770;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
 }
 #defaultModifyModal .defaultViewClose {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: -20px;
-    right: -20px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -14px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -865,6 +925,7 @@
 	color: #797A9E;
     display: flex;
     align-items: center;
+    text-align: left;
 }
 
 
@@ -945,7 +1006,7 @@
     color: #424242;
     letter-spacing: 0.15em;
 	background-color: white;
-    border: 1px solid #dadada;
+    border: 1px solid #9fa3b1;
     border-radius: 10px;
     outline: none;
     text-align: center;
@@ -954,7 +1015,7 @@
 #defaultModifyModal .sortBtn:hover {
     transition: 500ms;
     color: white;
-    background-color: rgba(71, 87, 112, 0.8);
+    background-color: #575b69;
 }
 
 #defaultModifyModal .sortBtn1 {
@@ -966,8 +1027,8 @@
     background:none;
     color: white;
     letter-spacing: 0.15em;
-	background-color: #475770;
-    border: 1px solid #dadada;
+	background-color: #575b69;
+    border: 1px solid #9fa3b1;
     border-radius: 10px;
     outline: none;
     text-align: center;
@@ -975,7 +1036,7 @@
 
 #defaultModifyModal .sortBtn1:hover {
     transition: 500ms;
-    color: #424242;
+    color: #32343a;
     background-color: white;
 }
 
@@ -1205,13 +1266,13 @@
 
 #defaultModifyModal .fileImgDelBtn {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     top: 0px;
     right: 0px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -1224,8 +1285,8 @@
 
 #defaultModifyModal .fileImgDelBtn:hover {
     transition: 400ms;
-    color: black;
-    border: 1px solid #475770;
+    color: #32343a;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 }
 
@@ -1256,51 +1317,3 @@
 	background-color: #475770;
 }
 
-
-#defaultModifyModal .weNoticeView {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    background-color: #d8d8d8;
-    color:#5b5b5b;
-    display: flex;
-    align-items: center;
-}
-
-#defaultModifyModal .noticeViewTitle {
-    font-size: 20px;
-    text-indent: 10px;
-}
-
-#defaultModifyModal .weNoticeViewText {
-    font-size: 16px;
-    text-indent: 10px;
-    display: flex;
-    
-}
-
-#defaultModifyModal .weNoticeViewTextS {
-    font-size: 16px;
-    text-align: center;
-    width: 120px;
-    height: 30px;
-    padding-right: 10px;
-    background-color: #eee;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#defaultModifyModal .weNoticeViewTextE {
-    font-size: 16px;
-    text-align: center;
-    width: 120px;
-    height: 30px;
-    padding-right: 10px;
-    background-color: #eee;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

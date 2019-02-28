@@ -26,7 +26,8 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='#'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
+				<img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li onclick="location.href='#'">Order List | 주문목록</li>
 				<li onclick="location.href='#'">관리자페이지 > 주문 관리 > 주문 목록</li>
 			</ul>

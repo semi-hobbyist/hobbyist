@@ -1,13 +1,14 @@
 package com.hobbyist.member.model.vo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Member implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3842745634025912541L;
+	private static final long serialVersionUID = -1142742834131986102L;
 	private int memberNo;
 	private String memberEmail;
 	private String memberPassword;
@@ -17,7 +18,7 @@ public class Member implements Serializable{
 	private String memberPhone;
 	private String memberOriginalImage;
 	private String memberRenamedImage;
-	private String memberEnrolldate;
+	private Date memberEnrolldate;
 	private String memberGrade;
 	private String memberWriterYN;
 	private String memberStatus;
@@ -30,7 +31,8 @@ public class Member implements Serializable{
 
 	public Member(int memberNo, String memberEmail, String memberPassword, String memberNickname, String memberName,
 			String memberBirthday, String memberPhone, String memberOriginalImage, String memberRenamedImage,
-			String memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus, String memberAddress, String memberMemo) {
+			Date memberEnrolldate, String memberGrade, String memberWriterYN, String memberStatus, String memberAddress,
+			String memberMemo) {
 		super();
 		this.memberNo = memberNo;
 		this.memberEmail = memberEmail;
@@ -121,11 +123,11 @@ public class Member implements Serializable{
 		this.memberRenamedImage = memberRenamedImage;
 	}
 
-	public String getMemberEnrolldate() {
+	public Date getMemberEnrolldate() {
 		return memberEnrolldate;
 	}
 
-	public void setMemberEnrolldate(String memberEnrolldate) {
+	public void setMemberEnrolldate(Date memberEnrolldate) {
 		this.memberEnrolldate = memberEnrolldate;
 	}
 
@@ -168,19 +170,7 @@ public class Member implements Serializable{
 	public void setMemberMemo(String memberMemo) {
 		this.memberMemo = memberMemo;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "Member [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberPassword=" + memberPassword
-				+ ", memberNickname=" + memberNickname + ", memberName=" + memberName + ", memberBirthday="
-				+ memberBirthday + ", memberPhone=" + memberPhone + ", memberOriginalImage=" + memberOriginalImage
-				+ ", memberRenamedImage=" + memberRenamedImage + ", memberEnrolldate=" + memberEnrolldate
-				+ ", memberGrade=" + memberGrade + ", memberWriterYN=" + memberWriterYN + ", memberStatus="
-				+ memberStatus + ", memberAddress=" + memberAddress + ", memberMemo=" + memberMemo + "]";
-	}
-
+	
+	
+	
 }

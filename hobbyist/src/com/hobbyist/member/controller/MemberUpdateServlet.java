@@ -14,7 +14,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.hobbyist.member.model.service.MemberService;
 import com.hobbyist.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import common.rename.MyFileRenamePolicy;
 
 /**
  * Servlet implementation class MemberUpdateServlet
@@ -42,12 +43,13 @@ public class MemberUpdateServlet extends HttpServlet {
 			String dir = getServletContext().getRealPath("/");
 	        String filepath = dir+File.separator+"upload"+File.separator+"member";
 	        int maxSize=1024*1024*10;
-	        MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+	        MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, "UTF-8", new MyFileRenamePolicy());
 	        
 	        String memberEmail = mr.getParameter("memberEmail");
 	        String memberNickname = mr.getParameter("memberNickname");
 	        String memberPhone = mr.getParameter("memberPhone");
-	        String memberOriginalImage = mr.getFilesystemName("memberOriginalImage");
+	        String memberOriginalImage = mr.getOriginalFileName("memberOriginalImage");
+	        String memberRenameImage = mr.getFilesystemName("memberOriginalImage");
 	        
 	        System.out.println("업데이트 : "+memberEmail+memberNickname+memberPhone+memberOriginalImage);
 	        
@@ -57,27 +59,30 @@ public class MemberUpdateServlet extends HttpServlet {
 			m.setMemberNickname(memberNickname);
 			m.setMemberPhone(memberPhone);
 		
-			File f = mr.getFile("file");
+			File f = mr.getFile("memberOriginalImage");
+			
 			if(f!=null && f.length()>0) {
-				File deleteFile = new File(filepath+"/"+mr.getFilesystemName("memberOriginalImage"));
+				File deleteFile = new File(filepath+"/"+mr.getParameter("old_rename"));
 				boolean deleteResult = deleteFile.delete();
 				System.out.println(deleteResult?"제대로 지워짐":"안지워짐");
 			} else {
-				memberOriginalImage=mr.getFilesystemName("old_file");
+				memberOriginalImage=mr.getParameter("old_file");
+				memberOriginalImage=mr.getParameter("old_rename");
 			}
 			
 			m.setMemberOriginalImage(memberOriginalImage);
+			m.setMemberRenamedImage(memberRenameImage);
 			
 			int result = new MemberService().updateMember(m);
 			
 			if(result>0) {
 				msg="회원수정이 완료되었습니다.";
-				loc="/";
+				loc="/memberUpdateView.do?memberEmail=" + memberEmail;
 				System.out.println("회원수정 성공 (servlet)");
 			} else {
 				msg="회원수정에 오류가 생겼습니다.";
 				System.out.println("회원수정 실패 (servlet)");
-				loc="/memberUpdateView.do?="+memberEmail;
+				loc="/memberUpdateView.do?memberEmail="+memberEmail;
 			}
 			System.out.println(result);
 			request.setAttribute("msg", msg);

@@ -58,7 +58,7 @@ public class ChangePwdServlet extends HttpServlet {
 			}
 		} else {
 			msg="현재 비밀번호가 일치하지 않습니다.";
-			loc="/views/mypage/changePwdView.jsp?="+result.getMemberEmail();
+			loc="/views/mypage/updatePwd.jsp?member="+result.getMemberEmail();
 			
 		}
 		request.setAttribute("msg", msg);

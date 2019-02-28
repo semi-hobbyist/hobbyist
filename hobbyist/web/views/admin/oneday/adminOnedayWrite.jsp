@@ -21,7 +21,8 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'">
+				<img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li onclick="location.href='#'">ONEDAY CLASS | 원데이클래스</li>
 				<li onclick="location.href='#'">관리자페이지 > 원데이클래스 관리 > 원데이클래스 등록</li>
 			</ul>

@@ -21,7 +21,7 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>Administrator</li>
 				<li>오늘방문자 : 4205　　　어제방문자 : 8243　　　전체방문자 : 52483094</li>
 			</ul>
@@ -34,26 +34,27 @@
 
 		<div class="admin_right">
 			<div id="admin_main">
+			<br><br>
 				<form action="<%=request.getContextPath()%>/admin/community/adminCommunityReviseEnd?boardNo=<%=b.getBoardNo()%>&fname=<%=b.getBoardReNamedFileName()%>" method="post" enctype="multipart/form-data">
 					<table id="tbl_revise">
 						<tr>
-							<th>제목</th>
-							<td><input type="text" name="title" id="title" value="<%=b.getBoardTitle()%>" required/></td>
+							<th style="width:200px;">제목</th>
+							<td style="width:600px; text-align:left"><input type="text" name="title" id="title" value="<%=b.getBoardTitle()%>" required/></td>
 						</tr>
 						<tr>
 							<th>작성자</th>
-							<td><input type="text" name="writer"
+							<td style="width:600px; text-align:left"><input type="text" name="writer"
 							value='<%=logginMember.getMemberNickname()%>' style="width: 80px;" value="<%=b.getBoardWriter()%>" readonly/></td>
 						</tr>
 						<tr>
 							<th>첨부파일</th>
-							<td>
+							<td style="width:600px; text-align:left">
 								<input type="file" name="up_file" value="<%=b.getBoardReNamedFileName()%>"/>
 							</td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea name="content" id="editor1"><%=b.getBoardContent()%></textarea></td>
+							<td style="width:600px; text-align:left"><textarea name="content" id="editor1"><%=b.getBoardContent()%></textarea></td>
 						</tr>
 						<tr>
 							<td class="tableBottom" colspan="2">

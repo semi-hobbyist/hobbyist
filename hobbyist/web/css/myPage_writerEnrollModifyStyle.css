@@ -174,8 +174,8 @@
 	height: 30px;
 	font-size: 16px;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
-	color: #252525;
+	border: 1px solid #9fa3b1;
+	color: #32343a;
 	background-color: white;
 	outline: none;
 	opacity: 1;
@@ -185,7 +185,7 @@
 
 #writerEnrollModify .button1:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #c8cad1;
 	outline: none;
 	transition: 500ms;
 }
@@ -196,8 +196,8 @@
 	height: 30px;
 	font-size: 16px;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
-	color: #252525;
+	border: 1px solid #9fa3b1;
+	color: #32343a;
 	background-color: white;
 	outline: none;
 	opacity: 1;
@@ -207,7 +207,7 @@
 
 #writerEnrollModify .button2:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 }
@@ -232,8 +232,8 @@
 	font-size: 16px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
-	color: #252525;
+	border: 1px solid #9fa3b1;
+	color: #32343a;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -242,7 +242,7 @@
 
 #writerEnrollModify .buttonYN:hover {
     color: #fff;
-	background-color: #252525;
+	background-color: #c8cad1;
 	outline: none;
 	transition: 500ms;
 }
@@ -254,17 +254,17 @@
 	font-size: 16px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: #252525;
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 	cursor: pointer;
 }
 
 #writerEnrollModify .buttonYN1:hover {
-    color: #252525;
-	background-color: white;
+    color: #32343a;
+	background-color: #c8cad1;
 	outline: none;
 	transition: 500ms;
 }
@@ -300,8 +300,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid #c2c2c2;
-	background-color:  black;
+	border: 1px solid #9fa3b1;
+	background-color:  #575b69;
 	color: white;
 	border-radius: 10px;
 }
@@ -312,7 +312,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	border-radius: 10px;
 }
 
@@ -350,7 +350,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: black;
 	background-color: white;
 	transition: 500ms;
@@ -365,9 +365,9 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: #c2c2c2;
+	background-color: #c8cad1;
 	transition: 500ms;
 }
 
@@ -380,9 +380,9 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: black;
+	background-color: #575b69;
 	transition: 500ms;
 }
 
@@ -395,7 +395,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px solid #c2c2c2;
+	border: 1px solid #9fa3b1;
 	color: black;
 	background-color: white;
 	transition: 500ms;
@@ -475,13 +475,13 @@
 #writerEnrollModify .commitLineBox {
 	width: 70%;
 	height: 10px;
-	background-color: rgba(59, 79, 106, 0.5);
+	background-color: #e1e3e9;
 }
 
 #writerEnrollModify .commitLine {
 	width: 0%;
 	height: 10px;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #c8cad1;
 	transition: 500ms;
 }
 
@@ -504,16 +504,16 @@
 	height: 28px;
 	text-align: left;
 	letter-spacing: 0.15em;
-	border: 1px solid rgba(59, 79, 106, 1);
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #575b69;
 	outline: none;
 	transition: 500ms;
 	cursor: pointer;
 }
 
 #writerEnrollModify .button3:hover {
-    color: black;
+    color: #32343a;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -536,9 +536,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid rgba(59, 79, 106, 1);
+	border: 1px solid #9fa3b1;
 	color: white;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #575b69;
 	border-radius: 10px;
 	outline: none;
 	transition: 500ms;
@@ -546,7 +546,7 @@
 }
 
 #writerEnrollModify .buttonUpDown:hover {
-    color: rgba(59, 79, 106, 1);
+    color: #575b69;
 	background-color: white;
 	outline: none;
 	transition: 500ms;
@@ -597,7 +597,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: rgba(59, 79, 106, 1);
+	background-color: #c8cad1;
 }
 
 #writerEnrollModify .wEPreviewFooter>div {
@@ -668,19 +668,19 @@
 
 #writerEnrollModify .wEnrollPreValueBox {
 	margin: 10px;
-	border-left: 2px solid rgba(59, 79, 106, 1);
+	border-left: 2px solid #575b69;
 }
 
 
 #writerEnrollModify .fileImgDelBtn {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 0px;
-    right: 0px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -14px;
     font-size: 16px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;

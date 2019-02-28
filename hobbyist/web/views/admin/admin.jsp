@@ -17,7 +17,7 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>Administrator</li>
 				<li>오늘방문자 : 4205　　　어제방문자 : 8243　　　전체방문자 : 52483094</li>
 			</ul>
@@ -30,7 +30,13 @@
 
 		<div class="admin_right">
 			<div id="admin_main">
-				<h2>관리자페이지 메인</h2>
+				<div class="image" onclick="location.href='<%=request.getContextPath()%>/adminMemberList.do'"><img src="<%= request.getContextPath() %>/images/admin1.jpg"></div>
+				<div class="image" onclick="location.href='<%= request.getContextPath()%>/admin/adminWriterEnroll'"><img src="<%= request.getContextPath() %>/images/admin2.jpg"></div>
+				<div class="image" onclick="location.href='<%= request.getContextPath() %>/admin/adminNoticePreList'"><img src="<%= request.getContextPath() %>/images/admin3.jpg"></div><br>
+				<div class="image" onclick="location.href='<%= request.getContextPath() %>/admin/adminShopList'"><img src="<%= request.getContextPath() %>/images/admin4.jpg"></div>
+				<div class="image" onclick="location.href='<%= request.getContextPath() %>/admin/adminOnedayList'"><img src="<%= request.getContextPath() %>/images/admin5.jpg"></div>
+				<div class="image" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityList'"><img src="<%= request.getContextPath() %>/images/admin6.jpg"></div>
+				<div class="image" onclick="location.href='<%= request.getContextPath() %>/admin/adminOrderList'"><img src="<%= request.getContextPath() %>/images/admin7.jpg"></div>
 			</div>
 		</div>
 	</div>

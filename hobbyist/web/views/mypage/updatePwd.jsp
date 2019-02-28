@@ -20,7 +20,7 @@
 
 		<div class="myPage_MemberPwd_right">
 			<div id="myPage_main">
-				<h2>비밀번호 변경하기</h2>
+				<h2>비밀번호 변경하기</h2><br><Br>
 			</div>
 		<form action="<%=request.getContextPath()%>/changePwd.do" name="changePwdFrm" method="post">
 			<table>
@@ -33,9 +33,6 @@
 					<td>
 					<input type="hidden" id="memberEmail" name="memberEmail" value="<%=logginMember.getMemberEmail()%>"/>
 					<input type="password" id="memberPassword" name="memberPassword" /></td>
-				</tr>
-				<tr>
-					<th colspan="2"><!-- <button type="button" id="checkIdBtn" name="checkIdBtn">본인인증</button> --></th>
 				</tr>
 				<tr>
 					<th>변경할 비밀번호</th>

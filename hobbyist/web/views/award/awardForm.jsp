@@ -24,24 +24,36 @@
 								readOnly></td>
 						</tr>
 						<tr>
-							<th>첨부파일</th>
-							<td  style="text-align:left"> 
-								<!-- <input type="file" name="up_file"> -->
-								<div class="inputImageBox">
-                     <div class="inputImageback">
-                        <div class="inputImage">
-                           <img src="<%= request.getContextPath() %>/images/uploadIcon.png" width="100px" height="100px"/>
-                           <div class="imageTitle"></div>
-                        </div>
-                        <input  style="width:450px;" type="file" name="up_file" class="inputImageFile"/>
-                     </div>
-                  </div>
-								
-							</td>		
-						</tr>
+                     <th>첨부파일</th>
+                     <td  style="text-align:left"> 
+                        <!-- <input type="file" name="up_file"> -->
+                        
+                        <div class="inputImageBox">
+                              <div class="inputImageback">
+                                 <div class="inputImage">
+                                    <img src="<%= request.getContextPath() %>/images/uploadIcon.png" width="100px" height="100px" onclick="up_file()"/>
+                                    <div class="imageTitle"></div>
+                                 </div>
+                                 <input style="width:450px;" type="file" name="up_file" class="inputImageFile" id="img_editor" required/>
+                              </div>
+                              </div>
+                              
+                              <script>
+                               function up_file(){
+                                 var image=$('[name=img_editor]').val();
+                                 if(image.trim().length==0){
+                                    alert("이미지를 등록하세요");
+                                    return false;
+                                 }
+                              return true;
+                              } 
+                              </script>
+                        
+                     </td>      
+                  </tr>
 						<tr>
 							<th>내용</th>
-							<td  style="text-align:left"><textarea id="noticeContent_editor" rows="5" cols="50" name="content">&nbsp;&nbsp;</textarea></td>
+							<td  style="text-align:left"><textarea id="noticeContent_editor" rows="5" cols="50" name="content">&nbsp;</textarea></td>
 						</tr>
 
 						<tr>

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hobbyist.notice.model.service.NoticeService;
+import com.hobbyist.notice.model.vo.Notice;
+import com.hobbyist.notice.model.vo.WeNotice;
 import com.hobbyist.writer.model.vo.WriterEnroll;
 
-/**
- * Servlet implementation class Mypage_writerEnrollListServlet
- */
 @WebServlet("/mypage/mypage_writerEnrollList")
 public class Mypage_writerEnrollListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,14 +23,16 @@ public class Mypage_writerEnrollListServlet extends HttpServlet {
      */
     public Mypage_writerEnrollListServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//현시간 작가신청 하고 있는 공지글 가져오기
+		WeNotice wnList = new NoticeService().cuWeSelectOne();
+		Notice cuNotice = null;
+		if(wnList!=null) {
+		boolean hasRead = true;
+		cuNotice = new NoticeService().selectOne(wnList.getNoticeNo(), hasRead);
+		}
 		List<WriterEnroll> list = null;
 		String sort = "";
 		int cPage = 0;

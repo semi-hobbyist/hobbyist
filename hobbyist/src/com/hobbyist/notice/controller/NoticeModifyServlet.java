@@ -1,6 +1,8 @@
 package com.hobbyist.notice.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +42,14 @@ public class NoticeModifyServlet extends HttpServlet {
 		String writer = notice.getNoticeWriter();
 		String profileImg = new NoticeService().writerImg(writer);
 		
+		
+		//현재 시간 구하기
+		long currentTime = System.currentTimeMillis();
+		Date cuTime = new Date(currentTime);
+		
 		request.setAttribute("profileImg", profileImg);
 		request.setAttribute("notice", notice);
+		request.setAttribute("cuTime", cuTime);
 		request.getRequestDispatcher("/views/notice/noticeModify.jsp").forward(request, response);
 	}
 

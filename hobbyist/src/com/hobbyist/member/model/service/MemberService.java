@@ -69,6 +69,7 @@ public class MemberService {
 		Member result = dao.selectMemberName(conn,m);
 		close(conn);
 		return result;
+		
 	}
 
 	public Member searchMemberPwd(Member m) {
@@ -90,34 +91,6 @@ public class MemberService {
 		close(conn);
 		return resultPwd;
 	}
-	
-	//작가신청 합격으로 인한 맴버 데이터 수정
-		public int writerPassUpdate(String memberEmail) {
-			Connection conn = getConnection();
-			int result = dao.writerPassUpdate(conn,memberEmail);
-			if(result>0) {
-				commit(conn);
-			}
-			else {
-				rollback(conn);
-			}
-			close(conn);
-			return result;
-		}
-		
-		//작가신청 불합격으로 인한 맴버 데이터 수정
-		public int writerFailUpdate(String memberEmail) {
-			Connection conn = getConnection();
-			int result = dao.writerFailUpdate(conn,memberEmail);
-			if(result>0) {
-				commit(conn);
-			}
-			else {
-				rollback(conn);
-			}
-			close(conn);
-			return result;
-		}
 
 	public int updateMember(Member m) {
 		Connection conn = getConnection();
@@ -170,4 +143,50 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+
+	public int deleteAdmin(Member m) {
+		Connection conn =getConnection();
+		int result = dao.deleteAdmin(conn, m);
+		close(conn);
+		return result;
+	}
+
+	public int updateAdmin(Member m) {
+		Connection conn = getConnection();
+		int result = dao.updateAdmin(conn, m);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	//작가신청에서 사용하는 중.. 
+	public int writerPassUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerPassUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+	
+	public int writerFailUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerFailUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+	
+	public int writerReUpdate(String memberEmail) {
+		Connection conn =getConnection();
+		int result = dao.writerReUpdate(conn, memberEmail);
+		close(conn);
+		return result;
+	}
+
 }

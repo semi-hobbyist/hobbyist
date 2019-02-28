@@ -33,12 +33,13 @@ public class NoticeDelServlet extends HttpServlet {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		
 		int result = new NoticeService().delNotice(noticeNo);
+		int wnResult = new NoticeService().wnDelNotice(noticeNo);
 		
 
 		String msg="";
 		String loc="";
 		String view="/views/common/msg.jsp";
-		if(result>0) {
+		if(result>0&&wnResult>0) {
 			msg="공지사항 삭제 성공";
 			loc="/notice/noticeList";
 		}

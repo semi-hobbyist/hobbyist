@@ -138,10 +138,10 @@
 			<% } %>
 		</div>
 		<% if(wnList!=null) { %>
-         <form action="<%= request.getContextPath() %>/writer/writerEnroll" type="post" id="noticeViewHidden">
-            <input type="hidden" name="weQuarter" value="<%= wnList.getWeQuarter() %>"/>
-         </form>
-      	<% } %>
+			<form action="<%= request.getContextPath() %>/writer/writerEnroll" type="post" id="noticeViewHidden">
+				<input type="hidden" name="weQuarter" value="<%= wnList.getWeQuarter() %>"/>
+			</form>
+		<% } %>
 	</div>
 	<script>
 		// 작가신청 버튼 기능 구현
@@ -173,7 +173,11 @@
 			if (scrollTo != 0) {
 				$('.contentBox_top').css("top", "125px");
 			} else {
+<<<<<<< HEAD
 				$('.contentBox_top').css("top", "163px");
+=======
+				$('.contentBox_top').css("top", "180px");
+>>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 			}
 		});
 		//메인 헤더 숨기기

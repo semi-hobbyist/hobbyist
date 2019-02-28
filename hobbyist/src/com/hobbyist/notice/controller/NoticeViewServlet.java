@@ -69,18 +69,17 @@ public class NoticeViewServlet extends HttpServlet {
 		String profileImg = new NoticeService().writerImg(writer);
 		
 		// 작가신청 관련 자료 가져오기
-	      WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
-	      System.out.println(wnList);
-	      String weYear = "";
-	      String weQu = "";
-	      if(wnList!=null) {
-	         String[] weQuarter = wnList.getWeQuarter().split(",");
-	         weYear = weQuarter[0];
-	         weQu = weQuarter[1];
-	      } else {
-	         wnList = null;
-	      }
-		
+		WeNotice wnList = new NoticeService().weSelectOne(noticeNo);
+		System.out.println(wnList);
+		String weYear = "";
+		String weQu = "";
+		if(wnList!=null) {
+			String[] weQuarter = wnList.getWeQuarter().split(",");
+			weYear = weQuarter[0];
+			weQu = weQuarter[1];
+		} else {
+			wnList = null;
+		}
 		request.setAttribute("profileImg", profileImg);
 		request.setAttribute("notice", notice);
 		request.setAttribute("wnList", wnList);

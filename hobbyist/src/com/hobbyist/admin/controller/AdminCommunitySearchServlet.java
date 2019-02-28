@@ -43,7 +43,7 @@ public class AdminCommunitySearchServlet extends HttpServlet {
 		} catch (Exception e) {
 			cPage = 1;
 		}
-		int numPerPage = 5;
+		int numPerPage = 10;
 		
 		int totalCount = new BoardService().selectAdminSearchCount(searchType, searchKeyword);
 		List<Board> list = new BoardService().selectAdminSearchList(cPage, numPerPage, searchType, searchKeyword);

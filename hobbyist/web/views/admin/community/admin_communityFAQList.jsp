@@ -27,7 +27,7 @@
 	<div class="admin_content">
 		<div class="admin_top" id="admin_top">
 			<ul>
-				<li onclick="location.href='<%= request.getContextPath() %>'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
+				<li onclick="location.href='<%= request.getContextPath() %>/views/admin/admin.jsp'"><img src="<%= request.getContextPath() %>/images/back.png" width="18px"></li>
 				<li>Administrator</li>
 				<li>오늘방문자 : 4205　　　어제방문자 : 8243　　　전체방문자 : 52483094</li>
 			</ul>
@@ -90,9 +90,9 @@
 					</tr>
 					<%}%>
 					<tr>
-						<td class="tableBottom" style="float: left; padding-left:20px;"><%=pageBar%></td>
-						<td class="tableBottom" style="padding-left:410px;">
-							<input type='button' value="추가하기" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsert'"/>
+						<td colspan="2" class="tableBottom" style="float: left; padding-left:20px;"><%=pageBar%>
+						<p align="right">
+							<input type='button' value="추가하기" onclick="location.href='<%=request.getContextPath()%>/admin/community/adminCommunityFAQInsert'"/></p>
 						</td>
 					</tr>
 				</table>

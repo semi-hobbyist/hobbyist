@@ -9,10 +9,11 @@ html, body {
     scroll-behavior: smooth;
     position: relative;
     line-height: 21px;
+    color: #515359;
 }
 
 ::selection {
-    background-color: #3b4f6a;
+    background-color: #515359;
     color: #fff;
 }
 
@@ -22,7 +23,7 @@ html, body {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: #252525e0;
+    background-color: #515359e0;
 }
 
 header {
@@ -46,19 +47,19 @@ header #header-top .left-top {
     float: left;
     margin: 0;
     padding-top: 12px;
-    padding-left: 35px;
+    padding-left: 15px;
 }
 
 header #header-top .left-top a {
     text-decoration: none;
-    color: #252525;
+    color: #515359;
     font-size:13px;
     letter-spacing: -0.3px;
 }
 
 header #header-top .left-top a:hover {
     transition: 500ms;
-    color: #252525b9;
+    color: #515359b9;
 }
 
 header #header-top .left-top a #line {
@@ -94,21 +95,22 @@ header #header-top .top ul li {
     display: inline-block;
     text-align: center;
     margin-left: 3px;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #e1e3e9;
     padding-left: 9px;
     padding-right: 9px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #252525;
-    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #515359;
+    font-size: 13px;
     letter-spacing: -0.5px;
 }
 
 header #header-top .top ul li#admin {
 	padding-left: 15px;
 	padding-right: 15px;
-	background-color: #3b4f6a;
+	background-color: #575b69;
 	color: #fff;
+	border: 1px solid #9fa3b1;
 }
 
 header #header-top .top ul span {
@@ -118,12 +120,12 @@ header #header-top .top ul span {
 header #header-top .top ul a {
     display: inline-block;
     text-decoration: none;
-    color: #252525;
+    color: #515359;
 }
 
 header #header-top .top ul a:hover {
     transition: 500ms;
-    color: #252525b9;
+    color: #515359b9;
 }
 
 header #header-top .top ul a #line {
@@ -141,13 +143,14 @@ header #header-top .top ul a:hover #line {
 header #header-top .top ul img {
     border-radius: 20px;
     text-decoration: none;
-    color: #252525;
+    color: #515359;
 }
 
 header #header-top .top ul li:hover {
     transition: 400ms;
     color: #fff;
-    background-color: #3b4f6a;
+    border: 1px solid #9fa3b1;
+    background-color: #575b69;
 }
 
 header #header-middle {
@@ -180,15 +183,15 @@ header #header-middle .middle .search input[type=search] {
     width: 200px;
     height: 35px;
     color: #cfcfcf;
-    border-bottom: 1px solid #cacaca;
+    border-bottom: 1px solid #575b69;
     background: none;
     outline: none;
 }
 
 header #header-middle .middle .search input[type=search]:focus {
     transition: 400ms;
-    color: #252525;
-    border-bottom: 1px solid #252525;
+    color: #515359;
+    border-bottom: 1px solid #515359;
 }
 
 header #header-middle .middle .search input[type=button] {
@@ -198,13 +201,13 @@ header #header-middle .middle .search input[type=button] {
     width: 60px;
     height: 35px;
     background: none;
-    border: 1px solid #cacaca;
+    border: 1px solid #575b69;
     outline: none;
 }
 
 header #header-middle .middle .search input[type=button]:hover {
-    border: 1px solid #252525;
-    background-color: #383838;
+    border: 1px solid #575b69;
+    background-color: #575b69;
     color: #fff;
     transition: 500ms;
 }
@@ -220,7 +223,7 @@ header #header-middle .middle .info #cartCount {
     margin-left: 5px;
     margin-top: 7px;
     vertical-align: top;
-	background-color: #444;
+	background-color: #515359;
     width: 30px;
 	border-radius: 6px;
 	padding-left: 5px;
@@ -241,7 +244,8 @@ header #header-bottom {
 header #header-bottom .bottom {
     display: inline-block;
     width: 990px;
-    text-align: center;
+    text-align: left;
+    padding-left: 7px;
 }
 
 header #header-bottom .bottom ul {
@@ -260,7 +264,7 @@ header #header-bottom .bottom ul li {
 }
 
 header #header-bottom .bottom ul li:nth-child(1) {
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
 }
 
@@ -269,7 +273,7 @@ header #header-bottom .bottom ul li:nth-child(1) {
 }
 
 header .active {
-	border-bottom: 2px solid #444444;
+	border-bottom: 2px solid #515359444;
 }
 
 /* 전체메뉴보기 서브메뉴 */
@@ -434,12 +438,57 @@ header #header-bottom .sub#notice .sub_content .sub_right ul li {
     padding-left: 10px;
     height: 24px;
     border-bottom: 1px solid #eee;
+    cursor: pointer;
 }
 
 header #header-bottom .sub#notice .sub_content .sub_right ul li:hover {
     transition: 500ms;
     background-color: #eee;
 }
+
+header #header-bottom .sub#notice .sub_content .sub_center ul li a {
+    color: #515359;
+    text-decoration: none;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_center ul li a:hover {
+    transition: 500ms;
+    color: #3b4f6a;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li a {
+    color: #515359;
+    text-decoration: none;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li a:hover {
+    transition: 500ms;
+    color: #3b4f6a;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul {
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li {
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    padding-top: 6px;
+    padding-left: 10px;
+    height: 24px;
+    border-bottom: 1px solid #eee;
+}
+
+header #header-bottom .sub#notice .sub_content .sub_left ul li:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
 
 /* 클래스샵 서브메뉴 */
 
@@ -498,7 +547,7 @@ header #header-bottom .sub#classshop .sub_content .sub_center ul li {
 }
 
 header #header-bottom .sub#classshop .sub_content .sub_center ul li a {
-    color: #252525;
+    color: #515359;
     text-decoration: none;
 }
 
@@ -609,6 +658,7 @@ header #header-bottom .sub#oneday .sub_content .sub_right ul {
 }
 
 header #header-bottom .sub#oneday .sub_content .sub_right ul li {
+	cursor: pointer;
     font-size: 13px;
     letter-spacing: -0.4px;
     padding-top: 6px;
@@ -782,7 +832,7 @@ header #header-bottom .sub#community .sub_content .sub_center ul li {
 }
 
 header #header-bottom .sub#community .sub_content .sub_center ul li a {
-	color: #252525;
+	color: #515359;
 	text-decoration: none;
 }
 
@@ -848,17 +898,17 @@ section {
 
 section#index {
     width: 100%;
-    height: 100vh;
-    color: #fff;
-    background-image: url('../images/background-image.jpg');
+    height: 750px;
+    color: #ffffff;
+    background-image: url('../images/bgbg.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     background-position: center; 
 }
 
 section#index .intro_content {
-    padding-top: 320px;
+    padding-top: 260px;
     text-align: center;
 }
 
@@ -867,7 +917,7 @@ section#index .intro_content #intro-text {
 	width: 400px; 
 	height: 30px;
 	line-height: 25px;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 /* ------------------------------ 클래스샵 ------------------------------- */
@@ -947,7 +997,7 @@ section#shop .shop_content #slideButton {
 section#shop .shop_content #slideButton:hover {
     transition: 400ms;
     background-color: #f0f0f0;
-    color:#333333;
+    color:#515359;
 }
 
 
@@ -1007,7 +1057,7 @@ section#shop .shop_content #shop_right .shop_top .sort .sortBtn {
     padding-top: 9px;
     background:none;
     color: #424242;
-    border: 1px solid #dadada;
+    border: 1px solid #e1e3e9;
     outline: none;
     font-size: 12px;
     text-align: left;
@@ -1018,19 +1068,19 @@ section#shop .shop_content #shop_right .shop_top .sort .selected {
     display: inline-block;
     cursor: pointer;
     color: #fff;
-    background: #3b4f6a;
+    background: #575b69;
     outline: none;
 }
 
 section#shop .shop_content #shop_right .shop_top .sort .sortBtn:hover {
     transition: 500ms;
-    background-color: #3b4f6a;
+    background-color: #575b69;
     color: #fff;
 }
 
 section#shop .shop_content #shop_right .shop_top .sort .selected:hover {
     transition: 500ms;
-    background-color: #252525;
+    background-color: #575b69;
     color: #fff;
 }
 
@@ -1043,7 +1093,7 @@ section#shop .shop_content #shop_right .shop_top .sort button img {
 section#shop .shop_content #shop_right .shop_top .searchForm {
     float: right;
     padding-top: 6px;
-    color: #252525;
+    color: #515359;
     font-size: 13px;
     letter-spacing: -0.5px;
 }
@@ -1113,7 +1163,7 @@ section#shop .shop_content #shop_right .shop_middle .item p {
 
 section#shop .shop_content #shop_right .shop_middle .item:hover {
 	transition: 700ms;
-	border: 2px solid #e3e9f0;
+	border: 2px solid #c8cad1;
 }
 
 section#shop .shop_content #shop_right .shop_middle .item #img {
@@ -1154,7 +1204,7 @@ section#shop .shop_content #shop_right .shop_middle .item ul li.title a:hover{
 }
 
 section#shop .shop_content #shop_right .shop_middle .item #review_line {
-    background-color: #dee4ed;
+    background-color: #e1e3e9;
     width: 100%;
 }
 
@@ -1166,14 +1216,14 @@ section#shop .shop_content #shop_right .shop_middle .item button {
     font-size: 12px;
     background: none;
     outline: none;
-    border: 1px solid #252525;
+    border: 1px solid #9fa3b1;
 }
 
 section#shop .shop_content #shop_right .shop_middle .item button:hover {
     transition: 400ms;
     color: #fff;
-    background-color: #3b4f6a;
-    border: 1px solid #252525;
+    background-color: #575b69;
+    border: 1px solid #575b69;
 }
 
 section#shop .shop_content #shop_right .shop_middle .shop_bottom {
@@ -1190,7 +1240,7 @@ section#shop .shop_content #shop_right .shop_middle .shop_bottom a, section#shop
     padding-bottom: 5px;
     padding-right: 10px;
     text-decoration: none;
-    color: #252525;
+    color: #515359;
     border: 1px solid #eee;
     font-size: 14px;
 }
@@ -1254,7 +1304,7 @@ section#shopView .shopView_content .view_right .view_menu ul li {
 
 section#shopView .shopView_content .view_right .view_menu ul li:hover {
     transition: 500ms;
-    color: #3b4f6a;
+    color: #575b69;
 }
 
 section#shopView .shopView_content .view_right {
@@ -1284,13 +1334,13 @@ section#shopView .shopView_content .view_right .view_top_right {
     display: inline-block;
     vertical-align: top;
     width: 450px;
-    color: #252525;
+    color: #515359;
 }
 
 section#shopView .shopView_content .view_right .view_top_right select {
 	width: 170px;
 	height: 28px;
-	border: 1px solid #9c9c9c;
+	border: 1px solid #e1e3e9;
 	padding-left: 10px;
 	outline: none;
 }
@@ -1302,7 +1352,7 @@ section#shopView .shopView_content .view_right .view_top_right h2 {
 
 section#shopView .shopView_content .view_right .view_top_right a {
     font-size: 13px;
-    color: #252525;
+    color: #515359;
     text-decoration: none;
 }
 
@@ -1352,7 +1402,7 @@ section#shopView .shopView_content .view_right .view_top_right button {
     background:none;
     outline: none;
     font-size: 13px;
-    border: 1px solid #9c9c9c;
+    border: 2px solid #e1e3e9;
     margin: 5px;
     margin-left: 10px;
     margin-right: 10px;
@@ -1362,37 +1412,38 @@ section#shopView .shopView_content .view_right .view_top_right button.api:nth-ch
 	background-image: url('../images/kakao-share-button.png');
 	background-size: 100%;
 	border:none;
-	border-bottom: 1px solid #fff;
+	border-bottom: 2px solid #fff;
 } 
 
 section#shopView .shopView_content .view_right .view_top_right button.api:nth-child(2) {
 	background-image: url('../images/naver-short-button.png');
 	background-size: 100%;
 	border:none;
-	border-bottom: 1px solid #fff;
+	border-bottom: 2px solid #fff;
 } 
 
-section#shopView .shopView_content .view_right .view_top_right button.api:hover {
-	transition: 500ms;
-	border-bottom: 1px solid #a0a0a0;
-} 
 
 section#shopView .shopView_content .view_right .view_top_right button:hover {
     transition: 400ms;
-    background-color: #252525;
+    background-color: #515359;
     color: #fff;
 }
 
 section#shopView .shopView_content .view_right .view_top_right button.addcart-btn {
-	width: 290px;
+	width: 297px;
 	height: 46px;
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: -0.4px;
+	border: 2px solid #e1e3e9;
+	color: #515359;
 }
 
 section#shopView .shopView_content .view_right .view_top_right button.addcart-btn:hover {
-	background-color: #3b4f6a;
+	transition: 500ms;
+	border: 2px solid #575b69;
+	background-color: #575b69;
+	color: #fff;
 }
 
 section#shopView .shopView_content .view_right #about {
@@ -1413,7 +1464,7 @@ section#shopView .shopView_content .view_right #review {
 section#shopView .shopView_content .view_right #review button {
     width: 160px;
     height: 45px;
-    color: #252525;
+    color: #515359;
     background-color: #fff;
     border: 1px solid #999999;
     outline: none;
@@ -1421,7 +1472,7 @@ section#shopView .shopView_content .view_right #review button {
 
 section#shopView .shopView_content .view_right #review button:hover {
     transition: 400ms;
-    background-color: #252525;
+    background-color: #575b69;
     color: #fff;
 }
 
@@ -1439,7 +1490,7 @@ section#shopView .shopView_content .view_right #review .review-container textare
 
 section#shopView .shopView_content .view_right #review .review-container button {
     width: 150px;
-    height: 40px;
+    height: 120px;
 }
 
 section#shopView .shopView_content .view_right #review table#review_tbl {
@@ -1463,7 +1514,7 @@ section#shopView .shopView_content .view_right #review table#review_tbl td {
 
 section#shopView .shopView_content .view_right #review table#review_tbl td a {
     text-decoration: none;
-    color: #252525;
+    color: #515359;
 }
 
 section#shopView .shopView_content .view_right #review table#review_tbl td a:hover {
@@ -1481,7 +1532,7 @@ section#shopView .shopView_content .view_right #review table#review_tbl button {
 }
 
 section#shopView .shopView_content .view_right #review table#review_tbl button#curPage {
-    background-color: #252525;
+    background-color: #575b69;
     color: #fff;
     height: 30px;
 }
@@ -1608,7 +1659,7 @@ section#shopWrite .shopWrite_content .shopWrite_right button {
 
 section#shopWrite .shopWrite_content .shopWrite_right button:hover {
     transition: 400ms;
-    background-color: #252525;
+    background-color: #515359;
     color: #fff;
 }
 
@@ -1700,7 +1751,7 @@ footer #footer_content .footer_bottom {
     display: block;
     text-align: left;
     padding-top: 25px;
-    color: #252525;
+    color: #515359;
     height: 50px;
     font-size: 12px;
 }
@@ -1825,12 +1876,12 @@ section#board .board_content #board_right .board_top .sort label {
 
 section#board .board_content #board_right .board_top .sort label:hover {
     transition: 500ms;
-    color: #252525;
+    color: #515359;
 }
 
 section#board .board_content #board_right .board_top .searchForm {
     float: right;
-    color: #252525;
+    color: #515359;
     font-size: 13px;
     letter-spacing: -0.5px;
 }
@@ -1843,7 +1894,7 @@ section#board .board_content #board_right .board_top .searchForm input[type=sear
 
 section#board .board_content #board_right .board_top .searchForm input[type=search]:focus {
     transition: 500ms;
-    border: 1px solid #252525;
+    border: 1px solid #515359;
 }
 
 section#board .board_content #board_right .board_top .searchForm button {
@@ -1905,12 +1956,12 @@ section#board div#board_right .board_bottom input[type=button] {
     width: 60px;
     height: 25px;
     background: none;
-    border: 1px solid #cacaca;
+    border: 1px solid #575b69;
     float: right;
 }
 
 section#board div#board_right .board_bottom input[type=button]:hover {
-    border: 1px solid #252525;
+    border: 1px solid #515359;
     background-color: #383838;
     color: #fff;
     transition: 500ms;

@@ -157,7 +157,20 @@ public class NoticeService {
 		close(conn);
 		return result;
 	}
-
+	
+	public int wnDelNotice(int noticeNo) {
+		Connection conn = getConnection();
+		int wnResult = dao.wnDelNotice(conn,noticeNo);
+			if(wnResult>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		close(conn);
+		return wnResult;
+	}
+	
 	public int reNotice(int noticeNo) {
 		Connection conn = getConnection();
 		int result = dao.reNotice(conn,noticeNo);
@@ -169,6 +182,19 @@ public class NoticeService {
 			}
 		close(conn);
 		return result;
+	}
+	
+	public int wnReNotice(int noticeNo) {
+		Connection conn = getConnection();
+		int reResult = dao.wnReNotice(conn,noticeNo);
+			if(reResult>0) {
+				commit(conn);
+			}
+			else {
+				rollback(conn);
+			}
+		close(conn);
+		return reResult;
 	}
 
 	public int del_DB(int noticeNo) {
@@ -259,6 +285,13 @@ public class NoticeService {
 		WeNotice wnList = dao.cuWeSelectOne(conn);
 		close(conn);
 		return wnList;
+	}
+	
+	public List<Notice> newLatestList() {
+		Connection conn = getConnection();
+		List<Notice> list = dao.newLatestList(conn);
+		close(conn);
+		return list;
 	}
 
 }

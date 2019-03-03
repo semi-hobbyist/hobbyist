@@ -1,8 +1,7 @@
 # 하비스트(Hobbyist) - e-commerce Project
 Web Develop Semi-Project, Hobbyist
 
-# Collaborators
-- 권민아, 김동현, 박성화, 한윤석, 한혜진
+<img src="https://user-images.githubusercontent.com/46561976/53696722-716d5b80-3e0d-11e9-8a0d-bd298214d262.jpg"><Br>
 
 # Division of Works
 - 권민아

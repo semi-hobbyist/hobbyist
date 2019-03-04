@@ -80,6 +80,7 @@ public class NoticeViewServlet extends HttpServlet {
 		} else {
 			wnList = null;
 		}
+
 		request.setAttribute("profileImg", profileImg);
 		request.setAttribute("notice", notice);
 		request.setAttribute("wnList", wnList);

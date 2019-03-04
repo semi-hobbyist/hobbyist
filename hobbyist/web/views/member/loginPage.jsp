@@ -46,13 +46,8 @@
 			onsubmit="return fn_loginMember();" autocomplete="off">
 			<div class="form form--memberLogin">
 				<div class="form--heading"></div>
-<<<<<<< HEAD
-				<input type="text" name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autofocus="autofocus" autocomplete="off">
-				<input type="password" name="memberPassword" placeholder="Password" autocomplete="new-password">
-=======
 				<input type="text" class="loginInputCss" name="loginMemberEmail" placeholder="Email" id="loginMemberEmail" value="<%= saveEmail!=null?saveEmail:"" %>" autocomplete="off">
 				<input type="password" class="loginInputCss" name="memberPassword" placeholder="Password" autocomplete="new-password">
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 				<div class="checkboxDiv">
 					<input type="checkbox" class="loginInputCss" name="saveEmail" id="saveEmail" <%= saveEmail!=null?"checked":"" %> />
 					<label for="saveEmail">EMAIL 저장</label>

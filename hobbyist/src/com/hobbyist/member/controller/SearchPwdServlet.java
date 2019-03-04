@@ -36,13 +36,15 @@ public class SearchPwdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberEmail = request.getParameter("memberEmail");
 		String memberEmailaddress =request.getParameter("memberEmailaddress");
+		String pwdCode = request.getParameter("pwdCode"); //임시 비밀번호 고유값값 받기
 		String finalEmail = memberEmail+memberEmailaddress;
 		
 		Member m = new Member();
 		m.setMemberEmail(finalEmail);
-		System.out.println(finalEmail);
-		Member result = new MemberService().searchMemberPwd(m);
-		System.out.println(result);
+		System.out.println("비밀번호 찾기 아이디 : " + finalEmail);
+		System.out.println("발급된 임시 비밀번호 : " + pwdCode);
+		Member result = new MemberService().selectOne(m);
+		
 		if(result!=null) {
 			Properties props = System.getProperties();
 		    props.put("mail.smtp.user", "hobbyist"); //서버 아이디만 쓰기
@@ -62,7 +64,7 @@ public class SearchPwdServlet extends HttpServlet {
 		    try {
 		    	String email_content = "요청하신 인증번호를 발송해 드립니다.";
 		    	String email_title = "<비밀번호 찾기 찾기> 요청하신 인증번호를 알려드립니다.";
-		    	String pwdCode = request.getParameter("pwdCode"); //임시 비밀번호 고유값값 받기
+		    
 		    	
 		    	mmsg.setSentDate(new Date());
 		    	

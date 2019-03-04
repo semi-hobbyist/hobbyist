@@ -416,7 +416,7 @@ public class OrderDao {
 			while(rs.next()) {
 				Order order = new Order();
 				order.setOrderNo(rs.getInt("order_no"));
-				order.setOrderNo(rs.getInt("order_code"));
+				order.setOrderCode(rs.getString("order_code"));
 				order.setOrderCate(rs.getString("order_cate"));
 				order.setOrderMember(rs.getString("order_member"));
 				order.setOrderClass(rs.getInt("order_class"));

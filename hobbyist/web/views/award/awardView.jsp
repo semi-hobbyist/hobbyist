@@ -33,7 +33,7 @@
 
 				<div class="award_board_view_content">
 				<img src="<%=request.getContextPath()%>/upload/award/images/<%=a.getAwardOriginalFilename()%>" width="300px"><br>
-				<%=a.getAwardContent()%><br><br><br><br><br>
+				<%=a.getAwardContent()!=null? a.getAwardContent() : "" %><br><br><br><br><br>
 				</div>
 				<br>
 				<img  onclick="fn_clickLike()" id="award_like_img" src="<%=request.getContextPath()%>/images/award_like_off.png" width="90px" height="90px" style=" cursor: pointer;">
@@ -44,7 +44,7 @@
 			</div>
 		
 			<div class="award_board_view_bottom">
-				<%if(logginMember!=null&&(a.getAwardWriter().equals(logginMember.getMemberEmail()))) {%>
+				<%if(logginMember!=null&&(a.getAwardWriter().equals(logginMember.getMemberEmail()) || logginMember.getMemberEmail().equals("admin"))) {%>
 				<button type="button" onclick="fn_deleteAward()">어워드 삭제</button>
 				<button type="button" onclick="fn_updateAward()">어워드 수정</button>
 				<%} %>

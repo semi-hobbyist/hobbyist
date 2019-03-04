@@ -27,10 +27,6 @@
 
 </script>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
@@ -71,9 +67,9 @@
 	      </ul>
       <li onclick="fn_myclass()">내 클래스</li>
       <li>내 커뮤니티</li>
-		  <ul class="sub">
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 게시물</li>
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 댓글</li>
+		 <ul class="sub">
+	        <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 게시물</li>
+	        <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 댓글</li>
 	   	  </ul>
       <li onclick="location.href='<%=request.getContextPath()%>/mypage/myOrderList?member=<%=logginMember.getMemberEmail()%>'">내 주문내역</li>
       <% if(weFlag) { %>
@@ -83,16 +79,6 @@
 </div>
 
 <script>
-<<<<<<< HEAD
-	function fn_myclass() {
-	    if (<%= logginMember != null %>) {
-	        location.href = '<%= request.getContextPath() %>/myClass?member=<%= logginMember!=null? logginMember.getMemberEmail() : "" %>';
-	    } else {
-	        swal("[내 클래스] 로그인 후 이용해주세요");
-	        return;
-	    }
-	}
-=======
 
 function fn_myclass() {
     if (<%= logginMember != null %>) {
@@ -102,7 +88,6 @@ function fn_myclass() {
         return;
     }
 }
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 
    $(function () {
       var myPageLeftSelectValue = "";

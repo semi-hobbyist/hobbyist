@@ -92,7 +92,7 @@
 			<div class="board_middle">
 				<div id="tbl_list">
 					<ul>
-						<li><div id="categoryTop">분류</div><div id="titleTop">제목</div></li>
+						<li><p align="center">분류제목</p></li>
 						<%for(BoardFAQ b : list) {
 							secondNum++;
 							titleNum++;

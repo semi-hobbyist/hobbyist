@@ -1,10 +1,12 @@
 <%@page import="com.hobbyist.order.model.vo.Order"%>
 <%@page import="com.hobbyist.shop.model.vo.Shop"%>
+<%@page import="com.hobbyist.oneday.model.vo.Oneday"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
 <%
 	List<Order> order = (List)request.getAttribute("Order");
 	List<Shop> shop = (List)request.getAttribute("Shop");
+	List<Oneday> oneday = (List)request.getAttribute("Oneday");
 %>
 
 <%@ include file="/views/common/header.jsp" %>

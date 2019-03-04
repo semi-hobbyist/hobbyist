@@ -631,7 +631,7 @@ section#boardView .boardView_content #boardView_right .boardView_middle #comment
 /* --------------------------------boardFAQList---------------------------------- */
 
 section#board .board_content #board_right .FAQsearchForm {
-    color: #42454d;
+    color: #252525;
     font-size: 13px;
     letter-spacing: -0.5px;
     border: 1px solid #c3c3c3;
@@ -666,7 +666,7 @@ section#board .board_content #board_right .FAQsearchForm img {
 
 section#board .board_content #board_right .FAQsearchForm input[type=search]:focus {
     transition: 500ms;
-    border: 1px solid #42454d;
+    border: 1px solid #252525;
 }
 
 section#board .board_content #board_right .FAQsearchForm button {
@@ -684,7 +684,7 @@ section#board .board_content #board_right .board_middle div#tbl_list ul {
 
 section#board .board_content #board_right .board_middle div#tbl_list ul li {
     border-bottom: 1px solid #c3c3c3;
-    width: 730px;
+    width: 800px;
 }
 
 section#board .board_content #board_right .board_middle div#tbl_list ul li.title {
@@ -725,14 +725,14 @@ section#board .board_content #board_right .board_middle div#tbl_list ul div#cate
 
 
 section#board .board_content #board_right .board_middle div#tbl_list ul li div#titleTop {
-    width: 730px;
+    width: 800px;
 }
 
 
 section#board .board_content #board_right .board_middle div#tbl_list ul li.second {
     cursor: pointer;
     padding: 8px 10px;
-    width: 710px;
+    width: 800px;
 }
 section#board .board_content #board_right .board_middle div#tbl_list li.second div.titleMiddle {
     padding-left: 30px;
@@ -773,12 +773,11 @@ section#board div#board_right div.board_FAQ_bottom input[type=button] {
 }
 
 section#board div#board_right div.board_FAQ_bottom input[type=button]:hover {
-    border: 1px solid #42454d;
+    border: 1px solid #252525;
     background-color: #383838;
     color: #fff;
     transition: 500ms;
 }
-
 
 /* ------------------------------boardDirectQuestionList-------------------------------- */
 section#board div.board_content div#board_right div.board_DQ_top form table#tbl_write tr:nth-child(1) td input {
@@ -810,7 +809,9 @@ section#board div.board_content div#board_right div.board_DQ_top table#tbl_write
 }
 
 
-section#board .board_content #board_right .board_DQ_middle {margin-left: 25px;}
+section#board .board_content #board_right .board_DQ_middle {
+	display: inline-block;
+	margin-left: 25px;}
 section#board .board_content #board_right .board_DQ_bottom{margin-left: 25px;}
 
 section#board .board_content #board_right .board_DQ_middle a {

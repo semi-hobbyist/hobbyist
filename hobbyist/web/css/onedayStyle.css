@@ -9,11 +9,7 @@ section#oneday .oneday_content {
     display: inline-block;
     text-align: left;
     width: 990px;
-<<<<<<< HEAD
-    padding-top: 110px;
-=======
     padding-top: 100px;
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 }
 
 section#oneday .oneday_content #oneday_left {

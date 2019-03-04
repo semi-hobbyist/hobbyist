@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hobbyist.oneday.model.service.OnedayService;
+import com.hobbyist.oneday.model.vo.Oneday;
 import com.hobbyist.order.model.service.OrderService;
 import com.hobbyist.order.model.vo.Order;
 import com.hobbyist.shop.model.service.ShopService;
@@ -66,6 +68,7 @@ public class MyOrderListServlet extends HttpServlet {
 		}
 		
 		List<Shop> shop = new ShopService().selectAll();
+		List<Oneday> oneday = new OnedayService().selectAll();
 		
 		System.out.println("샵리스트 사이즈 : " + shop.size());
 		
@@ -100,6 +103,7 @@ public class MyOrderListServlet extends HttpServlet {
 		request.setAttribute("TotalCount", totalCount);
 		request.setAttribute("Order", list);
 		request.setAttribute("Shop", shop);
+		request.setAttribute("Oneday", oneday);
 		request.setAttribute("sort", sort);
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("numPerPage", numPerPage);

@@ -27,12 +27,12 @@ public class ShopWriterSearchServlet extends HttpServlet {
 		
 		String html = "";
 		// 검색 DIV 기본틀
-		html += "<div id='sw' style='position:absoulte; width:300px; height:100px;'>";
+		html += "<div id='sw' style='position:absoulte; width:500px; height:100px;'>";
 		html += "<ul>";
 		
 		// DB에 가지고 있는 작가들 닉네임 가져오고 뿌려주기
 		for(int i=0; i<list.size(); i++) {
-			html += "<li onclick='fn_searched(this)' style='cursor:pointer'>" + list.get(i).getMemberNickname() + "</li>";
+			html += "<li style=\'display:inline-block; padding-right: 15px;\' onclick='fn_searched(this)' style='cursor:pointer'>" + list.get(i).getMemberNickname() + "</li>";
 		}
 
 		html += "</ul></div>";

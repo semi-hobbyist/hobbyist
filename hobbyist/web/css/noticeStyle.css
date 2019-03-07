@@ -9,7 +9,6 @@
 #notice .notice_content {
     position: relative;
     width: 990px;
-    height: 100%;
     padding-top: 150px;
     display: flex;
     justify-content: center;
@@ -173,7 +172,7 @@
     width: 100%;
     padding: 10px 0;
     background-color: #e1e3e9;
-    border-left: 3px solid #3e4b6c;    
+    border-left: 3px solid #575b69;    
     border-bottom: 1px solid #eee;
     color: black;
 	cursor: pointer;
@@ -787,13 +786,13 @@
 
 #noticeWrite .fileImgDelBtn {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     top: 0px;
     right: 0px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-	background-color: rgb(199, 136, 136);
+	background-color: #575b69;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -806,8 +805,8 @@
 
 #noticeWrite .fileImgDelBtn:hover {
     transition: 400ms;
-    color: black;
-    border: 1px solid #475770;
+    color: #32343a;
+    border: 1px solid #9fa3b1;
 	background-color: white;
 }
 

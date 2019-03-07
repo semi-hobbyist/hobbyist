@@ -52,7 +52,7 @@
 					<tr>
 						<th>닉네임</th>
 						<td><input style="width:140px;" type="text" id="memberNickname" name="memberNickname" value="<%=logginMember.getMemberNickname()%>"/>
-						<button style="width:80px;" type="button" id="memberNicknameBtn" name="memberNicknameBtn">중복확인</button></td>
+						<!-- <button style="width:80px;" type="button" id="memberNicknameBtn" name="memberNicknameBtn">중복확인</button> --></td>
 					</tr>
 					<tr>
 						<th>휴대폰번호</th>

@@ -48,8 +48,10 @@
 	<script>
 	function fn_checkId(){
 		var memberEmail = $('#memberEmail').val();
+		console.log(memberEmail);
 		var memberEmailaddress = $('#memberEmailaddress').val();
-		var pwdCode =$('#pwdCode').val();
+		console.log(memberEmailaddress);
+		
 		
 		var text1 = "";
 		var text2 = "";
@@ -62,6 +64,7 @@
 		         text2 += num.charAt(Math.floor(Math.random() * num.length));
 		     }
 		   	result = text1+text2+"!!";
+		   	console.log(result);
 		
 		$.ajax({
 			url : '<%= request.getContextPath() %>/searchPwd.do',

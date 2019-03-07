@@ -27,7 +27,6 @@
 
 </script>
 
-
 <div class="myPage_left">
    <div class="memberSimpleProfileBox">
       <div class="memberSimpleProfileLine1">
@@ -38,7 +37,7 @@
             <div>
                <div class="memberSimpleProfileNickname"><%= logginMember.getMemberNickname() %></div>
                <div class="memberSimpleProfile">
-                  가입일<br>
+                 	 가입일<br>
                   <%= logginMember.getMemberEnrolldate() %>
                </div>
             </div>
@@ -60,6 +59,7 @@
       </div>
    </div>
    <ul>
+
    <li>내 정보보기</li>
 	      <ul class="sub">
 	         <li onclick="fn_updateMember()">내 정보 수정</li>
@@ -67,9 +67,9 @@
 	      </ul>
       <li onclick="fn_myclass()">내 클래스</li>
       <li>내 커뮤니티</li>
-		  <ul class="sub">
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 게시물</li>
-	         <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 댓글</li>
+		 <ul class="sub">
+	        <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 게시물</li>
+	        <li onclick="location.href='<%=request.getContextPath()%>/mypage/myBoardCommentConfirm?nickName=<%=logginMember.getMemberNickname()%>'">나의 댓글</li>
 	   	  </ul>
       <li onclick="location.href='<%=request.getContextPath()%>/mypage/myOrderList?member=<%=logginMember.getMemberEmail()%>'">내 주문내역</li>
       <% if(weFlag) { %>

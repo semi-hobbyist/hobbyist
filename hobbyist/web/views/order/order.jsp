@@ -78,6 +78,7 @@
 				<input type="hidden" id="h_email" value="<%= member.getMemberEmail() %>"/>
 				<input type="hidden" id="h_name" value="<%= member.getMemberName() %>"/>
 				<input type="hidden" id="h_phone" value="<%= member.getMemberPhone() %>"/>
+				<input type="hidden" id="h_address" value="<%= member.getMemberAddress() %>"/>
 			</tr>
 			<tr>
 				<input type="hidden" name="member" value="<%= member.getMemberEmail() %>"/>
@@ -94,7 +95,7 @@
 			</tr>
 			<tr>
 				<th>주문자 주소</th>
-				<td>MEMBER 테이블에 주소 컬럼이 없음...</td>
+				<td><%= member.getMemberAddress() %></td>
 			</tr>
 			<tr>
 				<th class="tableLine" colspan="2"><h3>수령인 정보 (주문자와 동일함 <input type="checkbox" id="sameInfo"/>)</h3></th>
@@ -115,8 +116,10 @@
 				$('#sameInfo').on('click', function() {
 					var h_name = $('#h_name').val();
 					var h_phone = $('#h_phone').val();
+					var h_address = $('#h_address').val();
 					$('#order_add_name').val(h_name);
 					$('#order_add_phone').val(h_phone);
+					$('#order_add_address').val(h_address);
 				});
 				
 				
@@ -131,7 +134,7 @@
 					<option value="택배함">택배함</option>
 				</select></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<th class="tableLine" colspan="2"  id="step03"><h3>할인정보 입력</h3></th>
 			</tr>
 			<tr>
@@ -153,7 +156,7 @@
 					%>
 						<input type="hidden" name="addPoint" value="<%= resultPoint %>"/><%= resultPoint %>
 				</td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<th class="tableLine" colspan="2"  id="step04"><h3>결제방법 선택</h3></th>
 			</tr>

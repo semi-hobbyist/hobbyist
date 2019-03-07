@@ -357,10 +357,24 @@ section#award .award_content #award_right .award_board_view .section#award .awar
 }
 
 section#award .award_content #award_right .award_board_view_bottom {
+	padding-top: 60px;
+	width: 990px;
 	display: inline-block;
 	text-align: center;
 }
 
+section#award .award_content #award_right .award_board_view_bottom button {
+	width: 130px;
+	height: 40px;
+	border: 1px solid #eee;
+	background-color: #fff;
+}
+
+section#award .award_content #award_right .award_board_view_bottom button:hover {
+	background-color: #252525;
+	transition: 400ms;
+	color: #fff;
+}
 
 section#award .award_content #award_right .award_top span{
 	 color: #9d9da4;

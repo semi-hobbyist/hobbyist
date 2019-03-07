@@ -253,11 +253,11 @@
 			return false;
 		} 
 		
-		/* //이메일 인증버튼 누르기 하기
+		 //이메일 인증버튼 누르기 하기
 		if($('#code_check').val()==null || $('#code_check').val().trim().length==0 || $('#emailCheckButton').val()!='인증완료'){
 			alert('이메일 인증버튼을 눌러주세요');
 			return false;
-		} */
+		} 
 		
 		$(".enroll").css("transform", "translateX(-100%)"); 
 		console.log($('#code_check').val());

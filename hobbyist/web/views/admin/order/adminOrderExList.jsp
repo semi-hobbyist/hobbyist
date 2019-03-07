@@ -61,13 +61,13 @@
 						</tr>
 						<% for(Order o : list) { %>
 							<tr>
-								<td><%= o.getOrderNo() %></td>
+								<td><%= o.getOrderCode() %></td>
 								<td><%= o.getOrderCate() %></td>
 								<td><%= o.getOrderMember() %></td>
 								<td><%= o.getOrderClass() %></td>
-								<td><%= o.getOrderClassOption() %></td>
+								<td><%= o.getOrderClassOption()%></td>
 								<td><%= o.getOrderPrice() %></td>
-								<td><%= o.getOrderType() %></td>
+								<td><%= o.getOrderType().equals("kakao")? "카카오페이" : ""  %></td>
 								<td><%= o.getOrderDate() %></td>
 								<td><button onclick="fn_delete('<%= o.getOrderNo() %>')">환불취소</button>
 							</tr>

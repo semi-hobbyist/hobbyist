@@ -354,7 +354,10 @@ section#onedayView .onedayView_content {
     text-align: center;
     width: 990px;
     padding-top: 140px;
+<<<<<<< HEAD
+=======
     color: #32343a;
+>>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 }
 
 
@@ -393,6 +396,7 @@ section#onedayView .onedayView_content .view_right .view_menu ul li:hover {
 section#onedayView .onedayView_content .view_right {
     display: block;
     width: 990px;
+    padding-top:10px;
     overflow: hidden;
 }
 

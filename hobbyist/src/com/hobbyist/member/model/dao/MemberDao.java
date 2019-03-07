@@ -173,12 +173,11 @@ public class MemberDao {
 		ResultSet rs = null;
 		Member result = null;
 		
-		System.out.println("dao 에서 확인 : " + m.getMemberEmail());
-		
-		String sql = prop.getProperty("searchPwd");
 		try {
+			String sql = prop.getProperty("searchPwd");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberEmail());
+			System.out.println("dao 에서 확인 : " + m.getMemberEmail());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = new Member();
@@ -232,7 +231,8 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemberNickname());
 			pstmt.setString(2, m.getMemberPhone());
 			pstmt.setString(3, m.getMemberOriginalImage());
-			pstmt.setString(4, m.getMemberEmail());
+			pstmt.setString(4, m.getMemberRenamedImage());
+			pstmt.setString(5, m.getMemberEmail());
 			result = pstmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();

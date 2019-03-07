@@ -365,6 +365,11 @@ header #header-bottom .sub#notice .sub_content {
     width: 990px;
 }
 
+header #header-bottom .sub#notice .sub_content a {
+	text-decoration: none;
+	color: #252525;
+}
+
 header #header-bottom .sub#notice .sub_content .sub_left {
     display: inline-block;
     vertical-align: top;

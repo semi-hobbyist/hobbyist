@@ -41,9 +41,10 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_communityStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin_noticeDelListStyle.css">
-
-    <!-- ------------- 마이페이지 CSS -------------- -->
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
+    
+	<!-- ------------- 마이페이지 CSS -------------- -->
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPageStyle.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_communityStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/mypage_writerEnrollStyle.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/myPage_writerEnrollModifyStyle.css">
 
@@ -151,6 +152,12 @@
                 <div class="sub_content">
                     <ul>
                     <li class="all_li">
+                  		<ul>
+                        	<li onclick="fn_loginPageView()">로그인</li>
+                        	<li></li>
+                        	<li onclick="fn_myclass()">내클래스</li>
+                        	<li onclick="fn_cart()">취미바구니</li>
+                        </ul>
                     </li>
                     <li  class="all_li">
                         <ul>
@@ -307,11 +314,10 @@
                             매달 추천수가 많은 작품들을 선정해 포인트를 적립해드립니다</p>
                     </div>
                     <div class="sub_center">
-                        <br><Br><Br>
-                        <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px">
-                        <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px">
-                        <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px">
-
+                    <br><Br><Br>
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award39.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award38.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
+                    <img src="<%= request.getContextPath() %>/upload/award/images/award37.jpg" width="110px" style="cursor:pointer" onclick="location.href='<%=request.getContextPath() %>/award/awardList'">
                     </div>
                 </div>
             </div>

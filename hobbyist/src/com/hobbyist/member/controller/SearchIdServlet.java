@@ -54,12 +54,9 @@ public class SearchIdServlet extends HttpServlet {
 		
 		JSONObject json = new JSONObject();
     	json.put("msg", msg);
-		
-		request.setAttribute("msg", msg);
-		request.getRequestDispatcher(view).forward(request, response);
-		
-		response.setContentType("text/html; charset=UTF-8");
-    	response.getWriter().print(result.getMemberEmail());
+
+		response.setContentType("application/json; charset=UTF-8");
+    	response.getWriter().print(msg);
 		
 	}
 

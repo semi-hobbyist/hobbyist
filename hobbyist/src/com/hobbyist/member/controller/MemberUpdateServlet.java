@@ -14,7 +14,6 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.hobbyist.member.model.service.MemberService;
 import com.hobbyist.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.rename.MyFileRenamePolicy;
 

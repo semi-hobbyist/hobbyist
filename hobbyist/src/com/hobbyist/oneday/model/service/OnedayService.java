@@ -161,8 +161,10 @@ public class OnedayService {
 		Connection conn = getConnection();
 		// 모집정원 먼저 조회하기
 		int maxPeople = dao.selectMaxPeople(conn, classNo);
+		System.out.println("해당클래스 모집정원 : " + maxPeople);
 		// 현재예약한 인원 불러오기
 		int currentPeople = dao.selectCurrentPeople(conn, classNo);
+		System.out.println("현재예약된 인원 : " + maxPeople);
 		
 		int result = 0;
 		if(currentPeople<maxPeople) {

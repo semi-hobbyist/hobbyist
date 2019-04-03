@@ -171,13 +171,9 @@
 			var target = $('.contentBox_top');
 			var scrollTo = $(window).scrollTop();
 			if (scrollTo != 0) {
-				$('.contentBox_top').css("top", "125px");
+				$('.contentBox_top').css("top", "136px");
 			} else {
-<<<<<<< HEAD
-				$('.contentBox_top').css("top", "163px");
-=======
 				$('.contentBox_top').css("top", "180px");
->>>>>>> branch 'master' of https://github.com/semi-hobbyist/hobbyist.git
 			}
 		});
 		//메인 헤더 숨기기

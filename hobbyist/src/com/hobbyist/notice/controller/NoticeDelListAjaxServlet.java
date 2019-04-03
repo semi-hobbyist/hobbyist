@@ -133,6 +133,51 @@ public class NoticeDelListAjaxServlet extends HttpServlet {
 			pageBar += "<a href='javascript:fn_ListAjax(" + pageNo + ")'>다음</a>";
 		}
 		
+		
+		// 리스트 담기
+		String html = "";
+		if(list.size() != 0) {
+			for(int i=0;i<list.size();i++) {
+				html += "<div class='tal_ContentBox'>";
+				html += "<input type='hidden' class='selectView' value='"+ list.get(i).getNoticeNo() + "'/>";
+				html += "<div class='tal_Content'>";
+				html += "<div class='talC_noticeNo'>" + list.get(i).getNoticeNo() + "</div>";
+				html += "<div class='talC_noticeSort'>";
+				
+				switch(list.get(i).getNoticeSort()) {
+					case "sortNotice" : 
+						html +="<div class='nSTextNotice'>공지</div>"; break;
+					case "sortEvent" : 
+						html +="<div class='nSTextEvent'>이벤트</div>"; break;
+					case "sortWriterEnroll" : 
+						html +="<div class='nSTextWriterEnroll'>작가신청</div>"; break;
+				}
+				
+				html += "</div>";
+				html += "<div class='talC_noticeTitle'><span style='color:red'>[삭제상태] </span>" + list.get(i).getNoticeTitle() + "</div>";
+				html += "<div class='talC_noticeDate'>" + list.get(i).getNoticeDate() + "</div>";
+				html += "<div class='talC_noticeReadcount'>" + list.get(i).getNoticeReadcount() + "</div>";
+				
+				html += "<div class='talC_noticeStatus'>";
+				html += "<button type='button' class='noticeListRe'>복구</button>";
+				html += "<button type='button' class='noticeListDel'>삭제</button>";
+				html += "</div>";
+				
+				html += "</div>";
+				html += "</div>";
+			}
+		}
+		else {
+			html += "<div class='tal_Content'>";
+			html += "<div class='tal_text'>현재 조회된 리스트가 없습니다.</div>";
+			html += "</div>";
+		}
+		html += "<div class='talBox_bottom'>" + pageBar + "</div>";
+		
+		
+		
+/*테스트를 위한 백업
+ * 
 		// 리스트 담기
 		String html = "";
 		if(list.size() != 0) {
@@ -171,7 +216,10 @@ public class NoticeDelListAjaxServlet extends HttpServlet {
 			html += "</div>";
 		}
 		html += "<div class='talBox_bottom'>" + pageBar + "</div>";
-
+*/
+		
+		
+		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().write(html);
 		

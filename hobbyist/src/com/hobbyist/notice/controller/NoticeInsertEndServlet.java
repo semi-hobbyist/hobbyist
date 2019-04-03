@@ -88,6 +88,7 @@ public class NoticeInsertEndServlet extends HttpServlet {
 		
 		Notice noList = new NoticeService().searchNo(no);
 
+		
 		//작가 신청 공지 DB 테이블 저장
 		if(noticeSort.equals("sortWriterEnroll")) {
 			
@@ -105,6 +106,7 @@ public class NoticeInsertEndServlet extends HttpServlet {
 			
 			int wnResult = new NoticeService().insertWn(wn);  
 		}
+		
 		
 		String msg="";
 		String loc="";

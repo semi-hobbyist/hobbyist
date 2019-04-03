@@ -29,26 +29,36 @@
 		alert("관리자페이지에서는 작가신청 페이지로 들어갈 수 없습니다.");
 	}
 
-	function fn_defaultViewAjax(index) {
-		$.ajax({
-			url: '<%= request.getContextPath() %>/notice/noticeDelListViewAjax.do',
-			type: 'POST',
-			dataType: 'text',
-			data: { "noticeNo": index },
-			success: function (data) {
-				var noticeDelListView = $("#noticeDelListView");
-				noticeDelListView.empty();
-				noticeDelListView.html(data);
-				
-				$("#defaultViewfooterMo").attr("onclick","fn_noticeListMo("+ index +")");
-				$("#defaultViewfooterRe").attr("onclick","fn_noticeListRe("+ index +")");
-				$("#defaultViewfooterDel").attr("onclick","fn_noticeDB_Del("+ index +")");
-			}
-		})
+
+	// function fn_defaultViewAjax(index) {
+	// 	$.ajax({
+	// 		url: '<%= request.getContextPath() %>/notice/noticeDelListViewAjax.do',
+	// 		type: 'POST',
+	// 		dataType: 'text',
+	// 		data: { "noticeNo": index },
+	// 		success: function (data) {
+	// 			var noticeDelListView = $("#noticeDelListView");
+	// 			noticeDelListView.empty();
+	// 			noticeDelListView.html(data);
+
+	// 			$("#defaultViewfooterMo").attr("onclick", "fn_noticeListMo(" + index + ")");
+	// 			$("#defaultViewfooterRe").attr("onclick", "fn_noticeListRe(" + index + ")");
+	// 			$("#defaultViewfooterDel").attr("onclick", "fn_noticeDB_Del(" + index + ")");
+	// 		}
+	// 	})
+
+	// 	$("#defaultViewModal").css("display", "flex");
+	// 	$(".defaultViewBody").animate({ scrollTop: 0 }, 0);
+	// }
+
+	$(".talBox_middle").on("click",".tal_ContentBox",function() {
+		var index = $(".tal_ContentBox").index(this);
+
+		console.log($(".selectView").get(index));
 		
-		$("#defaultViewModal").css("display", "flex");
-		$(".defaultViewBody").animate({ scrollTop: 0 }, 0);
-	}
+	})
+
+
 
 	
 	$(function () {
